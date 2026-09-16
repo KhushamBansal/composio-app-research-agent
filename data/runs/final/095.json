@@ -1,0 +1,180 @@
+{
+ "record": {
+  "id": 95,
+  "app": "Reducto",
+  "what_it_does": "Reducto is an API platform that parses, classifies, extracts structured data from, splits, and edits documents (PDFs, scans, spreadsheets, DOCX, etc.) for AI/LLM pipelines.",
+  "auth_methods": [
+   "API key",
+   "Other"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "API calls use `Authorization: Bearer $REDUCTO_API_KEY` with a key generated in Reducto Studio (studio.reducto.ai/api-keys). The MCP CLI additionally offers a browser-based OAuth device-code login (`uvx mcp-server-reducto --login`) that ultimately just saves an API key to `~/.reducto/config.yaml` \u2014 it is a convenience login flow, not a third-party delegated-auth OAuth2 grant.",
+  "access": "self_serve_free",
+  "access_notes": "Sign up free at studio.reducto.ai and immediately create an API key; the Standard plan includes 15K free credits pay-as-you-go with no page limits, then $0.015/credit.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.reducto.ai/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.reducto.ai/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.reducto.ai/quickstart",
+    "quote": "curl -X POST \"https://platform.reducto.ai/parse\" -H \"Authorization: Bearer $REDUCTO_API_KEY\""
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.reducto.ai/mcp-server",
+    "quote": "This opens an OAuth device-code flow in your browser. Once approved, your API key is saved to `~/.reducto/config.yaml`"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.reducto.ai/quickstart",
+    "quote": "Go to studio.reducto.ai and sign up for a free account."
+   },
+   {
+    "field": "access",
+    "url": "https://reducto.ai/pricing",
+    "quote": "Pay-as-you-go for early-stage teams ... Then, $0.015 per credit after first 15K."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.reducto.ai/workflows/async-overview",
+    "quote": "client.parse.run() | POST /parse | Full result (blocks until complete)"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.reducto.ai/openapi-legacy.json",
+    "quote": "{\"openapi\":\"3.1.0\",\"info\":{\"title\":\"Reducto API (Legacy)\""
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.reducto.ai/workflows/async-overview",
+    "quote": "Process documents asynchronously with job queues, polling, and webhooks"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.reducto.ai/mcp-server",
+    "quote": "The Reducto MCP server connects AI agents directly to Reducto. ... The hosted server runs at `https://mcp.reducto.ai/mcp`"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact list of Studio/admin-only endpoints (e.g. RBAC, SSO config) not covered in the public API reference; not material to buildability since core document-processing endpoints (parse/extract/split/classify/edit/upload/jobs) are all public and self-serve."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/",
+       "https://reducto.ai/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Reducto API authentication API key documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/quickstart",
+       "https://docs.reducto.ai/mcp-server",
+       "https://docs.reducto.ai/api-reference"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/quickstart"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/mcp-server"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Reducto OpenAPI spec site:docs.reducto.ai OR openapi.json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Reducto webhooks documentation async job notification"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/workflows/async-overview"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Reducto \"openapi.json\" OR \"openapi.yaml\" spec download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.reducto.ai/openapi-legacy.json"
+      ],
+      "max_characters": 1500
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2699957,
+   "turns": 14,
+   "seconds": 64.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

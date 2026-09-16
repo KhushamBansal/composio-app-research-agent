@@ -61,7 +61,7 @@ python3 insights.py                                           # data/insights.js
 ```
 
 Needs the `claude` CLI authenticated (this pipeline shells out to `claude -p`, the same binary
-you're reading this in) and a Composio API key. No Anthropic/OpenAI API key is required — the
+you're reading this in) and a Composio API key. No separate Anthropic API key is required — the
 research agent runs *as* a Claude Code agent rather than calling a model API directly, which is
 also why it can use `WebSearch`/`WebFetch` as a fallback alongside the Composio MCP tools.
 

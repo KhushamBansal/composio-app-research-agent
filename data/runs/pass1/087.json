@@ -1,0 +1,179 @@
+{
+ "record": {
+  "id": 87,
+  "app": "Xero",
+  "what_it_does": "Xero is cloud accounting software, and its API lets third-party apps read and write a connected organisation's accounting data (invoices, contacts, bank transactions, payments, reports) plus payroll, assets, projects, and files.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Standard multi-tenant apps use the OAuth2 authorization code flow or its PKCE extension. A separate paid add-on called Custom Connections uses the OAuth2 client credentials grant for single-organisation, non-interactive integrations ($10/mo per connection).",
+  "access": "self_serve_free",
+  "access_notes": "Sign-up is free and every account gets a fully functional Demo Company for building/testing at no cost, with client ID/secret issued immediately. However the free 'Starter' tier caps an app at 5 live organisation connections; scaling beyond that requires a paid connections tier or, for App Store distribution, Xero's certification/review process.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.xero.com/documentation/api/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/XeroAPI/xero-mcp-server",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Free/Starter tier caps live connections at 5; broader multi-customer distribution needs a paid connections tier or Xero App Store certification review",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.xero.com/documentation/guides/oauth2/overview",
+    "quote": "Xero's API supports the authorization code grant type using the standard authorization code flow or the Proof Key for Code Exchange (PKCE) extension."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.xero.com/documentation/guides/oauth2/custom-connections",
+    "quote": "Custom Connections are a premium integration option that utilise the client credentials grant type to access data from a single Xero organisation."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/faq",
+    "quote": "Xero accounts are free, and each comes with a fully functional Demo Company."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.xero.com/faq",
+    "quote": "Connections (maximum) | 5 | 50 | 1000 | 10,000 | No limit"
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/XeroAPI/Xero-OpenAPI",
+    "quote": "This repository holds the official Xero OpenAPI descriptions."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.xero.com/documentation/api/accounting/invoices",
+    "quote": "The response code returned for a successful request is a 204 (no content)... See the Webhooks page for more details."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://devblog.xero.com/xero-introduces-new-model-context-protocol-server-for-smarter-accounting-4d195ccaeda5",
+    "quote": "Xero introduces new Model Context Protocol server for smarter accounting"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/XeroAPI/xero-mcp-server",
+    "quote": "This is a Model Context Protocol (MCP) server implementation for Xero. It provides a bridge between the MCP protocol and Xero's API"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact impact of the granular-scopes migration (old bundled scopes deprecated in favour of new ones effective ~Apr 2026) on existing multi-tenant OAuth2 apps was not fully explored."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.xero.com/documentation/",
+       "https://developer.xero.com/documentation/guides/oauth2/overview/"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch,WebSearch",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+      "prompt": "Describe the authentication methods Xero's API supports (OAuth2 flows, client credentials, scopes), and mention if there is a free developer sandbox/demo company for testing."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://developer.xero.com/documentation/",
+      "prompt": "Summarize what Xero's developer platform offers: what is Xero, what API styles are available (REST, GraphQL etc.), what products/APIs exist (Accounting, Payroll, etc.), whether there's an OpenAPI/Swagger spec, whether webhooks are supported, and how to get started/get an app approved."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero developer API OAuth2 scopes app review free developer account",
+      "include_answer": true,
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero API webhooks documentation",
+      "include_answer": true,
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero OpenAPI spec GitHub xero-node",
+      "include_answer": true,
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero MCP server official developer.xero.com",
+      "include_answer": true,
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/XeroAPI/xero-mcp-server"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero developer account demo company 25 connections production app review app store",
+      "include_answer": true,
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Xero developer \"development accounts\" guide connection limit demo company site:developer.xero.com",
+      "include_answer": true,
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.2558783,
+   "turns": 14,
+   "seconds": 90.9
+  }
+ ],
+ "raw_result": null
+}

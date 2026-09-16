@@ -1,0 +1,150 @@
+{
+ "record": {
+  "id": 75,
+  "app": "Asana",
+  "what_it_does": "Asana is a work/project management platform where teams organize, track, and manage tasks, projects, and workflows.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal access tokens (PATs) are static, long-lived bearer tokens generated instantly in the developer console and are the quickest way to authenticate. OAuth2 (authorization code grant, with PKCE support) is recommended when an app needs to support multiple users signing in. Service Accounts are an additional long-lived token type but are an Enterprise-tier feature that can only be created by an org's super admin (classified here as 'Other'). OpenID Connect is also offered on top of OAuth2 for login/identity use cases.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create a free Asana account, generate a PAT immediately from the developer console, and register an OAuth app (client ID/secret) with no cost or vendor approval. Approval/review is only required if the developer later chooses to publish the app publicly in Asana's App Directory (via 'Submit for review'); private/production OAuth distribution to any workspace does not require review.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.asana.com/reference/rest-api-reference",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developers.asana.com/docs/mcp-server",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.asana.com/docs/authentication",
+    "quote": "OAuth is more complex to implement... This is the best choice if multiple users need to sign in to your app."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.asana.com/docs/personal-access-token",
+    "quote": "A personal access token (PAT) contains your security credentials for the Asana platform. Much like an API key"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.asana.com/docs/personal-access-token",
+    "quote": "You can generate a personal access token from the Asana developer console."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.asana.com/docs/mcp-server",
+    "quote": "Asana offers a Model Context Protocol (MCP) server, accessible via app integration, which allows AI assistants"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.asana.com/reference/rest-api-reference",
+    "quote": "The Asana API is a RESTful interface with predictable resource-oriented URLs, accepts JSON or form-encoded requests"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developers.asana.com/reference/rest-api-reference",
+    "quote": "This reference is generated from our OpenAPI Specification, and contains a comprehensive reference"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.asana.com/docs/webhooks",
+    "quote": "Webhooks allow you to subscribe to notifications about events that occur on Asana resources"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.asana.com/docs/authentication",
+       "https://developers.asana.com/docs/personal-access-token",
+       "https://developers.asana.com/reference/rest-api-reference"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.asana.com/docs/webhooks",
+       "https://developers.asana.com/docs/oauth",
+       "https://developers.asana.com/docs/build-an-app"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Asana official MCP server developers.asana.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.asana.com/docs/mcp-server",
+       "https://developers.asana.com/docs/openapi-spec",
+       "https://developers.asana.com/docs/app-management-overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Asana developers OpenAPI spec download yaml json github"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.asana.com/docs/manage-distribution"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml"
+      ],
+      "max_characters": 800
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Asana developer console app distribution review \"publish\" OAuth app other organizations"
+     }
+    }
+   ],
+   "cost_usd": 0.2079427,
+   "turns": 10,
+   "seconds": 89.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

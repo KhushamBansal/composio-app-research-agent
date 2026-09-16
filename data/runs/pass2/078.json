@@ -1,0 +1,98 @@
+{
+ "record": {
+  "id": 78,
+  "app": "Coda",
+  "what_it_does": "Coda is an all-in-one doc/spreadsheet workspace app, and its REST API lets external programs read and write docs, pages, tables, rows, columns, formulas, controls, permissions, and trigger automations.",
+  "auth_methods": [
+   "Bearer token"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The public REST API (coda.io/apis/v1) is authenticated only with a personal API token sent as `Authorization: Bearer <token>`, generated per-user in Account Settings. Coda's OAuth2 support exists only inside the separate Packs SDK (for Packs to authenticate to *other* third-party APIs), not for third parties calling Coda's own API, so it is not usable as a multi-user agent auth flow against Coda itself.",
+  "access": "self_serve_free",
+  "access_notes": "Any Coda user, on free or paid workspaces, can generate an API token immediately at no cost from Account Settings; no approval or paid plan is required to get working credentials, though what the token can do is scoped by the token owner's role/permissions in each workspace.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://coda.io/developers/apis/v1",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.superhuman.com/resources/guides/getting_started_with_coda_mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "headers = {'Authorization': 'Bearer <your API token>'}"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "The API token is invalid or has expired."
+   },
+   {
+    "field": "access",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "We make the Superhuman Docs API available to all of our users free of charge, in both free and paid workspaces."
+   },
+   {
+    "field": "api_style",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "In an effort to standardize our API and make it accessible, we offer an OpenAPI 3.0"
+   },
+   {
+    "field": "api_style",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "getList folders\n- postCreate folder\n- getGet folder\n- patchUpdate folder"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.superhuman.com/developers/apis/v1",
+    "quote": "It's optimized for LLM usage patterns and often exposes more granular methods for accessing and modifying data."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "API docs have redirected from coda.io/developers/apis/v1 to docs.superhuman.com, suggesting branding or product alignment changes. The underlying Coda API functionality and auth remain unchanged."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://coda.io/developers/apis/v1",
+      "prompt": "Is there any mention of MCP (Model Context Protocol) or official MCP server support? List all sections and integrations mentioned."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.superhuman.com/developers/apis/v1",
+      "prompt": "Is there any mention of MCP (Model Context Protocol) or official MCP server support? List all sections, integrations, and connection methods mentioned."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.superhuman.com/developers/apis/v1",
+      "prompt": "What is the URL or link for the official Superhuman Docs MCP server? Include the exact quote about it being optimized for LLM usage."
+     }
+    }
+   ],
+   "cost_usd": 0.047940800000000006,
+   "turns": 5,
+   "seconds": 44.5
+  }
+ ],
+ "raw_result": null
+}

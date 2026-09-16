@@ -1,0 +1,91 @@
+{
+ "record": {
+  "id": 32,
+  "app": "Meta Ads",
+  "what_it_does": "The Meta Marketing API lets developers programmatically create, manage, and analyze ad campaigns across Facebook, Instagram, Messenger, and WhatsApp.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Third-party apps obtain a User Access Token via the Facebook Login OAuth dialog (scope e.g. ads_management/ads_read). Agencies/automation commonly use System User Access Tokens (long-lived static bearer tokens issued via Business Manager) instead of per-user OAuth for server-to-server automation.",
+  "access": "approval_required",
+  "access_notes": "Any developer can create a Meta app and get 'Limited access' (Standard access) immediately, which is heavily rate-limited, dev-only, and restricted to accounts you already administer. To manage other people's ad accounts at production scale (the agent-toolkit case), the app must pass Meta App Review and be approved for 'Advanced access'/'Full access' to ads_management/ads_read, which also requires meeting call-volume thresholds (500+ Marketing API calls in 15 days, <15% error rate) and possibly Business Verification.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.facebook.com/docs/marketing-apis",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.facebook.com/ads",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "App Review / Advanced Access required to manage ad accounts on behalf of other users",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens",
+    "quote": "User access tokens let your app take actions in real time based on input from the user"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens",
+    "quote": "System User access tokens let your app perform programmatic, automated actions on Ad objects or Pages"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/marketing-api/get-started/authorization",
+    "quote": "Advanced access must be approved through the App Review process on an individual permission and feature basis"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/marketing-api/get-started/authorization",
+    "quote": "Automatically granted when you add the Marketing API product to your app... Heavily rate-limited per ad account. For development only."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.facebook.com/docs/marketing-api/overview",
+    "quote": "Use the Marketing API to automate advertising across Meta technologies. The API provides functions for ad creation, management, and performance analysis."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+    "quote": "The ads MCP server is a Meta-hosted Model Context Protocol server that lets you manage Meta ads directly from an AI agent"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/graph-api/webhooks",
+    "quote": "Webhooks allows you to receive real-time HTTP notifications of changes to specific objects in the Meta social graph"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT,COMPOSIO_SEARCH_WEB",
+      "max_results": 2
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.02977155,
+   "turns": 3,
+   "seconds": 31.8
+  }
+ ],
+ "raw_result": null
+}

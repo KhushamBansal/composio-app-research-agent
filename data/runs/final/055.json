@@ -1,0 +1,116 @@
+{
+ "record": {
+  "id": 55,
+  "app": "Apify",
+  "what_it_does": "Apify is a cloud platform for running web scraping and automation programs ('Actors') and exposing their results through a REST API, storages, and webhooks.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Bearer token"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The core REST API uses a single Apify API token, usable either as an `Authorization: Bearer <token>` header (recommended) or as a `?token=` query parameter (documented as two separate OpenAPI security schemes: HTTP Bearer and apiKey). OAuth2 is documented separately, only for the hosted MCP server connection flow (browser sign-in/approve), not for the general REST API.",
+  "access": "self_serve_free",
+  "access_notes": "Free plan gives $0/month cost with $5 of included usage and no credit card required; the API token is available immediately from the Apify Console after signup.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.apify.com/api/v2",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.apify.com",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Bearer token provided in the `Authorization` header (e.g., `Authorization: Bearer your_token`\u2014recommended)."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "API token provided as a query parameter (e.g., `?token=your_token`\u2014less secure)."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.apify.com/platform/integrations/mcp",
+    "quote": "use our hosted service using Streamable HTTP with OAuth, or run the server locally"
+   },
+   {
+    "field": "access",
+    "url": "https://apify.com/pricing",
+    "quote": "We offer a free plan that lets you use most of the features of the Apify platform, but with certain limits. No credit card is required."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.apify.com/platform/integrations/mcp",
+    "quote": "The Apify's MCP server (mcp.apify.com) allows AI applications and agents to interact with the Apify platform using Model Context Protocol (MCP)."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "The API is organized around RESTful HTTP endpoints."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.apify.com/api/v2",
+    "quote": "Download OpenAPI\n\n- YAML\n- JSON"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.apify.com/platform/integrations/webhooks",
+    "quote": "Webhooks allow you to configure the Apify platform to perform an action when a certain system event occurs."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.apify.com/api/v2",
+       "https://apify.com/mcp",
+       "https://apify.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.apify.com/platform/integrations/mcp",
+       "https://docs.apify.com/platform/integrations/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "placeholder",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1402892,
+   "turns": 5,
+   "seconds": 42.8
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

@@ -1,0 +1,120 @@
+{
+ "record": {
+  "id": 59,
+  "app": "Waterfall.io",
+  "what_it_does": "Waterfall is a B2B data API that aggregates 30+ vendors to find, search, and enrich contact and company data (emails, phones, titles, job changes) for GTM/RevOps teams.",
+  "auth_methods": [
+   "API key"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "All requests are authenticated with a static `x-api-key` header value. No OAuth2, Basic, or JWT-based request auth is documented (JWT is used only for verifying outbound webhook signatures, via Ed25519 keys served at a JWKS endpoint, not for API request auth).",
+  "access": "partner_gated",
+  "access_notes": "There is no self-serve signup or free tier found anywhere in the docs or marketing site. The OpenAPI spec states \"To access the API, you need the API key provided in your contract,\" and the only documented CTA on the homepage is \"Book a call\" to talk to the team. Sub-key/API-key-management is explicitly called out as an enterprise feature requiring the vendor to enable it.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.waterfall.io/v1/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "blocked",
+  "main_blocker": "API keys are only issued per signed contract via a sales call; no self-serve or trial credential path exists",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.waterfall.io/v1/authentication",
+    "quote": "All requests are authenticated using `x-api-key`."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.waterfall.io/v1/introduction",
+    "quote": "All requests require an API key in the `x-api-key` header."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.waterfall.io/v1/webhook-jwks",
+    "quote": "To access the API, you need the API key provided in your contract."
+   },
+   {
+    "field": "access",
+    "url": "https://www.waterfall.io",
+    "quote": "Talk to our team (most likely one of the founders) to share your use case and see how Waterfall can help."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.waterfall.io/v1/api-keys-overview",
+    "quote": "API key management is an enterprise feature. Contact your account manager to get access."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.waterfall.io/v1/introduction",
+    "quote": "The Waterfall API is available at `https://api.waterfall.io`."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.waterfall.io",
+    "quote": "Building with a coding agent \u2014 Claude Code, Codex, Cursor, Devin, or similar \u2014 or are one yourself? Start at Agent Skills and point it at the Waterfall API Skills repo"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.waterfall.io/v1/prospector-finder",
+    "quote": "If you passed `webhook_url` when launching the job, you don't need to call this endpoint at all \u2014 Waterfall will automatically POST the result to your URL"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.waterfall.io/v1/openapi-spec",
+    "quote": "The full OpenAPI 3.1 specification for the Waterfall API is available for download."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No pricing page or trial/sandbox mode was found; it's unclear whether a small free credit or test key is ever offered before a contract is signed, or whether 'book a call' always leads to a paid engagement. Waterfall documents agent integration via their own 'Agent Skills' repo rather than MCP."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,WebFetch",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.waterfall.io/v1/introduction",
+       "https://docs.waterfall.io/v1/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.waterfall.io/v1/authentication",
+       "https://docs.waterfall.io/v1/getting-started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.waterfall.io",
+       "https://www.waterfall.io"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.043304499999999996,
+   "turns": 5,
+   "seconds": 41.3
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

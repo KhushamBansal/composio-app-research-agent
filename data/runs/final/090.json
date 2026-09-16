@@ -1,0 +1,131 @@
+{
+ "record": {
+  "id": 90,
+  "app": "PitchBook",
+  "what_it_does": "PitchBook provides a RESTful API and scheduled data feeds that deliver its private and public capital markets database (companies, deals, investors, funds, people, LPs, service providers) into a customer's own systems.",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "The core Data API uses a static API key sent as `Authorization: PB-Token {API_KEY}` (not OAuth2, not a generic Bearer scheme). A separate official MCP gateway (mcp-proxy-external.pitchbook.com / premium.mcp.pitchbook.com) authenticates via OAuth login through Okta.",
+  "access": "partner_gated",
+  "access_notes": "The API is a standalone paid offering separate from a PitchBook platform subscription, requiring a signed contract with PitchBook's Direct Data team, purchase of a per-call API credit balance, and account-manager issuance of an API key/sandbox key. There is no self-serve signup form that immediately yields working credentials.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+  "openapi_spec": false,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://premium.mcp.pitchbook.com/mcp",
+  "buildability": "blocked",
+  "main_blocker": "requires a paid standalone contract and Direct Data team approval to obtain an API key; no self-serve credentials",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+    "quote": "include a header named \"Authorization\" with the value of \"PB-Token {API_KEY}\" with each API request"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://mcp-proxy-external.pitchbook.com/",
+    "quote": "OAuth Login Secure authentication with Okta"
+   },
+   {
+    "field": "access",
+    "url": "https://pitchbook.com/help/PitchBook-api",
+    "quote": "Our API is a separate offering from the PitchBook Platform that requires a standalone contract agreement."
+   },
+   {
+    "field": "access",
+    "url": "https://documenter.getpostman.com/view/5190535/TzCV1iRc",
+    "quote": "Please reach out to your account manager to request a sandbox key."
+   },
+   {
+    "field": "api_style",
+    "url": "https://pitchbook.com/products/direct-access-data/api",
+    "quote": "Our RESTful API utilizes JSON and is system agnostic, so you can integrate it into custom applications"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://mcp-proxy-external.pitchbook.com/",
+    "quote": "PitchBook MCP Gateway Production Environment Secure Access to PitchBook's MCP Servers"
+   }
+  ],
+  "confidence": "medium",
+  "open_questions": "Exact total endpoint/operation count (breadth) is not published outside the gated 'API Endpoints Overview' document, which itself sits behind a Highspot login; webhook/event-subscription support and any OpenAPI/Swagger spec could not be confirmed or denied from a fetched primary page beyond their absence from the public docs seen."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "PitchBook API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "PitchBook Data Feeds API access request a demo"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pitchbook.com/help/PitchBook-api",
+       "https://pitchbook.com/products/direct-access-data"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://documenter.getpostman.com/view/5190535/TzCV1iRc"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "PitchBook official MCP server model context protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://mcp-proxy-external.pitchbook.com/",
+       "https://pitchbook.com/products/direct-access-data/api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://premium.mcp.pitchbook.com/mcp"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.20361159999999998,
+   "turns": 9,
+   "seconds": 60.4
+  }
+ ],
+ "raw_result": "```json\n{\n  \"id\": 90,\n  \"app\": \"PitchBook\",\n  \"what_it_does\": \"PitchBook provides a RESTful API and scheduled data feeds that deliver its private and public capital markets database (companies, deals, investors, funds, people, LPs, service providers) into a customer's own systems.\",\n  \"auth_methods\": [\"API key\", \"OAuth2\"],\n  \"auth_primary\": \"API key\",\n  \"auth_notes\": \"The core Data API uses a static API key sent as `Authorization: PB-Token {API_KEY}` (not OAuth2, not a generic Bearer scheme). A separate official MCP gateway (mcp-proxy-external.pitchbook.com / premium.mcp.pitchbook.com) authenticates via OAuth login through Okta.\",\n  \"access\": \"partner_gated\",\n  \"access_notes\": \"The API is a standalone paid offering separate from a PitchBook platform subscription, requiring a signed contract with PitchBook's Direct Data team, purchase of a per-call API credit balance, and account-manager issuance of an API key/sandbox key. There is no self-serve signup form that immediately yields working credentials.\",\n  \"api_style\": [\"REST\"],\n  \"api_breadth\": \"moderate\",\n  \"api_docs_url\": \"https://documenter.getpostman.com/view/5190535/TzCV1iRc\",\n  \"openapi_spec\": false,\n  \"webhooks\": false,\n  \"official_mcp\": \"official\",\n  \"mcp_url\": \"https://premium.mcp.pitchbook.com/mcp\",\n  \"buildability\": \"blocked\",\n  \"main_blocker\": \"requires a paid standalone contract and Direct Data team approval to obtain an API key; no self-serve credentials\",\n  \"evidence\": [\n    {\"field\": \"auth_methods\", \"url\": \"https://documenter.getpostman.com/view/5190535/TzCV1iRc\", \"quote\": \"include a header named \\\"Authorization\\\" with the value of \\\"PB-Token {API_KEY}\\\" with each API request\"},\n    {\"field\": \"auth_methods\", \"url\": \"https://mcp-proxy-external.pitchbook.com/\", \"quote\": \"OAuth Login Secure authentication with Okta\"},\n    {\"field\": \"access\", \"url\": \"https://pitchbook.com/help/PitchBook-api\", \"quote\": \"Our API is a separate offering from the PitchBook Platform that requires a standalone contract agreement.\"},\n    {\"field\": \"access\", \"url\": \"https://documenter.getpostman.com/view/5190535/TzCV1iRc\", \"quote\": \"Please reach out to your account manager to request a sandbox key.\"},\n    {\"field\": \"api_style\", \"url\": \"https://pitchbook.com/products/direct-access-data/api\", \"quote\": \"Our RESTful API utilizes JSON and is system agnostic, so you can integrate it into custom applications\"},\n    {\"field\": \"official_mcp\", \"url\": \"https://mcp-proxy-external.pitchbook.com/\", \"quote\": \"PitchBook MCP Gateway Production Environment Secure Access to PitchBook's MCP Servers\"}\n  ],\n  \"confidence\": \"medium\",\n  \"open_questions\": \"Exact total endpoint/operation count (breadth) is not published outside the gated 'API Endpoints Overview' document, which itself sits behind a Highspot login; webhook/event-subscription support and any OpenAPI/Swagger spec could not be confirmed or denied from a fetched primary page beyond their absence from the public docs seen.\"\n}\n```",
+ "source_pass": "pass1"
+}

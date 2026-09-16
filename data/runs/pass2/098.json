@@ -1,0 +1,75 @@
+{
+ "record": {
+  "id": 98,
+  "app": "Mermaid CLI",
+  "what_it_does": "A command-line tool (and Node.js library) that converts Mermaid diagram definition files into SVG, PNG, or PDF output.",
+  "auth_methods": [
+   "None"
+  ],
+  "auth_primary": "None",
+  "auth_notes": "Mermaid CLI is a local npm package/Docker image/Node.js API \u2014 it runs a headless Chromium instance locally to render diagrams and has no network service or credentials of any kind.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can install it for free via `npm install -g @mermaid-js/mermaid-cli`, pull the Docker image, or use the Node.js API \u2014 no signup, account, or payment involved.",
+  "api_style": [
+   "SDK/CLI only"
+  ],
+  "api_breadth": "narrow",
+  "api_docs_url": "https://github.com/mermaid-js/mermaid-cli",
+  "openapi_spec": false,
+  "webhooks": false,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "not_applicable",
+  "main_blocker": "Not a hosted API \u2014 it is a local CLI/library that shells out to a headless browser, so it needs different packaging (e.g. wrapping the CLI/Node API as a local tool) rather than an OAuth/API-key toolkit action.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "This is a command-line interface (CLI) for mermaid."
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "npm install -g @mermaid-js/mermaid-cli"
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "It's possible to call mermaid-cli via a Node.JS API."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/mermaid-js/mermaid-cli",
+    "quote": "Command line tool for the Mermaid library"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/mermaid-js/mermaid-cli"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.05079625,
+   "turns": 3,
+   "seconds": 59.0
+  }
+ ],
+ "raw_result": null
+}

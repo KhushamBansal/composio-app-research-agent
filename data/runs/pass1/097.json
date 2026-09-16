@@ -1,0 +1,174 @@
+{
+ "record": {
+  "id": 97,
+  "app": "higgsfield",
+  "what_it_does": "Higgsfield is a generative-media platform whose asynchronous REST API lets developers submit prompts to 40+ image, video, audio, and 3D AI models and poll or receive webhooks for the results.",
+  "auth_methods": [
+   "API key"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Core REST API uses a key+secret pair sent as `Authorization: Key KEY_ID:KEY_SECRET` (legacy `hf-api-key`/`hf-secret` headers also still accepted). There is no OAuth2 for third-party API access to the REST API itself; the separate hosted MCP server instead authenticates end users via their Higgsfield account login (described as 'no API keys to manage'), which is a different integration layer from the documented REST API credentials.",
+  "access": "paid_plan",
+  "access_notes": "Anyone can create an account at cloud.higgsfield.ai and generate API key/secret credentials immediately at no cost, but the API is billed via account credits and the help center states generation without a paid plan is limited to a small set of models 'and doesn't include credits' \u2014 so functional use of the API requires a paid plan/credit purchase rather than being usable for free.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.higgsfield.ai/docs",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.higgsfield.ai/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Real usage requires purchased credits/paid plan per account, and multi-user toolkits must manage a separate API key+secret per user (no third-party OAuth2 flow for the REST API)",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.higgsfield.ai/docs/authentication.md",
+    "quote": "Send both values in the `Authorization` header: Authorization: Key YOUR_KEY_ID:YOUR_KEY_SECRET"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.higgsfield.ai/docs/authentication.md",
+    "quote": "The API also accepts the legacy `hf-api-key` and `hf-secret` headers"
+   },
+   {
+    "field": "access",
+    "url": "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work",
+    "quote": "You can generate without a paid plan, but access is limited to a small set of models and doesn't include credits"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.higgsfield.ai/docs/help/faq",
+    "quote": "Create an account at cloud.higgsfield.ai; Generate your API credentials from the dashboard"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://higgsfield.ai/mcp",
+    "quote": "Do I need an API key? No. Add the Higgsfield MCP server URL in your agent's settings and authenticate through your Higgsfield account."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.higgsfield.ai/docs/api-reference/overview.md",
+    "quote": "The API reference is generated from the public OpenAPI specification. Base URL: `https://api.higgsfield.ai`"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.higgsfield.ai/docs",
+    "quote": "Higgsfield provides one integration point for generative media models. Submit a request to a model endpoint, then poll for the result or receive a webhook when processing finishes."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total count of model-specific generation endpoints (docs describe 30-40+ models, each its own POST endpoint, plus shared status/cancel/estimate operations) was not fully enumerated from the OpenAPI spec due to its size; whether any free trial credit grant exists for new API accounts (a third-party blog mentioned an unofficial 1-day trial) is unconfirmed against primary docs."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "higgsfield.ai API documentation developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "higgsfield.ai CLI content suite"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.higgsfield.ai/docs",
+       "https://docs.higgsfield.ai/docs/help/faq"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "higgsfield MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://higgsfield.ai/mcp",
+       "https://docs.higgsfield.ai/docs/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.higgsfield.ai/docs/authentication.md",
+       "https://docs.higgsfield.ai/docs/api-reference/overview.md",
+       "https://docs.higgsfield.ai/docs/concepts/billing-and-retention.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.higgsfield.ai/docs/how-to/webhooks.md",
+       "https://docs.higgsfield.ai/docs/openapi.json"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "higgsfield API pricing free credits cloud.higgsfield.ai signup"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.higgsfield.ai/docs/how-to/webhooks.md"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://higgsfield.ai/creator-hub/help-center/plans/how-do-higgsfield-plans-work"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"cloud.higgsfield.ai\" free trial credits sign up API"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.215134,
+   "turns": 14,
+   "seconds": 71.8
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,161 @@
+{
+ "record": {
+  "id": 48,
+  "app": "Gumroad",
+  "what_it_does": "Gumroad is a digital commerce platform that lets creators sell digital products, memberships, and physical goods, and its v2 REST API exposes products, sales, subscribers, offer codes, licenses, and resource-subscription webhooks.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "For a single account, a developer can click 'Generate access token' on a self-created application without running the OAuth flow. For a multi-user agent toolkit acting on behalf of other Gumroad users, the full OAuth2 authorization-code flow (client_id/client_secret, redirect_uri, scopes) is required, documented at gumroad.com/help/article/280-create-application-api.",
+  "access": "self_serve_free",
+  "access_notes": "Any Gumroad account holder can go to Settings > Advanced, create an application, and immediately generate an access token or set up OAuth2 credentials \u2014 no app review or paid plan is mentioned in the vendor's own documentation.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://app.gumroad.com/api",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "community_only",
+  "mcp_url": null,
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://gumroad.com/help/article/280-create-application-api",
+    "quote": "Your access token is used in the request header of every request to the API and should be kept secret, like a password."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://gumroad.com/help/article/280-create-application-api",
+    "quote": "you can use the Gumroad Omniauth gem to enable \"Sign in with Gumroad\" in your software"
+   },
+   {
+    "field": "access",
+    "url": "https://gumroad.com/help/article/280-create-application-api",
+    "quote": "if you only want to use the API on your own Gumroad account, you can manually generate an access token, which is a simpler process"
+   },
+   {
+    "field": "api_style",
+    "url": "https://rollout.com/integration-guides/gumroad/api-essentials",
+    "quote": "The Gumroad OAuth API is based around REST. We return JSON for every request, including errors."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://licenseseat.com/docs/software-licensing-api-selling-license-keys-on-gumroad",
+    "quote": "Gumroad does offer refund notifications through its API, as a \"resource subscription\"."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://composio.dev/toolkits/gumroad/framework/claude-code",
+    "quote": "The Gumroad MCP server is an implementation of the Model Context Protocol that connects your AI agent and assistants like Claude, Cursor, etc directly to your Gumroad account."
+   }
+  ],
+  "confidence": "medium",
+  "open_questions": "Could not directly render app.gumroad.com/api (JS-rendered SPA) to confirm the exact full endpoint list, rate limits, or whether Gumroad publishes an OpenAPI/Swagger file; endpoint inventory (products, variants, offer codes, custom fields, sales, subscribers, licenses, resource_subscriptions, user) is corroborated via cached help-center pages and third-party integration guides rather than a single fetched primary reference page. No evidence found of a vendor-hosted/official MCP server \u2014 all MCP servers found (Composio, ChatBotKit, AIBase-listed) are third-party wrappers around the REST API."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.gumroad.com/article/280-gumroads-api",
+       "https://app.gumroad.com/oauth/applications"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch,WebSearch",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://app.gumroad.com/api",
+      "prompt": "Extract full details on Gumroad's API: authentication methods (OAuth2, API key/access token), how to obtain credentials, list of API endpoints/resources, whether webhooks (ping/resource subscriptions) are supported, and any mention of OpenAPI/Swagger spec or rate limits."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://gumroad.com/api",
+      "prompt": "Extract full details on Gumroad's API: authentication methods (OAuth2, API key/access token), how to obtain credentials, list of API endpoints/resources, whether webhooks (ping/resource subscriptions) are supported, and any mention of OpenAPI/Swagger spec or rate limits."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Gumroad API documentation OAuth authentication endpoints",
+      "include_raw_content": true,
+      "search_depth": "advanced",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://r.jina.ai/https://app.gumroad.com/api",
+       "https://gumroad.com/help/article/280-create-application-api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "gumroad api \"resource_subscriptions\" ping endpoint webhook documentation",
+      "include_raw_content": true,
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Gumroad official MCP server Model Context Protocol",
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://composio.dev/toolkits/gumroad/framework/claude-code"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/dev/null"
+     }
+    }
+   ],
+   "cost_usd": 0.3576174,
+   "turns": 13,
+   "seconds": 118.4
+  }
+ ],
+ "raw_result": null
+}

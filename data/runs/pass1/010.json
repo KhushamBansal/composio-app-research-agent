@@ -1,0 +1,163 @@
+{
+ "record": {
+  "id": 10,
+  "app": "DealCloud",
+  "what_it_does": "DealCloud (by Intapp) is a CRM and deal/relationship management platform for private equity, investment banking, and other capital markets firms, with a REST API for reading and writing site data.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Core REST API uses OAuth2 Client Credentials flow: a client_id plus a per-user 'API Key' (used as the client_secret) are exchanged at /api/rest/v1/oauth/token for a bearer token that expires after 15 minutes. The newer MCP Server instead uses a per-user, three-legged OAuth sign-in flow (no client ID/secret needed by the connecting app).",
+  "access": "approval_required",
+  "access_notes": "DealCloud is an enterprise product sold to existing customers; there is no public self-serve signup or free trial for the API. Within a customer's site, an admin must enable the 'API' capability for a user group in Admin > User Management, and each individual user must then enable/copy their own API Key from their profile before any credentials work. The MCP Server additionally requires a 'DealCloud with Celeste' license and admin-granted 'Manage MCP Servers'/'MCP Access' permissions (currently client preview since July 2026).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://api.docs.dealcloud.com/docs",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No public self-serve signup \u2014 requires an existing paid DealCloud subscription plus admin-enabled API/user-group permissions per customer site",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://api.docs.dealcloud.com/docs/token",
+    "quote": "DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://api.docs.dealcloud.com/docs/apikeys",
+    "quote": "Scroll down to the API Key section and click Enable. Then click Copy API Key to Clipboard"
+   },
+   {
+    "field": "access",
+    "url": "https://api.docs.dealcloud.com/docs/apikeys",
+    "quote": "Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable \"API\""
+   },
+   {
+    "field": "access",
+    "url": "https://api.docs.dealcloud.com/docs/publications/getting_started",
+    "quote": "Get in touch with your account manager to have Publications enabled on your site."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+    "quote": "Licensing | DealCloud with Celeste license."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://api.docs.dealcloud.com/mcp",
+    "quote": "The DealCloud MCP Server helps teams turn their DealCloud data into faster, higher-quality outcomes"
+   },
+   {
+    "field": "api_style",
+    "url": "https://api.docs.dealcloud.com/docs",
+    "quote": "This site provides a comprehensive overview of our REST APIs, their capabilities, and available endpoints."
+   },
+   {
+    "field": "api_style",
+    "url": "https://api.docs.dealcloud.com/docs",
+    "quote": "Postman can consume the Swagger/OpenAPI spec file exposed at https://{host}/swagger/current"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total endpoint count across Data/Schema/User Management/Backups/Publications functional areas was not fully enumerated (per-tenant Swagger not accessible without a live site). Whether any sandbox/demo DealCloud site with self-serve API credentials exists for prospective developers is unclear \u2014 no evidence of one was found."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.docs.dealcloud.com/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DealCloud API authentication OAuth documentation api.docs.dealcloud.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DealCloud API getting started client credentials access token"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.docs.dealcloud.com/docs/token",
+       "https://api.docs.dealcloud.com/docs/apikeys",
+       "https://api.docs.dealcloud.com/docs/publications/getting_started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DealCloud MCP Server client preview"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.docs.dealcloud.com/docs",
+       "https://api.docs.dealcloud.com/reference"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.docs.dealcloud.com/mcp",
+       "https://api.docs.dealcloud.com/mcp/getting-started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DealCloud API webhooks OR \"webhook\" documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.docs.dealcloud.com/guides/making_requests_on_behalf_of_users"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2165722,
+   "turns": 12,
+   "seconds": 70.3
+  }
+ ],
+ "raw_result": null
+}

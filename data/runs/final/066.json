@@ -1,0 +1,158 @@
+{
+ "record": {
+  "id": 66,
+  "app": "Neo4j",
+  "what_it_does": "Neo4j is a graph database platform (self-managed or the Aura cloud service) queried via Cypher, with a separate management API for provisioning and administering cloud database instances.",
+  "auth_methods": [
+   "OAuth2",
+   "Basic",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The Aura control-plane API (create/manage database instances, tenants, snapshots) uses OAuth2 client-credentials: exchange a Client ID/Secret for a 1-hour Bearer access token at https://api.neo4j.io/oauth/token. The actual database Query API / HTTP API (running Cypher against a specific instance) instead authorizes each request with a Basic or Bearer Authorization header tied to that database's own user credentials or SSO token \u2014 there is no delegated end-user OAuth login flow for querying data.",
+  "access": "self_serve_free",
+  "access_notes": "AuraDB Free tier can be created with no credit card, and 'All tiers can create Aura API credentials' immediately from the console \u2014 a developer gets working OAuth2 client credentials and a running database instantly.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://neo4j.com/docs/aura/api/overview/",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://neo4j.com/docs/mcp/current/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "no unified delegated-auth flow for querying arbitrary users' databases \u2014 the agent needs each user's own instance URI plus Basic/Bearer DB credentials, separate from the OAuth2 flow that only manages Aura infrastructure",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "The Aura API uses OAuth 2.0 for API authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+    "quote": "Both basic and bearer authentication are supported."
+   },
+   {
+    "field": "access",
+    "url": "https://neo4j.com/docs/aura/api/authentication/",
+    "quote": "All tiers can create Aura API credentials."
+   },
+   {
+    "field": "api_style",
+    "url": "https://neo4j.com/docs/aura/api/overview/",
+    "quote": "GET https://api.neo4j.io/v1/instances"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://neo4j.com/docs/mcp/current/",
+    "quote": "Neo4j MCP implements the Model Context Protocol (MCP), an open standard that lets applications connect to external data sources and tools."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the Aura API's OAuth2 client-credentials model (one client per account, no third-party authorization/redirect flow) is compatible with a true multi-tenant agent toolkit, or whether it only suits single-tenant/internal automation; also unclear how a toolkit would obtain per-end-user database connection credentials at scale."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j Aura API documentation OAuth2 client credentials"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j Query API HTTP REST authentication"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://neo4j.com/docs/aura/api/authentication/",
+       "https://neo4j.com/docs/aura/api/overview/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://neo4j.com/docs/query-api/current/authentication-authorization/",
+       "https://neo4j.com/docs/mcp/current/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j AuraDB Free tier sign up no credit card"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j Aura API specification OpenAPI swagger endpoints list instances"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://neo4j.com/docs/aura/platform/api/specification/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j Aura API webhooks event notifications"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"api.neo4j.io\" openapi.json OR openapi.yaml download spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://neo4j.com/docs/aura/platform/api/specification/aura_api_spec_v2beta1.yaml"
+      ],
+      "max_characters": 1500
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Neo4j Aura API \"v2beta1\" projects snapshots endpoints list"
+     }
+    }
+   ],
+   "cost_usd": 0.2041953,
+   "turns": 14,
+   "seconds": 102.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

@@ -1,0 +1,138 @@
+{
+ "record": {
+  "id": 31,
+  "app": "Google Ads",
+  "what_it_does": "The Google Ads API lets developers programmatically manage Google Ads accounts, campaigns, ad groups, ads, keywords, and reporting.",
+  "auth_methods": [
+   "OAuth2",
+   "JWT / service account",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 (multi-user or service account flow) authenticates the caller, but every API call also requires a separate 'developer token' (a static string tied to a Google Ads manager account) sent as a header alongside the OAuth credentials \u2014 the two are used together, not as alternatives.",
+  "access": "approval_required",
+  "access_notes": "Signing up gets you a developer token with free 'Test Account Access' immediately, but that only works against sandbox test accounts. Calling real (production) Google Ads accounts requires applying for and being approved for Explorer/Basic/Standard access, which involves a review (5-10 business days) and, for Basic, Google Cloud project brand verification.",
+  "api_style": [
+   "REST",
+   "gRPC"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.google.com/google-ads/api/docs/start",
+  "openapi_spec": false,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/googleads/google-ads-mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "developer token approval required for production account access (Basic/Standard access levels)",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+    "quote": "Google Ads API also uses the OAuth 2.0 protocol for authentication and authorization"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "quote": "Authentication: OAuth 2.0 or service account"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+    "quote": "Basic Access level ... How long do reviews typically take? ... 5 business days"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.google.com/google-ads/api/docs/access-levels",
+    "quote": "developer token with the Test Account Access level ... can only make Google Ads API requests against test accounts"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.google.com/google-ads/api/docs/rest/overview",
+    "quote": "The Google Ads API can be called either using gRPC or REST."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+    "quote": "The Google Ads MCP server provides a standardized bridge to the Google Ads API, which lets AI agents analyze and retrieve campaign data"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developers.google.com/google-ads/api/rest/design/overview",
+    "quote": "you can use the discovery document published for each version ... a machine-readable, JSON format"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the 'permissible use' restriction (Ad creation/management vs. Reporting-only vs. Keyword research) would force an agent toolkit to pick a narrower scope per developer token rather than exposing full read/write access uniformly."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.google.com/google-ads/api/docs/start",
+       "https://developers.google.com/google-ads/api/docs/oauth/overview",
+       "https://developers.google.com/google-ads/api/docs/access-levels"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.google.com/google-ads/api/docs/rest/overview",
+       "https://developers.google.com/google-ads/api/docs/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Google Ads API webhooks OR notification push subscription events"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "official Google Ads API MCP server Model Context Protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Google Ads API OpenAPI spec swagger discovery document"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+       "https://developers.google.com/google-ads/api/rest/design/overview"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1362077,
+   "turns": 9,
+   "seconds": 58.4
+  }
+ ],
+ "raw_result": null
+}

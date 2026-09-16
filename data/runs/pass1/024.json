@@ -1,0 +1,159 @@
+{
+ "record": {
+  "id": 24,
+  "app": "Lark (Larksuite)",
+  "what_it_does": "Lark is an all-in-one workplace/collaboration suite (chat, calendar, docs, base, approvals) whose Open Platform exposes REST server APIs, events, and an official MCP server for building bots and integrations.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Server calls use three token types: tenant_access_token (app acting as itself/tenant, obtained via app_id+app_secret, no user consent), app_access_token, and user_access_token (obtained via a standard OAuth2 authorization-code flow at /open-apis/authen/v2/oauth/token, used when acting on behalf of a user). All tokens are sent as 'Authorization: Bearer <token>'. The tenant_access_token flow is effectively a client-credentials/API-key-like exchange rather than third-party OAuth.",
+  "access": "approval_required",
+  "access_notes": "An individual developer can immediately create a free-trial Lark organization, register a 'Custom App' in the Developer Console, and get an App ID/Secret with no cost and no Lark review ('do not require review by the Lark team and can be used once approved by the enterprise tenant administrator') \u2014 sufficient for self-serve testing since the trial creator is their own tenant admin. However, Custom Apps are hard-restricted to a single tenant ('Custom apps are limited to development, review, and usage within a single tenant... No custom apps can be used by other organizations'). Building a real multi-user/multi-tenant agent toolkit requires becoming a 'Store App', which requires passing ISV verification and a 'strict review by the official Lark operation' before other tenants can install/authorize it \u2014 this is the approval-gated path relevant to an agent toolkit.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://open.larksuite.com/document/home/index",
+  "openapi_spec": null,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/larksuite/lark-openapi-mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Cross-tenant (multi-customer) distribution requires ISV verification and Lark's official Store App listing review; single-tenant Custom Apps work self-serve but can't serve other orgs.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials",
+    "quote": "user_access_token : User authorization token. With this token, the app will perform actions on behalf of the user"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials",
+    "quote": "the value needs to be prefixed with `Bearer`"
+   },
+   {
+    "field": "access",
+    "url": "https://open.larksuite.com/document/home/introduction-to-custom-app-development/self-built-application-development-process",
+    "quote": "Such applications do not require review by the Lark team and can be used once approved by the enterprise tenant administrator"
+   },
+   {
+    "field": "access",
+    "url": "https://open.larksuite.com/document/home/app-types-introduction/overview",
+    "quote": "Store apps require review by the Lark official team before being listed in the app directory"
+   },
+   {
+    "field": "api_style",
+    "url": "https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials",
+    "quote": "curl --location --request GET 'https://open.larksuite.com/open-apis/contact/v3/departments/od-64242a18099d3a31acd24d8fce8d9f9c'"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://open.larksuite.com/document/server-docs/event-subscription/overview-of-event-subscription",
+    "quote": "Lark will send event data in JSON format via an HTTP POST request to the preconfigured subscription method"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/larksuite/lark-openapi-mcp",
+    "quote": "This is the Feishu/Lark official OpenAPI MCP (Model Context Protocol) tool designed to help users quickly connect to the Feishu/Lark platform"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not directly confirm whether Lark publishes a downloadable OpenAPI/Swagger JSON file (the interactive 'API Explorer' likely renders from one internally, but no public spec URL was verified from a fetched primary-source page)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://open.larksuite.com/document/home/index",
+       "https://open.larksuite.com/document/server-docs/api-call-guide/calling-process"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Lark Larksuite open platform OpenAPI webhook events MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/larksuite/lark-openapi-mcp",
+       "https://open.larksuite.com/document/server-docs/api-call-guide/terminology"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Lark open platform create app developer account free tenant_access_token user_access_token OAuth authorization"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials",
+       "https://open.larksuite.com/document/server-docs/event-subscription/overview-of-event-subscription"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Lark open platform pricing \"Server API\" list number of APIs OpenAPI spec download swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://open.larksuite.com/document/home/introduction-to-custom-app-development/self-built-application-development-process",
+       "https://open.larksuite.com/document/uAjLw4CM/ukTMukTMukTM/reference/mcp_integration/mcp_introduction"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Lark open platform custom app vs store app \"ISV\" cross-tenant multiple companies app review required"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://open.larksuite.com/document/home/app-types-introduction/overview"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2805056,
+   "turns": 12,
+   "seconds": 69.7
+  }
+ ],
+ "raw_result": null
+}

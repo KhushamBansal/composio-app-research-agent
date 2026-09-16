@@ -1,0 +1,153 @@
+{
+ "record": {
+  "id": 17,
+  "app": "Plain",
+  "what_it_does": "Plain is a B2B customer support platform (help desk / shared inbox with AI agent \"Ari\") built API-first on top of a GraphQL API.",
+  "auth_methods": [
+   "API key",
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The GraphQL API (core-api.uk.plain.com) is authenticated with a static Machine User API key sent as `Authorization: Bearer plainApiKey_xxx` (no OAuth flow for third-party API access). The separate official MCP server (mcp.plain.com) uses OAuth2 tied to a human user's session instead of API keys.",
+  "access": "self_serve_trial",
+  "access_notes": "Pricing starts at Foundation ($35/mo, billed yearly) with a 7-day free trial and no credit card required; API/Webhooks/Events are listed as plan features. There is no perpetual free tier, so ongoing programmatic access requires converting to a paid plan after the trial.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.plain.com/docs/graphql/introduction",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.plain.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No perpetual free tier; production API/webhook access requires a paid subscription after the 7-day trial",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.plain.com/docs/graphql/authentication",
+    "quote": "Authorization: Bearer plainApiKey_xxx"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://help.plain.com/article/mcp-server",
+    "quote": "You authenticate with your existing Plain account, so the MCP server has the same permissions as your user. No API keys needed."
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/pricing",
+    "quote": "7 day free trial, No credit card required"
+   },
+   {
+    "field": "access",
+    "url": "https://www.plain.com/pricing",
+    "quote": "Foundation, Get support right from day one, $35/month"
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.plain.com/docs/graphql/introduction",
+    "quote": "API URL: `https://core-api.uk.plain.com/graphql/v1`"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://help.plain.com/article/mcp-server",
+    "quote": "The Plain MCP server at `https://mcp.plain.com/mcp` lets tools like Claude, ChatGPT, and Cursor work with your support data directly."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.plain.com/docs/webhooks",
+    "quote": "Webhooks allow you to get notified about events happening in your Plain workspace."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not confirm from a fetched page exactly which pricing tier(s) unlock API/webhook access (the feature comparison table's checkmarks were stripped in text extraction) \u2014 pricing page lists 'API', 'Webhooks', 'Events' as extensibility features without tier-level detail visible in scraped text."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.plain.com/docs/api-reference/overview",
+       "https://www.plain.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Plain.com API docs developer authentication API key GraphQL"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.plain.com/docs/graphql/introduction",
+       "https://www.plain.com/docs/graphql/authentication"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Plain.com docs MCP Server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.plain.com/docs/webhooks/introduction"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.plain.com/article/mcp-server"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "site:plain.com/docs webhooks"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.plain.com/docs/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.plain.com/docs/graphql/schema"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.18496620000000003,
+   "turns": 11,
+   "seconds": 65.5
+  }
+ ],
+ "raw_result": null
+}

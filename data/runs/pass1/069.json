@@ -1,0 +1,228 @@
+{
+ "record": {
+  "id": 69,
+  "app": "Datadog",
+  "what_it_does": "Datadog is a unified observability and security platform (metrics, logs, traces, dashboards, monitors, incidents, security signals) that exposes nearly all of its functionality via a REST API.",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "The core API uses a DD-API-KEY header plus a DD-APPLICATION-KEY header (application keys inherit the creating user's/service account's permissions and can be scoped). OAuth2 is documented for building third-party integrations, but OAuth clients can only be tested inside the developer's own 'partner developer organization' and must be published/reviewed by Datadog before they can authorize other customers' accounts \u2014 so OAuth2 is not usable standalone by a generic multi-tenant agent toolkit without going through Datadog's integration partner/publishing process.",
+  "access": "self_serve_free",
+  "access_notes": "Any signed-up user can generate API keys and application keys immediately from Organization Settings with no approval step (docs.datadoghq.com/account_management/api-app-keys). Datadog also offers a perpetually free Infrastructure Monitoring tier (up to 5 hosts) in addition to a 14-day free trial of the full platform ('Try Datadog for 14 days...'); could not fetch the exact free-tier pricing tab text (JS-rendered tabs) to quote verbatim, so treat the free-infra-tier claim as corroborated by third-party sources rather than a directly fetched primary quote.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.datadoghq.com/api/latest/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.datadoghq.com/mcp_server.md",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.datadoghq.com/api/latest/",
+    "quote": "Authenticate to the API with an API key using the header `DD-API-KEY`. For some endpoints, you also need an Application key"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.datadoghq.com/developers/authorization/",
+    "quote": "Datadog uses the OAuth 2.0 (OAuth2) Authorization Framework to allow users to securely authorize third-party applications' access"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.datadoghq.com/account_management/api-app-keys",
+    "quote": "Application keys, in conjunction with your organization's API key, give users access to Datadog's programmatic API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.datadoghq.com/api/latest/",
+    "quote": "The Datadog API is an HTTP REST API."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://raw.githubusercontent.com/DataDog/datadog-api-client-python/master/.generator/schemas/v2/openapi.yaml",
+    "quote": "DataDog/datadog-api-client-python/master/.generator/schemas/v2/openapi.yaml"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.datadoghq.com/integrations/webhooks/",
+    "quote": "Webhooks enable you to: Connect to your services. Alert your services when a metric alert is triggered."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.datadoghq.com/mcp_server.md",
+    "quote": "The Datadog MCP Server acts as a bridge between your observability data in Datadog and any AI agents that support the Model Context Protocol"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not fetch a verbatim primary-source quote for the perpetual free Infrastructure Monitoring tier (pricing page uses JS tabs the fetch tool couldn't target), though it is well-corroborated by secondary sources and by the unrestricted key-creation flow. Also unclear exactly how narrow OAuth2 access is for non-partner developers versus using API/App keys for equivalent functionality."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/api/latest/",
+       "https://docs.datadoghq.com/account_management/api-app-keys/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/mcp_server.md",
+       "https://docs.datadoghq.com/account_management/api-app-keys"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog API OpenAPI spec github datadog-api-spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/developers/authorization/",
+       "https://docs.datadoghq.com/integrations/webhooks/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "github.com DataDog/datadog-api-spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog \"create OAuth client\" self-serve developer authorize integrations with OAuth app review"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/developers/integrations/oauth_for_integrations/"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "publish|review|approval|marketplace|sign up|self.serve|create.*OAuth client|Client Manager",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d1f4606a-f86c-440a-bfc9-8889d371cb70/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579232500.txt",
+      "-i": true,
+      "-n": true,
+      "head_limit": 40
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "publish|review|approval|marketplace|sign up|self-serve|Client Manager|create.{0,20}client",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d1f4606a-f86c-440a-bfc9-8889d371cb70/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579232500.txt",
+      "-i": true,
+      "-n": true,
+      "output_mode": "content",
+      "head_limit": 60
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{200}(publish|marketplace review|app review|approval process|Client Manager|OAuth clients page|create.{0,15}OAuth client).{200}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d1f4606a-f86c-440a-bfc9-8889d371cb70/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579232500.txt",
+      "-i": true,
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 30
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog free tier pricing \"Free\" plan sign up no credit card"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.datadoghq.com/pricing/?product=infrastructure-monitoring"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.datadoghq.com/pricing/"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.datadoghq.com/free-datadog-trial/"
+      ],
+      "max_characters": 2500
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "site:datadoghq.com \"Free\" \"up to 5 hosts\" infrastructure monitoring plan"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.datadoghq.com/pricing/?product=infrastructure-monitoring&site=eu"
+      ],
+      "max_characters": 1500
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.4182144,
+   "turns": 20,
+   "seconds": 156.3
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,135 @@
+{
+ "record": {
+  "id": 23,
+  "app": "Zoho Cliq",
+  "what_it_does": "Zoho Cliq is a business team-chat and collaboration app (channels, chats, bots, calls) that also exposes a developer platform for building bots, extensions, and integrations.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Standard API calls use Zoho OAuth 2.0 (authorization-code/self-client flows via accounts.zoho.{dc}) with access tokens passed as 'Authorization: Zoho-oauthtoken {token}'. Separate from user OAuth, bots/extensions can also use a static 'ZAPI Key' (webhook token) to post into a specific incoming webhook endpoint, which functions like a scoped bearer token but is not a general API auth method.",
+  "access": "self_serve_free",
+  "access_notes": "Zoho Cliq has a free chat plan, and any developer can register an app in the Zoho API Console (free) to get a Client ID/Secret and generate OAuth tokens without needing vendor approval.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.zoho.com/cliq/help/restapi/v3/introduction/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.zoho.com/cliq/help/restapi/v3/introduction/",
+    "quote": "Zoho Cliq API uses the OAuth 2.0 protocol for authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://www.zoho.com/cliq/help/restapi/v3/oauth/",
+    "quote": "the access token must be passed in the Authorization header with the prefix \"Zoho-oauthtoken\""
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/cliq/help/restapi/v3/registerclient/",
+    "quote": "Upon successful registration of your application, you will receive a Client ID and Client Secret."
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/cliq/pricing.html",
+    "quote": "Cliq - Chat Pricing | Free Chat plans for all Teams size"
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.zoho.com/cliq/help/restapi/v3/introduction/",
+    "quote": "Zoho Cliq's REST API is designed based on RESTful architecture principles"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+    "quote": "Any AI model or agent can use our official MCP server to access your Cliq data"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://www.zoho.com/cliq/help/restapi/v3/oascliq/",
+    "quote": "All of Cliq's APIs are documented in the OpenAPI specification, which can be downloaded as a YAML file below"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Zoho's documented 'webhooks' are primarily inbound (posting messages into Cliq via bot/extension incoming-webhook endpoints authenticated by a ZAPI key), not outbound event subscriptions for arbitrary Cliq events; event-driven behavior instead comes from bot/extension handlers within the developer platform."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho Cliq API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho Cliq MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/cliq/help/restapi/v3/introduction/",
+       "https://www.zoho.com/cliq/help/restapi/v3/oauth/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/cliq/help/platform/zoho-cliq-mcp.html",
+       "https://www.zoho.com/cliq/help/restapi/v3/registerclient/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/cliq/help/restapi/v3/oascliq/",
+       "https://www.zoho.com/cliq/pricing.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho Cliq webhooks documentation incoming outgoing"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:ReportFindings",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2039738,
+   "turns": 9,
+   "seconds": 61.5
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,148 @@
+{
+ "record": {
+  "id": 2,
+  "app": "HubSpot",
+  "what_it_does": "HubSpot is a cloud CRM and marketing/sales/service platform whose API lets developers read and write contacts, companies, deals, tickets, and other CRM/marketing data on behalf of a HubSpot account.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "API key",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth is required for apps distributed to multiple accounts (private distribution up to 10 allowlisted accounts, or public Marketplace distribution). A static 'private app' Bearer access token is available for single-account use and is 'implemented on top of OAuth.' A separate legacy Developer API key (hapikey) authenticates some app-management endpoints, and short-lived OAuth2 client-credentials tokens are used for the webhooks journal API.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can sign up for a free HubSpot account/developer account and immediately create a private app to get a working Bearer access token, or build an OAuth app usable in up to 10 allowlisted accounts without vendor review. Listing an OAuth app publicly on the HubSpot Marketplace (needed to distribute broadly to third-party accounts) requires an Ecosystem Quality team review with requirements like 3 active unique installs and an initial review within 10 business days.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.hubspot.com/docs/reference/api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developers.hubspot.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Marketplace app review required to distribute OAuth access broadly beyond 10 allowlisted accounts",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+    "quote": "OAuth is required for multiple accounts, while static auth access tokens are used for installing in a single account"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+    "quote": "you'll provide the key value in the `hapikey` query parameter"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+    "quote": "Once you've created your app, you can start making API calls using the app's access token"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+    "quote": "private: used if you only want to install your app in a specific set of allowlisted accounts. If you choose this option, you can install your app in a maximum of 10 accounts"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.hubspot.com/docs/guides/api/overview",
+    "quote": "GET /crm/objects/2026-03/contacts"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.hubspot.com/mcp",
+    "quote": "HubSpot offers two distinct MCP (Model Context Protocol) servers \u2014 one for connecting any MCP-compatible AI tool or agent to your CRM"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.hubspot.com/docs/guides/api/overview",
+       "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+       "https://developers.hubspot.com/docs/guides/apps/private-apps/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.hubspot.com/docs/guides/apps/public-apps/webhooks",
+       "https://developers.hubspot.com/mcp",
+       "https://developers.hubspot.com/docs/reference/api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "HubSpot developers webhooks subscriptions documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "HubSpot API OpenAPI spec download developers.hubspot.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.hubspot.com/docs/api-reference/latest/webhooks/guide",
+       "https://developers.hubspot.com/changelog/sunset-replacing-api-catalog-public/v1/apis-endpoint"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "HubSpot app marketplace listing \"app review\" requirements before publishing"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "HubSpot developer account free sign up create app pricing"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "HubSpot CRM GraphQL API developers.hubspot.com"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2850856,
+   "turns": 11,
+   "seconds": 62.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

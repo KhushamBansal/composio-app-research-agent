@@ -1,0 +1,105 @@
+{
+ "record": {
+  "id": 35,
+  "app": "Mailchimp",
+  "what_it_does": "Mailchimp's Marketing API lets developers manage audiences/contacts, campaigns, automations, templates, reports, and e-commerce data programmatically to power email/SMS marketing.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Basic",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "API keys and OAuth2 access tokens are used interchangeably via HTTP Basic or Bearer auth against the same endpoints. Mailchimp explicitly recommends OAuth2 for apps acting on behalf of other users' accounts, and API key for single-account/tightly-coupled use. Mailchimp OAuth2 access tokens do not expire and there is no refresh_token flow. A separate product, Mailchimp Transactional (Mandrill), has its own API/key and is distinct from the Marketing API.",
+  "access": "self_serve_free",
+  "access_notes": "Signing up for a free Mailchimp account (free for under 250 contacts) gives immediate access to the API Keys page to generate a working key; the Quick Start guide confirms API key generation requires no paid plan, though some advanced endpoints/features are gated by plan tier.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://mailchimp.com/developer/marketing/api/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+    "quote": "You can either use HTTP Basic Authentication or Bearer Authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+    "quote": "Mailchimp Marketing access tokens do not expire, so you don't need to use a refresh_token."
+   },
+   {
+    "field": "access",
+    "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+    "quote": "Navigate to the API Keys section of your Mailchimp account. Click Create New Key"
+   },
+   {
+    "field": "access",
+    "url": "https://mailchimp.com/pricing/marketing/",
+    "quote": "Under 250 contacts? It's free."
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://mailchimp.com/developer/marketing/api/",
+    "quote": "Account Exports, Audiences, Contacts, Authorized Apps, Automation flows, Batch Operations, Campaigns, E-commerce Stores, Landing Pages, Lists, Reports, SMS Campaigns, Templates"
+   },
+   {
+    "field": "api_style",
+    "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+    "quote": "The Marketing API generally follows REST conventions, with some deviations."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+    "quote": "By entering a valid URL that's set up to accept HTTP POST requests, you can receive updates on subscriptions"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://mailchimp.com/developer/marketing/",
+    "quote": "Overview, Guides, Documentation, API Reference"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Absence of official MCP confirmed by checking main developer portal navigation \u2014 no MCP server listing. openapi_spec=true was vendor-confirmed in Fundamentals doc mentioning OpenAPI/Swagger to describe every endpoint."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://mailchimp.com/developer/marketing/api/",
+       "https://mailchimp.com/developer/marketing/"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/8449b082-1821-4730-97d4-e53e1e5856ba/tool-results/toolu_01NYV5WgFcUJ8FMeb3sHbuHH.json"
+     }
+    }
+   ],
+   "cost_usd": 0.05960755,
+   "turns": 4,
+   "seconds": 37.3
+  }
+ ],
+ "raw_result": null
+}

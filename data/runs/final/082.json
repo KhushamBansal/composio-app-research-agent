@@ -1,0 +1,133 @@
+{
+ "record": {
+  "id": 82,
+  "app": "Plaid",
+  "what_it_does": "Plaid provides APIs that let apps connect to users' bank and financial accounts to retrieve account, balance, transaction, identity, income, and other financial data, and to move money.",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Core API auth is a client_id + secret pair sent in the request body or as PLAID-CLIENT-ID/PLAID-SECRET headers (not a standard OAuth2 flow). A separate OAuth2 client_credentials flow (scope mcp:dashboard) is used only to obtain a short-lived bearer token for the Dashboard MCP server, not for the main financial-data API.",
+  "access": "approval_required",
+  "access_notes": "Sandbox (mock data) credentials are free and instant after Dashboard signup. Real Production access requires an application review by Plaid (company + use-case info, ~a few business days) and, outside the new free Trial plan (10 Items, 8 core products, US/CA developers signing up on/after 2026-04-15), a paid plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://plaid.com/docs/api/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://api.dashboard.plaid.com/mcp/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Real bank data requires Plaid's Production approval (or the capped Trial plan); the official MCP server only exposes Dashboard diagnostics/analytics tools, not the core financial-data endpoints (Auth, Transactions, etc.), so an agent toolkit for those must call the REST API directly.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "Almost all Plaid API endpoints require a client_id and secret. These may be sent either in the request body or in the headers"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "quote": "create an OAuth token with the mcp:dashboard scope and the client_credentials grant type by calling /oauth/token"
+   },
+   {
+    "field": "access",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "create an account on the Plaid Dashboard . Once you've completed the signup process and acknowledged our terms, we'll provide a live client_id and secret"
+   },
+   {
+    "field": "access",
+    "url": "https://support.plaid.com/hc/en-us/articles/16110110883479-How-are-Sandbox-Production-Trial-plan-and-Limited-Production-different",
+    "quote": "Approval | None | Required (a few business days; company + use-case info)"
+   },
+   {
+    "field": "api_style",
+    "url": "https://plaid.com/docs/api/",
+    "quote": "The Plaid API is JSON over HTTP. Requests are POST requests, and responses are JSON"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://plaid.com/docs/resources/mcp/",
+    "quote": "The Dashboard MCP server is a remote MCP server hosted by Plaid. It provides Production diagnostics and analytics tools"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the newly introduced free Trial plan (rolled out 2026-04-15) would be sufficient for a shipped multi-user agent toolkit, or whether it still requires migrating to full paid Production for scale; the Dashboard MCP server is explicitly labeled under active development with 'limited support', so its tool set may change."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://plaid.com/docs/",
+       "https://plaid.com/docs/api/",
+       "https://plaid.com/docs/api/webhooks/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Plaid MCP server official Model Context Protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://plaid.com/docs/resources/mcp/",
+       "https://plaid.com/docs/account/production/",
+       "https://plaid.com/docs/api/products/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Plaid production access approval process dashboard \"Production\" application review"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://plaid.com/docs/quickstart/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.plaid.com/hc/en-us/articles/16110110883479-How-are-Sandbox-Production-Trial-plan-and-Limited-Production-different"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.2027886,
+   "turns": 9,
+   "seconds": 77.7
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

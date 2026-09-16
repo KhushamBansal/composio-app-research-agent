@@ -74,6 +74,19 @@ def main():
     composio_matched = sum(1 for g in gt.values() if g["in_composio"])
     ready_not_in_composio = [r["id"] for r in rows if r["buildability"] == "ready" and not gt[r["id"]]["in_composio"]]
 
+    ready_unbuilt_apps = [
+        {"id": r["id"], "app": r["app"], "category": r["category"], "auth": r.get("auth_primary") or "-"}
+        for r in rows
+        if r["buildability"] == "ready" and r["access"] in ("self_serve_free", "self_serve_trial")
+        and not gt[r["id"]]["in_composio"]
+    ]
+    gated_outreach_apps = [
+        {"id": r["id"], "app": r["app"], "category": r["category"],
+         "access": r["access"], "blocker": r.get("main_blocker") or "-"}
+        for r in rows
+        if r["access"] == "partner_gated" or r["buildability"] == "blocked"
+    ]
+
     out = {
         "n_apps": len(rows),
         "auth_mix": auth_mix.most_common(),
@@ -86,6 +99,8 @@ def main():
         "mcp_by_access": {a: dict(v) for a, v in mcp_by_access.items()},
         "composio_already_matched": composio_matched,
         "ready_apps_not_yet_in_composio": ready_not_in_composio,
+        "ready_unbuilt_apps": ready_unbuilt_apps,
+        "gated_outreach_apps": gated_outreach_apps,
         "accuracy": acc,
     }
     (DATA / "insights.json").write_text(json.dumps(out, indent=1))

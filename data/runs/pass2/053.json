@@ -1,0 +1,119 @@
+{
+ "record": {
+  "id": 53,
+  "app": "Ahrefs",
+  "what_it_does": "Ahrefs provides SEO, backlink, keyword research, rank tracking, site audit, and AI-search-visibility data through a REST API (v3).",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Direct API/MCP access uses a static per-workspace API key sent as `Authorization: Bearer <API_KEY>`. Building a third-party app that acts on behalf of other Ahrefs users ('Ahrefs Connect') uses OAuth 2.0 Authorization Code Flow with PKCE; access tokens last 1 year and no refresh tokens are issued.",
+  "access": "approval_required",
+  "access_notes": "Direct API key access requires a paid Lite-or-higher subscription (self-serve once you pay, plus limited free test queries). Building a public multi-user integration via Ahrefs Connect (OAuth2) requires applying to the program, vendor review/approval of the app (including demonstrating secure token handling), and production usage requires an Enterprise subscription.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.ahrefs.com/docs/api/",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://api.ahrefs.com/mcp/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Multi-user OAuth integration (Ahrefs Connect) requires app review and an Enterprise plan for production; direct API/MCP requires a paid Lite+ subscription",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ahrefs.com/en/api/reference/batch-analysis/post-batch-analysis",
+    "quote": "-H \"Authorization: Bearer $AHREFS_API_KEY\""
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+    "quote": "Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with Proof Key for Code Exchange (PKCE)"
+   },
+   {
+    "field": "access",
+    "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3",
+    "quote": "Yes, all new applications require a Lite or higher subscription for activation."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+    "quote": "You will need to demonstrate secure token handling as part of the Approval process."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.ahrefs.com/docs/mcp/introduction",
+    "quote": "Ahrefs provides a hosted MCP server that allows users with a Lite plan or higher to connect their Ahrefs account"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.ahrefs.com/docs/api/",
+    "quote": "Currently, API v3 allows you to pull data from the Site Explorer, Keywords Explorer, SERP Overview, Rank Tracker, Site Audit, Brand Radar and Social Media Management endpoints"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.ahrefs.com/openapi.json",
+    "quote": "\"openapi\": \"3.2.0\", \"info\": { \"title\": \"Ahrefs API\""
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ahrefs.com/docs/api/",
+    "quote": "Currently, API v3 allows you to pull data from the Site Explorer, Keywords Explorer, SERP Overview, Rank Tracker, Site Audit, Brand Radar and Social Media Management endpoints, as well as manage your Rank Tracker projects and Keywords Explorer lists"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ahrefs.com/docs/api/"
+      ],
+      "max_characters": 8000
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ahrefs webhooks API docs site:docs.ahrefs.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ahrefs.com/"
+      ],
+      "max_characters": 5000
+     }
+    }
+   ],
+   "cost_usd": 0.046577499999999994,
+   "turns": 6,
+   "seconds": 39.7
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,1780 @@
+{
+ "1": {
+  "record": {
+   "id": 1,
+   "app": "Salesforce",
+   "what_it_does": "Salesforce is a cloud CRM platform for managing sales, service, and marketing data, accessible programmatically via REST, SOAP, GraphQL, and Bulk APIs.",
+   "auth_methods": [
+    "OAuth2"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Access is via External Client Apps or Connected Apps using OAuth 2.0 authorization flows (including JWT bearer and username-password variants, which are OAuth 2.0 grant types, not separate credential systems). As of Spring '26, Salesforce restricts creation of new Connected Apps in favor of External Client Apps, though existing Connected Apps keep working.",
+   "access": "self_serve_free",
+   "access_notes": "Salesforce offers a free, non-time-limited Developer Edition org (with API access) obtained via self-serve signup, no payment required.",
+   "api_style": [
+    "REST",
+    "SOAP",
+    "GraphQL",
+    "SDK/CLI only"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Each customer needs their own Salesforce org plus an admin-configured External Client App/Connected App with OAuth; new Connected App creation is now restricted (Spring '26+), pushing setup toward External Client Apps.",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+     "quote": "it must be integrated with your org's REST API using the OAuth 2.0 protocol"
+    },
+    {
+     "field": "access",
+     "url": "https://developer.salesforce.com/signup",
+     "quote": "A free Salesforce Platform environment with Agentforce and Data 360"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+     "quote": "Salesforce Hosted MCP Servers give AI agents a secure, governed way to interact with Salesforce data and automation"
+    },
+    {
+     "field": "api_style",
+     "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
+     "quote": "It's simpler to use than SOAP API but still provides plenty of functionality"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_intro.htm",
+     "quote": "Publishers publish event messages that subscribers receive in real time"
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
+     "quote": "Generating an OpenAPI 3.0 Document for sObjects REST API (Beta)"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Whether the OpenAPI 3.0 generation feature (still Beta) covers the full REST API surface or only sObjects CRUD; exact production licensing/edition requirements for sustained multi-tenant agent access beyond the free Developer Edition."
+  },
+  "issues": [
+   "api_style is 'SDK/CLI only' but buildability is not 'not_applicable'"
+  ]
+ },
+ "10": {
+  "record": {
+   "id": 10,
+   "app": "DealCloud",
+   "what_it_does": "DealCloud (by Intapp) is a CRM and deal/relationship management platform for private equity, investment banking, and other capital markets firms, with a REST API for reading and writing site data.",
+   "auth_methods": [
+    "OAuth2",
+    "API key"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Core REST API uses OAuth2 Client Credentials flow: a client_id plus a per-user 'API Key' (used as the client_secret) are exchanged at /api/rest/v1/oauth/token for a bearer token that expires after 15 minutes. The newer MCP Server instead uses a per-user, three-legged OAuth sign-in flow (no client ID/secret needed by the connecting app).",
+   "access": "approval_required",
+   "access_notes": "DealCloud is an enterprise product sold to existing customers; there is no public self-serve signup or free trial for the API. Within a customer's site, an admin must enable the 'API' capability for a user group in Admin > User Management, and each individual user must then enable/copy their own API Key from their profile before any credentials work. The MCP Server additionally requires a 'DealCloud with Celeste' license and admin-granted 'Manage MCP Servers'/'MCP Access' permissions (currently client preview since July 2026).",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://api.docs.dealcloud.com/docs",
+   "openapi_spec": true,
+   "webhooks": false,
+   "official_mcp": "official",
+   "mcp_url": null,
+   "buildability": "ready_with_caveats",
+   "main_blocker": "No public self-serve signup \u2014 requires an existing paid DealCloud subscription plus admin-enabled API/user-group permissions per customer site",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://api.docs.dealcloud.com/docs/token",
+     "quote": "DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://api.docs.dealcloud.com/docs/apikeys",
+     "quote": "Scroll down to the API Key section and click Enable. Then click Copy API Key to Clipboard"
+    },
+    {
+     "field": "access",
+     "url": "https://api.docs.dealcloud.com/docs/apikeys",
+     "quote": "Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable \"API\""
+    },
+    {
+     "field": "access",
+     "url": "https://api.docs.dealcloud.com/docs/publications/getting_started",
+     "quote": "Get in touch with your account manager to have Publications enabled on your site."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://api.docs.dealcloud.com/mcp/getting-started",
+     "quote": "Licensing | DealCloud with Celeste license."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://api.docs.dealcloud.com/mcp",
+     "quote": "The DealCloud MCP Server helps teams turn their DealCloud data into faster, higher-quality outcomes"
+    },
+    {
+     "field": "api_style",
+     "url": "https://api.docs.dealcloud.com/docs",
+     "quote": "This site provides a comprehensive overview of our REST APIs, their capabilities, and available endpoints."
+    },
+    {
+     "field": "api_style",
+     "url": "https://api.docs.dealcloud.com/docs",
+     "quote": "Postman can consume the Swagger/OpenAPI spec file exposed at https://{host}/swagger/current"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact total endpoint count across Data/Schema/User Management/Backups/Publications functional areas was not fully enumerated (per-tenant Swagger not accessible without a live site). Whether any sandbox/demo DealCloud site with self-serve API credentials exists for prospective developers is unclear \u2014 no evidence of one was found."
+  },
+  "issues": [
+   "official_mcp is 'official' but mcp_url is empty \u2014 link the vendor's MCP page"
+  ]
+ },
+ "13": {
+  "record": {
+   "id": 13,
+   "app": "Freshdesk",
+   "what_it_does": "Freshdesk is a cloud-based customer support/helpdesk platform for managing tickets, contacts, companies, agents, and knowledge-base content.",
+   "auth_methods": [
+    "Basic",
+    "Bearer token"
+   ],
+   "auth_primary": "Bearer token",
+   "auth_notes": "Freshdesk uses a per-agent 'API key' sent via HTTP Basic Auth (API key as username, any string as password) or as a bearer-style token in the Authorization header for the MCP integration. No OAuth2 is documented for the core REST API.",
+   "access": "self_serve_trial",
+   "access_notes": "New signups get a 14-day free trial (no credit card) with full API key access; there is no ongoing free public plan for new accounts (a separate 'Free Program' exists only for existing accounts, capped at 2 agents and 6 months). After the trial, a paid plan (Blossom/Garden/Estate/Forest or newer Growth/Pro/Enterprise tiers) is required for continued API use.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developers.freshdesk.com/api/",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": null,
+   "buildability": "ready_with_caveats",
+   "main_blocker": "No permanent free tier (trial-only), and the official MCP server is Enterprise-plan-only via a gated Early Access Program",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developers.freshdesk.com/api/",
+     "quote": "You can use your personal API key to authenticate the request. If you use the API key, there is no need for a password."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+     "quote": "Currently, Freshdesk allows you to authenticate requests involved in MCP integration by using an API key only."
+    },
+    {
+     "field": "access",
+     "url": "https://www.freshworks.com/freshdesk/pricing/free/",
+     "quote": "For 14 days, support teams get access to collaboration tools such as real-time dashboards, self-service features"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.freshdesk.com/api/",
+     "quote": "For all trial users, there is a default API limit of 50 calls/minute."
+    },
+    {
+     "field": "api_style",
+     "url": "https://developers.freshdesk.com/api/",
+     "quote": "Freshdesk's APIs belong to the Representational State Transfer (REST) category."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+     "quote": "Freshworks MCP integration is currently in Beta and available through an Early Access Program (EAP) for selected customers on the Enterprise plan."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://support.freshdesk.com/support/solutions/articles/225430-what-are-webhooks-",
+     "quote": "Webhooks can be triggered via the automation rules that run on ticket creation and rules that run on ticket updates in Freshdesk."
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact production (post-EAP, post-GA) pricing/plan requirement for the official MCP server is not yet published; current limits (100 calls/min, 5,000 actions/month) are explicitly stated as EAP-only and subject to change."
+  },
+  "issues": [
+   "official_mcp is 'official' but mcp_url is empty \u2014 link the vendor's MCP page"
+  ]
+ },
+ "14": {
+  "record": {
+   "id": 14,
+   "app": "Front",
+   "what_it_does": "Front is a customer communication/helpdesk platform (shared inbox, tickets, chat, SMS) with a Core API to sync data, automate replies, and manage conversations, plus an official MCP server for AI agents.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Front issues static API tokens (Bearer) for single-workspace/internal integrations, and OAuth2 for app-framework/public integrations and the MCP server. Front requires OAuth for public integrations distributed via its App Store unless an exception is granted. The MCP server requires a confidential OAuth 2.1 + PKCE connection (client_id + client_secret); Dynamic Client Registration is not supported.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can sign up for a free Front developer account with a sandbox environment (no production data, limited to 3 teammates) and immediately generate API tokens or create an OAuth app to call the Core API and MCP server. Production use against a real company's data requires that company to have a paid Front plan (Starter/Professional/Enterprise all include API access with tiered rate limits); public App Store distribution of an OAuth integration favors/requires partnering with Front.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://dev.frontapp.com/reference/introduction",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://dev.frontapp.com/docs/mcp-server",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Production use requires the end customer to already have a paid Front plan; OAuth apps must be manually created per-company in Front settings (no public self-serve client without going through Front's App Store/partner review).",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://dev.frontapp.com/docs/authentication",
+     "quote": "The Core API uses Bearer tokens to authenticate its user."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://dev.frontapp.com/docs/authentication",
+     "quote": "There are two ways to get a Bearer token \u2014 through API tokens in your settings or through an OAuth implementation."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://dev.frontapp.com/docs/mcp-server",
+     "quote": "Endpoint | `https://mcp.frontapp.com/mcp` | Transport | Streamable HTTP | Auth | OAuth 2.1 + PKCE compatability"
+    },
+    {
+     "field": "access",
+     "url": "https://dev.frontapp.com/docs/welcome",
+     "quote": "You can create a developer account by signing up here. You'll get access to a free developer environment"
+    },
+    {
+     "field": "access",
+     "url": "https://help.front.com/en/articles/2438",
+     "quote": "50 requests per minute for the Starter plan, 100 for Professional, and 200 for Enterprise"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://dev.frontapp.com/docs/mcp-server",
+     "quote": "Connect AI assistants to Front via the MCP server (open beta)"
+    },
+    {
+     "field": "api_style",
+     "url": "https://dev.frontapp.com/reference/introduction",
+     "quote": "Here is Front's Core API, a backend API that gives comprehensive control over all entities in Front"
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://github.com/frontapp/front-api-specs",
+     "quote": "This repo provides Front Platform API schemas for public consumption. The API schemas conform to the OpenAPI specification."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://dev.frontapp.com/docs/webhooks-1",
+     "quote": "Front offers two methods for configuring webhooks"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact list of App Store review requirements/timeline for public OAuth integrations wasn't fetched in detail (only referenced via the 'Partnering with Front' guide); MCP server is explicitly in open beta so tool list/rate limits may still change."
+  },
+  "issues": [
+   "evidence for openapi_spec could not be found on https://github.com/frontapp/front-api-specs (quote match 0.72) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "17": {
+  "record": {
+   "id": 17,
+   "app": "Plain",
+   "what_it_does": "Plain is a B2B customer support platform (help desk / shared inbox with AI agent \"Ari\") built API-first on top of a GraphQL API.",
+   "auth_methods": [
+    "API key",
+    "Bearer token",
+    "OAuth2"
+   ],
+   "auth_primary": "Bearer token",
+   "auth_notes": "The GraphQL API (core-api.uk.plain.com) is authenticated with a static Machine User API key sent as `Authorization: Bearer plainApiKey_xxx` (no OAuth flow for third-party API access). The separate official MCP server (mcp.plain.com) uses OAuth2 tied to a human user's session instead of API keys.",
+   "access": "self_serve_trial",
+   "access_notes": "Pricing starts at Foundation ($35/mo, billed yearly) with a 7-day free trial and no credit card required; API/Webhooks/Events are listed as plan features. There is no perpetual free tier, so ongoing programmatic access requires converting to a paid plan after the trial.",
+   "api_style": [
+    "REST",
+    "GraphQL"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://www.plain.com/docs/graphql/introduction",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://mcp.plain.com/mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "No perpetual free tier; production API/webhook access requires a paid subscription after the 7-day trial",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://www.plain.com/docs/graphql/authentication",
+     "quote": "Authorization: Bearer plainApiKey_xxx"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://help.plain.com/article/mcp-server",
+     "quote": "You authenticate with your existing Plain account, so the MCP server has the same permissions as your user. No API keys needed."
+    },
+    {
+     "field": "access",
+     "url": "https://www.plain.com/pricing",
+     "quote": "7 day free trial, No credit card required"
+    },
+    {
+     "field": "access",
+     "url": "https://www.plain.com/pricing",
+     "quote": "Foundation, Get support right from day one, $35/month"
+    },
+    {
+     "field": "api_style",
+     "url": "https://www.plain.com/docs/graphql/introduction",
+     "quote": "API URL: `https://core-api.uk.plain.com/graphql/v1`"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://help.plain.com/article/mcp-server",
+     "quote": "The Plain MCP server at `https://mcp.plain.com/mcp` lets tools like Claude, ChatGPT, and Cursor work with your support data directly."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://www.plain.com/docs/webhooks",
+     "quote": "Webhooks allow you to get notified about events happening in your Plain workspace."
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not confirm from a fetched page exactly which pricing tier(s) unlock API/webhook access (the feature comparison table's checkmarks were stripped in text extraction) \u2014 pricing page lists 'API', 'Webhooks', 'Events' as extensibility features without tier-level detail visible in scraped text."
+  },
+  "issues": [
+   "evidence for access could not be found on https://www.plain.com/pricing (quote match 0.58) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for access could not be found on https://www.plain.com/pricing (quote match 0.61) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "21": {
+  "record": {
+   "id": 21,
+   "app": "Slack",
+   "what_it_does": "Slack is a business messaging platform, and its developer platform lets apps read, write, and automate messages, channels, users, and workspace data via APIs.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "OAuth2 (v2) is the standard flow for apps installed across multiple workspaces, producing bot (xoxb) and/or user (xoxp) tokens. A single-workspace ('undistributed') app can skip the OAuth redirect flow entirely and get a bot token directly via a one-click 'Install App to Workspace' button, which then functions as a static bearer token sent in the Authorization header.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can sign up for Slack free, create an app at api.slack.com/apps, and install it to their own workspace immediately to get a working access token at no cost. For a multi-workspace/multi-tenant agent toolkit, an app can enable 'Activate Public Distribution' (unlisted distribution) self-serve, with no Slack review, to install via OAuth into any workspace. Only submitting to the Slack Marketplace directory (optional, for commercial discoverability) requires a formal review (preliminary + functional review, up to ~10 weeks) and a minimum install count.",
+   "api_style": [
+    "REST",
+    "WebSocket"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://api.slack.com/apis",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://docs.slack.dev/ai/slack-mcp-server",
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://api.slack.com/authentication/oauth-v2",
+     "quote": "Slack apps are installed with a v2 OAuth 2.0 flow"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://api.slack.com/authentication/oauth-v2",
+     "quote": "your access tokens \u2014 also known as bearer tokens \u2014 to Slack is by presenting them in a request's Authorization HTTP header"
+    },
+    {
+     "field": "access",
+     "url": "https://docs.slack.dev/app-management/distribution",
+     "quote": "Once created, your app can be installed to its associated workspace without any code for handling authorization"
+    },
+    {
+     "field": "access",
+     "url": "https://docs.slack.dev/app-management/distribution",
+     "quote": "Distributing your unlisted app is perfect for when you want to test out your app by running a pilot for early customers"
+    },
+    {
+     "field": "api_style",
+     "url": "https://api.slack.com/apis",
+     "quote": "The Web API supplies a collection of HTTP methods that underpin the majority of Slack app functionality"
+    },
+    {
+     "field": "api_style",
+     "url": "https://api.slack.com/apis",
+     "quote": "Legacy RTM API is an outmoded API that provides WebSocket access to some of the same functionality"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.slack.dev/ai/slack-mcp-server",
+     "quote": "With the Slack MCP server, your integrated apps can search channels, send messages, and perform other Slack actions through MCP clients"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://api.slack.com/apis",
+     "quote": "Subscribe to the events you want from a range of possibilities... we'll push them to your app securely"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Whether the official MCP server (mcp.slack.com) requires the calling app to be Marketplace-listed vs. just internally configured was not fully confirmed from a fetched primary source (search summary indicated 'internal app for your organization' is sufficient, but this wasn't independently verified by fetching the harness-connection doc)."
+  },
+  "issues": [
+   "evidence for webhooks could not be found on https://api.slack.com/apis (quote match 0.73) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "27": {
+  "record": {
+   "id": 27,
+   "app": "Telegram",
+   "what_it_does": "Telegram is a cloud-based messaging platform that exposes a free HTTP-based Bot API for building bots/integrations and a lower-level MTProto Client API for building full client applications.",
+   "auth_methods": [
+    "Bearer token",
+    "Other"
+   ],
+   "auth_primary": "Bearer token",
+   "auth_notes": "The Bot API is authenticated with a static bot token issued by @BotFather, embedded in the request URL path (e.g. https://api.telegram.org/bot<token>/METHOD) rather than a standard Authorization header \u2014 functionally a bearer token, not OAuth2, and it is not scoped per-end-user. There is no OAuth2 flow for third parties to act on behalf of arbitrary end users via the Bot API. Separately, the MTProto 'Client API' (for building user-facing apps) requires an api_id/api_hash pair from my.telegram.org plus full user login (phone number + code/2FA) over a custom binary protocol \u2014 classified here as 'Other' since it's neither OAuth2 nor a simple API key and requires per-user interactive login, making it unsuitable for a standard multi-tenant agent toolkit.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can message @BotFather and get a working bot token immediately at no cost; the whole Bot Platform is documented as free for developers. The Client API (api_id/api_hash) is also free and self-serve via my.telegram.org, but usage is monitored for abuse and accounts can be banned/rate-limited if flagged, and it requires a real phone-verified account rather than a simple credential \u2014 so it's less turnkey than the Bot API.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://core.telegram.org/bots/api",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://core.telegram.org/bots",
+     "quote": "message@BotFather on Telegram to register your bot and receive its authentication token"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://core.telegram.org/api/obtaining_api_id",
+     "quote": "You will get basic addresses as well as the api_id and api_hash parameters required for user authorization"
+    },
+    {
+     "field": "access",
+     "url": "https://core.telegram.org/bots",
+     "quote": "The Telegram Bot Platform hosts more than 10 million bots and is free for both users and developers."
+    },
+    {
+     "field": "api_style",
+     "url": "https://core.telegram.org/bots/api",
+     "quote": "The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://core.telegram.org/bots/webhooks",
+     "quote": "We currently support two ways of processing bot updates, getUpdates and setWebhook."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://core.telegram.org/bots",
+     "quote": "Detailed Guide to Bot Features\nFull API Reference for Developers\nBasic Tutorial: From @BotFather to 'Hello World'"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not confirm whether Telegram publishes a machine-readable OpenAPI/Swagger spec for the Bot API on a vendor page within the tool budget (only third-party generated specs are known); marked openapi_spec false pending further check. Bots also cannot initiate conversations with arbitrary users (a user must message/add the bot first), which may constrain some outbound-messaging agent use cases."
+  },
+  "issues": [
+   "evidence for official_mcp could not be found on https://core.telegram.org/bots (quote match 0.42) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "32": {
+  "record": {
+   "id": 32,
+   "app": "Meta Ads",
+   "what_it_does": "The Meta Marketing API lets developers programmatically create, manage, and analyze ad campaigns across Facebook, Instagram, Messenger, and WhatsApp.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Third-party apps obtain a User Access Token via the Facebook Login OAuth dialog (scope e.g. ads_management/ads_read). Agencies/automation commonly use System User Access Tokens (long-lived static bearer tokens issued via Business Manager) instead of per-user OAuth for server-to-server automation.",
+   "access": "approval_required",
+   "access_notes": "Any developer can create a Meta app and get 'Limited access' (Standard access) immediately, which is heavily rate-limited, dev-only, and restricted to accounts you already administer. To manage other people's ad accounts at production scale (the agent-toolkit case), the app must pass Meta App Review and be approved for 'Advanced access'/'Full access' to ads_management/ads_read, which also requires meeting call-volume thresholds (500+ Marketing API calls in 15 days, <15% error rate) and possibly Business Verification.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developers.facebook.com/docs/marketing-apis",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://mcp.facebook.com/ads",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "App Review / Advanced Access required to manage ad accounts on behalf of other users",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens",
+     "quote": "User access tokens let your app take actions in real time based on input from the user"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://developers.facebook.com/docs/facebook-login/guides/access-tokens",
+     "quote": "System User access tokens let your app perform programmatic, automated actions on Ad objects or Pages"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.facebook.com/docs/marketing-api/get-started/authorization",
+     "quote": "Advanced access must be approved through the App Review process on an individual permission and feature basis"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.facebook.com/docs/marketing-api/get-started/authorization",
+     "quote": "Automatically granted when you add the Marketing API product to your app... Heavily rate-limited per ad account. For development only."
+    },
+    {
+     "field": "api_style",
+     "url": "https://developers.facebook.com/docs/marketing-api/overview",
+     "quote": "Use the Marketing API to automate advertising across Meta technologies. The API provides functions for ad creation, management, and performance analysis."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview",
+     "quote": "The ads MCP server is a Meta-hosted Model Context Protocol server that lets you manage Meta ads directly from an AI agent"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developers.facebook.com/docs/graph-api/webhooks",
+     "quote": "Webhooks allows you to receive real-time HTTP notifications of changes to specific objects in the Meta social graph"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Whether the official Ads MCP server itself is available to any third-party developer/agent-builder without a separate approval step, or only to advertisers logging into their own accounts, was not fully confirmed from the fetched overview page (auth flow described in a linked 'Get started' page was not fetched)."
+  },
+  "issues": [
+   "evidence for official_mcp could not be found on https://developers.facebook.com/documentation/ads-commerce/ads-ai-connectors/ads-mcp-server/ads-mcp-server-overview (quote match 0.52) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "35": {
+  "record": {
+   "id": 35,
+   "app": "Mailchimp",
+   "what_it_does": "Mailchimp's Marketing API lets developers manage audiences/contacts, campaigns, automations, templates, reports, and e-commerce data programmatically to power email/SMS marketing.",
+   "auth_methods": [
+    "OAuth2",
+    "API key",
+    "Basic",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "API keys and OAuth2 access tokens are used interchangeably via HTTP Basic or Bearer auth against the same endpoints. Mailchimp explicitly recommends OAuth2 for apps acting on behalf of other users' accounts, and API key for single-account/tightly-coupled use. Mailchimp OAuth2 access tokens do not expire and there is no refresh_token flow. A separate product, Mailchimp Transactional (Mandrill), has its own API/key and is distinct from the Marketing API.",
+   "access": "self_serve_free",
+   "access_notes": "Signing up for a free Mailchimp account (free for under 250 contacts) gives immediate access to the API Keys page to generate a working key; the Quick Start guide confirms API key generation requires no paid plan, though some advanced endpoints/features are gated by plan tier.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://mailchimp.com/developer/marketing/api/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+     "quote": "You can either use HTTP Basic Authentication or Bearer Authentication."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://mailchimp.com/developer/marketing/guides/access-user-data-oauth-2/",
+     "quote": "Mailchimp Marketing access tokens do not expire, so you don't need to use a refresh_token."
+    },
+    {
+     "field": "access",
+     "url": "https://mailchimp.com/developer/marketing/guides/quick-start/",
+     "quote": "Navigate to the API Keys section of your Mailchimp account. Click Create New Key"
+    },
+    {
+     "field": "access",
+     "url": "https://mailchimp.com/pricing/marketing/",
+     "quote": "Under 250 contacts? It's free."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://mailchimp.com/developer/marketing/",
+     "quote": "Overview\nGuides\nDocumentation\nAPI Reference"
+    },
+    {
+     "field": "api_style",
+     "url": "https://mailchimp.com/developer/marketing/docs/fundamentals/",
+     "quote": "The Marketing API generally follows REST conventions, with some deviations."
+    },
+    {
+     "field": "api_breadth",
+     "url": "https://mailchimp.com/developer/marketing/api/",
+     "quote": "API Root\nAccount Exports\nAudiences (BETA)\nContacts\nGet a list of audiences"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://mailchimp.com/developer/marketing/guides/sync-audience-data-webhooks/",
+     "quote": "By entering a valid URL that's set up to accept HTTP POST requests, you can receive updates on subscriptions"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not fetch api.mailchimp.com/schema/3.0/Swagger.json directly (only found via third-party mirrors/Context7), but the Fundamentals doc confirms Mailchimp itself states it uses OpenAPI/Swagger to describe every endpoint, so openapi_spec=true is treated as vendor-confirmed rather than directly fetched."
+  },
+  "issues": [
+   "evidence for api_breadth could not be found on https://mailchimp.com/developer/marketing/api/ (quote match 0.35) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for official_mcp could not be found on https://mailchimp.com/developer/marketing/ (quote match 0.35) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "38": {
+  "record": {
+   "id": 38,
+   "app": "Pinterest",
+   "what_it_does": "Pinterest's API lets developers manage Pins, Boards, ad campaigns, product catalogs, and analytics on behalf of Pinterest business accounts.",
+   "auth_methods": [
+    "OAuth2"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Standard OAuth 2.0 authorization-code flow with refreshable access tokens is the only production auth method. Pinterest also offers short-lived 'product limited tokens' (24-hour test tokens) for exploring the API without completing the OAuth flow, but these are a developer convenience, not a separate production auth method.",
+   "access": "approval_required",
+   "access_notes": "Anyone can create a developer/business account and register an app for free, but calling the API requires submitting an access request that Pinterest reviews ('Application requests are reviewed each business day'). Approved apps start at Trial access (low rate limits, Pins/Boards visible only to creator); serving real end users requires a further-reviewed upgrade to Standard access, which requires a video demo of the OAuth flow.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developers.pinterest.com/docs/api/v5/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready_with_caveats",
+   "main_blocker": "app review required for Trial access, and a second review (with OAuth demo video) required to reach Standard/production access",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developers.pinterest.com/docs/getting-started/introduction/",
+     "quote": "Build a working authentication flow based on OAuth 2"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.pinterest.com/docs/getting-started/introduction/",
+     "quote": "Application requests are reviewed each business day."
+    },
+    {
+     "field": "access",
+     "url": "https://developers.pinterest.com/docs/getting-started/access-tiers/",
+     "quote": "If approved for API use, your app receives Trial access, which is best for exploring our API features."
+    },
+    {
+     "field": "api_style",
+     "url": "https://github.com/pinterest/api-description",
+     "quote": "This repository contains OpenAPI (version 3.0.3) descriptions for Pinterest's REST API."
+    },
+    {
+     "field": "api_breadth",
+     "url": "https://developers.pinterest.com/docs/getting-started/access-tiers/",
+     "quote": "Pin Analytics | Reading ads | Reading audiences | Reading boards | Reading Pins | Reading catalogs | Creating ads | Creating audiences | Creating boards | Creating Pins | Creating catalogs"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developers.pinterest.com/",
+     "quote": "One API to seamlessly integrate with Pinterest"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not fetch the live v5 API reference endpoint list (JS-rendered, returned only nav boilerplate) to get an exact endpoint count; breadth ('broad') is inferred from the access-tiers activity table (Pins, Boards, Ads, Audiences, Catalogs, Analytics) plus the OpenAPI repo rather than a direct endpoint tally. Webhook support is confirmed only for Lead Ads (encrypted push to a subscriber HTTPS endpoint), not a general event-subscription system across all objects."
+  },
+  "issues": [
+   "evidence for api_breadth could not be found on https://developers.pinterest.com/docs/getting-started/access-tiers/ (quote match 0.12) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for api_style could not be found on https://github.com/pinterest/api-description (quote match 0.62) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "39": {
+  "record": {
+   "id": 39,
+   "app": "Threads (Meta)",
+   "what_it_does": "The Threads API lets developers create and publish posts, retrieve media and profiles, moderate replies, and access insights on a user's Threads account on their behalf.",
+   "auth_methods": [
+    "OAuth2"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Threads user access tokens conform to OAuth 2.0. Short-lived tokens (1 hour) are exchanged via an Authorization Window/Authorization Code flow, then exchanged for long-lived tokens (60 days) that can be refreshed. No API key or basic auth option exists; all access is per-user OAuth token scoped to specific permissions (threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies, threads_manage_insights, threads_delete, threads_manage_mentions, threads_location_tagging).",
+   "access": "approval_required",
+   "access_notes": "Self sign-up (create a Meta app, add Threads use case) is free, and app owners/added 'Threads testers' can immediately grant permissions and use the API. But for the app to work with arbitrary third-party Threads users (i.e., a real multi-user agent toolkit), each permission must be approved via Meta's App Review process and the app must be published/Live, and receiving full webhook data additionally requires Advanced Access and a verified business.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "moderate",
+   "api_docs_url": "https://developers.facebook.com/docs/threads/reference",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready_with_caveats",
+   "main_blocker": "App Review / business verification required for production (non-tester) users",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developers.facebook.com/docs/threads/get-started",
+     "quote": "API authentication is handled by Threads user access tokens that conform to the OAuth 2.0 protocol."
+    },
+    {
+     "field": "access",
+     "url": "https://developers.facebook.com/docs/threads/get-started",
+     "quote": "each permission must first be approved through the App Review process, and your app must be published"
+    },
+    {
+     "field": "api_style",
+     "url": "https://developers.facebook.com/docs/threads/reference",
+     "quote": "The Threads API consists of the following endpoints. Refer to each endpoint's reference document"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developers.facebook.com/docs/threads",
+     "quote": "Use the Threads API to create and publish posts, retrieve media and profiles, moderate replies, and access insights."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developers.facebook.com/docs/threads/webhooks",
+     "quote": "Webhooks for Threads allow you to receive real-time notifications for the subscribed topics and fields."
+    },
+    {
+     "field": "api_breadth",
+     "url": "https://developers.facebook.com/docs/threads/reference",
+     "quote": "Publishing | Media Retrieval | Reply Management | User | Locations | Location Search | Insights | oEmbed | Debug"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact total count of distinct API operations wasn't enumerated (reference page lists 9 endpoint categories, each with multiple operations); no official Meta OpenAPI/Swagger file was found, only community-maintained ones."
+  },
+  "issues": [
+   "evidence for api_breadth could not be found on https://developers.facebook.com/docs/threads/reference (quote match 0.2) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "52": {
+  "record": {
+   "id": 52,
+   "app": "SE Ranking",
+   "what_it_does": "SE Ranking is an SEO/GEO data platform whose API gives programmatic access to keyword research, backlink, domain analysis, site audit, SERP, AI-search-visibility, and project-management data.",
+   "auth_methods": [
+    "API key",
+    "Bearer token",
+    "OAuth2"
+   ],
+   "auth_primary": "API key",
+   "auth_notes": "The REST Data/Project API uses a single per-account API key sent as `Authorization: Token YOUR_API_KEY` (or as an `apikey` query param) \u2014 this is a static bearer-style token, not an OAuth flow. The separately hosted MCP server (api.seranking.com/mcp) instead uses OAuth 2.1 with dynamic client registration, or can accept the same API key/OAuth token passed in an `Authorization: Bearer` header.",
+   "access": "self_serve_trial",
+   "access_notes": "Every paid plan (Essential $?, Pro, Core $129/mo, Growth $279/mo, Business, Enterprise) includes a monthly Data API credit allowance and full Project API access, and a key is self-generated instantly from the dashboard \u2014 but the vendor's own FAQ says 'You can even test it in the free trial account,' implying ongoing/production use requires a paid subscription; there is no permanent free tier.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://seranking.com/api/data/getting-started/",
+   "openapi_spec": true,
+   "webhooks": false,
+   "official_mcp": "official",
+   "mcp_url": "https://api.seranking.com/mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Production API access requires a paid SE Ranking subscription; the free trial only covers testing.",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://seranking.com/api/data/getting-started/",
+     "quote": "Include an `Authorization` header in your request, with the value `Token YOUR_API_KEY`."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://seranking.com/api/integrations/mcp/",
+     "quote": "the server is centrally hosted and managed... This transport uses OAuth 2.1 with dynamic client registration for authentication"
+    },
+    {
+     "field": "access",
+     "url": "https://seranking.com/api.html",
+     "quote": "API access comes with any SE Ranking plan (Core at $129/mo and Growth at $279/mo). You can even test it in the free trial account."
+    },
+    {
+     "field": "access",
+     "url": "https://seranking.com/api/how-to-get-api/",
+     "quote": "All Essential, Pro, Business, Core, Growth, and Enterprise plans include Data API access with a monthly credit allowance"
+    },
+    {
+     "field": "api_style",
+     "url": "https://seranking.com/api/data/getting-started/",
+     "quote": "curl -X GET 'https://api.seranking.com/v1/account/subscription' -H 'Authorization: Token YOUR_API_KEY'"
+    },
+    {
+     "field": "api_breadth",
+     "url": "https://seranking.com/api/integrations/mcp/",
+     "quote": "The SE Ranking MCP server has 160+ tools available for keyword research, backlink analysis, domain analysis, website audits, AI search visibility, SERP analysis, and project management"
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://github.com/seranking/openapi",
+     "quote": "OpenAPI specification for the SE Ranking API... The specs use OpenAPI 3.0. Both JSON and YAML formats are kept in sync."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://seranking.com/api/integrations/mcp/",
+     "quote": "Connect to our MCP server natively in Claude, Cursor, and other clients... https://api.seranking.com/mcp"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Webhooks are not mentioned anywhere in the getting-started, reference, or OpenAPI-repo docs reviewed (site-audit jobs appear to be polled via `audits/status` rather than pushed), so webhooks=false is an absence-of-evidence call rather than an explicit vendor denial. Exact Essential-plan price was not confirmed on a fetched page."
+  },
+  "issues": [
+   "evidence for openapi_spec could not be found on https://github.com/seranking/openapi (quote match 0.65) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "53": {
+  "record": {
+   "id": 53,
+   "app": "Ahrefs",
+   "what_it_does": "Ahrefs provides SEO, backlink, keyword research, rank tracking, site audit, and AI-search-visibility data through a REST API (v3).",
+   "auth_methods": [
+    "API key",
+    "OAuth2"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Direct API/MCP access uses a static per-workspace API key sent as `Authorization: Bearer <API_KEY>`. Building a third-party app that acts on behalf of other Ahrefs users ('Ahrefs Connect') uses OAuth 2.0 Authorization Code Flow with PKCE; access tokens last 1 year and no refresh tokens are issued.",
+   "access": "approval_required",
+   "access_notes": "Direct API key access requires a paid Lite-or-higher subscription (self-serve once you pay, plus limited free test queries). Building a public multi-user integration via Ahrefs Connect (OAuth2) requires applying to the program, vendor review/approval of the app (including demonstrating secure token handling), and production usage requires an Enterprise subscription.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://docs.ahrefs.com/docs/api/",
+   "openapi_spec": true,
+   "webhooks": false,
+   "official_mcp": "official",
+   "mcp_url": "https://api.ahrefs.com/mcp/mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Multi-user OAuth integration (Ahrefs Connect) requires app review and an Enterprise plan for production; direct API/MCP requires a paid Lite+ subscription",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://docs.ahrefs.com/en/api/reference/batch-analysis/post-batch-analysis",
+     "quote": "-H \"Authorization: Bearer $AHREFS_API_KEY\""
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+     "quote": "Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with Proof Key for Code Exchange (PKCE)"
+    },
+    {
+     "field": "access",
+     "url": "https://help.ahrefs.com/en/articles/6559232-about-api-v3",
+     "quote": "Yes, all new applications require a Lite or higher subscription for activation."
+    },
+    {
+     "field": "access",
+     "url": "https://docs.ahrefs.com/ahrefs-connect/docs/oauth-guide.md",
+     "quote": "You will need to demonstrate secure token handling as part of the Approval process."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.ahrefs.com/docs/mcp/introduction",
+     "quote": "Ahrefs provides a hosted MCP server that allows users with a Lite plan or higher to connect their Ahrefs account"
+    },
+    {
+     "field": "api_style",
+     "url": "https://docs.ahrefs.com/docs/api/",
+     "quote": "With Ahrefs API, you can use data from your Ahrefs workspace to create custom integrations and automations."
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://docs.ahrefs.com/openapi.json",
+     "quote": "\"openapi\": \"3.2.0\", \"info\": { \"title\": \"Ahrefs API\""
+    },
+    {
+     "field": "webhooks",
+     "url": "https://docs.ahrefs.com/docs/api/",
+     "quote": "REST API ... Research keywords, analyze backlinks, track rankings, and monitor brand visibility"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not fetch a dedicated webhooks documentation page (none found linked from the developer portal), so absence of webhooks is inferred from the docs home/nav rather than an explicit 'no webhooks' statement."
+  },
+  "issues": [
+   "evidence for webhooks could not be found on https://docs.ahrefs.com/docs/api/ (quote match 0.15) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "58": {
+  "record": {
+   "id": 58,
+   "app": "Sherlock",
+   "what_it_does": "Sherlock is an open-source Python command-line tool that hunts down social media accounts by checking a given username across 400+ social networks.",
+   "auth_methods": [
+    "None"
+   ],
+   "auth_primary": "None",
+   "auth_notes": "Sherlock is a local CLI tool (pip/pipx/Docker) that itself makes unauthenticated HTTP requests to check username existence on third-party sites; it does not expose or require its own API credentials. Some target sites it queries may require proxies, but no vendor auth mechanism is documented for Sherlock itself.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can install Sherlock for free via pipx/pip/uv install or docker run; there is no signup, key, or approval process since it's a local open-source tool, not a hosted service.",
+   "api_style": [
+    "SDK/CLI only"
+   ],
+   "api_breadth": "none",
+   "api_docs_url": "https://github.com/sherlock-project/sherlock",
+   "openapi_spec": false,
+   "webhooks": false,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "not_applicable",
+   "main_blocker": "No hosted API \u2014 Sherlock is a local CLI/Python tool, not a callable service",
+   "evidence": [
+    {
+     "field": "api_style",
+     "url": "https://github.com/sherlock-project/sherlock",
+     "quote": "pipx install sherlock-project | docker run -it --rm sherlock/sherlock"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://github.com/sherlock-project/sherlock",
+     "quote": "sherlock user123"
+    },
+    {
+     "field": "access",
+     "url": "https://github.com/sherlock-project/sherlock",
+     "quote": "pip or uv may be used in place of pipx"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://github.com/sherlock-project/sherlock",
+     "quote": "Hunt down social media accounts by username across 400+ social networks"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": null
+  },
+  "issues": [
+   "evidence for api_style could not be found on https://github.com/sherlock-project/sherlock (quote match 0.57) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "59": {
+  "record": {
+   "id": 59,
+   "app": "Waterfall.io",
+   "what_it_does": "Waterfall is a B2B data API that aggregates 30+ vendors to find, search, and enrich contact and company data (emails, phones, titles, job changes) for GTM/RevOps teams.",
+   "auth_methods": [
+    "API key"
+   ],
+   "auth_primary": "API key",
+   "auth_notes": "All requests are authenticated with a static `x-api-key` header value. No OAuth2, Basic, or JWT-based request auth is documented (JWT is used only for verifying outbound webhook signatures, via Ed25519 keys served at a JWKS endpoint, not for API request auth).",
+   "access": "partner_gated",
+   "access_notes": "There is no self-serve signup or free tier found anywhere in the docs or marketing site. The OpenAPI spec states \"To access the API, you need the API key provided in your contract,\" and the only documented CTA on the homepage is \"Book a call\" to talk to the team. Sub-key/API-key-management is explicitly called out as an enterprise feature requiring the vendor to enable it.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "moderate",
+   "api_docs_url": "https://docs.waterfall.io/v1/introduction",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "blocked",
+   "main_blocker": "API keys are only issued per signed contract via a sales call; no self-serve or trial credential path exists",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://docs.waterfall.io/v1/authentication",
+     "quote": "All requests are authenticated using `x-api-key`."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.waterfall.io/v1/introduction",
+     "quote": "All requests require an API key in the `x-api-key` header."
+    },
+    {
+     "field": "access",
+     "url": "https://docs.waterfall.io/v1/webhook-jwks",
+     "quote": "To access the API, you need the API key provided in your contract."
+    },
+    {
+     "field": "access",
+     "url": "https://www.waterfall.io/",
+     "quote": "Talk to our team (most likely one of the founders) to share your use case and see how Waterfall can help."
+    },
+    {
+     "field": "access",
+     "url": "https://docs.waterfall.io/v1/api-keys-overview",
+     "quote": "API key management is an enterprise feature. Contact your account manager to get access."
+    },
+    {
+     "field": "api_style",
+     "url": "https://docs.waterfall.io/v1/introduction",
+     "quote": "The Waterfall API is available at `https://api.waterfall.io`."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.waterfall.io/v1/introduction",
+     "quote": "Endpoints | Prospector | Search Contact | Search Company | Contact Enrichment | Phone Enrichment | Company Enrichment | Company Reveal | Company Titles | Job Change Detection | Email Verification | Webhook JWKS | Account Reporting | API Key Management"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://docs.waterfall.io/v1/prospector-finder",
+     "quote": "If you passed `webhook_url` when launching the job, you don't need to call this endpoint at all \u2014 Waterfall will automatically POST the result to your URL"
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://docs.waterfall.io/v1/openapi-spec",
+     "quote": "The full OpenAPI 3.1 specification for the Waterfall API is available for download."
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "No pricing page or trial/sandbox mode was found; it's unclear whether a small free credit or test key is ever offered before a contract is signed, or whether 'book a call' always leads to a paid engagement."
+  },
+  "issues": [
+   "evidence for official_mcp could not be found on https://docs.waterfall.io/v1/introduction (quote match 0.1) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "62": {
+  "record": {
+   "id": 62,
+   "app": "Vercel",
+   "what_it_does": "Vercel is a cloud platform for building and hosting web apps, and its REST API lets developers programmatically manage projects, deployments, domains/DNS, environment variables, teams, and related resources.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Personal/team/project-scoped Bearer access tokens (prefix vcp_) are the primary single-account auth method, created instantly from the Account Tokens page. For multi-user, third-party integrations, Vercel documents a standard OAuth2 authorization-code flow (redirect URL with a short-lived `code`, exchanged via POST /v2/oauth/access_token for a long-lived Bearer access_token) managed through the Integrations Console. Building/using an OAuth integration is self-serve; only listing it publicly on the Marketplace requires a separate review.",
+   "access": "self_serve_free",
+   "access_notes": "Any Vercel account (including the free Hobby plan) can create a scoped access token immediately from https://vercel.com/account/tokens with no payment required. OAuth2 integration client_id/client_secret are likewise created self-serve via the Integrations Console; only public Marketplace listing goes through an approval checklist.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://vercel.com/docs/rest-api",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://mcp.vercel.com",
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://vercel.com/docs/accounts/access-tokens",
+     "quote": "Pass the token as a Bearer token in the Authorization header of your request."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+     "quote": "POST https://api.vercel.com/v2/oauth/access_token"
+    },
+    {
+     "field": "access",
+     "url": "https://vercel.com/docs/accounts/access-tokens",
+     "quote": "Create a Vercel API access token from your personal account's Account Tokens page"
+    },
+    {
+     "field": "api_style",
+     "url": "https://vercel.com/docs/rest-api",
+     "quote": "Interact programmatically with your Vercel account using the SDK or direct HTTP requests."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+     "quote": "Vercel MCP is Vercel's official MCP server. It's a remote MCP with OAuth"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact per-plan API rate limits weren't checked in detail (linked at /docs/limits#rate-limits); not load-bearing for buildability."
+  },
+  "issues": [
+   "evidence for api_style could not be found on https://vercel.com/docs/rest-api (quote match 0.1) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "67": {
+  "record": {
+   "id": 67,
+   "app": "Snowflake",
+   "what_it_does": "Snowflake is a cloud data platform (data warehouse, data lake, and AI/app development platform) that can be controlled and queried programmatically via REST APIs.",
+   "auth_methods": [
+    "OAuth2",
+    "JWT / service account",
+    "Bearer token",
+    "Other"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Snowflake's SQL API and REST APIs accept a Bearer token that can be an OAuth2 access token, a key-pair JWT, a Programmatic Access Token (a static bearer token), or a workload-identity-federation token (AWS/Azure/GCP/OIDC). OAuth2 (Snowflake OAuth or External OAuth via an IdP like Okta/Entra) is the method intended for third-party/multi-user clients, including the official MCP server which uses OAuth by default.",
+   "access": "self_serve_trial",
+   "access_notes": "Anyone can sign up for a 30-day free trial with $400 in credits and immediately get an account plus API/OAuth credentials to build against; there is no perpetual free tier, so sustained use requires converting to a paid account.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Free access is trial-only (30 days); production use requires a paid Snowflake account, and per-customer setup (warehouse, roles, security integration) is needed for each user.",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+     "quote": "In each API request you send, set the following headers: Authorization: Bearer oauth_token"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+     "quote": "Generate a JSON Web Token (JWT) with the following fields in the payload"
+    },
+    {
+     "field": "access",
+     "url": "https://www.snowflake.com/en/snowflake-trial/",
+     "quote": "Sign up via the Snowflake website to receive $400 in trial credits for a 30-day experience"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+     "quote": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts without needing to deploy separate infrastructure"
+    },
+    {
+     "field": "api_style",
+     "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference",
+     "quote": "Snowflake REST APIs provide the following APIs: Account API, Alert API, ... Warehouse API"
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://github.com/snowflakedb/snowflake-rest-api-specs",
+     "quote": "These REST APIs are compliant with the OpenAPI specification."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://docs.snowflake.com/en/user-guide/notifications/webhook-notifications.md",
+     "quote": "CREATE OR REPLACE NOTIFICATION INTEGRATION my_webhook_int TYPE = WEBHOOK ENABLED = TRUE"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Webhooks in Snowflake are outbound notification integrations (Snowflake pushing alerts to Slack/PagerDuty/etc. via tasks), not inbound event subscriptions notifying an external agent of data changes \u2014 worth clarifying if the toolkit needs the latter."
+  },
+  "issues": [
+   "evidence for access could not be found on https://www.snowflake.com/en/snowflake-trial/ (quote match 0.27) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for api_style could not be found on https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference (quote match 0.3) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for webhooks could not be found on https://docs.snowflake.com/en/user-guide/notifications/webhook-notifications.md (quote match 0.53) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "69": {
+  "record": {
+   "id": 69,
+   "app": "Datadog",
+   "what_it_does": "Datadog is a unified observability and security platform (metrics, logs, traces, dashboards, monitors, incidents, security signals) that exposes nearly all of its functionality via a REST API.",
+   "auth_methods": [
+    "API key",
+    "OAuth2"
+   ],
+   "auth_primary": "API key",
+   "auth_notes": "The core API uses a DD-API-KEY header plus a DD-APPLICATION-KEY header (application keys inherit the creating user's/service account's permissions and can be scoped). OAuth2 is documented for building third-party integrations, but OAuth clients can only be tested inside the developer's own 'partner developer organization' and must be published/reviewed by Datadog before they can authorize other customers' accounts \u2014 so OAuth2 is not usable standalone by a generic multi-tenant agent toolkit without going through Datadog's integration partner/publishing process.",
+   "access": "self_serve_free",
+   "access_notes": "Any signed-up user can generate API keys and application keys immediately from Organization Settings with no approval step (docs.datadoghq.com/account_management/api-app-keys). Datadog also offers a perpetually free Infrastructure Monitoring tier (up to 5 hosts) in addition to a 14-day free trial of the full platform ('Try Datadog for 14 days...'); could not fetch the exact free-tier pricing tab text (JS-rendered tabs) to quote verbatim, so treat the free-infra-tier claim as corroborated by third-party sources rather than a directly fetched primary quote.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://docs.datadoghq.com/api/latest/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://docs.datadoghq.com/mcp_server.md",
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://docs.datadoghq.com/api/latest/",
+     "quote": "Authenticate to the API with an API key using the header `DD-API-KEY`. For some endpoints, you also need an Application key"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.datadoghq.com/developers/authorization/",
+     "quote": "Datadog uses the OAuth 2.0 (OAuth2) Authorization Framework to allow users to securely authorize third-party applications' access"
+    },
+    {
+     "field": "access",
+     "url": "https://docs.datadoghq.com/account_management/api-app-keys",
+     "quote": "Application keys, in conjunction with your organization's API key, give users access to Datadog's programmatic API"
+    },
+    {
+     "field": "api_style",
+     "url": "https://docs.datadoghq.com/api/latest/",
+     "quote": "The Datadog API is an HTTP REST API."
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://raw.githubusercontent.com/DataDog/datadog-api-client-python/master/.generator/schemas/v2/openapi.yaml",
+     "quote": "DataDog/datadog-api-client-python/master/.generator/schemas/v2/openapi.yaml"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://docs.datadoghq.com/integrations/webhooks/",
+     "quote": "Webhooks enable you to: Connect to your services. Alert your services when a metric alert is triggered."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.datadoghq.com/mcp_server.md",
+     "quote": "The Datadog MCP Server acts as a bridge between your observability data in Datadog and any AI agents that support the Model Context Protocol"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not fetch a verbatim primary-source quote for the perpetual free Infrastructure Monitoring tier (pricing page uses JS tabs the fetch tool couldn't target), though it is well-corroborated by secondary sources and by the unrestricted key-creation flow. Also unclear exactly how narrow OAuth2 access is for non-partner developers versus using API/App keys for equivalent functionality."
+  },
+  "issues": [
+   "evidence for openapi_spec could not be found on https://raw.githubusercontent.com/DataDog/datadog-api-client-python/master/.generator/schemas/v2/openapi.yaml (quote match 0.23) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for webhooks could not be found on https://docs.datadoghq.com/integrations/webhooks/ (quote match 0.52) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "71": {
+  "record": {
+   "id": 71,
+   "app": "Notion",
+   "what_it_does": "Notion is a workspace app for notes, docs, wikis, and databases, and its REST API lets external apps read, create, and update pages, databases, users, and comments in a workspace.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Notion has three connection types: internal connections (static 'installation access token', single workspace), public connections (OAuth 2.0, installable across workspaces, can be Marketplace-listed), and personal access tokens (user-scoped static bearer token, no OAuth flow). All three authenticate API requests with a Bearer token in the Authorization header. A multi-user agent toolkit would use the public connection OAuth2 flow so each end user can individually authorize and pick which pages/databases to share.",
+   "access": "self_serve_free",
+   "access_notes": "Any developer can create an internal connection in the Developer portal and get a working API token immediately at no cost, or create a public (OAuth2) connection and use it without listing it on the Marketplace. Listing on the Notion Marketplace requires a Notion security review, but that review is only needed for public marketplace distribution, not for building or using the API.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developers.notion.com/reference/intro",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://mcp.notion.com/mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Public (Marketplace) distribution requires Notion security review; official MCP server only supports user OAuth, not headless bearer-token auth",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developers.notion.com/docs/getting-started",
+     "quote": "Public connections use OAuth 2.0 for authentication. At creation time, you choose their installation scope"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://developers.notion.com/docs/authorization",
+     "quote": "Personal access tokens (PATs) are created directly by a Notion user in the Developer portal. There is no OAuth flow"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.notion.com/docs/getting-started",
+     "quote": "We recommend starting with an internal connection \u2014 it's the fastest way to begin building. You get an API token immediately"
+    },
+    {
+     "field": "access",
+     "url": "https://developers.notion.com/docs/getting-started",
+     "quote": "Public connections must undergo a Notion security review before being listed on the Marketplace. You can create and use a public connection without listing it."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+     "quote": "Notion MCP (https://mcp.notion.com/mcp) is our hosted, actively maintained server. It uses OAuth for authentication"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+     "quote": "Notion MCP requires user-based OAuth authentication and does not support bearer token authentication"
+    },
+    {
+     "field": "api_style",
+     "url": "https://developers.notion.com/reference/intro",
+     "quote": "The Notion API follows RESTful conventions when possible, with most operations performed via GET, POST, PATCH, and DELETE requests"
+    },
+    {
+     "field": "api_breadth",
+     "url": "https://developers.notion.com/openapi.json",
+     "quote": "\"openapi\": \"3.1.0\""
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developers.notion.com/reference/webhooks",
+     "quote": "The body of the request contains a `verification_token`, which proves that Notion can successfully reach your endpoint."
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact rate limits and whether internal-connection tokens are subject to any Marketplace-style review were not checked; not expected to change buildability."
+  },
+  "issues": [
+   "evidence for api_style could not be found on https://developers.notion.com/reference/intro (quote match 0.74) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "78": {
+  "record": {
+   "id": 78,
+   "app": "Coda",
+   "what_it_does": "Coda is an all-in-one doc/spreadsheet workspace app, and its REST API lets external programs read and write docs, pages, tables, rows, columns, formulas, controls, permissions, and trigger automations.",
+   "auth_methods": [
+    "Bearer token"
+   ],
+   "auth_primary": "Bearer token",
+   "auth_notes": "The public REST API (coda.io/apis/v1) is authenticated only with a personal API token sent as `Authorization: Bearer <token>`, generated per-user in Account Settings. Coda's OAuth2 support exists only inside the separate Packs SDK (for Packs to authenticate to *other* third-party APIs), not for third parties calling Coda's own API, so it is not usable as a multi-user agent auth flow against Coda itself.",
+   "access": "self_serve_free",
+   "access_notes": "Any Coda user, on free or paid workspaces, can generate an API token immediately at no cost from Account Settings; no approval or paid plan is required to get working credentials, though what the token can do is scoped by the token owner's role/permissions in each workspace.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "moderate",
+   "api_docs_url": "https://coda.io/developers/apis/v1",
+   "openapi_spec": true,
+   "webhooks": false,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "headers = {'Authorization': 'Bearer <your API token>'}"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "The API token is invalid or has expired."
+    },
+    {
+     "field": "access",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "We make the Superhuman Docs API available to all of our users free of charge, in both free and paid workspaces."
+    },
+    {
+     "field": "api_style",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "In an effort to standardize our API and make it accessible, we offer an OpenAPI 3.0"
+    },
+    {
+     "field": "api_style",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "getList folders\\n- postCreate folder\\n- getGet folder\\n- patchUpdate folder"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://coda.io/developers/apis/v1",
+     "quote": "Rate Limiting\\n- Consistency\\n- Volatile Formulas\\n- Free and Paid Workspaces\\n- Examples\\n- OpenAPI/Swagger Spec\\n- Client libraries"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Could not directly fetch coda.io/apis/v1/openapi.yaml to confirm its exact field coverage, though the docs page explicitly states an OpenAPI 3.0 spec is offered. No vendor-hosted MCP server was found in web search; only community MCP wrapper projects (e.g. tjc-lp/coda-mcp-server, orellazri/coda-mcp) exist, each explicitly disclaiming Coda affiliation."
+  },
+  "issues": [
+   "evidence for official_mcp could not be found on https://coda.io/developers/apis/v1 (quote match 0.2) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "81": {
+  "record": {
+   "id": 81,
+   "app": "Stripe",
+   "what_it_does": "Stripe provides an API for accepting payments, managing subscriptions, billing, payouts, and other financial/fintech operations for online businesses.",
+   "auth_methods": [
+    "API key",
+    "Basic",
+    "Bearer token",
+    "OAuth2"
+   ],
+   "auth_primary": "API key",
+   "auth_notes": "Standard API access is via secret/restricted API keys sent as the HTTP Basic Auth username (or as a Bearer token for cross-origin requests). OAuth2 exists but is scoped to Stripe Connect (platforms authorizing access to a connected merchant's account), not general first-party API access. The official MCP server supports both OAuth (recommended) and restricted API key as a bearer token.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can sign up for a Stripe account and immediately get test-mode secret keys (prefix sk_test_) to call the full API at no cost; live-mode keys just require completing account activation (no paid plan or approval gate for API access itself).",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://docs.stripe.com/api",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://mcp.stripe.com",
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "The Stripe API authenticates requests using HTTP Basic Auth. Provide your API key as the basic auth username value."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "if you need to authenticate using bearer auth (for example, for a cross-origin request), use -H \"Authorization: Bearer"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://docs.stripe.com/mcp",
+     "quote": "Stripe's MCP server uses OAuth to authorize clients according to the MCP specification."
+    },
+    {
+     "field": "access",
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "Test secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://docs.stripe.com/mcp",
+     "quote": "The Stripe Model Context Protocol (MCP) server provides tools that AI agents can use to interact with the Stripe API"
+    },
+    {
+     "field": "api_style",
+     "url": "https://docs.stripe.com/api/authentication",
+     "quote": "curl https://api.stripe.com/v1/charges -u sk_test_REDACTED:"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://docs.stripe.com/webhooks",
+     "quote": "Stripe can push real-time event data to your application's webhook endpoint when events happen in your Stripe account."
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://github.com/stripe/openapi/blob/master/README.md",
+     "quote": "This repository contains OpenAPI specifications for Stripe's API."
+    }
+   ],
+   "confidence": "high",
+   "open_questions": null
+  },
+  "issues": [
+   "evidence for openapi_spec could not be found on https://github.com/stripe/openapi/blob/master/README.md (quote match 0.74) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim",
+   "evidence for webhooks could not be found on https://docs.stripe.com/webhooks (quote match 0.75) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "83": {
+  "record": {
+   "id": 83,
+   "app": "Binance",
+   "what_it_does": "Binance's API lets developers programmatically place trades, manage accounts/wallets, and stream market data across its Spot, Margin, Futures, and Options crypto exchange products.",
+   "auth_methods": [
+    "API key",
+    "Other"
+   ],
+   "auth_primary": "API key",
+   "auth_notes": "Signed requests use an API key (X-MBX-APIKEY header) plus a request signature computed with HMAC SHA256, RSA, or Ed25519 depending on the key type generated in API Management; there is also a separate 'Binance ID' OAuth2 login flow used only for third-party social sign-in/profile retrieval (user:email, user:address scopes), not for trading/account API calls, so it is not the primary method for an agent toolkit.",
+   "access": "self_serve_free",
+   "access_notes": "Any Binance account holder can generate API keys for free in API Management; a free Spot Testnet and a no-cost Demo mode are also available for building/testing without a funded account. Full production trading requires normal account KYC verification (standard for any user, not a special developer-approval gate).",
+   "api_style": [
+    "REST",
+    "WebSocket"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://binance-docs.github.io/apidocs/spot/en/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "webhooks_notes": "Not used for core Spot/Futures trading (which relies on WebSocket user-data streams), but documented webhook callbacks exist for specific products like Binance Connect (order status change events) and KYC-SaaS.",
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "ready",
+   "main_blocker": null,
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+     "quote": "Secure endpoints require a valid API key to be specified and authenticated."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+     "quote": "Signatures generated using HMAC are not case-sensitive"
+    },
+    {
+     "field": "access",
+     "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+     "quote": "API keys can be created on the API Management page of your Binance account."
+    },
+    {
+     "field": "access",
+     "url": "https://www.binance.com/en/binance-api",
+     "quote": "Binance Spot Testnet or the Demo mode, both available at no cost."
+    },
+    {
+     "field": "api_style",
+     "url": "https://github.com/binance/binance-spot-api-docs/blob/master/README.md",
+     "quote": "rest-api.md | Spot REST API (/api)"
+    },
+    {
+     "field": "api_style",
+     "url": "https://github.com/binance/binance-spot-api-docs/blob/master/README.md",
+     "quote": "web-socket-api.md | Spot WebSocket API"
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developers.binance.com/docs/connect_prime/webhook",
+     "quote": "Whenever a key event (currently only \"order status change\") occurs, Binance Connect will send a webhook message"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://github.com/nirholas/Binance-MCP",
+     "quote": "A Model Context Protocol (MCP) server for Binance.com API. Offers standardized access to spot trading, wallets..."
+    },
+    {
+     "field": "openapi_spec",
+     "url": "https://github.com/binance/binance-api-swagger",
+     "quote": "binance/binance-api-swagger"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact scope/limits of the separate 'Login with Binance' OAuth2 flow (social login only, distinct from trading API auth) could not be fully verified from a primary Binance doc page in this pass \u2014 evidence for it came from secondary sources."
+  },
+  "issues": [
+   "evidence for access could not be found on https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md (quote match 0.61) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "87": {
+  "record": {
+   "id": 87,
+   "app": "Xero",
+   "what_it_does": "Xero is cloud accounting software, and its API lets third-party apps read and write a connected organisation's accounting data (invoices, contacts, bank transactions, payments, reports) plus payroll, assets, projects, and files.",
+   "auth_methods": [
+    "OAuth2"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Standard multi-tenant apps use the OAuth2 authorization code flow or its PKCE extension. A separate paid add-on called Custom Connections uses the OAuth2 client credentials grant for single-organisation, non-interactive integrations ($10/mo per connection).",
+   "access": "self_serve_free",
+   "access_notes": "Sign-up is free and every account gets a fully functional Demo Company for building/testing at no cost, with client ID/secret issued immediately. However the free 'Starter' tier caps an app at 5 live organisation connections; scaling beyond that requires a paid connections tier or, for App Store distribution, Xero's certification/review process.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developer.xero.com/documentation/api/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://github.com/XeroAPI/xero-mcp-server",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Free/Starter tier caps live connections at 5; broader multi-customer distribution needs a paid connections tier or Xero App Store certification review",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developer.xero.com/documentation/guides/oauth2/overview",
+     "quote": "Xero's API supports the authorization code grant type using the standard authorization code flow or the Proof Key for Code Exchange (PKCE) extension."
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://developer.xero.com/documentation/guides/oauth2/custom-connections",
+     "quote": "Custom Connections are a premium integration option that utilise the client credentials grant type to access data from a single Xero organisation."
+    },
+    {
+     "field": "access",
+     "url": "https://developer.xero.com/faq",
+     "quote": "Xero accounts are free, and each comes with a fully functional Demo Company."
+    },
+    {
+     "field": "access",
+     "url": "https://developer.xero.com/faq",
+     "quote": "Connections (maximum) | 5 | 50 | 1000 | 10,000 | No limit"
+    },
+    {
+     "field": "api_style",
+     "url": "https://github.com/XeroAPI/Xero-OpenAPI",
+     "quote": "This repository holds the official Xero OpenAPI descriptions."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developer.xero.com/documentation/api/accounting/invoices",
+     "quote": "The response code returned for a successful request is a 204 (no content)... See the Webhooks page for more details."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://devblog.xero.com/xero-introduces-new-model-context-protocol-server-for-smarter-accounting-4d195ccaeda5",
+     "quote": "Xero introduces new Model Context Protocol server for smarter accounting"
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://github.com/XeroAPI/xero-mcp-server",
+     "quote": "This is a Model Context Protocol (MCP) server implementation for Xero. It provides a bridge between the MCP protocol and Xero's API"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Exact impact of the granular-scopes migration (old bundled scopes deprecated in favour of new ones effective ~Apr 2026) on existing multi-tenant OAuth2 apps was not fully explored."
+  },
+  "issues": [
+   "evidence for api_style could not be found on https://github.com/XeroAPI/Xero-OpenAPI (quote match 0.79) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "88": {
+  "record": {
+   "id": 88,
+   "app": "Brex",
+   "what_it_does": "Brex is a unified spend-management platform (corporate cards, expenses, reimbursements, bill pay, travel) that exposes REST APIs to power internal tools and custom workflows.",
+   "auth_methods": [
+    "OAuth2",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "Existing Brex customers can self-serve a static 'user token' (Bearer) from their dashboard after an admin accepts the developer API agreement. Third-party partner apps instead use OpenID-Connect-compliant OAuth2 (Authorization Code Grant for acting on behalf of a client, or Client Credentials Grant for the Onboarding API), but obtaining a client_id/client_secret requires contacting Brex developer support directly \u2014 there is no self-serve partner registration.",
+   "access": "approval_required",
+   "access_notes": "Bearer-token access is only available to companies that already have a live Brex corporate account (admin must sign in to dashboard.brex.com and accept the developer API agreement) \u2014 there's no free/sandbox signup for non-customers. Partner OAuth2 credentials (client_id/secret) are only issued after contacting Brex's developer support team.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developer.brex.com/",
+   "openapi_spec": true,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://developer.brex.com/docs/mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "Partner OAuth2 credentials require manually contacting Brex developer support for approval, and bearer-token auth needs an existing paid Brex corporate account",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://developer.brex.com/docs/authentication/",
+     "quote": "generate a user token from your Brex dashboard and pass it along in your API call headers"
+    },
+    {
+     "field": "auth_methods",
+     "url": "https://developer.brex.com/docs/partner_authentication/",
+     "quote": "The Brex API is fully compliant with OpenID Connect, an extension on top of OAuth 2.0."
+    },
+    {
+     "field": "auth_primary",
+     "url": "https://developer.brex.com/docs/partner_authentication/",
+     "quote": "Please contact our developer support team to be issued a client ID and client secret for partner authentication."
+    },
+    {
+     "field": "access",
+     "url": "https://developer.brex.com/docs/authentication/",
+     "quote": "If your company has not accepted the developer API agreement, please review the terms and conditions. These must be accepted to use the developer API."
+    },
+    {
+     "field": "api_style",
+     "url": "https://developer.brex.com/",
+     "quote": "Brex APIs use the REST architecture, are defined using the OpenAPI specification and use standard HTTP response codes and verbs."
+    },
+    {
+     "field": "webhooks",
+     "url": "https://developer.brex.com/docs/webhooks/",
+     "quote": "Brex APIs offer webhooks to notify you in real-time when certain events happen in your account."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://developer.brex.com/docs/mcp",
+     "quote": "The Brex MCP server lets AI assistants interact directly with your Brex account: manage expenses, look up users, check cards"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": "Unclear whether a developer without an existing paid Brex corporate account can obtain any working credentials (no free trial/sandbox for non-customers is documented); staging environment exists but still requires partner-issued client credentials."
+  },
+  "issues": [
+   "evidence for auth_primary could not be found on https://developer.brex.com/docs/partner_authentication/ (quote match 0.63) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "98": {
+  "record": {
+   "id": 98,
+   "app": "Mermaid CLI",
+   "what_it_does": "A command-line tool (and Node.js library) that converts Mermaid diagram definition files into SVG, PNG, or PDF output.",
+   "auth_methods": [
+    "None"
+   ],
+   "auth_primary": "None",
+   "auth_notes": "Mermaid CLI is a local npm package/Docker image/Node.js API \u2014 it runs a headless Chromium instance locally to render diagrams and has no network service or credentials of any kind.",
+   "access": "self_serve_free",
+   "access_notes": "Anyone can install it for free via `npm install -g @mermaid-js/mermaid-cli`, pull the Docker image, or use the Node.js API \u2014 no signup, account, or payment involved.",
+   "api_style": [
+    "SDK/CLI only"
+   ],
+   "api_breadth": "narrow",
+   "api_docs_url": "https://github.com/mermaid-js/mermaid-cli",
+   "openapi_spec": false,
+   "webhooks": false,
+   "official_mcp": "none",
+   "mcp_url": null,
+   "buildability": "not_applicable",
+   "main_blocker": "Not a hosted API \u2014 it is a local CLI/library that shells out to a headless browser, so it needs different packaging (e.g. wrapping the CLI/Node API as a local tool) rather than an OAuth/API-key toolkit action.",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "This is a command-line interface (CLI) for mermaid. It takes a mermaid definition file as input and generates an SVG/PNG/PDF file as output."
+    },
+    {
+     "field": "access",
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "npm install -g @mermaid-js/mermaid-cli"
+    },
+    {
+     "field": "api_style",
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "It's possible to call mermaid-cli via a Node.JS API."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://github.com/mermaid-js/mermaid-cli",
+     "quote": "Command line tool for the Mermaid library"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": null
+  },
+  "issues": [
+   "evidence for auth_methods could not be found on https://github.com/mermaid-js/mermaid-cli (quote match 0.65) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ },
+ "100": {
+  "record": {
+   "id": 100,
+   "app": "Grain",
+   "what_it_does": "Grain allows developers to read meeting data, manage recordings, and receive real-time updates via webhooks.",
+   "auth_methods": [
+    "OAuth2",
+    "API key",
+    "Bearer token"
+   ],
+   "auth_primary": "OAuth2",
+   "auth_notes": "OAuth2 is recommended for integrations to be used by any Grain user.",
+   "access": "paid_plan",
+   "access_notes": "API access requires a paid plan; the Free plan does not include API access.",
+   "api_style": [
+    "REST"
+   ],
+   "api_breadth": "broad",
+   "api_docs_url": "https://developers.grain.com/",
+   "openapi_spec": false,
+   "webhooks": true,
+   "official_mcp": "official",
+   "mcp_url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+   "buildability": "ready_with_caveats",
+   "main_blocker": "API access requires a paid plan",
+   "evidence": [
+    {
+     "field": "auth_methods",
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "Grain supports three authentication methods: Personal Access Token, Workspace Access Token, OAuth2."
+    },
+    {
+     "field": "access",
+     "url": "https://support.grain.com/en/articles/15507288-grain-api",
+     "quote": "The Free plan does not include API access."
+    },
+    {
+     "field": "official_mcp",
+     "url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+     "quote": "Grain's MCP server gives AI assistants direct access to your meetings."
+    },
+    {
+     "field": "api_style",
+     "url": "https://developers.grain.com/",
+     "quote": "API Domain is: https://api.grain.com"
+    }
+   ],
+   "confidence": "high",
+   "open_questions": null
+  },
+  "issues": [
+   "evidence for auth_methods could not be found on https://support.grain.com/en/articles/15507288-grain-api (quote match 0.43) \u2014 fetch a primary page and copy a verbatim quote, or correct the claim"
+  ]
+ }
+}

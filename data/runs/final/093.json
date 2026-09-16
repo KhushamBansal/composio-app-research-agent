@@ -1,0 +1,165 @@
+{
+ "record": {
+  "id": 93,
+  "app": "Fathom",
+  "what_it_does": "Fathom is an AI meeting recorder/notetaker that records video calls and produces transcripts, summaries, and action items.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "API key (X-Api-Key header) is generated per-user in Settings and is meant for internal/single-tenant tools; OAuth2 (Bearer token) is documented as the method for public apps that other Fathom users install to connect their own accounts. OAuth-connected apps have a functional restriction: they can't use include_summary/include_transcript on /meetings and must call the /recordings endpoints instead.",
+  "access": "self_serve_free",
+  "access_notes": "Confirmed on the official FAQ: 'API access\u2014keys and webhooks\u2014 are included on all plans,' including the Free plan, with no per-call charges. Anyone can generate an API key immediately in User Settings. Building a public OAuth app additionally requires registering the app, and OAuth apps are 'subject to review' if seeking marketplace promotion, but base API/OAuth credential issuance itself is not gated by a paid plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "narrow",
+  "api_docs_url": "https://developers.fathom.ai/api-overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://api.fathom.ai/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Small surface (~10 endpoints: meetings, meeting types, recording summary/transcript/download, teams, team members, users, webhooks) and OAuth apps face review before public/marketplace distribution",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.fathom.ai/quickstart",
+    "quote": "curl https://api.fathom.ai/external/v1/meetings -H \"X-Api-Key: YOUR_API_KEY\""
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.fathom.ai/api-reference/openapi.yaml",
+    "quote": "security:\n - ApiKeyAuth: []\n - BearerAuth: []"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.fathom.ai/faq",
+    "quote": "Use OAuth if you're building an app that other Fathom users will install so they can connect their own accounts"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.fathom.ai/faq",
+    "quote": "Yes. API access\u2014keys and webhooks\u2014 are included on all plans."
+   },
+   {
+    "field": "access",
+    "url": "https://help.fathom.video/en/articles/8368641",
+    "quote": "Anyone can browse the API docs and start building!"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.fathom.ai/mcp-docs/index",
+    "quote": "Fathom now offers an official MCP (Model Context Protocol) server, allowing you to connect your Fathom meeting data to AI assistants"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.fathom.ai/mcp-docs/index",
+    "quote": "MCP server URL: https://api.fathom.ai/mcp"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.fathom.ai/api-overview",
+    "quote": "This documentation describes Fathom's REST API."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.fathom.ai/api-reference/openapi.yaml",
+    "quote": "openapi: 3.1.1\ninfo:\n title: Fathom External API"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Fathom Video API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Fathom Video API webhooks OAuth"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.fathom.ai/api-overview",
+       "https://developers.fathom.ai/oauth",
+       "https://developers.fathom.ai/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.fathom.ai/quickstart",
+       "https://developers.fathom.ai/mcp-docs/index",
+       "https://developers.fathom.ai/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Fathom video pricing plan API key access which plan"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.fathom.video/en/articles/8368641",
+       "https://www.fathom.ai/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.fathom.ai/faq"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Fathom API \"Team plan\" OR \"Free plan\" required generate API key site:help.fathom.video OR site:developers.fathom.ai",
+      "include_answer": true
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.fathom.ai/api-reference/openapi.yaml"
+      ],
+      "max_characters": 500
+     }
+    }
+   ],
+   "cost_usd": 0.21512649999999997,
+   "turns": 11,
+   "seconds": 68.8
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

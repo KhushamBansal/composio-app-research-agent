@@ -1,0 +1,132 @@
+{
+ "record": {
+  "id": 72,
+  "app": "Airtable",
+  "what_it_does": "Airtable is a cloud database/spreadsheet-hybrid platform whose API lets external systems read and write bases, tables, records, fields, and webhooks.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Airtable calls its static bearer token a 'personal access token' (PAT), created at airtable.com/create/tokens and passed as an Authorization: Bearer header; it acts as the creating user's own account and is meant for personal/internal integrations. For any integration where third-party users grant access, Airtable explicitly directs developers to use OAuth2 (registered at airtable.com/create/oauth), which also issues Bearer-style access tokens via the standard OAuth grant flow. Legacy API keys were fully deprecated as of Feb 1, 2024.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can sign up for a free Airtable account and immediately generate a personal access token or register an OAuth integration with no cost gate; API access itself is not paywalled ('Billing plans: All plans' on endpoints), though sharing an OAuth integration publicly requires adding a privacy policy/TOS URL (no approval/review process, just profile completeness).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://airtable.com/developers/web/api/introduction",
+  "openapi_spec": null,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.airtable.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://airtable.com/developers/web/api/authentication",
+    "quote": "We currently support using personal access tokens and OAuth access tokens during the authentication process."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://airtable.com/developers/web/guides/oauth-integrations",
+    "quote": "Any integrations that allow other users to grant access to Airtable should use OAuth."
+   },
+   {
+    "field": "access",
+    "url": "https://airtable.com/developers/web/api/list-records",
+    "quote": "Authentication: Personal access token, OAuth integration"
+   },
+   {
+    "field": "access",
+    "url": "https://airtable.com/developers/web/guides/personal-access-tokens",
+    "quote": "The personal access tokens panel can be accessed at /create/tokens. Here, you can create new tokens and manage your existing tokens."
+   },
+   {
+    "field": "api_style",
+    "url": "https://airtable.com/developers/web/api/introduction",
+    "quote": "The API closely follows REST semantics, uses JSON to encode objects, and relies on standard HTTP codes to signal operation outcomes."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://airtable.com/developers/web/api/list-webhooks",
+    "quote": "Lists all webhooks that are registered for a base, along with their statuses."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.airtable.com/v1/docs/using-the-airtable-mcp-server",
+    "quote": "Airtable's MCP server lets you connect AI tools directly to your Airtable bases."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.airtable.com/v1/docs/using-the-airtable-mcp-server",
+    "quote": "Server URL: https://mcp.airtable.com/mcp"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No official OpenAPI/Swagger spec was located on the public docs site (only the interactive reference and airtable.js client are listed), so openapi_spec is left null rather than asserted false."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://airtable.com/developers/web/api/introduction",
+       "https://airtable.com/developers/web/api/authentication",
+       "https://airtable.com/developers/web/guides/personal-access-tokens"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://airtable.com/developers/web/api/model/webhooks-specification",
+       "https://airtable.com/developers/web/guides/oauth-integrations",
+       "https://airtable.com/developers/web/api/list-records"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Airtable official MCP server documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.airtable.com/v1/docs/using-the-airtable-mcp-server",
+       "https://airtable.com/developers/web/api/rate-limits"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://airtable.com/developers/web/api/list-webhooks"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.1672101,
+   "turns": 7,
+   "seconds": 43.7
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

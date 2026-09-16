@@ -1,0 +1,156 @@
+{
+ "record": {
+  "id": 3,
+  "app": "Pipedrive",
+  "what_it_does": "Pipedrive is a cloud-based CRM and sales pipeline management platform that lets sales teams track deals, contacts, organizations, activities, and leads.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 is required for any app listed in the Pipedrive Marketplace (public or private) and is the standard method for multi-user apps; a personal API token (sent via the x-api-token header) is also supported for single-user/integration use but is tied to one user/company and only one can be active at a time.",
+  "access": "self_serve_free",
+  "access_notes": "Developers can request a free Developer Sandbox account (Developer Hub) that immediately provides client_id/client_secret for OAuth and a test environment, with no cost and no approval gate for building/testing (including private apps, which skip Marketplace review entirely). Production use by real end users requires those users to have their own Pipedrive account, which is a 14-day free trial converting to a paid plan (Lite $14+/seat/mo) \u2014 there is no permanently free production plan. Public Marketplace listing additionally requires an app approval process.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.pipedrive.com/docs/api/v1",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.pipedrive.ai/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "end-user production access requires a paid Pipedrive plan after a 14-day trial (no free production tier), and public Marketplace distribution requires app review",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+    "quote": "The API token must be provided in the `x-api-token` header for all requests"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://pipedrive.readme.io/docs/marketplace-oauth-authorization",
+    "quote": "Using OAuth 2.0 is necessary for developing apps that are available in the Pipedrive Marketplace."
+   },
+   {
+    "field": "access",
+    "url": "https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app",
+    "quote": "The developer sandbox account is a must-have so you can work on your app in a risk-free environment."
+   },
+   {
+    "field": "access",
+    "url": "https://www.pipedrive.com/en/pricing",
+    "quote": "Free 14-day trial. No credit card required."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.pipedrive.com/docs/api/v1",
+    "quote": "This reference helps you implement the RESTful Pipedrive API."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.pipedrive.com/en/article/mcp-claude",
+    "quote": "in the \"Connection\" field, enter https://mcp.pipedrive.ai/mcp and click \"Add\""
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.pipedrive.com/en/features/mcp-server",
+    "quote": "An official, reliable and fully supported connection built and maintained by Pipedrive."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact size of the Pipedrive MCP tool set (number of operations) wasn't independently verified beyond the 'Pipedrive MCP tools' KB reference; whether the free developer sandbox account has any manual approval step (e.g. email verification) before granting access was not fully confirmed."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+       "https://developers.pipedrive.com/docs/api/v1",
+       "https://pipedrive.readme.io/docs/marketplace-manager-oauth-authorization"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pipedrive official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.pipedrive.com/en/features/mcp-server",
+       "https://pipedrive.readme.io/docs/marketplace-oauth-authorization",
+       "https://pipedrive.readme.io/docs/guide-for-webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pipedrive.readme.io/docs/pipedrive-mcp-server",
+       "https://www.pipedrive.com/en/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pipedrive.readme.io/docs/marketplace-registering-the-app",
+       "https://pipedrive.readme.io/docs/marketplace-creating-a-proper-app"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pipedrive developer sandbox account request free"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pipedrive MCP server URL \"mcp.pipedrive.com\" OR \"connect\" custom AI assistant setup guide"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.pipedrive.com/en/article/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.pipedrive.com/en/article/mcp-claude"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.3315766,
+   "turns": 11,
+   "seconds": 65.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

@@ -1,0 +1,153 @@
+{
+ "record": {
+  "id": 89,
+  "app": "Ramp",
+  "what_it_does": "Ramp is a corporate card and spend-management platform whose Developer API lets businesses and partners programmatically manage cards, transactions, bills, reimbursements, vendors, users, and other spend/accounting data.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Ramp implements OAuth 2.0 with three grant types: Client Credentials (server-to-server, no user interaction), Authorization Code (required for third-party/multi-tenant apps acting on behalf of other businesses, needs admin/business-owner consent), and Refresh Token. Resulting access tokens are bearer tokens prefixed ramp_business_tok_/ramp_user_tok_ etc., sent as 'Authorization: Bearer <token>'. Client Credentials tokens last 10 days; Authorization Code tokens default to 1 hour. Scopes follow a resource:permission pattern (e.g. transactions:read, bills:write).",
+  "access": "approval_required",
+  "access_notes": "The Quickstart guide states app creation ('Company \u2192 Developer') assumes 'you are a Ramp customer with admin access to your dashboard' \u2014 i.e., production API access is gated behind being an existing, verified Ramp business customer with an admin/business-owner role. Developers without a live Ramp account must go through a separate 'Get Sandbox Access' request/review process rather than instant self-serve signup.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.ramp.com/developer-api/v1/overview/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.ramp.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production credentials require being an existing, verified Ramp business customer with admin/business-owner dashboard access; sandbox access for non-customers requires a reviewed request, not instant self-serve signup.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "quote": "Ramp uses OAuth 2.0 for secure API access, providing granular permission control through scopes"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ramp.com/llms-guides/authorization.txt",
+    "quote": "Format: Bearer tokens prefixed with ramp_business_tok_, ramp_user_tok_, ramp_business_jwt_, or ramp_user_jwt_"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ramp.com/llms-guides/getting-started.txt",
+    "quote": "This guide assumes you are a Ramp customer with admin access to your dashboard. Need a test environment for development? Request sandbox access."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.ramp.com/llms-guides/getting-started.txt",
+    "quote": "make a GET request to {environment-url}/developer/v1/transactions"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+    "quote": "Ramp MCP allows you to securely connect Ramp with AI assistants like ChatGPT and Claude, so you can query Ramp data and take actions with natural language."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+    "quote": "Production: https://mcp.ramp.com/mcp"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.ramp.com/llms-guides/webhooks.txt",
+    "quote": "Webhooks allow your application to receive real-time notifications about events that occur in your Ramp account."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.ramp.com/llms.txt",
+    "quote": "[OpenAPI spec](/openapi/developer-api.json) - Canonical OpenAPI schema."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether a developer with no existing Ramp customer relationship can obtain sandbox access purely through the 'Get Sandbox Access' form without any prior business relationship with Ramp, and the typical review turnaround (a third-party source, not verified on a primary page, cited ~3 business days)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ramp.com/developer-api/v1/overview/introduction",
+       "https://docs.ramp.com/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ramp.com/llms-guides/authorization.txt",
+       "https://docs.ramp.com/llms-guides/quickstart.txt",
+       "https://docs.ramp.com/llms-guides/ramp-mcp.txt",
+       "https://docs.ramp.com/llms-guides/get-sandbox-access.txt",
+       "https://docs.ramp.com/llms-guides/webhooks.txt"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fe7b73bf-f0d1-4b10-9c33-5d9855cc92f4/tool-results/toolu_01TPrsGVjBD3SmHCjas2LkTU.json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ramp.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ramp.com/llms-guides/getting-started.txt",
+       "https://docs.ramp.com/llms-guides/sandbox-access.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ramp.com/llms-guides/sandbox.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ramp developer API \"sandbox access\" request form apply"
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fe7b73bf-f0d1-4b10-9c33-5d9855cc92f4/tool-results/toolu_01TPrsGVjBD3SmHCjas2LkTU.json",
+      "limit": 1
+     }
+    }
+   ],
+   "cost_usd": 0.3171001,
+   "turns": 10,
+   "seconds": 89.3
+  }
+ ],
+ "raw_result": null
+}

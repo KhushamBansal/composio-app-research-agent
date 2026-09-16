@@ -1,0 +1,335 @@
+{
+ "record": {
+  "id": 78,
+  "app": "Coda",
+  "what_it_does": "Coda is an all-in-one doc/spreadsheet workspace app, and its REST API lets external programs read and write docs, pages, tables, rows, columns, formulas, controls, permissions, and trigger automations.",
+  "auth_methods": [
+   "Bearer token"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The public REST API (coda.io/apis/v1) is authenticated only with a personal API token sent as `Authorization: Bearer <token>`, generated per-user in Account Settings. Coda's OAuth2 support exists only inside the separate Packs SDK (for Packs to authenticate to *other* third-party APIs), not for third parties calling Coda's own API, so it is not usable as a multi-user agent auth flow against Coda itself.",
+  "access": "self_serve_free",
+  "access_notes": "Any Coda user, on free or paid workspaces, can generate an API token immediately at no cost from Account Settings; no approval or paid plan is required to get working credentials, though what the token can do is scoped by the token owner's role/permissions in each workspace.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://coda.io/developers/apis/v1",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "headers = {'Authorization': 'Bearer <your API token>'}"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "The API token is invalid or has expired."
+   },
+   {
+    "field": "access",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "We make the Superhuman Docs API available to all of our users free of charge, in both free and paid workspaces."
+   },
+   {
+    "field": "api_style",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "In an effort to standardize our API and make it accessible, we offer an OpenAPI 3.0"
+   },
+   {
+    "field": "api_style",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "getList folders\\n- postCreate folder\\n- getGet folder\\n- patchUpdate folder"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://coda.io/developers/apis/v1",
+    "quote": "Rate Limiting\\n- Consistency\\n- Volatile Formulas\\n- Free and Paid Workspaces\\n- Examples\\n- OpenAPI/Swagger Spec\\n- Client libraries"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not directly fetch coda.io/apis/v1/openapi.yaml to confirm its exact field coverage, though the docs page explicitly states an OpenAPI 3.0 spec is offered. No vendor-hosted MCP server was found in web search; only community MCP wrapper projects (e.g. tjc-lp/coda-mcp-server, orellazri/coda-mcp) exist, each explicitly disclaiming Coda affiliation."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://coda.io/developers",
+       "https://coda.io/developers/apis/v1"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "OAuth|API [Kk]ey|Bearer|authoriz|Auth|rate limit|webhook|Webhook",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-n": true,
+      "head_limit": 80
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}(OAuth|API [Kk]ey|Bearer token|generate.{0,15}API token|Authorization: Bearer).{80}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 40
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "OAuth",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "count"
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "webhook",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "count",
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "openapi|swagger",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "count",
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{100}webhook.{100}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{100}openapi.{100}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{100}(API token|Generate API|account settings|Bearer \\$).{100}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 20
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{60}(account settings|coda.io/account|generate an API token|Generate API token).{60}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "-i": true,
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "## (Docs|Pages|Tables|Rows|Columns|Formulas|Controls|Automations|Permissions|Mutation Status|Analytics|Publishing|Whoami|Resolve browser link|Account|Folders)\\\\n",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "subscri|outbound webhook|receive events|payload.{0,20}sent to your",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-i": true,
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{0,5}(get|post|put|patch|delete)[A-Z][A-Za-z ]{2,40}\\\\n",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 100
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Coda official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Coda API OAuth2 developers third party apps"
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{150}Free and Paid Workspaces.{400}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{100}(Generate API token|generate an API token|Account Settings|coda.io/account).{200}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Free and Paid Workspaces\\\\n\\\\n.{300}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 2
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "generate.{0,10}API token.{0,150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "-i": true,
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Generating an API [Tt]oken.{0,300}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{0,150}(Get Started|GENERATE API TOKEN|Settings.{0,5}API|/account\\b).{0,150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^.{2000}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^.{200}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Coda API generate token account settings free"
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{60}(Rate Limiting)\\\\n\\\\n.{300}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 2
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Coda API outbound webhooks subscribe to row changes event"
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "\\\"title\\\":\\\"[^\\\"]*Coda[^\\\"]*\\\",\\\"url\\\":\\\"https://coda.io/developers[^\\\"]*\\\"",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Build (things|on Coda|apps).{0,150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/6581cc35-f17a-47da-a0a7-ff084765d557/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579281284.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 5
+     }
+    }
+   ],
+   "cost_usd": 0.37976829999999995,
+   "turns": 30,
+   "seconds": 180.7
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,128 @@
+{
+ "record": {
+  "id": 74,
+  "app": "Jira",
+  "what_it_does": "Jira is Atlassian's issue tracking and project management tool, and it exposes a Cloud REST API that lets external apps create, read, update, and query projects, issues, workflows, and users.",
+  "auth_methods": [
+   "OAuth2",
+   "Basic",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth 2.0 (3LO) is for external apps acting on a user's behalf and is the method Atlassian requires distributable third-party integrations to use. Basic auth (email + API token) is documented but recommended only for personal scripts, not distributed apps. JWT is used internally by Connect apps, which Atlassian is sunsetting in favor of Forge (not a public HTTP auth method for third-party toolkits). Forge apps use a managed OAuth2 variant but only run inside Atlassian's own hosting platform.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create a free Atlassian account and a free Jira Cloud site, then register an OAuth 2.0 (3LO) app in the developer console immediately, or generate a personal API token for basic auth. Distributing the OAuth app to other users beyond the developer just requires enabling 'sharing' (Atlassian marketplace review is only needed for a public Marketplace listing, not for basic multi-user distribution via a shared authorization link).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://www.atlassian.com/platform/remote-mcp-server",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/security-overview/",
+    "quote": "OAuth 2.0 (3LO) apps use three-legged OAuth, also known as OAuth 2.0 authorization code grants"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+    "quote": "REST clients can authenticate themselves using basic authentication with an Atlassian account email address and API token"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/",
+    "quote": "OAuth 2.0 (3LO) apps are created and managed in the developer console"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+    "quote": "The Jira REST API enables you to interact with Jira programmatically."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.atlassian.com/platform/remote-mcp-server",
+    "quote": "Atlassian Rovo MCP server securely connects Jira, Confluence and more with your LLM, IDE, or agent platforms of choice."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+    "quote": "You can use Jira webhooks to notify your app or web application when certain events occur in Jira."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developer.atlassian.com/cloud/jira/platform/swagger-v3.v3.json",
+    "quote": "\"components\":{\"schemas\":{\"ActorInputBean\""
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/",
+       "https://developer.atlassian.com/cloud/jira/platform/security-overview/",
+       "https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.atlassian.com/cloud/jira/platform/webhooks/",
+       "https://www.atlassian.com/platform/remote-mcp-server"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.atlassian.com Jira Cloud REST API OpenAPI swagger.v3.json download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.atlassian.com/cloud/jira/platform/swagger-v3.v3.json"
+      ],
+      "max_characters": 500
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"
+      ],
+      "max_characters": 1500
+     }
+    }
+   ],
+   "cost_usd": 0.2339171,
+   "turns": 7,
+   "seconds": 49.0
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

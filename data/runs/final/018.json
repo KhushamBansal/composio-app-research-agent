@@ -1,0 +1,171 @@
+{
+ "record": {
+  "id": 18,
+  "app": "Help Scout",
+  "what_it_does": "Help Scout is a shared-inbox helpdesk platform (email, live chat, knowledge base) that exposes a REST API for managing conversations, customers, mailboxes, knowledge-base docs, and workflow automation.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The primary Inbox API 2.0 (and Chat API) use OAuth2 with Authorization Code flow (for third-party/multi-user integrations) or Client Credentials flow (server-to-server). The separate Docs API uses a static API key sent via HTTP Basic Auth (key as username, dummy password).",
+  "access": "self_serve_trial",
+  "access_notes": "Help Scout's Free plan (5 users, 1 inbox, 1 Docs site) does not include API access per the pricing page's feature table. API access (with rate limits of 200/400/800 calls per minute) is listed only under the paid Standard/Plus/Pro tiers. A developer can get working OAuth credentials via the 15-day free trial of Standard or Plus (no credit card required), but ongoing/production use requires a paid subscription.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.helpscout.com/mailbox-api/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.helpscout.net/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "API access gated behind a paid plan (Standard/Plus/Pro); Free plan excludes API access, only reachable via 15-day trial",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+    "quote": "it uses OAuth 2.0 authorization, implementing Authorization Code and Client Credential flows"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.helpscout.com/llms.txt",
+    "quote": "Authentication: API Key via HTTP Basic Auth (API key as username, dummy password)"
+   },
+   {
+    "field": "access",
+    "url": "https://www.helpscout.com/pricing/",
+    "quote": "Just need the basics? The Free plan includes 5 users, 1 Inbox, and 1 Docs site."
+   },
+   {
+    "field": "access",
+    "url": "https://www.helpscout.com/pricing/",
+    "quote": "you'll get 15 days to take all of the plan's features for a test drive \u2014 no credit card required"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "This integration is available on the Standard, Plus, and Pro plans \u2014 any plan that includes Help Scout API access"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.helpscout.com/mailbox-api/",
+    "quote": "This is an HTTPS-only API, with OAuth 2 authentication and CORS support"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "Help Scout MCP gives AI assistants secure, official access to Help Scout data."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+    "quote": "Set the remote MCP server URL to `https://mcp.helpscout.net/mcp`"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether trial credentials created during the 15-day Standard/Plus trial continue to function (read-only or otherwise) after the trial ends without upgrading was not explicitly documented."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.helpscout.com/mailbox-api/",
+       "https://developer.helpscout.com/mailbox-api/overview/authentication/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.helpscout.com/mailbox-api/endpoints/webhooks/create/",
+       "https://developer.helpscout.com/mailbox-api/overview/rate-limits/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Help Scout official MCP server developer.helpscout.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"help.helpscout.com\" MCP server Claude connector"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.helpscout.com/mailbox-api/overview/endpoints/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports",
+       "https://developer.helpscout.com/mailbox-api/endpoints/conversations/list/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Help Scout pricing free trial plans Standard Plus Pro"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Help Scout API OpenAPI swagger spec site:developer.helpscout.com OR github"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.helpscout.com/pricing/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.helpscout.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.3799682,
+   "turns": 13,
+   "seconds": 75.9
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

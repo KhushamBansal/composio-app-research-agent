@@ -1,0 +1,136 @@
+{
+ "record": {
+  "id": 36,
+  "app": "Klaviyo",
+  "what_it_does": "Klaviyo is a marketing automation platform providing APIs to manage email/SMS campaigns, customer profiles, events, flows, catalogs, and analytics for ecommerce and marketing teams.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Private API keys (header `Authorization: Klaviyo-API-Key ...`) are the simplest self-serve method and are used for most `/api` endpoints. OAuth2 is what Klaviyo recommends for third-party/tech-partner integrations acting on behalf of multiple accounts, and is required to be listed in Klaviyo's App Marketplace. A third 'public key' method (6-character company ID passed as a query param) is only for client-side, non-sensitive event/subscription tracking and isn't suitable as an agent auth method.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for a free Klaviyo account (up to 250 profiles / 500 emails per month) and immediately generate a private API key from Settings > API keys with no approval step, per the pricing and authentication docs.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.klaviyo.com/en/reference/api_overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.klaviyo.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "Klaviyo provides 3 methods of authentication including private key authentication and OAuth"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.klaviyo.com/en/docs/api_overview",
+    "quote": "Authorization: Klaviyo-API-Key your-private-api-key"
+   },
+   {
+    "field": "access",
+    "url": "https://www.klaviyo.com/pricing",
+    "quote": "Yes \u2013 the free plan is available at no monthly cost as long as your account remains under the limits"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "quote": "To manage API keys, you must have an Owner, Admin, or Manager role on your Klaviyo account."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.klaviyo.com/en/docs/api_overview",
+    "quote": "Our APIs support cursor-based pagination with the query parameter ?page[cursor]"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+    "quote": "The Klaviyo Model Context Protocol (MCP) server seamlessly integrates with Klaviyo's APIs, enabling AI clients to interact with your Klaviyo data"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developers.klaviyo.com/en/docs/api_overview",
+    "quote": "View the latest OpenAPI spec here."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.klaviyo.com/en/docs/webhooks",
+    "quote": "Get all webhooks in an account."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether creating an OAuth app (as opposed to being listed in the App Marketplace) requires any Klaviyo review/approval was not fully confirmed from a dedicated OAuth setup page \u2014 private key auth is confirmed frictionless, so this doesn't block buildability."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.klaviyo.com/en/docs/api_overview",
+       "https://developers.klaviyo.com/en/reference/api_overview",
+       "https://developers.klaviyo.com/en/docs/authenticate_"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.klaviyo.com/en/docs/webhooks",
+       "https://developers.klaviyo.com/en/reference/api_compare_versioning"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Klaviyo official MCP server developers.klaviyo.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.klaviyo.com/en/docs/klaviyo_mcp_server",
+       "https://www.klaviyo.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0c69e20f-89b6-4f66-9478-178048fcaa86/tool-results/toolu_01YTGTVQ3ipKjvzL4VMDD7WJ.json"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.23478519999999997,
+   "turns": 8,
+   "seconds": 61.2
+  }
+ ],
+ "raw_result": null
+}

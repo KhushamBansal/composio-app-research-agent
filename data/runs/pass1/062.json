@@ -1,0 +1,223 @@
+{
+ "record": {
+  "id": 62,
+  "app": "Vercel",
+  "what_it_does": "Vercel is a cloud platform for building and hosting web apps, and its REST API lets developers programmatically manage projects, deployments, domains/DNS, environment variables, teams, and related resources.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal/team/project-scoped Bearer access tokens (prefix vcp_) are the primary single-account auth method, created instantly from the Account Tokens page. For multi-user, third-party integrations, Vercel documents a standard OAuth2 authorization-code flow (redirect URL with a short-lived `code`, exchanged via POST /v2/oauth/access_token for a long-lived Bearer access_token) managed through the Integrations Console. Building/using an OAuth integration is self-serve; only listing it publicly on the Marketplace requires a separate review.",
+  "access": "self_serve_free",
+  "access_notes": "Any Vercel account (including the free Hobby plan) can create a scoped access token immediately from https://vercel.com/account/tokens with no payment required. OAuth2 integration client_id/client_secret are likewise created self-serve via the Integrations Console; only public Marketplace listing goes through an approval checklist.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://vercel.com/docs/rest-api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.vercel.com",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://vercel.com/docs/accounts/access-tokens",
+    "quote": "Pass the token as a Bearer token in the Authorization header of your request."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+    "quote": "POST https://api.vercel.com/v2/oauth/access_token"
+   },
+   {
+    "field": "access",
+    "url": "https://vercel.com/docs/accounts/access-tokens",
+    "quote": "Create a Vercel API access token from your personal account's Account Tokens page"
+   },
+   {
+    "field": "api_style",
+    "url": "https://vercel.com/docs/rest-api",
+    "quote": "Interact programmatically with your Vercel account using the SDK or direct HTTP requests."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+    "quote": "Vercel MCP is Vercel's official MCP server. It's a remote MCP with OAuth"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact per-plan API rate limits weren't checked in detail (linked at /docs/limits#rate-limits); not load-bearing for buildability."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://vercel.com/docs/rest-api",
+       "https://vercel.com/docs/rest-api/reference"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Authorization|Bearer|Access Token|OAuth|Authentication",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579127197.txt",
+      "-n": true,
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Authorization|Bearer|Access Token|OAuth|Authentication",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579127197.txt",
+      "-n": true,
+      "-i": true,
+      "output_mode": "content",
+      "-C": 2
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "bash shell powershell command execute",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/rest-api",
+      "prompt": "Extract: how authentication works (API tokens, OAuth2 apps, integrations), what auth methods are documented, whether there's a free way to get an API token, rate limits, and any mention of OpenAPI spec or webhooks. Quote exact short phrases where possible."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/rest-api/reference",
+      "prompt": "Extract: what authentication section says (Bearer token, OAuth2 access token), whether an OpenAPI/Swagger spec is linked/downloadable, list of major API resource categories (e.g. deployments, projects, domains, dns, env, teams, webhooks, edge config, log drains) to gauge breadth. Quote exact short phrases where possible."
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^## ",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/toolu_016cpL75fzMjqXdvMhzjFqmw.txt",
+      "output_mode": "content"
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "webhook|Webhook",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/toolu_016cpL75fzMjqXdvMhzjFqmw.txt",
+      "output_mode": "content",
+      "head_limit": 15
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/toolu_016cpL75fzMjqXdvMhzjFqmw.txt",
+      "offset": 355,
+      "limit": 15
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Bearer|OAuth|bearer token|Authorization header",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/792bf154-0249-4095-aad1-6d0391b0190c/tool-results/toolu_016cpL75fzMjqXdvMhzjFqmw.txt",
+      "output_mode": "content",
+      "-n": true
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/rest-api/authentication",
+      "prompt": "Extract exactly how to authenticate to the Vercel REST API: is it a Bearer access token in the Authorization header? How do you obtain a token (Account Settings > Tokens)? Is there OAuth2 for third-party integrations/apps? Quote short exact phrases."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/integrations/create-integration/oauth-integration",
+      "prompt": "Extract: does Vercel support OAuth2 for third-party integrations built by external developers? What's the authorization flow? Is approval/review required to publish or use an integration (e.g. Marketplace review)? Quote short exact phrases."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vercel REST API \"Authorization: Bearer\" access token authenticate"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vercel integrations OAuth2 developer documentation create integration"
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/rest-api/getting-started",
+      "prompt": "Extract the exact steps and curl example for authenticating to the Vercel REST API with a Bearer access token. Quote short exact phrases including the curl command with Authorization: Bearer."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/accounts/access-tokens",
+      "prompt": "Extract: how a developer creates an access token (is this free / self-serve on any plan including Hobby free plan?), any scopes/expiration info. Quote short exact phrases."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vercel official MCP server documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vercel OpenAPI spec download vercel.com/docs"
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/agent-resources/vercel-mcp.md",
+      "prompt": "Extract exact description of Vercel MCP: is it official, hosted by Vercel, OAuth-protected, URL. Quote short exact phrases."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+      "prompt": "Extract exact description of OAuth2 flow for building a Vercel integration: what does it say about the redirect URL, exchanging code for access_token, and whether this requires Vercel approval to build/test (vs only to list on Marketplace)? Quote short exact phrases."
+     }
+    }
+   ],
+   "cost_usd": 0.3189445,
+   "turns": 22,
+   "seconds": 111.2
+  }
+ ],
+ "raw_result": null
+}

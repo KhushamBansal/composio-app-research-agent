@@ -1,0 +1,186 @@
+{
+ "record": {
+  "id": 47,
+  "app": "Ecwid",
+  "what_it_does": "Ecwid (by Lightspeed) is a hosted e-commerce platform whose REST API lets apps manage a merchant's store data, including products, orders, customers, discounts, and storefront settings.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 is used for public/external apps installed on third-party merchants' stores (POST to https://my.ecwid.com/api/oauth/token/{store_id} to exchange a code for a token). For a single store you own, Ecwid also lets you skip the OAuth flow entirely and copy a pre-generated 'secret' or 'public' Bearer access token straight from the custom app's dashboard; that token is then sent as a Bearer token on every REST call. Tokens do not expire while the app remains installed.",
+  "access": "approval_required",
+  "access_notes": "Anyone can sign up for an Ecwid store and instantly get a working secret access token for a private/custom app on that one store (self-serve, free). But a multi-user agent toolkit needs a public app using OAuth2 so it can connect to many merchants' stores, and publishing/distributing such an app requires Ecwid's app validation process (submitting an App Readiness Form plus a screencast, with a stated 1-3 business day review) before the app can go live in the App Market or be installed broadly.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.ecwid.com/api-reference",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Public/multi-store distribution requires Ecwid's app validation review; only single-store private apps get instant self-serve credentials",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+    "quote": "Ecwid uses OAuth 2.0 to provide secure access to the store data for public apps"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+    "quote": "your secret access token as a Bearer Token on the Authorization tab"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/get-started/make-your-first-api-request",
+    "quote": "After signing up with Ecwid and getting a custom app, you already have two tokens"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.ecwid.com/launch-apps/steps-to-go-live-with-a-public-app/guide-to-app-validation.md",
+    "quote": "The review process typically takes 1 to 3 business days"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.ecwid.com/api-reference/openapi/orders",
+    "quote": "\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Ecwid REST API\""
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.ecwid.com/api-reference",
+    "quote": "Ecwid REST API allows you to access and manage any store data, payment and shipping methods, and storefront settings"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.ecwid.com/build-apps",
+    "quote": "Build an app Build a template App Market Changelog Contact us"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Unclear whether an OAuth-based public app can be used against arbitrary merchant stores during development/testing without going through the App Market validation process, or whether validation is strictly required only for public listing (vs. actual OAuth functionality)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api-docs.ecwid.com/",
+       "https://api-docs.ecwid.com/reference/authentication"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid REST API authentication OAuth2 app documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid API reference OpenAPI swagger developers.ecwid.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ecwid.com/get-started/make-your-first-api-request",
+       "https://docs.ecwid.com/api-reference",
+       "https://developers.ecwid.com/build-apps"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid app store submission review process publish app"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ecwid.com/develop-apps/private-and-public-ecwid-apps",
+       "https://docs.ecwid.com/api-reference/openapi/orders"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid MCP server official Model Context Protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid docs \"private app\" vs \"public app\" OAuth token no review needed"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ecwid.com/api-reference/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid webhooks documentation \"event types\" order.created site:docs.ecwid.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Ecwid API \"OpenAPI\" specification download JSON YAML official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ecwid.com/api-reference/openapi/orders"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.ecwid.com webhooks register subscribe API events list full"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.ecwid.com/webhook-automations/learn-ecwid-webhooks"
+      ],
+      "max_characters": 2000
+     }
+    }
+   ],
+   "cost_usd": 0.22399809999999998,
+   "turns": 16,
+   "seconds": 74.3
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

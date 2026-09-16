@@ -1,0 +1,95 @@
+{
+ "record": {
+  "id": 67,
+  "app": "Snowflake",
+  "what_it_does": "Snowflake is a cloud data platform (data warehouse, data lake, and AI/app development platform) that can be controlled and queried programmatically via REST APIs.",
+  "auth_methods": [
+   "OAuth2",
+   "JWT / service account",
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Snowflake's SQL API and REST APIs accept a Bearer token that can be an OAuth2 access token, a key-pair JWT, a Programmatic Access Token (a static bearer token), or a workload-identity-federation token (AWS/Azure/GCP/OIDC). OAuth2 (Snowflake OAuth or External OAuth via an IdP like Okta/Entra) is the method intended for third-party/multi-user clients, including the official MCP server which uses OAuth by default.",
+  "access": "self_serve_trial",
+  "access_notes": "Anyone can sign up for a 30-day free trial with $400 in credits and immediately get an account plus API/OAuth credentials to build against; there is no perpetual free tier, so sustained use requires converting to a paid account.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Free access is trial-only (30 days); production use requires a paid Snowflake account, and per-customer setup (warehouse, roles, security integration) is needed for each user.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "In each API request you send, set the following headers: Authorization: Bearer oauth_token"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+    "quote": "Generate a JSON Web Token (JWT) with the following fields in the payload"
+   },
+   {
+    "field": "access",
+    "url": "https://www.snowflake.com/en/snowflake-trial/",
+    "quote": "Unlock the full Snowflake AI Data Cloud with $400 in free credits, or try Cortex Code CLI subscription with $40 in free inferences. Both are built for a 30-day experience."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp",
+    "quote": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts without needing to deploy separate infrastructure"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference",
+    "quote": "Snowflake REST APIs provide the following APIs: Account API, Alert API, Artifact Repository API, Database API, Table API, Warehouse API"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/snowflakedb/snowflake-rest-api-specs",
+    "quote": "These REST APIs are compliant with the OpenAPI specification."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.snowflake.com/en/user-guide/notifications/webhook-notifications.md",
+    "quote": "To create a notification integration of the webhook type, use the CREATE NOTIFICATION INTEGRATION command."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Webhooks in Snowflake are outbound notification integrations (Snowflake pushing alerts to Slack/PagerDuty/etc. via tasks), not inbound event subscriptions notifying an external agent of data changes \u2014 worth clarifying if the toolkit needs the latter."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.snowflake.com/en/snowflake-trial/",
+       "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/reference",
+       "https://docs.snowflake.com/en/user-guide/notifications/webhook-notifications.md"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.0433178,
+   "turns": 3,
+   "seconds": 39.4
+  }
+ ],
+ "raw_result": null
+}

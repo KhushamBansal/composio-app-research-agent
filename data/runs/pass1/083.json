@@ -1,0 +1,199 @@
+{
+ "record": {
+  "id": 83,
+  "app": "Binance",
+  "what_it_does": "Binance's API lets developers programmatically place trades, manage accounts/wallets, and stream market data across its Spot, Margin, Futures, and Options crypto exchange products.",
+  "auth_methods": [
+   "API key",
+   "Other"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Signed requests use an API key (X-MBX-APIKEY header) plus a request signature computed with HMAC SHA256, RSA, or Ed25519 depending on the key type generated in API Management; there is also a separate 'Binance ID' OAuth2 login flow used only for third-party social sign-in/profile retrieval (user:email, user:address scopes), not for trading/account API calls, so it is not the primary method for an agent toolkit.",
+  "access": "self_serve_free",
+  "access_notes": "Any Binance account holder can generate API keys for free in API Management; a free Spot Testnet and a no-cost Demo mode are also available for building/testing without a funded account. Full production trading requires normal account KYC verification (standard for any user, not a special developer-approval gate).",
+  "api_style": [
+   "REST",
+   "WebSocket"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://binance-docs.github.io/apidocs/spot/en/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "webhooks_notes": "Not used for core Spot/Futures trading (which relies on WebSocket user-data streams), but documented webhook callbacks exist for specific products like Binance Connect (order status change events) and KYC-SaaS.",
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+    "quote": "Secure endpoints require a valid API key to be specified and authenticated."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+    "quote": "Signatures generated using HMAC are not case-sensitive"
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md",
+    "quote": "API keys can be created on the API Management page of your Binance account."
+   },
+   {
+    "field": "access",
+    "url": "https://www.binance.com/en/binance-api",
+    "quote": "Binance Spot Testnet or the Demo mode, both available at no cost."
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/binance/binance-spot-api-docs/blob/master/README.md",
+    "quote": "rest-api.md | Spot REST API (/api)"
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/binance/binance-spot-api-docs/blob/master/README.md",
+    "quote": "web-socket-api.md | Spot WebSocket API"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.binance.com/docs/connect_prime/webhook",
+    "quote": "Whenever a key event (currently only \"order status change\") occurs, Binance Connect will send a webhook message"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/nirholas/Binance-MCP",
+    "quote": "A Model Context Protocol (MCP) server for Binance.com API. Offers standardized access to spot trading, wallets..."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/binance/binance-api-swagger",
+    "quote": "binance/binance-api-swagger"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact scope/limits of the separate 'Login with Binance' OAuth2 flow (social login only, distinct from trading API auth) could not be fully verified from a primary Binance doc page in this pass \u2014 evidence for it came from secondary sources."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://binance-docs.github.io/apidocs/spot/en/",
+       "https://www.binance.com/en/binance-api"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch,WebSearch",
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://binance-docs.github.io/apidocs/spot/en/",
+      "prompt": "Summarize: what authentication methods does Binance API use (API key, HMAC signature, OAuth?), how do you get API keys, what is the API style (REST/WebSocket), and mention rate limits or general info about how the API works."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://www.binance.com/en/binance-api",
+      "prompt": "Summarize what this page says about Binance's API offerings, how to sign up/get API keys, and any mention of OAuth, developer program requirements, or approval processes."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Binance API authentication HMAC API key signature site:binance-docs.github.io"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Binance official MCP server model context protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://binance-docs.github.io/apidocs/spot/en/#introduction"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Binance API openapi swagger spec github binance-api-swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Binance API webhooks event subscription notifications"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Binance OAuth2 \"Login with Binance\" third party API developers.binance.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.binance.com/docs/connect_prime/webhook",
+       "https://github.com/nirholas/Binance-MCP"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Binance API \"REST\" \"WebSocket\" spot margin futures options trading API",
+      "include_raw_content": true,
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/binance/binance-spot-api-docs/blob/master/README.md"
+      ],
+      "max_characters": 2000
+     }
+    }
+   ],
+   "cost_usd": 0.23396619999999999,
+   "turns": 16,
+   "seconds": 118.7
+  }
+ ],
+ "raw_result": null
+}

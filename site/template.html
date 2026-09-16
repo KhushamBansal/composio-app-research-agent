@@ -346,6 +346,7 @@
         <h3>Field-level accuracy vs. the 20-app gold sample</h3>
         <p class="card-note">100 graded fields per pass (5 fields &times; 20 apps).</p>
         <div class="accuracy-bars" id="accuracy-bars"></div>
+        <p class="card-note" style="margin-top:12px;">Flat on purpose, not stalled: pass&nbsp;2 rechecked all 26 apps the loops flagged, including the one flagged gold-sample app (Sherlock) &mdash; its recheck still missed the same field. The other 4 gold-sample misses were never flagged by the loops to begin with, so pass&nbsp;2 correctly left them alone. The loops catch schema/grounding/catalog problems, not every human-graded error &mdash; that gap is the honest finding here.</p>
       </div>
       <div class="card">
         <h3>What the automated loops caught, before any human looked</h3>
@@ -580,7 +581,7 @@
   // ---------- agent flow ----------
   const flowSteps = [
     {n:'01', h:'Composio Ground Truth', p:"SDK matched 59 apps against Composio's 1,543-toolkit catalog; extracted real auth schemes & tool counts with zero model hallucination."},
-    {n:'02', h:'Autonomous Agent', p:'Headless Claude Code and GPT-4o pipeline, using Composio MCP search and page-fetch tools to crawl primary vendor documentation.'},
+    {n:'02', h:'Autonomous Agent', p:'Headless Claude Code pipeline, using Composio MCP search and page-fetch tools to crawl primary vendor documentation.'},
     {n:'03', h:'Automated Loops (L1&ndash;L4)', p:'L1 schema lint, L2 live quote grounding (fuzzy-matched against fresh page crawls), and L3 catalog cross-checks before human review.'},
     {n:'04', h:'Gold Sample Audit', p:'20 apps hand-researched across all 10 categories to audit field-level accuracy honestly and benchmark model reliability.'},
   ];

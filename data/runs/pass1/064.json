@@ -1,0 +1,165 @@
+{
+ "record": {
+  "id": 64,
+  "app": "Cloudflare",
+  "what_it_does": "Cloudflare is a global network platform offering CDN, DNS, security (WAF/Zero Trust), and serverless compute (Workers, R2, D1) products, all controllable via a single REST/GraphQL API.",
+  "auth_methods": [
+   "API key",
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "Cloudflare's primary and recommended credential is a scoped 'API Token' passed as a Bearer token in the Authorization header; a legacy account-wide 'Global API key' is also supported but discouraged. OAuth2 is documented specifically for authorizing third-party/MCP clients to act on a user's behalf against the API (e.g. Cloudflare's own remote MCP servers use an OAuth redirect flow), while direct REST API automation typically uses API tokens.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can sign up for a free Cloudflare account and immediately create an API Token from the dashboard to call the API \u2014 no approval or paid plan required for core API access. Some downstream features (e.g. webhook delivery for Notifications) are gated to Professional/Business plans, but that is a product-feature gate, not an API-access gate.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.cloudflare.com/api/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.cloudflare.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "quote": "Create an API token to grant access to the API to perform actions."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "quote": "You can also authenticate with API keys, but these keys have several limitations"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+    "quote": "you will be redirected to Cloudflare to authorize via OAuth and select the permissions to grant to your agent"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+    "quote": "pass it as a bearer token in the `Authorization` header. Both user tokens and account tokens are supported."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.cloudflare.com/fundamentals/api/get-started/",
+    "quote": "Create API token"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.cloudflare.com/notifications/",
+    "quote": "Available on all plans"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.cloudflare.com/fundamentals/api/",
+    "quote": "Use the following resources to learn more about Cloudflare's REST API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+    "quote": "GraphQL server ... Get analytics data using Cloudflare's GraphQL API"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+    "quote": "provides access to the entire Cloudflare API \u2014 over 2,500 endpoints across DNS, Workers, R2, Zero Trust"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/cloudflare/api-schemas",
+    "quote": "This repository contains OpenAPI schemas for the Cloudflare API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.cloudflare.com/notifications/",
+    "quote": "Professional and higher plans can also use webhooks."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+    "quote": "Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether OAuth2 is offered as a general-purpose grant flow for arbitrary third-party developer apps calling the core REST API (versus specifically for connecting to Cloudflare's own hosted MCP servers) was not independently confirmed on a dedicated 'OAuth apps' developer page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.cloudflare.com/fundamentals/api/",
+       "https://developers.cloudflare.com/fundamentals/api/get-started/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Cloudflare official MCP server developers.cloudflare.com/agents mcp"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/",
+       "https://developers.cloudflare.com/fundamentals/api/reference/",
+       "https://developers.cloudflare.com/notifications/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Cloudflare API OpenAPI schema github cloudflare/api-schemas"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/cloudflare/api-schemas",
+       "https://developers.cloudflare.com/fundamentals/api/reference/token-formats/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.cloudflare.com/api/"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1423038,
+   "turns": 9,
+   "seconds": 75.2
+  }
+ ],
+ "raw_result": null
+}

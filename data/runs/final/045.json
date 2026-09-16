@@ -1,0 +1,140 @@
+{
+ "record": {
+  "id": 45,
+  "app": "Magento (Adobe Commerce)",
+  "what_it_does": "Adobe Commerce (formerly Magento) is a self-hosted or cloud-hosted ecommerce platform that exposes REST, GraphQL, and SOAP web APIs for managing catalog, orders, customers, carts, and other store objects.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "Other (OAuth 1.0a) for third-party integrations; Bearer admin/integration/customer tokens for simpler cases",
+  "auth_notes": "Adobe Commerce/Magento documents three authentication paths: (1) OAuth 1.0a for third-party applications (the recommended path for external integrations), (2) token-based Bearer auth where Admin/Customer/Integration tokens are requested via login endpoints and sent as 'Authorization: Bearer <token>' (integration tokens can optionally be used standalone as never-expiring bearer tokens if an admin enables that setting), and (3) session/login credential auth for Admin and Customer users. On Adobe Commerce as a Cloud Service (SaaS), there is also an IMS (Adobe Identity Management System) OAuth2-based access-token flow for web API calls. Credentials are always issued per-store by a store admin creating an 'Integration' in the Magento Admin panel \u2014 there is no vendor-wide multi-tenant OAuth app registry.",
+  "access": "self_serve_free",
+  "access_notes": "Magento Open Source is free to download and self-host, and a developer can spin up a local/sandbox instance, create an Integration in the Admin panel, and get working OAuth 1.0a or Bearer credentials immediately at no cost. Adobe Commerce (the SaaS/PaaS enterprise edition, which adds the IMS auth flow, webhooks-as-a-service, etc.) requires a paid commercial license/contract \u2014 there is no free signup for that tier. Either way, credentials are issued per merchant instance by that instance's own admin, not through a central developer portal.",
+  "api_style": [
+   "REST",
+   "GraphQL",
+   "SOAP"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.adobe.com/commerce/webapi/get-started/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.adobe.com/commerce/extensibility/developer-agent/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No centralized multi-tenant OAuth app model \u2014 each merchant's self-hosted/cloud instance requires its own admin to manually create an Integration and issue OAuth 1.0a or Bearer credentials, so a multi-user agent toolkit needs a per-customer setup flow rather than a single vendor OAuth app.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/",
+    "quote": "Third-party applications authenticate with OAuth 1.0a."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/",
+    "quote": "specify a HTTP header in the following format: Authorization: Bearer"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/",
+    "quote": "you must register a web service on Admin... Create a new integration on Admin. To create an integration, click System > Extensions > Integration > Add New Integration"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.adobe.com/commerce/extensibility/developer-agent/",
+    "quote": "Adobe provides Commerce development MCPs and skills so you can build and maintain Adobe Developer App Builder applications for Adobe Commerce"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.adobe.com/commerce/webapi/get-started/",
+    "quote": "Support for GraphQL, REST (Representational State Transfer) and SOAP (Simple Object Access Protocol)."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://adobe-commerce.redoc.ly",
+    "quote": "Download OpenAPI specification: Download"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.adobe.com/commerce/extensibility/webhooks",
+    "quote": "Webhooks enable developers to configure synchronous logic to execute calls to external systems when an Adobe Commerce event triggers."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The official Adobe MCP servers found (App Builder MCP, dropins MCP) are aimed at IDE/development-time assistance (docs lookup, App Builder scaffolding, storefront drop-in data) rather than exposing Commerce REST/GraphQL operations (orders, products, customers) as callable agent tools \u2014 unclear if any official MCP directly proxies transactional Commerce API actions for end-user agents. Also unclear whether Adobe Commerce SaaS's IMS OAuth2 flow is available to arbitrary third-party developers or only to the merchant's own admin-integrated apps."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.adobe.com/commerce/webapi/rest/use-rest/authentication/",
+       "https://developer.adobe.com/commerce/webapi/get-started/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Adobe Commerce Magento official MCP server developer.adobe.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.adobe.com/commerce/extensibility/developer-agent/",
+       "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-token/",
+       "https://developer.adobe.com/commerce/webapi/rest/quick-reference/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Adobe Commerce webhooks documentation developer.adobe.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Adobe Commerce GraphQL API developer.adobe.com queries mutations"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.adobe.com/commerce/extensibility/webhooks",
+       "https://adobe-commerce.redoc.ly"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1795772,
+   "turns": 9,
+   "seconds": 77.9
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

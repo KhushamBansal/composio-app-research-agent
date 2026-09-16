@@ -1,0 +1,86 @@
+{
+ "record": {
+  "id": 39,
+  "app": "Threads (Meta)",
+  "what_it_does": "The Threads API lets developers create and publish posts, retrieve media and profiles, moderate replies, and access insights on a user's Threads account on their behalf.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Threads user access tokens conform to OAuth 2.0. Short-lived tokens (1 hour) are exchanged via an Authorization Window/Authorization Code flow, then exchanged for long-lived tokens (60 days) that can be refreshed. No API key or basic auth option exists; all access is per-user OAuth token scoped to specific permissions (threads_basic, threads_content_publish, threads_manage_replies, threads_read_replies, threads_manage_insights, threads_delete, threads_manage_mentions, threads_location_tagging).",
+  "access": "approval_required",
+  "access_notes": "Self sign-up (create a Meta app, add Threads use case) is free, and app owners/added 'Threads testers' can immediately grant permissions and use the API. But for the app to work with arbitrary third-party Threads users (i.e., a real multi-user agent toolkit), each permission must be approved via Meta's App Review process and the app must be published/Live, and receiving full webhook data additionally requires Advanced Access and a verified business.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://developers.facebook.com/docs/threads/reference",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "App Review / business verification required for production (non-tester) users",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "API authentication is handled by Threads user access tokens that conform to the OAuth 2.0 protocol."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/threads/get-started",
+    "quote": "each permission must first be approved through the App Review process, and your app must be published"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.facebook.com/docs/threads/reference",
+    "quote": "The Threads API consists of the following endpoints. Refer to each endpoint's reference document"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developers.facebook.com/docs/threads/reference",
+    "quote": "Publishing | Media Retrieval | Reply Management | User | Locations | Location Search | Insights | oEmbed | Debug"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.facebook.com/docs/threads",
+    "quote": "Use the Threads API to create and publish posts, retrieve media and profiles, moderate replies, and access insights."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/threads/webhooks",
+    "quote": "Webhooks for Threads allow you to receive real-time notifications for the subscribed topics and fields."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total count of distinct API operations wasn't enumerated (reference page lists 9 endpoint categories, each with multiple operations); no official Meta OpenAPI/Swagger file was found, only community-maintained ones."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/docs/threads/reference"
+      ],
+      "max_characters": 5000
+     }
+    }
+   ],
+   "cost_usd": 0.042981000000000005,
+   "turns": 3,
+   "seconds": 46.0
+  }
+ ],
+ "raw_result": null
+}

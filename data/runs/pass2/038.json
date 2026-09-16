@@ -1,0 +1,96 @@
+{
+ "record": {
+  "id": 38,
+  "app": "Pinterest",
+  "what_it_does": "Pinterest's API lets developers manage Pins, Boards, ad campaigns, product catalogs, and analytics on behalf of Pinterest business accounts.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Standard OAuth 2.0 authorization-code flow with refreshable access tokens is the only production auth method. Pinterest also offers short-lived 'product limited tokens' (24-hour test tokens) for exploring the API without completing the OAuth flow, but these are a developer convenience, not a separate production auth method.",
+  "access": "approval_required",
+  "access_notes": "Anyone can create a developer/business account and register an app for free, but calling the API requires submitting an access request that Pinterest reviews ('Application requests are reviewed each business day'). Approved apps start at Trial access (low rate limits, Pins/Boards visible only to creator); serving real end users requires a further-reviewed upgrade to Standard access, which requires a video demo of the OAuth flow.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.pinterest.com/docs/api/v5/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "app review required for Trial access, and a second review (with OAuth demo video) required to reach Standard/production access",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.pinterest.com/docs/getting-started/introduction/",
+    "quote": "Build a working authentication flow based on OAuth 2"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/getting-started/introduction/",
+    "quote": "Application requests are reviewed each business day."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.pinterest.com/docs/getting-started/access-tiers/",
+    "quote": "If approved for API use, your app receives Trial access, which is best for exploring our API features."
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developers.pinterest.com/docs/getting-started/access-tiers/",
+    "quote": "Pin Analytics | Yes | Yes | Reading ads | Yes | Yes | Reading audiences | Yes | Yes | Reading boards | Yes | Yes"
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/pinterest/api-description",
+    "quote": "Pinterest's REST API OpenAPI Description"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.pinterest.com/",
+    "quote": "One API to seamlessly integrate with Pinterest"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not fetch the live v5 API reference endpoint list (JS-rendered, returned only nav boilerplate) to get an exact endpoint count; breadth ('broad') is inferred from the access-tiers activity table (Pins, Boards, Ads, Audiences, Catalogs, Analytics) plus the OpenAPI repo rather than a direct endpoint tally. Webhook support is confirmed only for Lead Ads (encrypted push to a subscriber HTTPS endpoint), not a general event-subscription system across all objects."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.pinterest.com/docs/getting-started/access-tiers/",
+       "https://github.com/pinterest/api-description"
+      ],
+      "max_characters": 5000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.pinterest.com/docs/api/v5/"
+      ],
+      "max_characters": 3000
+     }
+    }
+   ],
+   "cost_usd": 0.0967161,
+   "turns": 4,
+   "seconds": 131.5
+  }
+ ],
+ "raw_result": null
+}

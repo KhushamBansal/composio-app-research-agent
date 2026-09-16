@@ -1,0 +1,165 @@
+{
+ "record": {
+  "id": 14,
+  "app": "Front",
+  "what_it_does": "Front is a customer communication/helpdesk platform (shared inbox, tickets, chat, SMS) with a Core API to sync data, automate replies, and manage conversations, plus an official MCP server for AI agents.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Front issues static API tokens (Bearer) for single-workspace/internal integrations, and OAuth2 for app-framework/public integrations and the MCP server. Front requires OAuth for public integrations distributed via its App Store unless an exception is granted. The MCP server requires a confidential OAuth 2.1 + PKCE connection (client_id + client_secret); Dynamic Client Registration is not supported.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for a free Front developer account with a sandbox environment (no production data, limited to 3 teammates) and immediately generate API tokens or create an OAuth app to call the Core API and MCP server. Production use against a real company's data requires that company to have a paid Front plan (Starter/Professional/Enterprise all include API access with tiered rate limits); public App Store distribution of an OAuth integration favors/requires partnering with Front.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://dev.frontapp.com/reference/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://dev.frontapp.com/docs/mcp-server",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production use requires the end customer to already have a paid Front plan; OAuth apps must be manually created per-company in Front settings (no public self-serve client without going through Front's App Store/partner review).",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "The Core API uses Bearer tokens to authenticate its user."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "There are two ways to get a Bearer token \u2014 through API tokens in your settings or through an OAuth implementation."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Endpoint | `https://mcp.frontapp.com/mcp` | Transport | Streamable HTTP | Auth | OAuth 2.1 + PKCE compatability"
+   },
+   {
+    "field": "access",
+    "url": "https://dev.frontapp.com/docs/welcome",
+    "quote": "You can create a developer account by signing up here. You'll get access to a free developer environment"
+   },
+   {
+    "field": "access",
+    "url": "https://help.front.com/en/articles/2438",
+    "quote": "50 requests per minute for the Starter plan, 100 for Professional, and 200 for Enterprise"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://dev.frontapp.com/docs/mcp-server",
+    "quote": "Connect AI assistants to Front via the MCP server (open beta)"
+   },
+   {
+    "field": "api_style",
+    "url": "https://dev.frontapp.com/reference/introduction",
+    "quote": "Here is Front's Core API, a backend API that gives comprehensive control over all entities in Front"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/frontapp/front-api-specs",
+    "quote": "This repo provides Front Platform API schemas for public consumption. The API schemas conform to the OpenAPI specification."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://dev.frontapp.com/docs/webhooks-1",
+    "quote": "Front offers two methods for configuring webhooks"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact list of App Store review requirements/timeline for public OAuth integrations wasn't fetched in detail (only referenced via the 'Partnering with Front' guide); MCP server is explicitly in open beta so tool list/rate limits may still change."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dev.frontapp.com/docs/welcome",
+       "https://dev.frontapp.com/reference/introduction"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dev.frontapp.com/docs/authentication",
+       "https://dev.frontapp.com/docs/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Front dev.frontapp.com webhooks documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "dev.frontapp.com MCP server topic 2026"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Front API OpenAPI spec swagger dev.frontapp.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dev.frontapp.com/docs/mcp-server",
+       "https://github.com/frontapp/front-api-specs"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Front pricing plans API access included which plan"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Front dev.frontapp.com create developer account sign up free"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dev.frontapp.com/reference/tag-conversations"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2444676,
+   "turns": 12,
+   "seconds": 67.5
+  }
+ ],
+ "raw_result": null
+}

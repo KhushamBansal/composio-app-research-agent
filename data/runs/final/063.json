@@ -1,0 +1,165 @@
+{
+ "record": {
+  "id": 63,
+  "app": "Netlify",
+  "what_it_does": "Netlify is a platform for building, deploying, and hosting web apps, and its REST API lets developers manage atomic deploys, sites, forms, DNS, environment variables, and more programmatically.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal Access Tokens (PATs) are static bearer tokens generated in user settings, intended for personal/manual scripting use. Netlify explicitly requires OAuth2 for any public/third-party integration: 'If you're making a public integration with Netlify for others to enjoy, you must use OAuth2.' OAuth apps are registered in Netlify user settings and use the authorize endpoint at https://app.netlify.com/authorize.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can sign up for a free Netlify account and immediately generate a Personal Access Token from Applications > Personal access tokens, or register an OAuth application in user settings, with no approval or payment required to obtain working API credentials.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.netlify.com/api/get-started/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/netlify/netlify-mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.netlify.com/api/get-started/",
+    "quote": "If you're making a public integration with Netlify for others to enjoy, you must use OAuth2."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.netlify.com/api/get-started/",
+    "quote": "To authenticate API requests, include the token in the authorization header: Authorization: Bearer"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.netlify.com/api/get-started/",
+    "quote": "Use your PAT for manual authentication in shell scripts or commands that use the Netlify API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://open-api.netlify.com/",
+    "quote": "This is a REST-style API that uses JSON for serialization and OAuth 2 for authentication."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/netlify/netlify-mcp",
+    "quote": "Netlify's Official MCP server"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.netlify.com/manage/monitoring/notifications/",
+    "quote": "Send deploy notifications to email, a pull/merge request, or an external web service"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.netlify.com/api/get-started/",
+       "https://open-api.netlify.com/"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "OAuth|API key|Bearer|Personal access token|Authorization|Basic auth",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/acaba70a-7f69-4d45-8b15-a106da3807f4/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579128365.txt",
+      "output_mode": "content",
+      "-i": true,
+      "head_limit": 40
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "bash shell powershell execute command",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.netlify.com/api/get-started/",
+      "prompt": "Extract exact information about: (1) what Netlify's API does in one sentence, (2) all authentication methods documented (OAuth2, personal access token/API key, etc.) with exact quotes, (3) how to get an access token / OAuth app setup, (4) any mention of rate limits, (5) link to OpenAPI spec if mentioned. Quote verbatim short snippets (5-25 words) for each claim."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://open-api.netlify.com/",
+      "prompt": "What is this page? Does it show an OpenAPI/Swagger spec for the Netlify API? List a few endpoint categories/tags shown (e.g. sites, deploys, forms, dns_zones, hooks) to gauge breadth. Quote short verbatim snippets."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.netlify.com/welcome/build-with-netlify/",
+      "prompt": "Does this page or Netlify docs mention an official Model Context Protocol (MCP) server from Netlify? Also does it mention webhooks/notify hooks for events like deploy-succeeded? Quote short verbatim snippets if present."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Netlify official MCP server docs.netlify.com"
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://github.com/netlify/netlify-mcp",
+      "prompt": "Quote the repo description and README intro that describes this as Netlify's official MCP server. Also note the remote URL and npx install command if shown."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.netlify.com/build/site-configuration/notifications/",
+      "prompt": "Does Netlify support outgoing webhooks / notification hooks for events like deploy-succeeded, deploy-failed, form submissions? Quote a short verbatim snippet confirming this."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.netlify.com outgoing webhooks deploy notifications configure"
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://docs.netlify.com/manage/monitoring/notifications/",
+      "prompt": "Confirm Netlify supports outgoing webhooks for events (deploy succeeded, deploy failed, form submission, etc.). Quote a short verbatim snippet."
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/dev/null"
+     }
+    }
+   ],
+   "cost_usd": 0.21189260000000001,
+   "turns": 14,
+   "seconds": 66.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

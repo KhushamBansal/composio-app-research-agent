@@ -1,0 +1,126 @@
+{
+ "record": {
+  "id": 57,
+  "app": "Bright Data",
+  "what_it_does": "Bright Data provides proxy infrastructure and web-scraping/data-collection APIs (Web Unlocker, SERP API, Web Scraper API, Datasets, Scraping Browser) that let developers programmatically fetch and unblock public web data.",
+  "auth_methods": [
+   "Bearer token",
+   "API key"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "Bright Data issues an account-level 'API token' (a static API key) automatically on signup, used as a Bearer token in the Authorization header for all REST API products (Datasets, Web Scraper API, Account Management). Proxy products (residential/datacenter proxy zones) instead use zone username/password credentials for proxy authentication rather than the API token, but the documented API layer uses Bearer token auth. No OAuth2 flow for third-party/multi-tenant delegation is documented.",
+  "access": "self_serve_free",
+  "access_notes": "Signup is immediate and self-serve; the API token is auto-generated at account creation, and Web Unlocker/MCP include a 5,000-request free monthly tier with 'No credit card required.' Some products (Datasets marketplace premium data, Scale/Enterprise tiers) require paid plans, but basic API access to build a toolkit is free.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.brightdata.com/api-reference/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.brightdata.com/mcp-server/overview",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.brightdata.com/api-reference/marketplace-dataset-api",
+    "quote": "Use your Bright Data API Key as a Bearer token in the Authorization header."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.brightdata.com/general/account/api-token",
+    "quote": "An API token is created automatically when the account is created"
+   },
+   {
+    "field": "access",
+    "url": "https://brightdata.com/pricing/web-unlocker",
+    "quote": "5K requests per month - No credit card required - Expert support"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.brightdata.com/mcp-server/overview",
+    "quote": "5,000 free requests per month and zero infrastructure setup"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.brightdata.com/mcp-server/overview",
+    "quote": "The Bright Data MCP server gives AI agents and assistants real-time access to public web data through the Model Context Protocol (MCP)"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.brightdata.com/api-reference/marketplace-dataset-api",
+    "quote": "openapi: 3.1.0\ninfo:\n  title: Brightdata API"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.brightdata.com/general/webhook_notifications",
+    "quote": "Reference for every webhook notification event sent by Bright Data across 4 products"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No OAuth2 delegated-auth flow is documented, so a multi-tenant agent toolkit would need to store each end-user's Bright Data API token directly rather than using a standard OAuth redirect; unclear if Bright Data offers a partner/OAuth program for this use case."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.brightdata.com/api-reference/introduction",
+       "https://brightdata.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.brightdata.com/general/account/api-token",
+       "https://docs.brightdata.com/mcp-server/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.brightdata.com/general/webhook_notifications",
+       "https://docs.brightdata.com/api-reference/marketplace-dataset-api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.brightdata.com/api-reference/web-scraper-api",
+       "https://brightdata.com/pricing/web-unlocker"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1571371,
+   "turns": 7,
+   "seconds": 60.7
+  }
+ ],
+ "raw_result": null
+}

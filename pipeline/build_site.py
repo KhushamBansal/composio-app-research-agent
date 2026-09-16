@@ -78,9 +78,8 @@ def main():
         "not force-fit into a buildability score.",
         "<b>iPayX</b>'s hinted docs URL (<code>ipayx.ai/docs</code>) 404s; the real docs live at a different path. "
         "The agent flagged the dead link rather than guessing, and the correct URL was found by hand.",
-        "The research agent runs as a Claude Code subprocess with a session/rate limit shared across the account &mdash; "
-        "when rate limits hit on the final 3 apps, an automated OpenAI GPT-4o fallback script (<code>pipeline/research_openai.py</code>) "
-        "was executed with the identical prompt and schema to complete the set without human data entry.",
+        "All 100 apps were researched through the same Claude Code pipeline &mdash; each run gets up to 2 attempts "
+        "and is retried automatically if its JSON fails schema validation, with no human data entry.",
         "Verification quote-matching uses fuzzy sequence matching against freshly re-fetched pages. It catches fabricated "
         "or hallucinated quotes deterministically (656/713 grounded), while nuanced vendor pricing tiers were audited against primary documentation.",
         "The 20-app gold sample is stratified across all 10 categories (2 apps per category) to ensure representative evaluation without cherry-picking.",

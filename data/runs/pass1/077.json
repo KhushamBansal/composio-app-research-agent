@@ -1,0 +1,135 @@
+{
+ "record": {
+  "id": "77",
+  "app": "ClickUp",
+  "what_it_does": "ClickUp is a project management and productivity platform whose Public API lets developers read and manage Workspaces, Spaces, Folders, Lists, tasks, docs, comments, time tracking, and goals.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal API tokens (prefix `pk_`) are for individual/testing use and are passed directly in the Authorization header (not a standard Bearer scheme prefix); OAuth2 authorization-code flow is used for apps that serve other users, issuing a token used as `Authorization: Bearer {access_token}`. OAuth access tokens currently do not expire, per ClickUp's docs, though this is noted as subject to change.",
+  "access": "self_serve_free",
+  "access_notes": "Any user can log in to ClickUp (free plan available) and immediately generate a personal API token from Settings > Apps with no approval step. Building an OAuth app for other users requires only Workspace owner/admin status to register the app (client_id/secret), also self-serve with no vendor review mentioned.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.clickup.com/reference/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.clickup.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "ClickUp's own MCP server only supports OAuth login (not direct API-key auth) and imposes low daily call caps (50/day on Free plan, 300/day on Unlimited+) unless the Workspace buys the 'Everything AI' add-on; a custom-built toolkit against the REST API instead avoids the MCP-specific caps but should be noted as a design choice.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "For personal use, authenticate with your personal API token... use the OAuth flow, allowing users to authorize Workspaces for your app."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "Personal tokens begin with `pk_`. Add the token to the header: `Authorization: {personal_token}`."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.clickup.com/docs/authentication",
+    "quote": "Log in to ClickUp... Under API Token, click Generate or Regenerate."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+    "quote": "Our MCP server URL is `https://mcp.clickup.com/mcp`."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+    "quote": "Can I authenticate with my own API keys or Auth access tokens? A. No... We only support OAuth for authentication."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.clickup.com/reference/",
+    "quote": "For AI agents: visit https://developer.clickup.com/llms.txt for an index of all pages formatted in Markdown and endpoints in OpenAPI."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.clickup.com/docs/open-api-spec",
+    "quote": "The raw OpenAPI specification for the ClickUp API is available for each version of our Public API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.clickup.com/docs/webhooks",
+    "quote": "Webhooks allow you to subscribe to events in your Workspace."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact endpoint count for api_breadth wasn't enumerated from the OpenAPI spec itself (only inferred from the broad resource list in webhooks/docs pages: tasks, lists, folders, spaces, goals, docs, comments, time tracking); the V3 API scope beyond V2 wasn't independently verified."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.clickup.com/docs/authentication",
+       "https://developer.clickup.com/reference/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "ClickUp official MCP server developer.clickup.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server",
+       "https://developer.clickup.com/docs/webhooks",
+       "https://developer.clickup.com/docs/rate-limits"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "ClickUp API OpenAPI spec download developer.clickup.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.clickup.com/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.clickup.com/docs/open-api-spec"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.13247640000000002,
+   "turns": 8,
+   "seconds": 36.6
+  }
+ ],
+ "raw_result": null
+}

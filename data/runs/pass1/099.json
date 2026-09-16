@@ -1,0 +1,161 @@
+{
+ "record": {
+  "id": 99,
+  "app": "YouTube Transcript API",
+  "what_it_does": "REST API and MCP service that extracts YouTube video transcripts, searches YouTube, browses channels, and lists playlists \u2014 serving 15M+ transcripts monthly.",
+  "auth_methods": [
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "REST API uses Bearer token (API key). MCP supports OAuth 2.1 with Dynamic Client Registration (Claude) and Static Client Registration (ChatGPT).",
+  "access": "self_serve_trial",
+  "access_notes": "Free trial: 100 credits, no credit card required, expires after 90 days. Paid plans start at $5/month (1,000 credits) or $54/year.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://transcriptapi.com/docs/api/",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://transcriptapi.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "The API uses Bearer token authentication. Include your API key in the Authorization header"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://transcriptapi.com/docs/mcp/",
+    "quote": "Uses OAuth 2.1 with both Dynamic Client Registration (RFC 7591) and Static Registration"
+   },
+   {
+    "field": "access",
+    "url": "https://transcriptapi.com/blog/youtube-transcript-api-comparison",
+    "quote": "free trial consisting of 100 credits, which do not require a credit card to sign up and expire 90 days after account creation"
+   },
+   {
+    "field": "api_style",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "All API requests are made to: https://transcriptapi.com/api/v2"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "GET /youtube/transcript | Extract video transcript | GET /youtube/search | Search YouTube | GET /youtube/channel/videos | Paginated channel uploads"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://transcriptapi.com/",
+    "quote": "Test this example and experiment with parameters in our interactive Swagger UI"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://transcriptapi.com/docs/mcp/",
+    "quote": "Server URL | https://transcriptapi.com/mcp | Description | Use TranscriptAPI to fetch YouTube video transcript automatically"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://transcriptapi.com/docs/api/",
+    "quote": "Rate Limits section documents request tracking but no webhook/event subscription documentation"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 2
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://transcriptapi.com"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://transcriptapi.com/pricing",
+       "https://transcriptapi.com/api/docs"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "transcriptapi.com API authentication OAuth Bearer token"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://transcriptapi.com/docs/api/",
+       "https://transcriptapi.com/docs/getting-started/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://transcriptapi.com/docs/mcp/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "transcriptapi.com pricing plans free trial paid OpenAPI spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "site:transcriptapi.com webhooks events notifications"
+     }
+    },
+    {
+     "tool": "mcp__composio__SEARCH_WEB",
+     "input": {
+      "query": "site:transcriptapi.com OpenAPI Swagger specification JSON schema"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "site:transcriptapi.com OpenAPI specification swagger spec json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://transcriptapi.com/swagger"
+      ],
+      "max_characters": 2000
+     }
+    }
+   ],
+   "cost_usd": 0.09566240000000001,
+   "turns": 12,
+   "seconds": 63.8
+  }
+ ],
+ "raw_result": null
+}

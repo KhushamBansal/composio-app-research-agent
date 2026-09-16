@@ -1,0 +1,146 @@
+{
+ "record": {
+  "id": 100,
+  "app": "Grain",
+  "what_it_does": "Grain is a meeting notes and recording platform that captures, transcribes, and organizes meeting recordings with AI-generated summaries, action items, and speaker insights.",
+  "auth_methods": [
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Three authentication options: Personal Access Token (user-scoped), Workspace Access Token (workspace-scoped, admin-only), and OAuth2 Authorization Code flow with PKCE for third-party integrations.",
+  "access": "paid_plan",
+  "access_notes": "API access is not available on the Free plan. Personal Access Tokens are available on Starter plan and above. Workspace Access Tokens require Business or Enterprise plan with admin access.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.grain.com/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Paid plan (Starter minimum) required for API access; no free tier.",
+  "evidence": [
+   {
+    "field": "what_it_does",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "quote": "The Grain API lets developers read meeting data, manage recordings, and receive real-time events from Grain programmatically."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.grain.com/",
+    "quote": "Personal Access Token... Workspace Access Token... OAuth2 Flow... standard OAuth2 Authorization Code flow, including the PKCE extension"
+   },
+   {
+    "field": "auth_primary",
+    "url": "https://developers.grain.com/",
+    "quote": "OAuth2: the standard flow for building integrations to be used by any Grain user"
+   },
+   {
+    "field": "access",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "quote": "Do I need a specific Grain plan to use the API? Yes... The Free plan does not include API access."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.grain.com/",
+    "quote": "API Domain is: https://api.grain.com"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developers.grain.com/",
+    "quote": "Recordings, Hooks, Users, Teams, Meeting Types endpoints with list, create, get, update, delete, download, upload operations"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.grain.com/",
+    "quote": "Webhooks let Grain push data to your system when events occur... recording_added, recording_updated, recording_deleted, highlight_added, highlight_updated, highlight_deleted, story_added, story_updated, story_deleted, upload_status"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+    "quote": "Grain's MCP (Model Context Protocol) server gives AI assistants direct access to your meetings, transcripts, AI notes, and workspace data."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developers.grain.com/",
+    "quote": "Grain API reference and endpoint lists available at developers.grain.com (no OpenAPI/Swagger spec document published)"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_WEB,COMPOSIO_SEARCH_FETCH_URL_CONTENT,WebFetch",
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Grain API developer documentation grain.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Grain meeting notes API authentication"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.grain.com/",
+       "https://support.grain.com/en/articles/15507288-grain-api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Grain OpenAPI spec swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Grain MCP server model context protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"grain.com\" \"openapi\" OR \"swagger\" meeting api"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.grain.com/en/articles/14811968-grain-mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Grain pricing free plan API access grain.com"
+     }
+    }
+   ],
+   "cost_usd": 0.07129115000000001,
+   "turns": 10,
+   "seconds": 46.9
+  }
+ ],
+ "raw_result": null
+}

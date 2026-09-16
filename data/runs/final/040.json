@@ -1,0 +1,145 @@
+{
+ "record": {
+  "id": 40,
+  "app": "SendGrid",
+  "what_it_does": "SendGrid (a Twilio product) is a cloud email API and SMTP service for sending transactional and marketing emails at scale, with tools for templates, contacts, deliverability, and analytics.",
+  "auth_methods": [
+   "API key"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "SendGrid API keys are sent as a static Bearer token in the Authorization header (`Authorization: Bearer <API_KEY>`); keys can be scoped with restricted permissions. There is no OAuth2 flow for calling the API \u2014 an 'OAuth 2.0' option that appears in the docs applies only to securing inbound Event Webhook deliveries, not to API calls made to SendGrid.",
+  "access": "self_serve_trial",
+  "access_notes": "Sign-up is instant and free, and an API key can be generated immediately, but since March 25, 2025 all new accounts (Email API and Marketing Campaigns) get only a 60-day timed trial capped at 100 emails/day; after the trial, sending stops until you upgrade to a paid plan (Essentials from ~$19.95/mo). Some legacy accounts created before that date, or via certain partners, may retain an ongoing free plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.twilio.com/docs/sendgrid/api-reference",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "new accounts get only a 60-day/100-email-per-day trial before a paid plan is required, and sender identity/domain verification is required before mail send works",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+    "quote": "include an Authorization header with the value `Bearer ` in your request. Replace `` with your API secret key"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/event",
+    "quote": "To secure the Event Webhook data, use the Signed Event Webhook, OAuth 2.0, or both."
+   },
+   {
+    "field": "access",
+    "url": "https://support.sendgrid.com/hc/en-us/articles/35270136965403-Twilio-SendGrid-Trial-Account-Plan",
+    "quote": "users will be given a 60 day timed free trial plan... Send up to 100 email messages via web API or SMTP per day"
+   },
+   {
+    "field": "access",
+    "url": "https://support.sendgrid.com/hc/en-us/articles/35270136965403-Twilio-SendGrid-Trial-Account-Plan",
+    "quote": "email send via any web API or SMTP integration for the account will stop unless an appropriate \"Email API\" plan is chosen"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "quote": "See our open-source SDKs and tools to integrate with SendGrid... OpenAPI specification"
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.twilio.com/docs/sendgrid/api-reference",
+    "quote": "The SendGrid v3 Web API provides a REST interface to send email at scale"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not directly fetch the OpenAPI spec file or a full official pricing/plans page (both redirected or 404'd), so plan pricing figures rely on a secondary aggregation of Twilio's own pricing PDF/page rather than a directly fetched primary page; the OpenAPI spec's existence is confirmed via a link label on the API reference page rather than by fetching the spec file itself."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+       "https://sendgrid.com/en-us/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SendGrid official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/sendgrid/api-reference",
+       "https://sendgrid.com/en-us/pricing/email-api",
+       "https://www.twilio.com/docs/sendgrid/for-developers/partners/setting-up-oauth"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SendGrid free plan API keys sign up developer test mode"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.sendgrid.com/hc/en-us/articles/35270136965403-Twilio-SendGrid-Trial-Account-Plan",
+       "https://www.twilio.com/docs/sendgrid/for-developers/tracking-events/event"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SendGrid OAuth 2.0 API authentication third party apps"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SendGrid Email API pricing plans 2026 free trial 60 day essentials pro"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/openapi"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1882871,
+   "turns": 11,
+   "seconds": 61.9
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

@@ -1,0 +1,154 @@
+{
+ "record": {
+  "id": 54,
+  "app": "MrScraper",
+  "what_it_does": "MrScraper is an AI-powered web scraping platform that extracts structured data from websites via a dashboard, REST API, SDKs, CLI, or MCP server, with built-in proxies and anti-block handling.",
+  "auth_methods": [
+   "API key",
+   "Bearer token"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "All REST endpoints use a static per-account API token sent as the 'x-api-token' header (analytics endpoints instead take it as a query param 'apiTokenName'). The same token is used as a Bearer token for the MCP server's Authorization header. No OAuth2 flow is documented \u2014 tokens are generated manually from the dashboard, so a multi-user agent toolkit would need each user to paste in their own token.",
+  "access": "self_serve_free",
+  "access_notes": "Free 'Scraper Free' plan gives 1,000 tokens/month with no credit card required; API token is available immediately from the dashboard after signup.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.mrscraper.com/docs/api/overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.mrscraper.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No OAuth2 \u2014 each user must manually generate and supply their own static API token",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.mrscraper.com/docs/api/authentication",
+    "quote": "The MrScraper API uses API token authentication to secure all endpoints."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+    "quote": "\"Authorization\": \"Bearer <MRSCRAPER_API_TOKEN>\""
+   },
+   {
+    "field": "access",
+    "url": "https://mrscraper.com/pricing",
+    "quote": "Scraper Free includes 1,000 MrScraper tokens every month at no cost - no credit card required."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+    "quote": "This cloud-hosted MCP server integrates directly with MrScraper, enabling secure, scalable scraping workflows without local setup"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.mrscraper.com/docs/api/overview",
+    "quote": "Built on REST principles, our API offers predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.mrscraper.com/docs/integrations/webhook",
+    "quote": "Webhooks let you automatically send HTTP requests to another API when specific events happen in your scraper"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://mrtscraper.mintlify.app/api-reference/endpoint/scrapers/run-a-scraper",
+    "quote": "openapi: 3.0.1\ninfo:\n  title: MrScraper API Documentation"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The OpenAPI spec found (mrtscraper.mintlify.app) appears tied to an older v2 platform API rather than the current v3 docs.mrscraper.com; it's unclear if a current v3 OpenAPI file is published at a stable, linked URL. Exact total endpoint count across Platform/Marketplace/Travel/Results/Analytics APIs was not fully enumerated."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.mrscraper.com",
+       "https://mrscraper.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.mrscraper.com/developer-tools/mcp-server",
+       "https://docs.mrscraper.com/developer-tools/api-reference",
+       "https://docs.mrscraper.com/getting-started/token-plan"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.mrscraper.com MCP Server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.mrscraper.com API reference authentication token"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.mrscraper.com/docs/getting-started/mcp-server",
+       "https://docs.mrscraper.com/docs/api/authentication",
+       "https://docs.mrscraper.com/docs/api/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.mrscraper.com webhook OpenAPI swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.mrscraper.com/docs/integrations/webhook"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://mrtscraper.mintlify.app/api-reference/endpoint/scrapers/run-a-scraper"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:Read",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2498437,
+   "turns": 11,
+   "seconds": 65.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

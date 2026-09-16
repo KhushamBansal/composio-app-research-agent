@@ -1,0 +1,175 @@
+{
+ "record": {
+  "id": 4,
+  "app": "Attio",
+  "what_it_does": "Attio is a customizable, data-driven CRM platform for managing companies, people, deals, and sales workflows.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Bearer token",
+   "Basic"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Attio supports OAuth 2.0 (recommended for multi-workspace apps) and single-workspace API keys generated in developer settings; both are used as Bearer tokens in the Authorization header, and HTTP Basic auth is also supported (token as username, blank password) though Bearer is recommended.",
+  "access": "self_serve_free",
+  "access_notes": "API and webhook access is included on every plan, including the Free plan (no credit card required); a workspace can generate an API key immediately in developer settings, or an OAuth app can be created in the free Developer console at build.attio.com.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.attio.com/rest-api/overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.attio.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.attio.com/rest-api/guides/authentication.md",
+    "quote": "There are two ways to generate an access token: 1. By implementing an OAuth 2.0 flow 2. By generating an API key"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.attio.com/rest-api/guides/authentication.md",
+    "quote": "We also support HTTP Basic Authentication, where the username is the token and the password is left blank"
+   },
+   {
+    "field": "access",
+    "url": "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features",
+    "quote": "Apps in Attio's App Store and access to Attio's API are available on all Attio plans."
+   },
+   {
+    "field": "access",
+    "url": "https://attio.com/pricing",
+    "quote": "Free $0 0 Per user/month ... Start today, no credit card required."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.attio.com/rest-api/overview.md",
+    "quote": "Attio provides a public REST API which exchanges JSON over HTTPS."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.attio.com/mcp/overview.md",
+    "quote": "Attio MCP is Attio's hosted MCP server that gives AI tools secure access to your Attio workspace."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.attio.com/rest-api/guides/webhooks.md",
+    "quote": "Webhooks allow you to subscribe to changes that happen in Attio and then receive real-time HTTP requests"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.attio.com/llms.txt",
+    "quote": "## OpenAPI Specs\n\n- [standard-objects](https://api.attio.com/openapi/standard-objects)\n- [api](https://api.attio.com/openapi/api)\n- [webhooks](https://api.attio.com/openapi/webhooks)"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.attio.com/reference/authentication",
+       "https://developers.attio.com/docs/authentication-set-up",
+       "https://developers.attio.com/reference/get_v2-objects"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.attio.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "auth|api-key|API key|OAuth|oauth|MCP|mcp|Rate limit|Webhook|webhook|Pricing|pricing",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/300e6db4-0198-4f44-b92b-10c998edfd01/tool-results/toolu_01NggfkCeE19gfk1rsKfWivv.json",
+      "-i": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "auth|api-key|OAuth|oauth|MCP|Rate limit|Webhook|Pricing",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/300e6db4-0198-4f44-b92b-10c998edfd01/tool-results/toolu_01NggfkCeE19gfk1rsKfWivv.json",
+      "-o": true,
+      "-i": true,
+      "-C": 1
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/300e6db4-0198-4f44-b92b-10c998edfd01/tool-results/toolu_01NggfkCeE19gfk1rsKfWivv.json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.attio.com/rest-api/guides/authentication.md",
+       "https://docs.attio.com/mcp/overview.md",
+       "https://docs.attio.com/rest-api/tutorials/connect-an-app-through-oauth.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.attio.com/rest-api/overview.md",
+       "https://attio.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Attio free plan API access included"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://attio.com/help/reference/workspace-settings-billing/attio-plans-and-features"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.attio.com/rest-api/guides/webhooks.md"
+      ],
+      "max_characters": 2000
+     }
+    }
+   ],
+   "cost_usd": 0.4029244,
+   "turns": 12,
+   "seconds": 72.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

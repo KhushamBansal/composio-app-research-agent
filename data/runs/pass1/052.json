@@ -1,0 +1,150 @@
+{
+ "record": {
+  "id": 52,
+  "app": "SE Ranking",
+  "what_it_does": "SE Ranking is an SEO/GEO data platform whose API gives programmatic access to keyword research, backlink, domain analysis, site audit, SERP, AI-search-visibility, and project-management data.",
+  "auth_methods": [
+   "API key",
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "The REST Data/Project API uses a single per-account API key sent as `Authorization: Token YOUR_API_KEY` (or as an `apikey` query param) \u2014 this is a static bearer-style token, not an OAuth flow. The separately hosted MCP server (api.seranking.com/mcp) instead uses OAuth 2.1 with dynamic client registration, or can accept the same API key/OAuth token passed in an `Authorization: Bearer` header.",
+  "access": "self_serve_trial",
+  "access_notes": "Every paid plan (Essential $?, Pro, Core $129/mo, Growth $279/mo, Business, Enterprise) includes a monthly Data API credit allowance and full Project API access, and a key is self-generated instantly from the dashboard \u2014 but the vendor's own FAQ says 'You can even test it in the free trial account,' implying ongoing/production use requires a paid subscription; there is no permanent free tier.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://seranking.com/api/data/getting-started/",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://api.seranking.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production API access requires a paid SE Ranking subscription; the free trial only covers testing.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://seranking.com/api/data/getting-started/",
+    "quote": "Include an `Authorization` header in your request, with the value `Token YOUR_API_KEY`."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "quote": "the server is centrally hosted and managed... This transport uses OAuth 2.1 with dynamic client registration for authentication"
+   },
+   {
+    "field": "access",
+    "url": "https://seranking.com/api.html",
+    "quote": "API access comes with any SE Ranking plan (Core at $129/mo and Growth at $279/mo). You can even test it in the free trial account."
+   },
+   {
+    "field": "access",
+    "url": "https://seranking.com/api/how-to-get-api/",
+    "quote": "All Essential, Pro, Business, Core, Growth, and Enterprise plans include Data API access with a monthly credit allowance"
+   },
+   {
+    "field": "api_style",
+    "url": "https://seranking.com/api/data/getting-started/",
+    "quote": "curl -X GET 'https://api.seranking.com/v1/account/subscription' -H 'Authorization: Token YOUR_API_KEY'"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "quote": "The SE Ranking MCP server has 160+ tools available for keyword research, backlink analysis, domain analysis, website audits, AI search visibility, SERP analysis, and project management"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/seranking/openapi",
+    "quote": "OpenAPI specification for the SE Ranking API... The specs use OpenAPI 3.0. Both JSON and YAML formats are kept in sync."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://seranking.com/api/integrations/mcp/",
+    "quote": "Connect to our MCP server natively in Claude, Cursor, and other clients... https://api.seranking.com/mcp"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Webhooks are not mentioned anywhere in the getting-started, reference, or OpenAPI-repo docs reviewed (site-audit jobs appear to be polled via `audits/status` rather than pushed), so webhooks=false is an absence-of-evidence call rather than an explicit vendor denial. Exact Essential-plan price was not confirmed on a fetched page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://seranking.com/api.html",
+       "https://seranking.com/help/api/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SE Ranking API documentation developers.seranking.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SE Ranking MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://seranking.com/api/data/getting-started/",
+       "https://seranking.com/api/integrations/mcp/",
+       "https://seranking.com/api/data/reference/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/seranking/openapi",
+       "https://seranking.com/api/data/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "SE Ranking API webhooks documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://seranking.com/api/how-to-get-api/"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.21297909999999998,
+   "turns": 10,
+   "seconds": 57.1
+  }
+ ],
+ "raw_result": null
+}

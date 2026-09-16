@@ -1,0 +1,187 @@
+{
+ "record": {
+  "id": 11,
+  "app": "Zendesk",
+  "what_it_does": "Zendesk is a customer service/helpdesk platform for managing support tickets, help center content, live chat, voice, and omnichannel customer conversations.",
+  "auth_methods": [
+   "OAuth2",
+   "Basic"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Zendesk documents OAuth access tokens (Bearer, via OAuth2 authorization flows) as the primary/recommended method, and API tokens sent via HTTP Basic auth as a deprecated alternative. A single-account 'local' OAuth client can be self-created in Admin Center, but an app that serves multiple Zendesk customers must use a 'global OAuth client', which only Zendesk can create/convert after reviewing a request \u2014 developers cannot generate global OAuth clients themselves.",
+  "access": "self_serve_trial",
+  "access_notes": "Developers can self-serve a working Zendesk instance via a 14-day free trial (no credit card required) and create a local OAuth client or API token immediately. However, ongoing production use requires a paid plan (from $19/agent/month), and any agent toolkit meant to serve multiple end customers additionally needs a Zendesk-approved 'global OAuth client', gating true multi-tenant distribution behind vendor approval.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.zendesk.com/api-reference/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Multi-tenant distribution requires a Zendesk-approved 'global OAuth client' (self-serve local OAuth clients only work for single-account/internal use), and production use requires a paid plan after the 14-day trial.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+    "quote": "The Zendesk API supports OAuth authorization flows... Authorization: Bearer {access_token}"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+    "quote": "Basic authentication is used for API tokens. The credentials must be sent with the request in an Authorization header"
+   },
+   {
+    "field": "auth_primary",
+    "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+    "quote": "you must use global OAuth tokens to authenticate requests... Zendesk doesn't allow developers to create their own global OAuth clients"
+   },
+   {
+    "field": "access",
+    "url": "https://www.zendesk.com/free-trial/",
+    "quote": "14-day free trial. No credit card required."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/",
+    "quote": "Zendesk doesn't allow developers to create their own global OAuth clients"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+    "quote": "This is the reference documentation for the Zendesk Support API, which is also known as the Ticketing API."
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developer.zendesk.com/api-reference/",
+    "quote": "Work with tickets, users and organizations and manage ticket workflows."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developer.zendesk.com/api-reference/ticketing/introduction/",
+    "quote": "Download OpenAPI file"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.zendesk.com/documentation/webhooks/",
+    "quote": "Webhooks let you build or set up integrations that subscribe to certain activity in Zendesk"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.zendesk.com/hc/en-us/articles/10497779528730-Connecting-to-MCP-servers-and-using-MCP-tools-in-action-flows",
+    "quote": "This article covers Zendesk acting as an MCP client... Zendesk can also act as an MCP server in other scenarios"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Zendesk's own support docs mention Zendesk can 'act as an MCP server' exposing tools to third-party AI agents, but no public endpoint, docs page, or URL for this is published/discoverable \u2014 it appears to be an in-product/EAP capability rather than a documented external MCP server, so it was not counted as 'official' MCP. Worth re-checking developer.zendesk.com for a dedicated MCP server doc page if this becomes GA."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.zendesk.com/api-reference/",
+       "https://developer.zendesk.com/api-reference/ticketing/introduction/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.zendesk.com/api-reference/ticketing/oauth/authentication/",
+       "https://developer.zendesk.com/documentation/webhooks/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+       "https://developer.zendesk.com/api-reference/ticketing/account-configuration/oauth_authentications/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zendesk official MCP server developer.zendesk.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.zendesk.com/hc/en-us/articles/10497779528730-Connecting-to-MCP-servers-and-using-MCP-tools-in-action-flows",
+       "https://www.zendesk.com/register/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zendesk free trial API access no credit card sign up pricing"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"Zendesk exposes tools\" MCP server AI agents developer.zendesk.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zendesk.com/free-trial/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.zendesk.com \"MCP server\" Zendesk AI agents build tools endpoint URL"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zendesk \"global OAuth client\" set up request approval developer docs"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.zendesk.com/documentation/marketplace/building-a-marketplace-app/set-up-a-global-oauth-client/"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.27672460000000004,
+   "turns": 14,
+   "seconds": 98.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

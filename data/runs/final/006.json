@@ -1,0 +1,134 @@
+{
+ "record": {
+  "id": 6,
+  "app": "Podio",
+  "what_it_does": "Podio is a customizable work/CRM platform (owned by Progress) where teams build apps for items like contacts, deals, and tasks, all exposed through a full REST API.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Podio's API uses OAuth2 exclusively for token issuance, with four flows: server-side, client-side, username/password, and 'App authentication' (a service-account-style flow scoped to a single Podio app, using an app ID + app token, recommended over username/password for automated scripts). All requests then carry `Authorization: OAuth2 ACCESS_TOKEN` as a bearer token. There is no separate static API key auth mode \u2014 the 'API key' generated in account settings is actually an OAuth2 Client ID/Secret pair used to bootstrap one of these flows.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer signs up for a free Podio account, generates a Client ID/Secret ('API key') at podio.com/settings/api, and immediately gets working OAuth2 credentials. The free plan includes API access with base rate limits (1,000 calls/hour for standard requests, 250/hour for resource-intensive ones); higher limits require paid add-ons/plans, but baseline access is free and self-serve.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.podio.com/doc",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.podio.com",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "rate limits are low on the free tier and the official MCP server is still in beta",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.podio.com/authentication",
+    "quote": "The Podio API uses the OAuth2 protocol for authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.podio.com/authentication",
+    "quote": "Authorization: OAuth2 ACCESS_TOKEN"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.podio.com/api-key",
+    "quote": "You just have to sign in or sign up with Podio, and go to the API key tab in your settings."
+   },
+   {
+    "field": "access",
+    "url": "https://www.progress.com/podio/pricing",
+    "quote": "The Podio Free plan includes API access with a base limit of 1,000 calls per hour"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.podio.com/doc",
+    "quote": "Our API is split up into different areas, that each contains a subset of methods grouped by functionality."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "quote": "The server is live at https://mcp.podio.com \u2014 just point your AI platform at it and log in with your Podio account."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+    "quote": "The Podio MCP Server is currently in beta and is intended for evaluation and testing."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.podio.com/",
+    "quote": "you have the ability to register webhooks in your Podio apps"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No OpenAPI/Swagger spec was found published by Podio (docs are hand-written HTML), so tooling would need custom schema generation. The official MCP server is explicitly beta and currently exposes only 22 tools (a subset of the full REST API's ~30+ resource areas)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.podio.com/",
+       "https://developers.podio.com/authentication"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.podio.com/doc",
+       "https://developers.podio.com/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Podio MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.progress.com/podio/documentation/using-podio/podio-mcp-server",
+       "https://developers.podio.com/api-key"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Podio free plan API access pricing plans 2025"
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.1728326,
+   "turns": 8,
+   "seconds": 41.3
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

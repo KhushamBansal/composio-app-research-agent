@@ -1,0 +1,128 @@
+{
+ "record": {
+  "id": 33,
+  "app": "LinkedIn Ads",
+  "what_it_does": "LinkedIn's Marketing API lets developers create and manage LinkedIn ad campaigns, targeting, reporting, leads, matched audiences, and conversion tracking on a user's behalf.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Uses 3-legged member authorization (OAuth 2.0 Authorization Code flow); LinkedIn's 2-legged/client-credentials flow is documented for other LinkedIn APIs but Marketing APIs specifically require member (3-legged) auth.",
+  "access": "approval_required",
+  "access_notes": "Anyone can create a developer app, but each Marketing API product (Advertising, Community Management, Lead Sync, Conversions, Matched Audiences, Events) requires a separate LinkedIn application-review approval; Audience Insights and Media Planning need additional qualification criteria evaluated by LinkedIn; Company Intelligence API is closed to new applicants. Advertising and Community Management APIs also gate a 'Standard' tier behind a further review/demo submission.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Per-product LinkedIn app review/approval required, with some products (Audience Insights, Media Planning) further restricted to qualified partners and Company Intelligence closed to new applicants",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authentication",
+    "quote": "The LinkedIn API uses OAuth 2.0 for member (user) authorization and API authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authentication",
+    "quote": "Not all APIs support Application Authorization... Marketing APIs you must use Member Authorization"
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-access",
+    "quote": "Access to Audience Insights and Media Planning APIs is restricted to developers who meet additional qualification criteria evaluated by LinkedIn."
+   },
+   {
+    "field": "access",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/getting-access",
+    "quote": "Available to all developers approved for Advertising API access."
+   },
+   {
+    "field": "api_style",
+    "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authentication",
+    "quote": "try out RESTful OAuth calls to the LinkedIn Authentication server"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start",
+    "quote": "Webhooks: Register your webhook to receive real-time HTTP notifications for subscribed events."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://learn.microsoft.com/en-us/linkedin/marketing/",
+    "quote": "Migrations... Developer Portal... Developer Blog... Support\nRefer to LinkedIn API Partner Support for how to reach Developer Support."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No published rate-limit figures or fixed review-approval timelines for restricted products; LinkedIn states restricted APIs are evaluated case-by-case with no fixed timeline."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://learn.microsoft.com/en-us/linkedin/marketing/",
+       "https://learn.microsoft.com/en-us/linkedin/marketing/getting-access"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start",
+       "https://learn.microsoft.com/en-us/linkedin/shared/authentication/authentication"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "LinkedIn Marketing API official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "LinkedIn API OpenAPI Swagger spec developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://learn.microsoft.com/en-us/linkedin/marketing/quick-start/apply-for-api-access"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1394999,
+   "turns": 8,
+   "seconds": 56.6
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

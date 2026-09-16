@@ -1,0 +1,139 @@
+{
+ "record": {
+  "id": 21,
+  "app": "Slack",
+  "what_it_does": "Slack is a business messaging platform, and its Web API lets apps read, write, and manage messages, channels, users, files, and other workspace data on a user's or bot's behalf.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Slack apps are installed via OAuth v2 (authorization code flow) to obtain bot (xoxb) or user (xoxp) bearer tokens, which are then sent as `Authorization: Bearer <token>` on every Web API call. There is also a dedicated `oauth.v2.user.access` flow built specifically for MCP-client authorization.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create an app for free at api.slack.com/apps, install it to their own workspace instantly, and start calling the Web API with no cost and no approval. Public distribution to other workspaces via OAuth is also self-serve and doesn't require review; only submitting the app for listing in the Slack Marketplace (commercial directory) requires a manual vendor review, and the official MCP server further restricts non-internal use to apps published in the Marketplace.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://api.slack.com/web",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.slack.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Multi-tenant/commercial distribution and MCP access require Slack Marketplace review; unlisted apps are prohibited from using the official MCP server",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://api.slack.com/authentication/oauth-v2",
+    "quote": "Slack apps are installed with a v2 OAuth 2.0 flow."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://api.slack.com/web",
+    "quote": "you must transmit your `token` as a bearer token in the `Authorization` HTTP header"
+   },
+   {
+    "field": "access",
+    "url": "https://api.slack.com/start/quickstart",
+    "quote": "Click through the browser UI at api.slack.com/apps. Good for webhooks with no build step."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/ai/slack-mcp-server.md",
+    "quote": "Only apps published in the Slack Marketplace and internal apps can use MCP at this time; unlisted apps are prohibited"
+   },
+   {
+    "field": "api_style",
+    "url": "https://api.slack.com/web",
+    "quote": "The Web API is a collection of HTTP RPC-style methods, all with URLs in the form `https://slack.com/api/METHOD_FAMILY.method`"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://api.slack.com/web",
+    "quote": "With over 200 methods, surely there's one right for you."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://api.slack.com/apis",
+    "quote": "Subscribe to the events you want from a range of possibilities. Build a Slack app that can react to those events"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.slack.dev/ai/slack-mcp-server.md",
+    "quote": "Slack supports JSON-RPC 2.0 over Streamable HTTP. All requests should be sent to: https://mcp.slack.com/mcp"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the historical slackapi/slack-api-specs OpenAPI file is still actively maintained/current is unclear (community reports suggest it may be stale); could not directly verify if unlisted (non-Marketplace) apps face any practical rate/scope limits beyond the documented MCP restriction."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.slack.com/authentication/oauth-v2",
+       "https://api.slack.com/web",
+       "https://api.slack.com/apis"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack official MCP server api.slack.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.slack.dev/ai/slack-mcp-server.md",
+       "https://api.slack.com/start/quickstart",
+       "https://api.slack.com/authentication/quickstart"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/4a6d0244-691c-4173-aa58-e03bbd3e0463/tool-results/toolu_01FW7AHvJDBB81Z6cXLhbr7g.json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack API OpenAPI specification GitHub slack-api-specs"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack app directory review required distribute app to other workspaces api.slack.com"
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/4a6d0244-691c-4173-aa58-e03bbd3e0463/tool-results/toolu_01FW7AHvJDBB81Z6cXLhbr7g.json",
+      "offset": 1,
+      "limit": 1
+     }
+    }
+   ],
+   "cost_usd": 0.3328052,
+   "turns": 9,
+   "seconds": 67.8
+  }
+ ],
+ "raw_result": null
+}

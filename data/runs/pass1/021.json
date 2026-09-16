@@ -1,0 +1,151 @@
+{
+ "record": {
+  "id": 21,
+  "app": "Slack",
+  "what_it_does": "Slack is a business messaging platform, and its developer platform lets apps read, write, and automate messages, channels, users, and workspace data via APIs.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 (v2) is the standard flow for apps installed across multiple workspaces, producing bot (xoxb) and/or user (xoxp) tokens. A single-workspace ('undistributed') app can skip the OAuth redirect flow entirely and get a bot token directly via a one-click 'Install App to Workspace' button, which then functions as a static bearer token sent in the Authorization header.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for Slack free, create an app at api.slack.com/apps, and install it to their own workspace immediately to get a working access token at no cost. For a multi-workspace/multi-tenant agent toolkit, an app can enable 'Activate Public Distribution' (unlisted distribution) self-serve, with no Slack review, to install via OAuth into any workspace. Only submitting to the Slack Marketplace directory (optional, for commercial discoverability) requires a formal review (preliminary + functional review, up to ~10 weeks) and a minimum install count.",
+  "api_style": [
+   "REST",
+   "WebSocket"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://api.slack.com/apis",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.slack.dev/ai/slack-mcp-server",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://api.slack.com/authentication/oauth-v2",
+    "quote": "Slack apps are installed with a v2 OAuth 2.0 flow"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://api.slack.com/authentication/oauth-v2",
+    "quote": "your access tokens \u2014 also known as bearer tokens \u2014 to Slack is by presenting them in a request's Authorization HTTP header"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/app-management/distribution",
+    "quote": "Once created, your app can be installed to its associated workspace without any code for handling authorization"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.slack.dev/app-management/distribution",
+    "quote": "Distributing your unlisted app is perfect for when you want to test out your app by running a pilot for early customers"
+   },
+   {
+    "field": "api_style",
+    "url": "https://api.slack.com/apis",
+    "quote": "The Web API supplies a collection of HTTP methods that underpin the majority of Slack app functionality"
+   },
+   {
+    "field": "api_style",
+    "url": "https://api.slack.com/apis",
+    "quote": "Legacy RTM API is an outmoded API that provides WebSocket access to some of the same functionality"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.slack.dev/ai/slack-mcp-server",
+    "quote": "With the Slack MCP server, your integrated apps can search channels, send messages, and perform other Slack actions through MCP clients"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://api.slack.com/apis",
+    "quote": "Subscribe to the events you want from a range of possibilities... we'll push them to your app securely"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the official MCP server (mcp.slack.com) requires the calling app to be Marketplace-listed vs. just internally configured was not fully confirmed from a fetched primary source (search summary indicated 'internal app for your organization' is sufficient, but this wasn't independently verified by fetching the harness-connection doc)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://api.slack.com/authentication/oauth-v2",
+       "https://api.slack.com/apis",
+       "https://api.slack.com/apis/quickstart"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack official MCP server api.slack.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.slack.dev/ai/slack-mcp-server.md",
+       "https://api.slack.com/apis/events-api",
+       "https://api.slack.com/authentication/basics"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack app distribution approval review process required to publish app"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack Web API OpenAPI spec slack-api-specs github"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Slack app public distribution requirements review process before installing to multiple workspaces"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.slack.dev/app-management/distribution"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.slack.dev/ai/slack-mcp-server.md"
+      ],
+      "max_characters": 2500
+     }
+    }
+   ],
+   "cost_usd": 0.2199216,
+   "turns": 10,
+   "seconds": 63.0
+  }
+ ],
+ "raw_result": null
+}

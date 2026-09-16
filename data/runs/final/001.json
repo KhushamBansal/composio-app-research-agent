@@ -1,0 +1,96 @@
+{
+ "record": {
+  "id": 1,
+  "app": "Salesforce",
+  "what_it_does": "Salesforce is a cloud CRM platform for managing sales, service, and marketing data, accessible programmatically via REST, SOAP, GraphQL, and Bulk APIs.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Access is via External Client Apps or Connected Apps using OAuth 2.0 authorization flows (including JWT bearer and username-password variants, which are OAuth 2.0 grant types, not separate credential systems). As of Spring '26, Salesforce restricts creation of new Connected Apps in favor of External Client Apps, though existing Connected Apps keep working.",
+  "access": "self_serve_free",
+  "access_notes": "Salesforce offers a free, non-time-limited Developer Edition org (with API access) obtained via self-serve signup, no payment required.",
+  "api_style": [
+   "REST",
+   "SOAP",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Each customer needs their own Salesforce org plus an admin-configured External Client App/Connected App with OAuth; new Connected App creation is now restricted (Spring '26+), pushing setup toward External Client Apps.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+    "quote": "it must be integrated with your org's REST API using the OAuth 2.0 protocol"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.salesforce.com/signup",
+    "quote": "A free Salesforce Platform environment with Agentforce and Data 360"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html",
+    "quote": "Salesforce Hosted MCP Servers give AI agents a secure, governed way to interact with Salesforce data and automation"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.salesforce.com/docs/apis",
+    "quote": "REST API, SOAP API, GraphQL API available for accessing Salesforce data"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_intro.htm",
+    "quote": "Publishers publish event messages that subscribers receive in real time"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm",
+    "quote": "Generating an OpenAPI 3.0 Document for sObjects REST API (Beta)"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the OpenAPI 3.0 generation feature (still Beta) covers the full REST API surface or only sObjects CRUD; exact production licensing/edition requirements for sustained multi-tenant agent access beyond the free Developer Edition."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_what_is_rest_api.htm"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.salesforce.com/docs/apis"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.045103449999999996,
+   "turns": 4,
+   "seconds": 40.0
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

@@ -1,0 +1,179 @@
+{
+ "record": {
+  "id": 79,
+  "app": "Smartsheet",
+  "what_it_does": "Smartsheet is a cloud work-management/collaboration platform (sheets, reports, dashboards, automations) that exposes a REST API for reading and writing sheet data, rows, attachments, users, webhooks, and more.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "For machine-to-machine or single-user use, Smartsheet issues a static 'access token' (API key) generated in the Smartsheet UI, sent as a Bearer token. For third-party apps acting on behalf of multiple end users, Smartsheet documents a standard 3-legged OAuth 2.0 flow requiring app registration via 'Developer Tools' to get a client_id/client_secret, plus a defined set of granular access scopes (READ_SHEETS, WRITE_SHEETS, ADMIN_USERS, etc.).",
+  "access": "self_serve_trial",
+  "access_notes": "The pricing page explicitly shows the 'API calls' feature as unavailable on the entry-level Pro plan and only enabled on Business, Enterprise, and Advanced Work Management plans. There is no paid-free tier with API access; a developer can get free working API credentials only through Smartsheet's 30-day free trial (no credit card required) of the Business plan, per the vendor's trial FAQ.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.smartsheet.com/api/smartsheet",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "API access requires a Business-tier (or higher) paid plan \u2014 not included in the entry-level Pro plan \u2014 so free access is only available via the time-limited trial",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "quote": "Each API request requires passing in an access token as the Bearer value in your authorization header"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+    "quote": "OAuth 2.0 (OAuth) provides a way for your app users to grant limited access to their Smartsheet resources"
+   },
+   {
+    "field": "access",
+    "url": "https://www.smartsheet.com/pricing",
+    "quote": "API calls | - | x | x | x"
+   },
+   {
+    "field": "access",
+    "url": "https://help.smartsheet.com/articles/529590-smartsheet-free-trial-faqs?iOS=",
+    "quote": "No credit card is required to begin this trial, which grants full access to Business plan features"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth",
+    "quote": "curl https://api.smartsheet.com/2.0/token"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+    "quote": "Unlock the power of AI by connecting Smartsheet with Claude, ChatGPT, and other AI clients through the Smartsheet MCP (Model Context Protocol) server"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total count of API operations wasn't enumerated (the openapi.md spec file was too large to fetch fully), but the documented resource set (sheets, rows, columns, cells, attachments, discussions, comments, folders, workspaces, reports, sights/dashboards, users, groups, webhooks, contacts, favorites, automation/update requests) clearly exceeds 50 operations, supporting 'broad'. Also note the MCP server itself additionally requires a Business/Enterprise/Advanced Work Management plan (per developers.smartsheet.com/ai-mcp/smartsheet/mcp-server), same tier restriction as raw API access."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://smartsheet.redoc.ly/",
+       "https://developers.smartsheet.com/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.smartsheet.com/api/smartsheet",
+       "https://developers.smartsheet.com/mcp",
+       "https://developers.smartsheet.com/docs/oauth"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Smartsheet API OAuth 2.0 authentication developers.smartsheet.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Smartsheet MCP server official documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+       "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server",
+       "https://developers.smartsheet.com/api/smartsheet/guides/advanced-topics/oauth"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.smartsheet.com/api/smartsheet/guides/basics/webhooks",
+       "https://developers.smartsheet.com/api/smartsheet/openapi.md",
+       "https://www.smartsheet.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.smartsheet.com/api/smartsheet/guides/basics/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.smartsheet.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Smartsheet API webhooks guide developers.smartsheet.com create webhook"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Smartsheet free trial API access \"free trial\" developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.smartsheet.com/api/smartsheet/guides/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "smartsheet.com free trial 30 days business plan sign up"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2643524,
+   "turns": 15,
+   "seconds": 91.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

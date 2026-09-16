@@ -1,0 +1,218 @@
+{
+ "record": {
+  "id": 46,
+  "app": "Squarespace",
+  "what_it_does": "Squarespace's Commerce APIs let developers read and write a merchant site's orders, products, inventory, contacts, discounts, transactions, and webhook subscriptions on behalf of a site owner.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 is required for Squarespace Extensions (multi-merchant/marketplace apps) and is the only method that can create Webhook Subscriptions. A static API key is also supported but is scoped to a single site and only obtainable by a merchant on the paid Commerce Advanced plan generating it from their own site settings \u2014 not a general developer signup.",
+  "access": "approval_required",
+  "access_notes": "Self-service OAuth client registration (instant client_id/secret) launched July 2026 via a 'Developer Apps' dashboard, but new apps start in 'Demo Mode' and must be submitted for a formal Squarespace review before going live/production. The alternative API-key path requires the merchant site to be on the paid Commerce Advanced plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://developers.squarespace.com/commerce-apis/overview",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.squarespace.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production OAuth access gated behind Squarespace app review (starts in Demo Mode); official MCP server only covers domain search, not the Commerce APIs",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.squarespace.com/commerce-apis/oauth",
+    "quote": "Squarespace uses OAuth 2.0 to authorize third-party applications to integrate with Squarespace and consume Squarespace APIs."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "you can use a generated API key or start the OAuth process with Squarespace to become a registered OAuth client"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.squarespace.com/changes/self-service-oauth-credential-management",
+    "quote": "all new applications created via the self-service tool will enter Demo Mode by default"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "quote": "With Squarespace's Commerce Advanced plan, you can develop a custom application for a Squarespace merchant site."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers-preview.squarespace.com/mcp/overview",
+    "quote": "No authentication required. The server is open: no API key, OAuth flow, or Squarespace account is needed to connect or call tools."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "quote": "All Commerce APIs are built on HTTPS and designed with REST principles in mind."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.squarespace.com/commerce-apis/overview",
+    "quote": "Webhook Subscriptions API: Subscribe to notifications from a site, like when an order was created"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The MCP overview page was found at 'developers-preview.squarespace.com', a preview/staging subdomain rather than the main developers.squarespace.com docs site; content and the live endpoint (mcp.squarespace.com/mcp) appear final, but the docs URL itself may change. No vendor-published OpenAPI/Swagger file was found (only an interactive schema reference page); third-party sites host unofficial OpenAPI conversions."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.squarespace.com/",
+       "https://developers.squarespace.com/commerce-apis/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.squarespace.com/commerce-apis/authentication",
+       "https://developers.squarespace.com/openapi"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Squarespace developer API OAuth app review approval process"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.squarespace.com/commerce-apis/oauth",
+       "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+       "https://developers.squarespace.com/changes/self-service-oauth-credential-management"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Squarespace developers OpenAPI spec download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Squarespace official MCP server developers.squarespace.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.squarespace.com/commerce-apis/~schemas",
+       "https://developers-preview.squarespace.com/mcp/overview"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "openapi|OpenAPI|swagger|Swagger",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fc499bd6-ad5a-4b46-9075-298b7b4716ae/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576941423.txt",
+      "-i": true,
+      "-n": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "mcp\\.squarespace\\.com|domains_search|MCP server|Model Context Protocol",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fc499bd6-ad5a-4b46-9075-298b7b4716ae/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576941423.txt",
+      "-i": true,
+      "-n": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "mcp\\.squarespace\\.com",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fc499bd6-ad5a-4b46-9075-298b7b4716ae/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576941423.txt",
+      "-i": true,
+      "-n": true,
+      "-C": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^# |^## |title|schema",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fc499bd6-ad5a-4b46-9075-298b7b4716ae/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576941423.txt",
+      "-i": true,
+      "-n": true,
+      "head_limit": 40
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "mcp\\.squarespace\\.com",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fc499bd6-ad5a-4b46-9075-298b7b4716ae/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576941423.txt",
+      "-i": true,
+      "-n": true,
+      "-C": 5,
+      "output_mode": "content"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers-preview.squarespace.com/mcp/overview"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.squarespace.com/commerce-apis/~schemas"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"developers.squarespace.com\" openapi.json OR openapi.yaml OR \"OpenAPI specification\" site:developers.squarespace.com"
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.2698521,
+   "turns": 18,
+   "seconds": 103.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

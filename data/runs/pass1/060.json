@@ -1,0 +1,169 @@
+{
+ "record": {
+  "id": 60,
+  "app": "Clay",
+  "what_it_does": "Clay is a GTM (go-to-market) data platform that lets users search a proprietary companies/people database, enrich records via 150+ third-party data providers and AI research agents (\"Claygents\"), and run automated prospecting workflows.",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The Public API (REST) uses a static personal API key sent in a `clay-api-key` header, created under Settings \u2192 Account \u2192 API keys (beta) in the Clay app \u2014 this is a Bearer/API-key style credential, not an OAuth flow, and is tied to one Clay user/workspace. Separately, Clay's MCP server (https://api.clay.com/v3/mcp) uses full OAuth2 with Dynamic Client Registration (RFC 7591), PKCE, and per-user/per-workspace authorization codes \u2014 this is the method a multi-tenant agent toolkit would use since each end user authorizes their own workspace via a standard OAuth consent screen.",
+  "access": "self_serve_free",
+  "access_notes": "Clay's Free plan gives immediate API-key and MCP access with no cost. The developer docs state 'The developer platform is available across all Clay plans, including free and trial plans,' though usage is capped on Free (e.g. 100 data credits/mo, 500 actions/mo, search results limited to 50/request and 100/mo). The `Tables` API primitive specifically requires an Enterprise plan; Search and Routines (the core primitives) work on all plans including Free.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://developers.clay.com/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://api.clay.com/v3/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Narrow/moderate REST surface (search, routines/functions, tables, me \u2014 roughly a dozen documented endpoints) with the richest data primitive (Tables) gated to Enterprise plans; some endpoints are async/polling-based.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.clay.com/public-api/authentication",
+    "quote": "Every request to the Clay Public API must include a Clay API key in the `clay-api-key` header."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://university.clay.com/docs/connect-to-clay-mcp",
+    "quote": "your platform registers itself at connect time to obtain OAuth client credentials, with no manual setup on Clay's side"
+   },
+   {
+    "field": "access",
+    "url": "https://university.clay.com/docs/clay-api-cli",
+    "quote": "The developer platform is available across all Clay plans, including free and trial plans."
+   },
+   {
+    "field": "access",
+    "url": "https://www.clay.com/pricing",
+    "quote": "Free \u2014 A low risk way to learn and experiment with Clay. Includes unlimited seats and tables"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://university.clay.com/docs/connect-to-clay-mcp",
+    "quote": "Clay exposes a Model Context Protocol (MCP) server that lets an external platform ... run Clay's find-and-enrich tools and custom functions"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.clay.com/api-reference/me/get-the-authenticated-user",
+    "quote": "openapi: 3.1.0\ninfo:\n  contact:\n    name: Clay"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.clay.com/public-api/webhooks",
+    "quote": "Webhooks let Clay notify your service when a routine run finishes, so you can react without polling."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total endpoint count wasn't independently tallied beyond the ~12 listed in llms.txt (search, routines, tables, me + variants), so api_breadth is an estimate of 'moderate' rather than a precise count; it may read as 'narrow' depending on threshold. Rate limits and full error taxonomy were not individually verified."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Clay.com API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Clay.com MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/quickstart",
+       "https://university.clay.com/docs/connect-to-clay-mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/",
+       "https://developers.clay.com/tables"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Clay.com pricing free plan API access"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/authentication",
+       "https://developers.clay.com/routines"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/public-api/authentication",
+       "https://developers.clay.com/public-api/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.clay.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://university.clay.com/docs/clay-api-cli"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.clay.com/api-reference/me/get-the-authenticated-user"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.2223487,
+   "turns": 13,
+   "seconds": 58.0
+  }
+ ],
+ "raw_result": null
+}

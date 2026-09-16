@@ -1,0 +1,86 @@
+{
+ "record": {
+  "id": 27,
+  "app": "Telegram",
+  "what_it_does": "Telegram is a cloud-based messaging platform that exposes a free HTTP-based Bot API for building bots/integrations and a lower-level MTProto Client API for building full client applications.",
+  "auth_methods": [
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The Bot API is authenticated with a static bot token issued by @BotFather, embedded in the request URL path (e.g. https://api.telegram.org/bot<token>/METHOD) rather than a standard Authorization header \u2014 functionally a bearer token, not OAuth2, and it is not scoped per-end-user. There is no OAuth2 flow for third parties to act on behalf of arbitrary end users via the Bot API. Separately, the MTProto 'Client API' (for building user-facing apps) requires an api_id/api_hash pair from my.telegram.org plus full user login (phone number + code/2FA) over a custom binary protocol \u2014 classified here as 'Other' since it's neither OAuth2 nor a simple API key and requires per-user interactive login, making it unsuitable for a standard multi-tenant agent toolkit.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can message @BotFather and get a working bot token immediately at no cost; the whole Bot Platform is documented as free for developers. The Client API (api_id/api_hash) is also free and self-serve via my.telegram.org, but usage is monitored for abuse and accounts can be banned/rate-limited if flagged, and it requires a real phone-verified account rather than a simple credential \u2014 so it's less turnkey than the Bot API.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://core.telegram.org/bots/api",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://core.telegram.org/bots",
+    "quote": "message@BotFather on Telegram to register your bot and receive its authentication token"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://core.telegram.org/api/obtaining_api_id",
+    "quote": "You will get basic addresses as well as the api_id and api_hash parameters required for user authorization"
+   },
+   {
+    "field": "access",
+    "url": "https://core.telegram.org/bots",
+    "quote": "The Telegram Bot Platform hosts more than 10 million bots and is free for both users and developers."
+   },
+   {
+    "field": "api_style",
+    "url": "https://core.telegram.org/bots/api",
+    "quote": "The Bot API is an HTTP-based interface created for developers keen on building bots for Telegram."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://core.telegram.org/bots/webhooks",
+    "quote": "We currently support two ways of processing bot updates, getUpdates and setWebhook."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://core.telegram.org/bots",
+    "quote": "Developers communicate with this server via an easy HTTPS-interface with a simplified version of the Telegram API\u2013 known as the Bot API."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not confirm whether Telegram publishes a machine-readable OpenAPI/Swagger spec for the Bot API on a vendor page within the tool budget (only third-party generated specs are known); marked openapi_spec false pending further check. Bots also cannot initiate conversations with arbitrary users (a user must message/add the bot first), which may constrain some outbound-messaging agent use cases."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://core.telegram.org/bots"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.03520115,
+   "turns": 3,
+   "seconds": 38.5
+  }
+ ],
+ "raw_result": null
+}

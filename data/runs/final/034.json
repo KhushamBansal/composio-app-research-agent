@@ -1,0 +1,154 @@
+{
+ "record": {
+  "id": 34,
+  "app": "GoHighLevel",
+  "what_it_does": "GoHighLevel (HighLevel) is an all-in-one sales/marketing CRM platform (contacts, conversations/SMS/email, calendars, opportunities, payments, workflows) whose API lets developers build integrations and automations on top of agency and sub-account data.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth 2.0 (with PKCE support) is used for public/Marketplace apps that act on behalf of other users' accounts, issuing daily-refreshed access tokens via /oauth/token. For single-account/internal use, HighLevel recommends static 'Private Integration Tokens' (PIT) generated in account settings and sent as a Bearer token, which replace the deprecated v1 API keys ('Other' = legacy API key, end-of-life, no longer issuable).",
+  "access": "self_serve_trial",
+  "access_notes": "Signing up for a Marketplace developer account is free, but to actually authorize an OAuth app or create a Private Integration Token you need a HighLevel sub-account/agency, which requires a paid subscription (Starter $97/mo, Unlimited $297/mo, Agency Pro $497/mo) \u2014 each plan ships with a 14-day free trial, after which billing starts automatically.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://marketplace.gohighlevel.com/docs/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://services.leadconnectorhq.com/mcp/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "requires a paid (or trial) HighLevel subscription/location to obtain working credentials",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://help.gohighlevel.com/support/solutions/articles/155000003054-private-integrations-everything-you-need-to-know",
+    "quote": "Private Integrations, to put it simply, is more powerful yet secure alternative to API Keys."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://help.gohighlevel.com/support/solutions/articles/155000000136-how-to-get-started-with-the-developer-s-marketplace",
+    "quote": "HighLevel Marketplace also supports OAuth 2.0 with PKCE for external authentication."
+   },
+   {
+    "field": "access",
+    "url": "https://www.gohighlevel.com/pricing",
+    "quote": "Each plan includes a 14-day free trial on the tier you choose, and billing starts automatically at the end of the trial"
+   },
+   {
+    "field": "access",
+    "url": "https://help.gohighlevel.com/support/solutions/articles/155000000136-how-to-get-started-with-the-developer-s-marketplace",
+    "quote": "go to the website (https://marketplace.gohighlevel.com) and click the sign-up button. Follow the prompts to create your account."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://help.gohighlevel.com/support/solutions/articles/155000005741-how-to-setup-and-use-the-highlevel-mcp-server",
+    "quote": "HighLevel MCP Endpoint:https://services.leadconnectorhq.com/mcp/"
+   },
+   {
+    "field": "api_style",
+    "url": "https://marketplace.gohighlevel.com/docs/",
+    "quote": "curl -X GET https://services.leadconnectorhq.com/contacts/ -H \"Authorization: Bearer YOUR_TOKEN\""
+   },
+   {
+    "field": "api_style",
+    "url": "https://marketplace.gohighlevel.com/docs/",
+    "quote": "Complete REST API documentation for the HighLevel CRM platform."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://marketplace.gohighlevel.com/docs/",
+    "quote": "Real-time notifications for 50+ events. Stay updated with instant webhook callbacks."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/GoHighLevel/highlevel-api-docs",
+    "quote": "Markdown and OpenAPI-based documentation for easy readability and automation."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether a Stoplight-hosted, single downloadable OpenAPI/Swagger JSON file exists for the whole API (a community feature request for a merged 'OpenAPI / Postman Collection' is still open on HighLevel's ideas board), or only per-resource spec files in the official GitHub repo."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://highlevel.stoplight.io/docs/integrations/",
+       "https://marketplace.gohighlevel.com/docs/oauth"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "GoHighLevel official MCP server developer docs"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.gohighlevel.com/support/solutions/articles/155000005741-how-to-setup-and-use-the-highlevel-mcp-server",
+       "https://marketplace.gohighlevel.com/docs/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "GoHighLevel API v2 authentication OAuth 2.0 scopes stoplight.io"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.gohighlevel.com/support/solutions/articles/155000000136-how-to-get-started-with-the-developer-s-marketplace",
+       "https://help.gohighlevel.com/support/solutions/articles/155000003054-private-integrations-everything-you-need-to-know"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "GoHighLevel pricing free trial plans cost per month"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "highlevel.stoplight.io OpenAPI spec json download GoHighLevel API reference"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/GoHighLevel/highlevel-api-docs"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.2013215,
+   "turns": 10,
+   "seconds": 63.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

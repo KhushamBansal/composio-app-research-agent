@@ -1,0 +1,126 @@
+{
+ "record": {
+  "id": 68,
+  "app": "MongoDB Atlas",
+  "what_it_does": "MongoDB Atlas is a fully managed cloud database service, and its Atlas Administration API lets developers programmatically create and manage Atlas organizations, projects, clusters, users, and other administrative resources.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The Atlas Administration API supports two methods: (1) Service accounts using OAuth 2.0 client_credentials grant, which MongoDB now recommends, and (2) legacy API keys (public/private key pair) authenticated via HTTP Digest Authentication (not Basic or Bearer). Service account access tokens expire after 1 hour and cannot be refreshed, only regenerated.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create a free Atlas account and organization, then self-serve create service accounts or API keys directly from the Atlas UI/API with no vendor approval step. A free-tier (M0) cluster is available. Some IP access-list configuration is required before keys/tokens can be used.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.mongodb.com/docs/atlas/api/atlas-admin-api-ref/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://www.mongodb.com/docs/mcp-server/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Requires IP access-list configuration and, for org/project-scoped credentials, admin-level Atlas roles (Organization Owner / Project Owner) to provision service accounts or API keys.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "Service account access tokens (OAuth 2.0) - API keys (HTTP Digest Authentication)"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "curl --user \"{PUBLIC-KEY}:{PRIVATE-KEY}\" --digest"
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "You have an Atlas account. To create one, see Create an Atlas Account."
+   },
+   {
+    "field": "access",
+    "url": "https://www.mongodb.com/docs/atlas/configure-api-access/",
+    "quote": "To create a service account or API (Application Programming Interface) keys for an organization, you must have Organization Owner access"
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.mongodb.com/docs/atlas/api/atlas-admin-api-ref/",
+    "quote": "The Atlas Administration API follows the principles of the REST architectural style to expose a number of internal resources"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.mongodb.com/docs/mcp-server/",
+    "quote": "The MongoDB MCP Server lets you connect to MongoDB from your agentic AI tools, assistants, and platforms."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.mongodb.com/docs/mcp-server/remote-mcp/access-models",
+    "quote": "Atlas creates a pair of Service Accounts for it. The configuration specifies the Atlas roles the agent receives"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2/operation/operation-creategroupintegration",
+    "quote": "POST /api/atlas/v2/groups/{groupId}/integrations/WEBHOOK"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.mongodb.com/docs/atlas/api/atlas-admin-api-ref/",
+       "https://www.mongodb.com/docs/atlas/configure-api-access/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "MongoDB Atlas Administration API OpenAPI spec webhooks event notifications"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "MongoDB official MCP server documentation Atlas"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.mongodb.com/docs/mcp-server/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.mongodb.com/docs/mcp-server/remote-mcp/access-models"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.1560302,
+   "turns": 7,
+   "seconds": 37.2
+  }
+ ],
+ "raw_result": null
+}

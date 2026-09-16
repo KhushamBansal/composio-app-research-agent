@@ -1,0 +1,105 @@
+{
+ "record": {
+  "id": 85,
+  "app": "iPayX",
+  "what_it_does": "iPayX is a FINTRAC-registered FX forensic audit API/MCP service that scores bank or card-network foreign-exchange rates against live mid-market rates to surface hidden markup and spread costs.",
+  "auth_methods": [
+   "Bearer token",
+   "None"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "Production REST API and the full_forensic_report MCP tool require a static 'ipx_live_...' API key sent as 'Authorization: Bearer ipx_live_your_key'. No OAuth2 flow is documented. Two public MCP tools (check_fx_rate, audit_transaction) require no auth at all, just per-IP rate limiting.",
+  "access": "self_serve_free",
+  "access_notes": "Free plan gives 5 lifetime audits and an API key via self-signup, and the public MCP tools work with zero signup. However, the developers page also lists paid API tiers starting at 'Developer \u2014 $99/mo \u00b7 100 audits/mo' for sustained/production use, so meaningful volume requires a paid plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "narrow",
+  "api_docs_url": "https://ipayx.ai/developers",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.ipayx.ai/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Very narrow, single-purpose API (FX audit only, 4 endpoints) with paid tiers gating real usage volume",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://ipayx.ai/developers",
+    "quote": "Authenticate every request using your production API key in the Authorization header."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://ipayx.ai/mcp",
+    "quote": "Auth: None (public tools rate-limited per IP)"
+   },
+   {
+    "field": "access",
+    "url": "https://ipayx.ai/pricing",
+    "quote": "You have 5 free audits.\n\n$0\n\n5 audits, lifetime"
+   },
+   {
+    "field": "access",
+    "url": "https://ipayx.ai/developers",
+    "quote": "Developer \u2014 $99/mo \u00b7 100 audits/mo \u00b7 sandbox"
+   },
+   {
+    "field": "api_style",
+    "url": "https://ipayx.ai",
+    "quote": "REST API + SDKs for FX audit automation."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://ipayx.ai/developers",
+    "quote": "Officially listed on the MCP Registry (v1.3.3)"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the OpenAPI 3.1 spec is publicly downloadable without login (the 'View spec' link was not fetched directly); how the pricing-page free/credit-pack tiers reconcile with the separate 'Developer/Starter/Pro/Scale' API rate-limit tiers shown on the developers page \u2014 these appear to be two overlapping pricing schemes."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://ipayx.ai/docs",
+       "https://ipayx.ai"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://ipayx.ai/developers",
+       "https://ipayx.ai/pricing",
+       "https://ipayx.ai/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1328529,
+   "turns": 5,
+   "seconds": 45.0
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

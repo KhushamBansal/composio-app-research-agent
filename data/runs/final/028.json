@@ -1,0 +1,142 @@
+{
+ "record": {
+  "id": 28,
+  "app": "WhatsApp Business",
+  "what_it_does": "The WhatsApp Business Platform (Cloud API) lets businesses programmatically send and receive WhatsApp messages, manage message templates, phone numbers, groups, and calls, and receive delivery/incoming-message events via webhooks.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Meta's docs describe the underlying token model as OAuth-style access tokens ('Authentication uses OAuth (not 2.0) access tokens'). For a multi-tenant agent toolkit, Embedded Signup (an OAuth flow) is used to obtain access on behalf of a customer's WhatsApp Business Account; day-to-day API calls then use a long-lived System User access token sent as an `Authorization: Bearer <token>` header. There is also an official MCP layer that itself uses 'OAuth-based authentication with Read and Manage scopes.'",
+  "access": "approval_required",
+  "access_notes": "Anyone can create a Meta app, get a free test WhatsApp Business Account/phone number, and send test messages immediately with no payment method. But calling the API on behalf of WABAs you don't own (the scenario for a multi-user agent toolkit) requires the `whatsapp_business_messaging`/`whatsapp_business_management` permissions at Advanced Access, which requires Business Verification and Meta App Review.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developers.facebook.com/documentation/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Business Verification + Meta App Review (Advanced Access) required to message WABAs outside the developer's own business",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+    "quote": "Authentication uses OAuth (not 2.0) access tokens, while permissions restrict access to specific resources."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+    "quote": "-H 'Authorization: Bearer <SYSTEM_USER_ACCESS_TOKEN>'"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+    "quote": "Test WhatsApp Business accounts and test phone numbers are useful for testing purposes... don't require a payment method on file"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.facebook.com/docs/graph-api/overview/access-levels/",
+    "quote": "Advanced Access, however, must be approved on an individual permission and feature basis through the App Review process."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/overview",
+    "quote": "The WhatsApp Business Platform is built on Graph API and uses HTTP protocol."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
+    "quote": "Whenever there's a change to one of these fields, we will send your endpoint a POST request with a JSON payload describing the change."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.facebook.com/documentation/mcp",
+    "quote": "WhatsApp Business Tools MCP | Manage your WhatsApp Business Platform integration \u2014 discover businesses and accounts, onboard and register phone numbers, manage message templates, configure webhooks, and send messages."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact scope/tool list and rollout status of the newly announced 'WhatsApp Business Tools MCP' (page dated Jun 12, 2026, but third-party news from Sep 16, 2026 says access is rolling out gradually) was not independently verified beyond the vendor's own MCP catalog page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+       "https://developers.facebook.com/docs/whatsapp/cloud-api/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/docs/whatsapp/business-management-api/access",
+       "https://developers.facebook.com/docs/graph-api/webhooks/getting-started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "WhatsApp Business Platform official MCP server Meta developers"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/documentation/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "WhatsApp Business Platform OpenAPI specification developers.facebook.com download"
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/nonexistent"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "whatsapp_business_messaging permission App Review Advanced Access requirement"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.facebook.com/docs/graph-api/overview/access-levels/"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.1726761,
+   "turns": 10,
+   "seconds": 78.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

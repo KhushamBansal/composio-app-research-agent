@@ -1,0 +1,152 @@
+{
+ "record": {
+  "id": 51,
+  "app": "DataForSEO",
+  "what_it_does": "DataForSEO provides pay-as-you-go REST APIs delivering SEO, SERP, keyword, backlink, on-page, business, app-store, and web-scraping data.",
+  "auth_methods": [
+   "Basic",
+   "OAuth2"
+  ],
+  "auth_primary": "Basic",
+  "auth_notes": "Primary and only documented method for the REST APIs is HTTP Basic Auth using a login/password pair issued in the account dashboard (not the account login itself). The official MCP server additionally supports an OAuth flow when connecting via ChatGPT's Developer Mode plugin option, but Basic Auth (as a Bearer-style Authorization header) is the universal method across all API products and clients.",
+  "access": "self_serve_free",
+  "access_notes": "Free registration immediately grants API credentials, a free unlimited-duration Sandbox environment (dummy data, no cost, full endpoint coverage), and a $1 real-data trial credit added automatically on signup \u2014 no approval or payment needed to start building.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.dataforseo.com/v3/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.dataforseo.com/v3/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.dataforseo.com/v3/auth/",
+    "quote": "DataForSEO is using the Basic Authentication, which makes it possible to call our APIs"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://dataforseo.com/model-context-protocol",
+    "quote": "Select the OAuth authentication method and click Create"
+   },
+   {
+    "field": "access",
+    "url": "https://dataforseo.com/help-center/how-does-your-free-unlimited-trial-work",
+    "quote": "To get a free trial, you should simply create an account with DataForSEO"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.dataforseo.com/v3/appendix-sandbox/",
+    "quote": "Sandbox is completely free for any registered user at DataForSEO"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.dataforseo.com/v3/",
+    "quote": "DataForSEO API is using the REST technology for interchanging data"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://dataforseo.com/model-context-protocol",
+    "quote": "Point your MCP-compatible client to the official DataForSEO remote endpoint: https://mcp.dataforseo.com/v3/mcp"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/dataforseo/OpenApiDocumentation",
+    "quote": "This repository contains a `YAML` file in **OpenAPI** format (version 3.x)"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.dataforseo.com/v3/appendix-sandbox/",
+    "quote": "Sandbox environment also works with `pingback_url` and `postback_url` functions"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Minimum account top-up for production (non-sandbox, non-trial) use is $50 per dataforseo.com/pricing, which caps how far the free $1 trial credit goes for real (non-sandbox) data before a paid top-up is needed."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.dataforseo.com/v3/",
+       "https://docs.dataforseo.com/v3/auth/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dataforseo.com/pricing",
+       "https://docs.dataforseo.com/v3/mcp-server/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DataForSEO official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dataforseo.com/model-context-protocol",
+       "https://docs.dataforseo.com/v3/sandbox_info/",
+       "https://docs.dataforseo.com/v3/webhooks/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DataForSEO free trial sandbox API credentials sign up"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "DataForSEO OpenAPI specification swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://dataforseo.com/help-center/how-does-your-free-unlimited-trial-work",
+       "https://github.com/dataforseo/OpenApiDocumentation",
+       "https://docs.dataforseo.com/v3/appendix-sandbox/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.dataforseo.com/v3/#rate-limits"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.15829120000000002,
+   "turns": 10,
+   "seconds": 48.9
+  }
+ ],
+ "raw_result": null
+}

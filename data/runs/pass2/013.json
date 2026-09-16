@@ -1,0 +1,91 @@
+{
+ "record": {
+  "id": 13,
+  "app": "Freshdesk",
+  "what_it_does": "Freshdesk is a cloud-based customer support/helpdesk platform for managing tickets, contacts, companies, agents, and knowledge-base content.",
+  "auth_methods": [
+   "Basic",
+   "Bearer token"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "Freshdesk uses a per-agent 'API key' sent via HTTP Basic Auth (API key as username, any string as password) or as a bearer-style token in the Authorization header for the MCP integration. No OAuth2 is documented for the core REST API.",
+  "access": "self_serve_trial",
+  "access_notes": "New signups get a 14-day free trial (no credit card) with full API key access; there is no ongoing free public plan for new accounts (a separate 'Free Program' exists only for existing accounts, capped at 2 agents and 6 months). After the trial, a paid plan (Blossom/Garden/Estate/Forest or newer Growth/Pro/Enterprise tiers) is required for continued API use.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.freshdesk.com/api/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No permanent free tier (trial-only), and the official MCP server is Enterprise-plan-only via a gated Early Access Program",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "You can use your personal API key to authenticate the request. If you use the API key, there is no need for a password."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+    "quote": "Currently, Freshdesk allows you to authenticate requests involved in MCP integration by using an API key only."
+   },
+   {
+    "field": "access",
+    "url": "https://www.freshworks.com/freshdesk/pricing/free/",
+    "quote": "For 14 days, support teams get access to collaboration tools such as real-time dashboards, self-service features"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "For all trial users, there is a default API limit of 50 calls/minute."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.freshdesk.com/api/",
+    "quote": "Freshdesk's APIs belong to the Representational State Transfer (REST) category."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+    "quote": "Freshworks MCP integration is currently in Beta and available through an Early Access Program (EAP) for selected customers on the Enterprise plan."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://support.freshdesk.com/support/solutions/articles/225430-what-are-webhooks-",
+    "quote": "Webhooks can be triggered via the automation rules that run on ticket creation and rules that run on ticket updates in Freshdesk."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact production (post-EAP, post-GA) pricing/plan requirement for the official MCP server is not yet published; current limits (100 calls/min, 5,000 actions/month) are explicitly stated as EAP-only and subject to change."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.0374447,
+   "turns": 3,
+   "seconds": 25.7
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,130 @@
+{
+ "record": {
+  "id": 76,
+  "app": "Monday.com",
+  "what_it_does": "Monday.com is a Work OS / project-management platform where teams manage boards, items, and workflows, accessible programmatically via a GraphQL platform API.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal API tokens (sent as a raw value in the Authorization header, not a standard 'Bearer <token>' scheme) authenticate as a single user with that user's own permissions - fine for single-tenant scripts but not for a multi-user agent toolkit. Third-party apps distributed across multiple accounts use OAuth2 (legacy flow with non-expiring access tokens and no refresh tokens, or a newer OAuth 2.1 flow with expiring/refresh tokens) via a free app created in the Developer Center.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can sign up for a free, non-expiring developer/sandbox account and immediately obtain a personal API token from the Developer Center; creating an OAuth app (client_id/client_secret) is also free and self-serve, no approval step required to obtain working credentials.",
+  "api_style": [
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.monday.com/api-reference/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.monday.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.monday.com/api-reference/docs/authentication",
+    "quote": "The monday.com platform API utilizes personal V2 API tokens to authenticate requests"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.monday.com/apps/docs/oauth",
+    "quote": "OAuth 2.0 is a protocol that lets your app request authorization to read or modify data in a user's monday account"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.monday.com/api-reference/docs/developer-sandbox-account",
+    "quote": "Create a free developer account and start building right away"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.monday.com/api-reference/docs/getting-started",
+    "quote": "GraphQL APIs use a single endpoint for all operations (unlike REST APIs). Our API endpoint is: `https://api.monday.com/v2`"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.monday.com/api-reference/docs/monday-mcp-overview",
+    "quote": "Connect using the hosted MCP, which requires no local setup"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.monday.com/api-reference/docs/webhooks",
+    "quote": "Our webhook integration provides real-time updates from monday.com boards"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.monday.com/api-reference/docs/authentication",
+       "https://developer.monday.com/api-reference/docs/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "monday.com official MCP server developer.monday.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.monday.com/api-reference/docs/monday-mcp-overview",
+       "https://developer.monday.com/apps/docs/oauth"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.monday.com API reference getting started GraphQL rate limits free developer account"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.monday.com/api-reference/docs/developer-sandbox-account",
+       "https://developer.monday.com/api-reference/docs/getting-started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.monday.com OpenAPI swagger spec REST API"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1495595,
+   "turns": 9,
+   "seconds": 40.6
+  }
+ ],
+ "raw_result": null
+}

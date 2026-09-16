@@ -1,0 +1,155 @@
+{
+ "record": {
+  "id": 7,
+  "app": "Zoho CRM",
+  "what_it_does": "Zoho CRM is a cloud-based customer relationship management platform for managing leads, contacts, accounts, deals, and sales pipeline processes.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Zoho CRM API v8 uses OAuth 2.0 exclusively (Authorization Code flow producing access + refresh tokens); requests are authenticated via an 'Authorization: Zoho-oauthtoken <token>' header. No API key or basic auth alternative is documented for the REST API.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for Zoho CRM's Free Edition (up to 3 users) which includes API access with 5,000 credits/day, or register a free full-featured Developer Edition account at developer.zoho.com for testing. Developers self-register OAuth client apps (Client ID/Secret) via the Zoho API Console at no cost \u2014 no approval/review step is documented for obtaining working credentials.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+    "quote": "The Zoho CRM API uses the OAuth 2.0 protocol for authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/enable.html",
+    "quote": "Authorization: Zoho-oauthtoken d92d4xxxxxxxxxxxxx15f52"
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html",
+    "quote": "Free Edition | 5000 credits | 5000 credits"
+   },
+   {
+    "field": "access",
+    "url": "https://www.zoho.com/crm/developer/developer-edition.html",
+    "quote": "Zoho CRM's free developer edition is a fully-featured application environment that helps developers explore Zoho CRM and test their applications."
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+    "quote": "Perform CRUD operations on CRM module entities and integrate with any third party application through flexible RESTful endpoints."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+    "quote": "Zoho CRM provides these as pre-built MCP servers, so you don't need to build, host, or maintain any infrastructure."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/openapi-specification.html",
+    "quote": "The OpenAPI Specification for Zoho CRM APIs is hosted on GitHub"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.zoho.com/crm/developer/docs/api/v8/notifications/enable.html",
+    "quote": "To enable instant notifications of actions performed on a module."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/crm/developer/docs/api/v8/",
+       "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/crm/developer/docs/api/v8/notifications-overview.html",
+       "https://www.zoho.com/crm/developer/docs/api/v8/api-limits.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho CRM official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+       "https://www.zoho.com/crm/developer/docs/api/v8/Notifications.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho CRM API webhooks documentation \"watch\" notifications API v8"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/crm/developer/docs/api/v8/notifications/enable.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho CRM OpenAPI Swagger specification download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Zoho CRM free edition sign up free plan API access"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.zoho.com/crm/developer/developer-edition.html",
+       "https://www.zoho.com/crm/developer/docs/api/v8/openapi-specification.html"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.2315154,
+   "turns": 11,
+   "seconds": 50.9
+  }
+ ],
+ "raw_result": null
+}

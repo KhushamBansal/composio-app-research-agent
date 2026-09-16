@@ -1,0 +1,126 @@
+{
+ "record": {
+  "id": 69,
+  "app": "Datadog",
+  "what_it_does": "Datadog is a unified observability and security platform (metrics, logs, traces, dashboards, monitors, incidents, security signals) that exposes nearly all of its functionality via a REST API.",
+  "auth_methods": [
+   "API key",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "The core API uses a DD-API-KEY header plus a DD-APPLICATION-KEY header (application keys inherit the creating user's/service account's permissions and can be scoped). OAuth2 is documented for building third-party integrations, but OAuth clients can only be tested inside the developer's own 'partner developer organization' and must be published/reviewed by Datadog before they can authorize other customers' accounts \u2014 so OAuth2 is not usable standalone by a generic multi-tenant agent toolkit without going through Datadog's integration partner/publishing process.",
+  "access": "self_serve_free",
+  "access_notes": "Any signed-up user can generate API keys and application keys immediately from Organization Settings with no approval step (docs.datadoghq.com/account_management/api-app-keys). Datadog also offers a perpetually free Infrastructure Monitoring tier (up to 5 hosts) in addition to a 14-day free trial of the full platform; could not fetch the exact free-tier pricing tab text (JS-rendered tabs) to quote verbatim, so treat the free-infra-tier claim as corroborated by third-party sources rather than a directly fetched primary quote.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.datadoghq.com/api/latest/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.datadoghq.com/mcp_server.md",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.datadoghq.com/api/latest/",
+    "quote": "Authenticate to the API with an API key using the header `DD-API-KEY`. For some endpoints, you also need an Application key"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.datadoghq.com/developers/authorization/",
+    "quote": "Datadog uses the OAuth 2.0 (OAuth2) Authorization Framework to allow users to securely authorize third-party applications' access"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.datadoghq.com/account_management/api-app-keys",
+    "quote": "Application keys, in conjunction with your organization's API key, give users access to Datadog's programmatic API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.datadoghq.com/api/latest/",
+    "quote": "The Datadog API is an HTTP REST API."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.datadoghq.com/api/latest/",
+    "quote": "Use the Datadog HTTP API to access the Datadog platform programmatically. You can use the API to send data to Datadog, build data visualizations, and manage your account."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.datadoghq.com/integrations/webhooks/",
+    "quote": "Webhooks enable you to: Connect to your services. Alert your services when a metric alert is triggered."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.datadoghq.com/mcp_server.md",
+    "quote": "The Datadog MCP Server acts as a bridge between your observability data in Datadog and any AI agents that support the Model Context Protocol"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The openapi_spec evidence URL change required because the GitHub raw file URL could not be verified via fetch. Substituted with the main API docs page which discusses API access, but note that Datadog's actual OpenAPI spec file is generated and used internally for client library generation (confirmed via third-party blog/GitHub sources). The main API documentation page clearly states it is an HTTP REST API with comprehensive endpoint documentation."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT,COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/integrations/webhooks/",
+       "https://docs.datadoghq.com/api/latest/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog OpenAPI spec documentation site:docs.datadoghq.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/api/latest/api-management/create-a-new-api.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Datadog API OpenAPI specification documentation site:docs.datadoghq.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.datadoghq.com/api/latest/using-the-api.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"OpenAPI\" \"Swagger\" Datadog API specification docs.datadoghq.com"
+     }
+    }
+   ],
+   "cost_usd": 0.07191635,
+   "turns": 8,
+   "seconds": 51.4
+  }
+ ],
+ "raw_result": null
+}

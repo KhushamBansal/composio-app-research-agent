@@ -1,0 +1,134 @@
+{
+ "record": {
+  "id": 91,
+  "app": "NotebookLM",
+  "what_it_does": "NotebookLM (Gemini Notebook) is Google's AI research tool that grounds chat, summaries, audio/video overviews, and reports in documents a user uploads or links into a notebook.",
+  "auth_methods": [
+   "OAuth2",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The public API only exists for 'Gemini Notebook Enterprise' (the Cloud/enterprise edition), not the consumer notebooklm.google.com product. Calls go through the Discovery Engine API using standard Google Cloud credentials: examples use `gcloud auth print-access-token` (OAuth2 user token), and the RPC reference lists required OAuth scopes (`cloud-platform`, `discoveryengine.readwrite`, `discoveryengine.serving.readwrite`) that also work with service-account (JWT) credentials for server-to-server use.",
+  "access": "self_serve_trial",
+  "access_notes": "Enterprise setup only: create a GCP project with billing, enable the Discovery Engine API, configure an identity provider (Cloud Identity or third-party IdP via Workforce Identity Federation), and assign 'Cloud NotebookLM' IAM roles/licenses. A 14-day free-trial subscription (5000 licenses) is self-serve via the Cloud console; ongoing use requires a paid monthly/yearly subscription with a minimum of 15 licenses. No free path exists for the consumer NotebookLM product, which has no public API at all.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+  "openapi_spec": null,
+  "webhooks": null,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "API only exists for the paid Gemini Notebook Enterprise product, gated behind GCP project/billing setup, enterprise IdP configuration, and per-seat licensing (min 15 seats) after a 14-day trial",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "curl -X POST -H \"Authorization:Bearer $(gcloud auth print-access-token)\""
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha",
+    "quote": "Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform`"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+    "quote": "The free-trial tier: With this tier, you get a full-featured, 14-day trial subscription of 5000 licenses."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing",
+    "quote": "A subscription contains at least 15 licenses and can contain up to 5,000 licenses."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+    "quote": "https://ENDPOINT_LOCATION-discoveryengine.googleapis.com/v1alpha/projects/PROJECT_NUMBER/locations/LOCATION/notebooks"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview",
+    "quote": "Gemini Notebook Enterprise is a highly compliant, enterprise-ready version of Gemini Notebook."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not confirm from a primary source whether a machine-readable OpenAPI/Discovery Doc spec is published for this API, or whether webhooks/event subscriptions exist for notebook/source changes \u2014 neither was mentioned in the fetched docs (overview, setup, licensing, API-notebooks, or the v1alpha RPC reference)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NotebookLM API developer documentation Google"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NotebookLM Enterprise API Gemini Enterprise cloud.google.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks",
+       "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-notebooklm",
+       "https://docs.cloud.google.com/gemini/enterprise/docs/reference/rpc/google.cloud.notebooklm.v1alpha"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"Gemini Notebook Enterprise\" licenses pricing get licenses"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NotebookLM official MCP server Google"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/set-up-licensing"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.2054469,
+   "turns": 10,
+   "seconds": 62.7
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,160 @@
+{
+ "record": {
+  "id": 30,
+  "app": "Vonage",
+  "what_it_does": "Vonage's API Platform (formerly Nexmo) provides communications APIs for SMS, voice calls, messaging (WhatsApp/Messages), video, verification/2FA, and number management that developers integrate into applications.",
+  "auth_methods": [
+   "API key",
+   "Basic",
+   "JWT / service account"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "No OAuth2 for third-party API access is documented. Most APIs use API Key+Secret (either as request params or Base64 Basic Auth header); newer/advanced APIs (Voice, Video, Conversation, Messages advanced features) require RS256-signed JWTs generated from an Application ID + private key. Messages and Verify support either JWT or Basic auth, with JWT recommended for webhooks/ACLs.",
+  "access": "self_serve_free",
+  "access_notes": "Signing up on vonage.com creates an account with an API key/secret immediately, and the pricing page states 'Try it free. Start developing now with free credit. No credit card required.' Ongoing production use is pay-as-you-go metered billing (no subscription needed), and some features (e.g., dedicated phone numbers for SMS/Voice, WhatsApp sender registration) require additional setup/approval.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.vonage.com/en/api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.vonage.com/en/mcp-server/overview",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No OAuth2 for third-party/multi-user apps \u2014 a toolkit must manage per-user API key/secret or JWT+private-key credentials directly",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+    "quote": "Vonage APIs support different authentication methods depending on which product you are using... API Key and Secret (Header), JSON Web Token (JWT)"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+    "quote": "A number of newer Vonage APIs require authentication to be done using an API key and secret sent Base64 encoded in the Authorization header"
+   },
+   {
+    "field": "access",
+    "url": "https://www.vonage.com/communications-apis/pricing/",
+    "quote": "Try it free. Start developing now with free credit. No credit card required."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.vonage.com/en/api",
+    "quote": "Voice API Make and receive telephone calls to or from anywhere in the world."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developer.vonage.com/en/getting-started/concepts/openapi",
+    "quote": "We use OpenAPI to describe all our APIs, and we make those specifications publicly available too."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.vonage.com/en/voice/voice-api/webhook-reference",
+    "quote": "Vonage uses webhooks alongside its Voice API to enable your application to interact with the call."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.vonage.com/en/mcp-server/overview",
+    "quote": "The Vonage MCP Server enables AI agents and developer tools to discover, describe, and use Vonage capabilities via the Model Context Protocol."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.vonage.com/en/mcp-server/how-to-guides/install-tooling-mcp-server",
+    "quote": "The Vonage Server API Bindings MCP Server, also known as the Tooling MCP Server, lets you invoke various API actions directly through your LLM Assistant"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total operation count across all Vonage APIs wasn't tallied (breadth rated 'broad' based on ~15+ distinct product APIs each with multiple endpoints); whether the official MCP tooling server exposes the full API surface or a curated subset wasn't independently verified beyond the docs page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.vonage.com/en/getting-started/concepts/authentication",
+       "https://developer.vonage.com/en/api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.vonage.com/communications-apis/pricing/",
+       "https://developer.vonage.com/en/documentation/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vonage OpenAPI spec developer.vonage.com github"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.vonage.com/en/getting-started/concepts/openapi",
+       "https://developer.vonage.com/en/documentation/webhooks-overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vonage MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.vonage.com/en/mcp-server/overview",
+       "https://developer.vonage.com/en/mcp-server/how-to-guides/install-tooling-mcp-server"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Vonage API webhooks documentation callback URL"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.vonage.com/en/account/guides/developer-api-account"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.vonage.com/en/voice/voice-api/webhook-reference"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.2128451,
+   "turns": 11,
+   "seconds": 54.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

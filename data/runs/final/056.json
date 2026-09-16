@@ -1,0 +1,137 @@
+{
+ "record": {
+  "id": 56,
+  "app": "Firecrawl",
+  "what_it_does": "Firecrawl is an API that crawls, scrapes, searches, and interacts with websites and returns the content as clean markdown, HTML, or structured JSON for use by AI/LLM applications.",
+  "auth_methods": [
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The core REST API (scrape, crawl, map, search, extract, interact) uses a static API key ('fc-...') sent as an Authorization: Bearer header; no OAuth2 flow exists for the API itself. OAuth2 only appears on the hosted MCP server, used for interactive client account-linking (e.g. Claude.ai/ChatGPT connectors), not for direct API calls. A keyless mode exists for limited, rate-limited scrape/search/parse.",
+  "access": "self_serve_free",
+  "access_notes": "Free account gives 1,000 credits/month (roughly 1,000 pages or ~500 searches) with no credit card required, and API calls even work keyless (rate-limited) with no signup at all. Paid tiers (Hobby/Standard/Growth/Scale/Enterprise) exist for higher volume/concurrency but are not required to obtain working credentials.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.firecrawl.dev/api-reference/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.firecrawl.dev/v2/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.firecrawl.dev/api-reference/introduction",
+    "quote": "The header should contain `Bearer fc-123456789`, where `fc-123456789` represents your API Key."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.firecrawl.dev/mcp-server",
+    "quote": "Use browser-based OAuth for an interactive MCP client and the full Firecrawl tool surface."
+   },
+   {
+    "field": "access",
+    "url": "https://www.firecrawl.dev/pricing",
+    "quote": "Firecrawl gives you 1,000 free credits every month, which covers about 1,000 pages, and no card is required."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.firecrawl.dev/introduction",
+    "quote": "Scrape your first page now. No account or API key is required for this request."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.firecrawl.dev/api-reference/introduction",
+    "quote": "All requests contain the following base URL:\n\n```bash\nhttps://api.firecrawl.dev"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.firecrawl.dev/mcp-server",
+    "quote": "Firecrawl MCP gives AI clients access to live web data through the Model Context Protocol. It is available as a hosted service or as an open-source local server."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.firecrawl.dev/features/webhooks",
+    "quote": "Get notified the moment a crawl, batch scrape, extract, agent job, or monitor check starts, progresses, or finishes."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.firecrawl.dev/llms.txt",
+    "quote": "[v2-openapi](/api-reference/v2-openapi.json)"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total endpoint count wasn't enumerated (docs describe scrape, crawl, map, search, extract, interact, agent, monitor, batch/crawl status, plus webhooks \u2014 roughly 15-30 operations, placed as 'moderate' breadth); OpenAPI JSON file content itself was not directly fetched (fetch tool returned 404 on the .json path, only confirmed its existence via llms.txt listing and a search citation)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.firecrawl.dev/introduction",
+       "https://docs.firecrawl.dev/api-reference/introduction",
+       "https://www.firecrawl.dev/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.firecrawl.dev/mcp-server",
+       "https://docs.firecrawl.dev/features/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.firecrawl.dev/api-reference/v2-openapi",
+       "https://docs.firecrawl.dev/mcp-server/connect-account"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Firecrawl API openapi.json spec site:docs.firecrawl.dev"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.firecrawl.dev/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.1508498,
+   "turns": 8,
+   "seconds": 46.6
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

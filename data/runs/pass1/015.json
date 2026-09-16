@@ -1,0 +1,164 @@
+{
+ "record": {
+  "id": 15,
+  "app": "Pylon",
+  "what_it_does": "Pylon is a B2B customer support/helpdesk platform (ticketing, AI agents, knowledge base, account intelligence) that companies use to support their business customers.",
+  "auth_methods": [
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "Bearer token",
+  "auth_notes": "The REST API uses a static Bearer token that only Admin users can generate in Pylon settings (Authorization: Bearer <token>). Separately, Pylon's own hosted MCP server uses OAuth 2.0 (AuthKit) so an AI tool can act as a logged-in dashboard user, but this OAuth flow is specific to the MCP server, not a general third-party OAuth grant for the REST API.",
+  "access": "partner_gated",
+  "access_notes": "Pylon has no self-serve signup or free trial; the pricing page only offers 'Book a Demo', and account access is granted after an order form/contract. Once a customer, only Admin users can create API tokens (admin-issued, not per-developer self-serve).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.usepylon.com/pylon-docs/developer",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.usepylon.com",
+  "buildability": "blocked",
+  "main_blocker": "No self-serve signup \u2014 becoming a Pylon customer requires a sales demo/contract before any API credentials (admin-issued tokens or MCP OAuth) can exist.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+    "quote": "The Pylon API uses Bearer authentication. This means you'll need to pass your API token in the header"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "Auth: OAuth 2.0 (AuthKit). Actions are performed on behalf of the authenticated user"
+   },
+   {
+    "field": "access",
+    "url": "https://www.usepylon.com/pricing",
+    "quote": "Schedule a personalized 30-minute demo"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api.md",
+    "quote": "Only Admin users can create API tokens."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol"
+   },
+   {
+    "field": "api_style",
+    "url": "https://static.usepylon.com/openapi.json",
+    "quote": "\"AddIssueFollowersResponse\": { \"content\": { \"application/json\""
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/webhooks.md",
+    "quote": "Webhooks are user-defined HTTP callbacks that are triggered by specific events within Pylon."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact rate limits and whether the OpenAPI spec is offered for direct import (vs. only backing the docs site) were not fully verified; also unclear if any lower-cost/non-enterprise Pylon plan exists that includes API access without a sales conversation."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pylon usepylon.com API documentation developers"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.usepylon.com/pylon-docs/developer",
+       "https://www.usepylon.com/integrations/api-webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+       "https://docs.usepylon.com/pylon-docs/developer/api.md",
+       "https://docs.usepylon.com/pylon-docs/developer/webhooks.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pylon usepylon.com pricing plans free trial"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pylon usepylon MCP server model context protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+       "https://www.usepylon.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pylon usepylon \"sign up\" free trial self-serve start now"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://v1.getpylon.com/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"usepylon.com\" sign up create account start free trial (not getpylon.com)"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.usepylon.com openapi.json OR openapi.yaml spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://static.usepylon.com/openapi.json"
+      ],
+      "max_characters": 500
+     }
+    }
+   ],
+   "cost_usd": 0.29905820000000005,
+   "turns": 13,
+   "seconds": 119.5
+  }
+ ],
+ "raw_result": null
+}

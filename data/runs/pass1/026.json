@@ -1,0 +1,161 @@
+{
+ "record": {
+  "id": 26,
+  "app": "Discord",
+  "what_it_does": "Discord's API lets developers build bots and apps that send/receive messages, manage servers (guilds), channels, members, roles, and interactions on behalf of users or as automated bot accounts.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Bots authenticate with a static bot token (issued per-application in the Developer Portal, format `Authorization: Bot TOKEN`), which functions like a Bearer/API key for the app's own actions. User-scoped actions (acting on behalf of an end user, e.g. reading their guild list) use standard OAuth2 authorization code grant with access/refresh tokens. A special 'bot authorization flow' (scope=bot) lets a user install a bot to a server without a full OAuth redirect.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can create a Developer Portal account and application for free, generate a bot token, and start calling the API/gateway immediately, and install the bot in up to 100 servers with no review. Scaling a bot past 100 servers requires 'App Verification' (team identity verification via Stripe), and privileged gateway intents (e.g. message content) now require review once an app crosses a 10,000-user threshold \u2014 so production/multi-tenant use hits approval_required-like gates even though initial dev access is free and instant.",
+  "api_style": [
+   "REST",
+   "WebSocket"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://discord.com/developers/docs/reference",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "App verification (Stripe identity check) required to scale a bot beyond 100 servers, and privileged intent review needed for message-content access at scale",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://discord.com/developers/docs/reference",
+    "quote": "Using a bot token found on the Bot page within your app's settings... Using an OAuth2 bearer token gained through the OAuth2 API."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://discord.com/developers/docs/topics/oauth2",
+    "quote": "We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks."
+   },
+   {
+    "field": "access",
+    "url": "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified",
+    "quote": "Verification is required for your app to scale past 100 servers."
+   },
+   {
+    "field": "api_style",
+    "url": "https://discord.com/developers/docs/reference",
+    "quote": "The Discord API is a REST API that allows you to interact with Discord data from your own applications."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://discord.com/developers/docs/intro",
+    "quote": "Discord Developer Portal"
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/discord/discord-api-spec",
+    "quote": "This repository contains the public preview of the OpenAPI 3.1 specification for Discord's API."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://discord.com/developers/docs/topics/oauth2",
+    "quote": "Discord's webhook flow is a specialized version of an authorization code implementation."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not fetch the full 'Webhook Events' (app event subscriptions) page directly due to size limits, but incoming channel webhooks and OAuth webhook.incoming scope are directly confirmed; app-level webhook events (HTTP interaction event subscriptions) are documented elsewhere in the same docs set (events/webhook-events) per site navigation, not independently fetched this session."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://discord.com/developers/docs/intro",
+       "https://discord.com/developers/docs/topics/oauth2"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://discord.com/developers/docs/events/webhook-events",
+       "https://discord.com/developers/docs/topics/gateway"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/fffce222-1017-4829-8796-8eaba1824c3b/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576054714.txt",
+      "limit": 150
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://discord.com/developers/docs/policies-and-agreements/developer-policy",
+       "https://discord.com/developers/docs/reference"
+      ],
+      "max_characters": 5000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Discord official MCP server developers.discord.com Model Context Protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Discord app verification requirements 100 servers bot verification developer docs"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support-dev.discord.com/hc/en-us/articles/23926564536471-How-Do-I-Get-My-App-Verified"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Discord OpenAPI spec swagger developers.discord.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/discord/discord-api-spec"
+      ],
+      "max_characters": 2000
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.239857,
+   "turns": 12,
+   "seconds": 53.3
+  }
+ ],
+ "raw_result": null
+}

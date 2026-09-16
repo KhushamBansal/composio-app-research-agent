@@ -1,0 +1,128 @@
+{
+ "record": {
+  "id": 94,
+  "app": "Consensus",
+  "what_it_does": "Consensus lets you search and retrieve metadata (abstracts, citations, study type, takeaways) from over 200 million peer-reviewed academic research papers via API, MCP server, or the consumer web app.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Two separate surfaces exist: (1) the REST 'quick_search' endpoint authenticates with a static API key sent as an 'x-api-key' header (OpenAPI security scheme 'XApiKeyHeader'); enterprise/API-key access can alternatively be sent as 'Authorization: Bearer YOUR_API_KEY'. (2) The hosted MCP server (https://mcp.consensus.app/mcp) authenticates end users via OAuth2 (PKCE), which is what Claude, ChatGPT, Cursor, etc. use to connect a user's own Consensus account \u2014 this is the per-user flow a multi-user agent toolkit would want, though it is documented as an MCP-client flow rather than a generic third-party OAuth app flow.",
+  "access": "paid_plan",
+  "access_notes": "The MCP search tool has a free/no-account tier (3 papers/search unlimited with no account, 10 papers/30 searches on a free signup), but the general-purpose REST API (v1/quick_search, the one a toolkit would call directly) is priced as 'now open to everyone' with a 'Create API key' self-serve button, yet included credits (500/mo) only come with Pro/Team/Enterprise plans (2,000/mo on Deep) and overage is billed at $0.05/call \u2014 no credits are described for the Free plan, and the MCP docs separately say to 'Contact Consensus for enterprise API access.' A working REST API key effectively requires a paid Consensus plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "narrow",
+  "api_docs_url": "https://docs.consensus.app/reference/v1_quick_search",
+  "openapi_spec": true,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.consensus.app/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "REST API credits require a paid Consensus plan; only a single-purpose search endpoint exists",
+  "evidence": [
+   {
+    "field": "api_style",
+    "url": "https://docs.consensus.app/reference/v1_quick_search",
+    "quote": "\"openapi\": \"3.1.0\", \"info\": { \"title\": \"Consensus API\""
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.consensus.app/reference/v1_quick_search",
+    "quote": "\"securitySchemes\": { \"XApiKeyHeader\": { \"type\": \"apiKey\", \"in\": \"header\", \"name\": \"x-api-key\" } }"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.consensus.app/consensus-mcp",
+    "quote": "For enterprise access with unlimited rate limits, include your API key as a Bearer token"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.consensus.app/docs/mcp.md",
+    "quote": "Claude Desktop | OAuth | Supported"
+   },
+   {
+    "field": "access",
+    "url": "https://consensus.app/home/api/",
+    "quote": "Calls are $0.05 each beyond the credits included in your plan (500 on Pro/Team/Enterprise, 2,000 on Deep)"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.consensus.app/docs/mcp.md",
+    "quote": "Contact Consensus for enterprise API access at [consensus.app/home/api]"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.consensus.app/consensus-mcp",
+    "quote": "The Consensus MCP server enables AI assistants like ChatGPT, Claude, and other MCP-compatible clients to search over 220 million peer-reviewed academic research"
+   }
+  ],
+  "confidence": "medium",
+  "open_questions": "Unclear whether the OAuth2 flow (consensus.app/oauth/authorize, PKCE) can be used by a third-party agent toolkit outside the MCP protocol to call the REST quick_search endpoint on a user's behalf, or whether it is scoped strictly to MCP client connections. Also unclear whether a Free-tier signup ever grants any REST API credits or whether a paid plan is strictly required to obtain a usable x-api-key."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Consensus app API documentation developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "consensus.app API OAuth developers"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://consensus.app/home/api/",
+       "https://docs.consensus.app/reference/v1_quick_search",
+       "https://docs.consensus.app/consensus-mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.consensus.app/docs/mcp.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Consensus API pricing \"Create API key\" free credits sign up"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:Read",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.22929870000000002,
+   "turns": 8,
+   "seconds": 93.5
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

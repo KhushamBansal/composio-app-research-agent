@@ -1,0 +1,125 @@
+{
+ "record": {
+  "id": 88,
+  "app": "Brex",
+  "what_it_does": "Brex is a unified spend-management platform (corporate cards, expenses, reimbursements, bill pay, travel) that exposes REST APIs to power internal tools and custom workflows.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Existing Brex customers can self-serve a static 'user token' (Bearer) from their dashboard after an admin accepts the developer API agreement. Third-party partner apps instead use OpenID-Connect-compliant OAuth2 (Authorization Code Grant for acting on behalf of a client, or Client Credentials Grant for the Onboarding API), but obtaining a client_id/client_secret requires contacting Brex developer support directly \u2014 there is no self-serve partner registration.",
+  "access": "approval_required",
+  "access_notes": "Bearer-token access is only available to companies that already have a live Brex corporate account (admin must sign in to dashboard.brex.com and accept the developer API agreement) \u2014 there's no free/sandbox signup for non-customers. Partner OAuth2 credentials (client_id/secret) are only issued after contacting Brex's developer support team.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.brex.com/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.brex.com/docs/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Partner OAuth2 credentials require manually contacting Brex developer support for approval, and bearer-token auth needs an existing paid Brex corporate account",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.brex.com/docs/authentication/",
+    "quote": "generate a user token from your Brex dashboard and pass it along in your API call headers"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.brex.com/docs/partner_authentication/",
+    "quote": "The Brex API is fully compliant with OpenID Connect, an extension on top of OAuth 2.0."
+   },
+   {
+    "field": "auth_primary",
+    "url": "https://developer.brex.com/docs/partner_authentication/",
+    "quote": "Please contact our developer support team to be issued a client ID and client secret for partner authentication."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.brex.com/docs/authentication/",
+    "quote": "If your company has not accepted the developer API agreement, please review the terms and conditions. These must be accepted to use the developer API."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.brex.com/",
+    "quote": "Brex APIs use the REST architecture, are defined using the OpenAPI specification and use standard HTTP response codes and verbs."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.brex.com/docs/webhooks/",
+    "quote": "Brex APIs offer webhooks to notify you in real-time when certain events happen in your account."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.brex.com/docs/mcp",
+    "quote": "The Brex MCP server lets AI assistants interact directly with your Brex account: manage expenses, look up users, check cards"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Unclear whether a developer without an existing paid Brex corporate account can obtain any working credentials (no free trial/sandbox for non-customers is documented); staging environment exists but still requires partner-issued client credentials."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.brex.com/docs/authentication/",
+       "https://developer.brex.com/docs/partner_authentication/"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.03986605,
+   "turns": 3,
+   "seconds": 41.3
+  },
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.brex.com/docs/partner_authentication/"
+      ],
+      "max_characters": 5000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.brex.com/docs/partner_authentication/"
+      ],
+      "max_characters": 8000
+     }
+    }
+   ],
+   "cost_usd": 0.03580155,
+   "turns": 4,
+   "seconds": 31.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

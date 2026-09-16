@@ -1,0 +1,225 @@
+{
+ "record": {
+  "id": 84,
+  "app": "Paygent Connect",
+  "what_it_does": "A white-label payment gateway (an NMI-powered reseller/ISO brand) that lets a merchant or platform process card payments, manage customers/recurring billing, run reports, and board merchants via NMI's real-time v4 REST API.",
+  "auth_methods": [
+   "API key"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "No distinct public developer site for 'Paygent Connect' itself was found; it appears to be a reseller/white-label instance of the NMI payment gateway, so this research documents the underlying NMI v4 API that such branded products are built on. Authentication is a 'Security Key' (v4 API permission) generated in the Partner Portal and sent in the Authorization header \u2014 not an OAuth2 flow.",
+  "access": "self_serve_free",
+  "access_notes": "NMI provides a free self-serve sandbox ('Pathfinder') \u2014 sign up with email/company name at nmi.com \u2192 Developers \u2192 Explore Sandbox and immediately receive sandbox API keys/test portals, no cost. However, NMI does not sell merchant accounts directly to end users; production/live credentials are issued only through a reseller, ISO, or payment-facilitator partner relationship, so real production access is effectively partner-gated even though sandbox testing is self-serve.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.nmi.com/",
+  "openapi_spec": null,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.nmi.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production credentials require going through an NMI reseller/ISO/payfac partnership, not direct self-serve signup; also no distinct 'Paygent Connect' brand with its own public docs was found",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.nmi.com/reference/nmi-gateway-features",
+    "quote": "Create a new key for your username with \"v4 API\" permissions. This key will be used in the header to authenticate all requests."
+   },
+   {
+    "field": "access",
+    "url": "https://support.nmi.com/hc/en-gb/articles/34312649393681-Getting-Started-with-the-NMI-Payment-Gateway",
+    "quote": "Pathfinder is our free sandbox environment. It allows you to explore our platform, test payment flows, and integrate with our APIs"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.nmi.com/reference/nmi-gateway-features",
+    "quote": "The payment gateway's real-time v4 API is a complete API that allows you to build any payment features found in your NMI Partner Portal."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.nmi.com/docs/mcp",
+    "quote": "NMI Developer Portal hosts a remote MCP server at `https://docs.nmi.com/mcp`. Configure your AI development tools to connect to this server."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.nmi.com/reference/overview",
+    "quote": "Each endpoint can be subscribed to specific events that happen in the gateway. Most events have multiple versions: success, failure, and unknown."
+   }
+  ],
+  "confidence": "medium",
+  "open_questions": "Could not find any distinct public company/product page for 'Paygent Connect' itself (searches only surfaced an unrelated Japanese payment provider called 'Paygent' with its own non-NMI API, and unrelated AI-agent-billing/crypto-wallet startups also named 'Paygent'). Given the hint '(NMI-powered)', this report treats it as a white-label brand built on NMI's gateway, but the specific reseller's own branding, pricing, or any customizations could not be verified. Also could not confirm whether NMI publishes a downloadable OpenAPI/Swagger file (its docs.nmi.com reference pages are ReadMe.io-hosted but no public spec file was located)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Paygent Connect API developer documentation NMI"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Paygent Connect payments NMI powered"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"Paygent Connect\" payment gateway"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "\"Paygent Connect\" API",
+      "include_answer": true
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Paygent Connect NMI powered gateway merchant services"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "\"Paygent Connect\" NMI",
+      "include_answer": true
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.nmi.com/",
+       "https://docs.nmi.com/reference/nmi-gateway-features"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NMI docs webhooks events subscription"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NMI openapi spec api reference swagger MCP server docs.nmi.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.nmi.com/docs/mcp",
+       "https://docs.nmi.com/reference/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "NMI developer sandbox sign up free trial account docs.nmi.com getting started"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.nmi.com/docs/testing-sandbox"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.nmi.com/hc/en-gb/articles/34312649393681-Getting-Started-with-the-NMI-Payment-Gateway"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebSearch",
+      "max_results": 3
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.nmi.com/reference/transactions-processing"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "openapi|swagger|3\\.1\\.0|3\\.0\\.0",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0cc5c207-221a-47a4-aaff-916ca50dc049/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579433578.txt",
+      "-i": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "\"openapi\"[^,]{0,40}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0cc5c207-221a-47a4-aaff-916ca50dc049/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579433578.txt",
+      "-i": true,
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "oas|spec\\.json|openapi\\.json|/swagger",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0cc5c207-221a-47a4-aaff-916ca50dc049/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579433578.txt",
+      "-i": true,
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^# |^## ",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0cc5c207-221a-47a4-aaff-916ca50dc049/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579433578.txt",
+      "output_mode": "content",
+      "head_limit": 30
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.4109962,
+   "turns": 22,
+   "seconds": 129.3
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

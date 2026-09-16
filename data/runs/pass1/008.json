@@ -1,0 +1,150 @@
+{
+ "record": {
+  "id": 8,
+  "app": "Close",
+  "what_it_does": "Close is a sales-focused CRM (calling, email, SMS, pipelines, workflows) with a REST API for managing leads, contacts, opportunities, tasks, and sales activity.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "API keys use HTTP Basic auth (key as username, blank password) and are recommended for internal scripts; OAuth 2.0 Authorization Code flow is recommended for user-facing/marketplace integrations and requires registering an OAuth app in Close developer settings. The MCP server also accepts API-key auth via Close-API-Key/Close-Scope headers, or OAuth 2.0 Dynamic Client Registration.",
+  "access": "self_serve_trial",
+  "access_notes": "Sign-up gives a 14-day free trial with no credit card required, and API access (with an event log API) is listed as a feature on every paid plan starting at Solo ($9-19/user/mo). There is no perpetual free tier \u2014 ongoing API use requires converting to a paid subscription after the trial.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.close.com/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.close.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No perpetual free tier \u2014 full ongoing API access requires a paid subscription after the 14-day trial",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.close.com/api/overview.md",
+    "quote": "API Keys \u2014 Best for scripts, internal tools, and server-side integrations. Use HTTP Basic Auth... OAuth 2.0 \u2014 Best for user-facing integrations."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.close.com/topics/authentication",
+    "quote": "API keys use HTTP Basic client side authentication."
+   },
+   {
+    "field": "access",
+    "url": "https://close.com/pricing/",
+    "quote": "Try Close free for 14 Days... No credit card. No contracts."
+   },
+   {
+    "field": "access",
+    "url": "https://close.com/pricing/",
+    "quote": "API access + event log API... Connect your Close organization using API keys of using OAuth access."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.close.com/api/overview.md",
+    "quote": "Close uses industry-standard REST conventions with predictable URL structures, standard HTTP methods, and JSON request/response bodies."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://help.close.com/docs/mcp-server",
+    "quote": "The MCP server URL is `https://mcp.close.com/mcp` and has \"HTTP Streamable\" and \"OAuth 2.0 Dynamic Client Registration (DCR)\" support."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.close.com/api/overview.md",
+    "quote": "Webhooks \u2014 Subscribe to events and receive POST notifications when data changes."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://developer.close.com/api/overview.md",
+    "quote": "We publish an OpenAPI spec at: https://api.close.com/api/openapi.json"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total endpoint/operation count not enumerated (breadth inferred from the large set of documented resources: leads, contacts, opportunities, tasks, sequences, activities, custom fields, custom activities, bulk actions, smart views, forms, organizations, etc.)."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.close.com/",
+       "https://developer.close.com/resources/authentication/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.close.com authentication API key OAuth"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.close.com MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.close.com/topics/authentication",
+       "https://help.close.com/docs/mcp-server",
+       "https://developer.close.com/api/overview.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://close.com/pricing/",
+       "https://developer.close.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://close.com/pricing/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.close.com api resources list leads contacts opportunities tasks sequences"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.close.com/topics/oauth"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.22005180000000002,
+   "turns": 10,
+   "seconds": 53.3
+  }
+ ],
+ "raw_result": null
+}

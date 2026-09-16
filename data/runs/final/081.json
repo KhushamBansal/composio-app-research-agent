@@ -1,0 +1,106 @@
+{
+ "record": {
+  "id": 81,
+  "app": "Stripe",
+  "what_it_does": "Stripe provides an API for accepting payments, managing subscriptions, billing, payouts, and other financial/fintech operations for online businesses.",
+  "auth_methods": [
+   "API key",
+   "Basic",
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Standard API access is via secret/restricted API keys sent as the HTTP Basic Auth username (or as a Bearer token for cross-origin requests). OAuth2 exists but is scoped to Stripe Connect (platforms authorizing access to a connected merchant's account), not general first-party API access. The official MCP server supports both OAuth (recommended) and restricted API key as a bearer token.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for a Stripe account and immediately get test-mode secret keys (prefix sk_test_) to call the full API at no cost; live-mode keys just require completing account activation (no paid plan or approval gate for API access itself).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.stripe.com/api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.stripe.com",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "The Stripe API authenticates requests using HTTP Basic Auth. Provide your API key as the basic auth username value."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "if you need to authenticate using bearer auth (for example, for a cross-origin request), use -H \"Authorization: Bearer"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "Stripe's MCP server uses OAuth to authorize clients according to the MCP specification."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "Test secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.stripe.com/mcp",
+    "quote": "The Stripe Model Context Protocol (MCP) server provides tools that AI agents can use to interact with the Stripe API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.stripe.com/api/authentication",
+    "quote": "curl https://api.stripe.com/v1/charges -u sk_test_REDACTED:"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.stripe.com/webhooks",
+    "quote": "After you register a webhook endpoint, Stripe can push real-time event data to your application's webhook endpoint when events happen in your Stripe account."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/stripe/openapi/blob/master/README.md",
+    "quote": "This repository contains OpenAPI specifications for Stripe's API."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/stripe/openapi/blob/master/README.md",
+       "https://docs.stripe.com/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/88ffd18a-68eb-4471-9b7b-ddcf22357754/tool-results/toolu_01DiKNsgm36dGVvgZL2FFeVW.json"
+     }
+    }
+   ],
+   "cost_usd": 0.049528699999999995,
+   "turns": 4,
+   "seconds": 25.9
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

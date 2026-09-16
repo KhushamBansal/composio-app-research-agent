@@ -1,0 +1,94 @@
+{
+ "record": {
+  "id": 100,
+  "app": "Grain",
+  "what_it_does": "Grain allows developers to read meeting data, manage recordings, and receive real-time updates via webhooks.",
+  "auth_methods": [
+   "Personal Access Token",
+   "Workspace Access Token",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 is recommended for integrations to be used by any Grain user.",
+  "access": "paid_plan",
+  "access_notes": "API access requires a paid plan; the Free plan does not include API access.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.grain.com/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "API access requires a paid plan",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.grain.com/",
+    "quote": "where `TOKEN` is either the access token obtained in the OAuth2 flow, a Personal Access Token or a Workspace Access Token"
+   },
+   {
+    "field": "access",
+    "url": "https://support.grain.com/en/articles/15507288-grain-api",
+    "quote": "The Free plan does not include API access."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.grain.com/en/articles/14811968-grain-mcp",
+    "quote": "Grain's MCP server gives AI assistants direct access to your meetings, transcripts, AI notes, and workspace data."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.grain.com/",
+    "quote": "API Domain is: https://api.grain.com"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.grain.com/en/articles/15507288-grain-api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.grain.com"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.grain.com/en/articles/14811968-grain-mcp"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.06735329999999999,
+   "turns": 5,
+   "seconds": 56.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

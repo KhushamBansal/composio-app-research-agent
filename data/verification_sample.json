@@ -1,0 +1,26 @@
+{
+ "drawn_at": "2026-09-16T21:54:26",
+ "method": "stratified random, 2 per category, random.Random(2026), drawn before pass-1 results were read",
+ "ids": [
+  2,
+  6,
+  19,
+  20,
+  22,
+  24,
+  40,
+  39,
+  47,
+  49,
+  58,
+  60,
+  64,
+  61,
+  80,
+  72,
+  82,
+  85,
+  92,
+  98
+ ]
+}

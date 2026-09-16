@@ -1,0 +1,135 @@
+{
+ "record": {
+  "id": 44,
+  "app": "Salesforce Commerce Cloud",
+  "what_it_does": "Salesforce B2C Commerce (Commerce Cloud) is an enterprise ecommerce platform whose Commerce API (SCAPI) exposes RESTful Shopper APIs (browsing, cart, checkout) and Admin APIs (product, order, inventory management) for a merchant's storefront instance.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Shopper APIs use SLAS (Shopper Login and API Access Service, OAuth 2.1) via a SLAS client to get a JWT access token; Admin APIs use an Account Manager-issued API client with OAuth2 client-credentials grant against oauth2/access_token. Both deliver a JWT used as a Bearer token on requests. Not user-delegated OAuth in the classic third-party sense \u2014 auth is client/application-level, scoped per B2C Commerce instance.",
+  "access": "partner_gated",
+  "access_notes": "There is no public self-serve signup: 'Salesforce B2C Commerce Cloud does not offer public free trials or playground environments for individual users. Access is strictly reserved for existing customers and official Salesforce partners.' A public read-only demo sandbox (org f_ecom_zzte_053) exists for trying Shopper API calls in docs, but real Admin/Shopper credentials for one's own data require an existing paid B2C Commerce license (customers get on-demand sandboxes via Account Executive) or Partner Community access.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.salesforce.com/docs/commerce/commerce-api/overview",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/SalesforceCommerceCloud/b2c-developer-tooling/tree/main/packages/b2c-dx-mcp",
+  "buildability": "blocked",
+  "main_blocker": "No self-serve API credentials; requires an existing paid B2C Commerce license or Salesforce partner status to provision a real instance/sandbox",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html",
+    "quote": "Both the Admin and Shopper APIs are authorized using an access token in the form of a JSON Web Token(JWT)"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/scapi-get-started.html",
+    "quote": "Use the access_token from Step 1 to fetch a product... -H \"Authorization: Bearer {access_token}\""
+   },
+   {
+    "field": "access",
+    "url": "https://trailhead.salesforce.com/trailblazer-community/feed/0D54V00007ZBONISA5",
+    "quote": "Salesforce B2C Commerce Cloud does not offer public free trials or playground environments for individual users"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/scapi-get-started.html",
+    "quote": "If you don't have a B2C Commerce instance, try the demo sandbox used in the example above"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/scapi-get-started.html",
+    "quote": "The B2C Commerce API (SCAPI) is a set of RESTful APIs for building storefronts, merchant tools, and integrations"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/mcp-dx-intro.html",
+    "quote": "The B2C DX MCP Server is implemented in the @salesforce/b2c-dx-mcp package"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the Universal Commerce Protocol (UCP, v26.9+) or the piloted 'B2C Commerce MCP Shopper Service' will offer a lighter-weight, more self-serve path to shopper-facing agent access in the future was not fully explored."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.salesforce.com/docs/commerce/commerce-api/overview",
+       "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Salesforce Commerce Cloud Commerce API OpenAPI spec OAuth webhooks"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.salesforce.com/docs/commerce/commerce-api/references",
+       "https://developer.salesforce.com/docs/commerce/commerce-api/guide/scapi-get-started.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Salesforce Commerce Cloud MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Salesforce B2C Commerce webhooks event notification subscription API"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/mcp-dx-intro.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Salesforce B2C Commerce Cloud free trial sign up sandbox get started pricing"
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.1493857,
+   "turns": 10,
+   "seconds": 64.8
+  }
+ ],
+ "raw_result": null
+}

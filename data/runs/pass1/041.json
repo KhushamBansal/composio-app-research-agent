@@ -1,0 +1,136 @@
+{
+ "record": {
+  "id": 41,
+  "app": "Shopify",
+  "what_it_does": "Shopify is an ecommerce platform that lets merchants run online stores, and its Admin/Storefront APIs let apps read and write store data like products, orders, customers, and inventory.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "None"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Merchant-facing apps use OAuth-based grants (token exchange or authorization code grant) to get a scoped Admin API access token, sent as a static bearer-style token in the `X-Shopify-Access-Token` header on every request. Custom/single-store apps can get a pre-generated token directly from the store admin (Bearer token, no OAuth dance). The public Storefront MCP server requires no authentication at all.",
+  "access": "approval_required",
+  "access_notes": "A developer can create a free Shopify Partner account and a free development store, then generate API credentials (client ID/secret, or a custom-app admin token) immediately for building and testing (self-serve). But to call the API against arbitrary real merchants' stores at scale \u2014 the multi-user agent-toolkit scenario \u2014 the app must go through Shopify's App Store review/approval for public distribution, or each merchant must manually generate and hand over admin-issued custom-app credentials store by store.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://shopify.dev/docs/api",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Shopify App Store review required for public (multi-merchant) app distribution; otherwise each merchant must manually issue custom-app credentials",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "quote": "The OAuth flow your app uses to get an access token. Shopify supports three"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+    "quote": "Your app sends the token in the `X-Shopify-Access-Token` header on every GraphQL Admin API request"
+   },
+   {
+    "field": "access",
+    "url": "https://shopify.dev/docs/apps/launch/app-requirements-checklist",
+    "quote": "All approved public apps have a listing on the Shopify App Store"
+   },
+   {
+    "field": "api_style",
+    "url": "https://shopify.dev/docs/api",
+    "quote": "For new integrations, use the GraphQL Admin API instead."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront",
+    "quote": "Connect your AI agent to a specific Shopify store's catalog, shopping cart, and policies."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://shopify.dev/docs/api",
+    "quote": "Listen for store events and trigger your own logic."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether a non-public (custom-distribution) app talking to many independent merchant stores would be acceptable for an agent toolkit's business model, or whether App Store review is effectively mandatory for that use case, wasn't fully resolved from docs alone."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://shopify.dev/docs/api",
+       "https://shopify.dev/docs/apps/build/authentication-authorization"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Shopify official MCP server shopify.dev"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront",
+       "https://shopify.dev/docs/apps/launch/distribution"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Shopify Admin API OpenAPI spec REST webhooks documentation site:shopify.dev"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Shopify Admin API OpenAPI swagger spec download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://shopify.dev/docs/apps/launch/app-requirements-checklist"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Shopify Partner account free sign up create app API credentials immediately"
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/dev/null"
+     }
+    }
+   ],
+   "cost_usd": 0.23021840000000002,
+   "turns": 10,
+   "seconds": 80.6
+  }
+ ],
+ "raw_result": null
+}

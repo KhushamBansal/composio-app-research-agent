@@ -1,0 +1,75 @@
+{
+ "record": {
+  "id": 58,
+  "app": "Sherlock",
+  "what_it_does": "Sherlock is an open-source Python command-line tool that hunts down social media accounts by checking a given username across 400+ social networks.",
+  "auth_methods": [
+   "None"
+  ],
+  "auth_primary": "None",
+  "auth_notes": "Sherlock is a local CLI tool (pip/pipx/Docker) that itself makes unauthenticated HTTP requests to check username existence on third-party sites; it does not expose or require its own API credentials. Some target sites it queries may require proxies, but no vendor auth mechanism is documented for Sherlock itself.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can install Sherlock for free via pipx/pip/uv install or docker run; there is no signup, key, or approval process since it's a local open-source tool, not a hosted service.",
+  "api_style": [
+   "SDK/CLI only"
+  ],
+  "api_breadth": "none",
+  "api_docs_url": "https://github.com/sherlock-project/sherlock",
+  "openapi_spec": false,
+  "webhooks": false,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "not_applicable",
+  "main_blocker": "No hosted API \u2014 Sherlock is a local CLI/Python tool, not a callable service",
+  "evidence": [
+   {
+    "field": "api_style",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "sherlock user123"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "sherlock user123"
+   },
+   {
+    "field": "access",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "pipx install sherlock-project"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/sherlock-project/sherlock",
+    "quote": "Hunt down social media accounts by username across 400+ social networks"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://github.com/sherlock-project/sherlock",
+      "prompt": "Extract installation methods, how to use Sherlock, and any API or service information. Look for exact quotes about installation methods like pip, pipx, docker, and usage instructions."
+     }
+    }
+   ],
+   "cost_usd": 0.039143,
+   "turns": 3,
+   "seconds": 34.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass2"
+}

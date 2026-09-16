@@ -1,0 +1,140 @@
+{
+ "record": {
+  "id": 22,
+  "app": "Twilio",
+  "what_it_does": "Twilio is a cloud communications platform whose REST APIs let applications send/receive SMS, MMS, WhatsApp, and voice calls, verify phone numbers, and orchestrate other messaging/voice/video workflows.",
+  "auth_methods": [
+   "API key",
+   "Basic",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Twilio's primary/most common method is HTTP Basic auth using an API Key (username) and API Key Secret (password), or Account SID + Auth Token for local testing. Twilio also offers full OAuth 2.0 (Client Credentials and Authorization Code grants) via 'OAuth apps', where the Authorization Code grant lets a third-party application act on a user's Twilio account on their behalf after console-based consent \u2014 this is the closest fit for a multi-tenant agent toolkit, though it requires the account owner to first create an OAuth app in the Twilio Console (per-account setup) rather than a single global app-registration flow.",
+  "access": "self_serve_free",
+  "access_notes": "Sign-up at twilio.com gives an Account SID, Auth Token, and the ability to create API Keys immediately, no credit card required. The free trial account has working credentials right away but is functionally limited (e.g., SMS/calls can only be sent to phone numbers you've verified) until you add payment/upgrade.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://www.twilio.com/docs/usage/api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.twilio.com/docs",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Free trial restricts actions to verified recipient numbers; full production use needs an upgraded/paid account, and the official MCP server is currently read-only (docs/schema search only, cannot execute API calls yet)",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://www.twilio.com/docs/iam/api",
+    "quote": "Twilio supports HTTP Basic authentication. Use your API key as the username and your API key secret as the password."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://www.twilio.com/docs/iam/oauth-apps/overview",
+    "quote": "OAuth 2.0 is an industry-standard authorization protocol that lets applications securely access Twilio APIs on your behalf"
+   },
+   {
+    "field": "access",
+    "url": "https://www.twilio.com/en-us/pricing",
+    "quote": "Sign up and start building amazing customer experiences today. No credit card required to start and you only pay for what you use."
+   },
+   {
+    "field": "api_style",
+    "url": "https://www.twilio.com/docs/usage/api",
+    "quote": "The Twilio APIs are organized around REST."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://www.twilio.com/docs/ai/mcp",
+    "quote": "Read-only: The server provides API search and documentation retrieval. It does not execute API calls on your behalf."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/twilio/twilio-oai",
+    "quote": "This project is currently in **GA**. We expect the spec to be accurate"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://www.twilio.com/docs/usage/webhooks",
+    "quote": "Twilio makes an HTTP `POST` or `GET` request to the URL you configured for the webhook."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Twilio's roadmap explicitly plans 'execute-ready, OAuth-authenticated MCP tools' beyond the current read-only server \u2014 worth re-checking mcp.twilio.com/docs for updates since it's still Public Beta."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/iam/api",
+       "https://www.twilio.com/docs/usage/api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Twilio official MCP server documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/ai/mcp",
+       "https://github.com/twilio-labs/mcp",
+       "https://www.twilio.com/en-us/try-twilio"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/en-us/pricing",
+       "https://github.com/twilio/twilio-oai",
+       "https://www.twilio.com/docs/usage/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Twilio Connect Apps OAuth deprecated third-party account access"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.twilio.com/docs/iam/oauth-apps/overview"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.2071232,
+   "turns": 9,
+   "seconds": 82.8
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

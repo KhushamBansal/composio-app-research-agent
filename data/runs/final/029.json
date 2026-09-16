@@ -1,0 +1,211 @@
+{
+ "record": {
+  "id": 29,
+  "app": "Aircall",
+  "what_it_does": "Aircall is a cloud-based business phone system and call center platform with a REST API and webhooks for managing calls, contacts, users, and messages.",
+  "auth_methods": [
+   "OAuth2",
+   "Basic"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Basic Auth (api_id + api_token, Base64-encoded in the Authorization header) is for a customer connecting their own Aircall account only. OAuth2 is required to build an app that serves multiple Aircall customers, and is explicitly tied to becoming an approved Technology Partner listed on Aircall's Marketplace.",
+  "access": "approval_required",
+  "access_notes": "Basic Auth API keys are self-serve from the dashboard, but only for existing Aircall account holders \u2014 Aircall has no free plan (7-day free trial only, then paid plans starting ~$30/user/month with a 3-seat minimum). The OAuth2 path needed for a multi-tenant agent toolkit additionally requires signing up as, and being approved as, an Aircall Technology Partner.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.aircall.io/docs/introduction",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "OAuth2 (needed for a multi-tenant toolkit) requires Aircall Technology Partner approval; base accounts also require a paid plan (only a 7-day free trial, no free tier).",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.aircall.io/docs/authentication",
+    "quote": "Aircall supports two ways to authenticate with the REST API: Basic Authentication and OAuth."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "Aircall implemented the OAuth 2.0 authentication protocol so you can easily build an app on top of Aircall"
+   },
+   {
+    "field": "auth_primary",
+    "url": "https://developer.aircall.io/docs/authentication",
+    "quote": "You\u2019re building a public integration and are an approved tech partner"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "please use the OAuth flow. It is a requirement to be listed on the Aircall App Marketplace"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.aircall.io/docs/basic-authentication",
+    "quote": "You must have an Aircall account. Sign up as a customer here or if you qualify to be a tech partner you can then sign up for a developer account here."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.aircall.io/api-references",
+    "quote": "Aircall Public API is a classic REST API. It can be used with any programming languages"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.aircall.io/docs/introduction",
+    "quote": "Real-time event notifications for everything that happens on a call."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.aircall.io/docs/introduction",
+    "quote": "Build MCP-compliant integrations for Aircall's AI Virtual Agent. \ud83d\udea7 Coming soon."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact endpoint/operation count for api_breadth wasn't enumerated (estimated 'broad' from 20+ resource categories: Users v1/v2, Teams, Calls, Numbers, Contacts, Campaigns, Messages, Webhooks, Conversation Intelligence, Analytics, Integrations, AI Voice Agents). Timeline for the 'coming soon' MCP builder tooling for AI Virtual Agents is unclear, and it appears aimed at exposing external tools to Aircall's AI agent rather than Aircall publishing an MCP server for calling its own API."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.aircall.io/api-references/",
+       "https://developer.aircall.io/"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "OAuth|API key|Bearer|Basic Auth|webhook|Webhook|rate limit",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0d035be8-6a44-4a07-aff3-ce9bfc92e8f7/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576645326.txt",
+      "output_mode": "content",
+      "-n": true,
+      "head_limit": 80
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "shell bash powershell execute command",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://developer.aircall.io/api-references/",
+      "prompt": "Extract: what authentication methods are documented (OAuth2, API key/Basic auth, Bearer token, etc), what is the API style (REST/GraphQL), roughly how many endpoints/resources are covered, whether webhooks are documented, whether an OpenAPI/Swagger spec is published, and how a developer signs up for API credentials (self-serve vs approval required). Quote exact sentences where possible."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://developer.aircall.io/",
+      "prompt": "Extract: overview of Aircall developer platform, authentication methods (OAuth2, API ID/token, Basic auth), how to get API credentials, whether there's a marketplace/app review process, whether Aircall has an official MCP server, and any mention of webhooks."
+     }
+    },
+    {
+     "tool": "WebFetch",
+     "input": {
+      "url": "https://developers.aircall.io/api-references",
+      "prompt": "Extract: what authentication methods are documented (OAuth2, API ID/token, Basic auth, Bearer token), how a developer gets API credentials (self-serve signup vs approval), whether there's a Swagger/OpenAPI spec, and the list of API resources/endpoints available. Quote exact sentences where possible."
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Aircall MCP server official developers.aircall.io"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.aircall.io/docs/introduction"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Aircall API pricing plan required \"API keys\" which plan"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.aircall.io/docs/basic-authentication"
+      ],
+      "max_characters": 4000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Aircall pricing free trial no free plan per user month"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.aircall.io/docs/webhooks-getting-started"
+      ],
+      "max_characters": 2500
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.aircall.io openapi.json OR swagger download spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"Aircall implemented the OAuth 2.0 authentication protocol\" developer.aircall.io"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.aircall.io/docs/authentication"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.aircall.io/api-references"
+      ],
+      "max_characters": 2000
+     }
+    }
+   ],
+   "cost_usd": 0.25966,
+   "turns": 18,
+   "seconds": 120.4
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

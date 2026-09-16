@@ -1,0 +1,144 @@
+{
+ "record": {
+  "id": 43,
+  "app": "BigCommerce",
+  "what_it_does": "BigCommerce is an ecommerce SaaS platform whose REST and GraphQL APIs let developers manage store catalog, orders, customers, carts, checkout, content, and more.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Basic",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Store-level and app-level API accounts are created via an OAuth-based flow yielding a stable access_token used in the X-Auth-Token header (not the Authorization header) for most REST/GraphQL Admin endpoints. Legacy Basic-auth API accounts are deprecated and no longer issued to new stores. Some sub-APIs (Storefront GraphQL, Payments) use short-lived Bearer/PAT tokens minted via the main access token; the Tax Provider API uses Basic auth; app lifecycle/customer-login flows use BigCommerce- or user-generated JWTs.",
+  "access": "self_serve_free",
+  "access_notes": "Developers can sign in to the free BigCommerce Partner Portal and instantly create a Partner Sandbox store (development/testing store, cannot process live transactions) or start a 15-day free trial store, then generate store-level API credentials immediately from Settings > API Accounts in the control panel \u2014 no vendor approval step required for dev/test credentials.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.bigcommerce.com/docs/start/authentication",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production (non-sandbox) use requires a paid BigCommerce store plan, and per-store OAuth app-level credentials require each merchant to install/authorize the app individually",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.bigcommerce.com/docs/start/authentication",
+    "quote": "BigCommerce offers three types of OAuth-based API accounts to developers who wish to use BigCommerce's REST APIs"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.bigcommerce.com/docs/start/authentication",
+    "quote": "Authorization: Basic {{base64encode(username:password)}}"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.bigcommerce.com/developer/docs/overview/sandboxes",
+    "quote": "Sandbox stores are intended for developing and testing apps. They cannot process any live transactions."
+   },
+   {
+    "field": "access",
+    "url": "https://docs.bigcommerce.com/developer/docs/overview/sandboxes",
+    "quote": "Navigate to the BigCommerce Partner Portal and sign in using your credentials."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+    "quote": "The BigCommerce MCP server lets AI agents interact with a BigCommerce storefront using purpose-built commerce tools."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.bigcommerce.com/docs/rest-catalog/products",
+    "quote": "The Catalog API manages products, categories, brands, bulk pricing rules, and more."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.bigcommerce.com/developer/api-reference/openapi-specifications",
+    "quote": "BigCommerce publishes downloadable OpenAPI specification files for its REST APIs."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.bigcommerce.com/developer/docs/integrations/webhooks/overview.md",
+    "quote": "Webhooks notify applications when specific events occur on a BigCommerce store."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "MCP server is beta, storefront-only (guest shopping flow for B2C; B2B coming soon), not an admin/management API MCP \u2014 an agent toolkit for store management operations would still need to be built on the REST/GraphQL Admin APIs directly rather than the official MCP."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.bigcommerce.com/docs/start/authentication",
+       "https://developer.bigcommerce.com/docs/rest-management/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "BigCommerce official MCP server developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.bigcommerce.com/developer/api-reference/mcp/overview",
+       "https://docs.bigcommerce.com/developer/docs/integrations/webhooks/overview.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "BigCommerce developer sandbox trial store free account create API"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.bigcommerce.com/developer/docs/overview/sandboxes",
+       "https://developer.bigcommerce.com/docs/rest-catalog/products"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "BigCommerce OpenAPI spec swagger json download"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.bigcommerce.com/developer/api-reference/openapi-specifications"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.1761378,
+   "turns": 9,
+   "seconds": 49.6
+  }
+ ],
+ "raw_result": null
+}

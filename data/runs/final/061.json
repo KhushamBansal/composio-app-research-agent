@@ -1,0 +1,125 @@
+{
+ "record": {
+  "id": 61,
+  "app": "GitHub",
+  "what_it_does": "GitHub is a hosted Git platform for source code, issues, pull requests, Actions/CI, and project management, exposed via REST and GraphQL APIs.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Basic",
+   "Bearer token",
+   "JWT / service account"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "GitHub Apps (recommended over legacy OAuth Apps) use OAuth 2.0 to act on behalf of a user with fine-grained permissions and short-lived tokens; a JWT signed with the app's private key is used to generate GitHub App installation access tokens. Personal access tokens (fine-grained or classic) are static Bearer tokens sent as `Authorization: Bearer TOKEN`. Basic auth (client_id/client_secret) is used only for specific app-management endpoints like token-checking. Username/password auth is not supported.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can immediately create a personal access token or register an OAuth App/GitHub App for free with no paid plan required; some endpoints/features (e.g. certain Copilot or Enterprise endpoints) require a paid plan, but core API access is free and self-serve.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.github.com/en/rest?apiVersion=2022-11-28",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/use-the-github-mcp-server",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28",
+    "quote": "you can create a personal access token, generate a token with a GitHub App, or use the built-in GITHUB_TOKEN"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+    "quote": "GitHub's OAuth implementation supports the standard authorization code grant type and the OAuth 2.0 Device Authorization Grant"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28",
+    "quote": "you will use the app's client ID as the username and the app's client secret as the password"
+   },
+   {
+    "field": "access",
+    "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+    "quote": "The client ID you received from GitHub when you registered"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.github.com/en/rest?apiVersion=2022-11-28",
+    "quote": "Comparing GitHub's REST API and GraphQL API Learn about GitHub's APIs to extend and customize your GitHub experience."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://docs.github.com/en/rest/about-the-rest-api/about-the-openapi-description-for-the-rest-api?apiVersion=2022-11-28",
+    "quote": "GitHub's OpenAPI description of the REST API is publicly available. You can find the description in the open source github/rest-api-description repository."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.github.com/en/rest?apiVersion=2022-11-28",
+    "quote": "REST API endpoints for repository webhooks Use the REST API to create and manage webhooks for your repositories."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/use-the-github-mcp-server",
+    "quote": "The GitHub MCP server is a Model Context Protocol (MCP) server provided and maintained by GitHub."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.github.com/en/rest?apiVersion=2022-11-28",
+       "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28",
+       "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps"
+      ]
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/aea0713c-4c72-48c0-8ace-cad5bd431610/tool-results/toolu_01BccYdPT6RVK89yc9aq9Tie.json"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp/use-the-github-mcp-server",
+       "https://docs.github.com/en/rest/about-the-rest-api/about-the-openapi-description-for-the-rest-api?apiVersion=2022-11-28"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.182191,
+   "turns": 6,
+   "seconds": 39.7
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

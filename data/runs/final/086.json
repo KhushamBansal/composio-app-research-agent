@@ -1,0 +1,142 @@
+{
+ "record": {
+  "id": 86,
+  "app": "QuickBooks",
+  "what_it_does": "QuickBooks Online is Intuit's cloud accounting software, and its Accounting API lets apps read and write a connected company's accounting data (customers, invoices, bills, payments, reports, etc.) on the user's behalf.",
+  "auth_methods": [
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Intuit's own SDKs/docs only document OAuth 2.0 authorization-code flow for the Accounting API; there is no separate API-key or basic-auth mode for calling the API itself (Basic auth is used only for the client_id/client_secret token-exchange step within the OAuth flow). Access tokens last 60 min, refresh tokens roll for up to 100 days.",
+  "access": "approval_required",
+  "access_notes": "A developer can sign up free and get Development (sandbox) Client ID/Secret immediately to build and test. To get Production credentials (real customer data), the app must pass Intuit's App Assessment Questionnaire/compliance review before the 'Show Credentials' option is even revealed.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://github.com/intuit/quickbooks-online-mcp-server",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Production API credentials require passing Intuit's App Assessment Questionnaire/compliance review",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0",
+    "quote": "Use the OAuth 2.0 protocol to implement authentication and authorization."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0",
+    "quote": "Pass the access_token value in the Authorization header of requests each time your app calls an API."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/go-live/publish-app",
+    "quote": "The Show Credentials switch appears only after the App Assessment Questionnaire is approved."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0",
+    "quote": "If you're implementing authorization for testing with a sandbox company, go to the Development section and select Keys & OAuth"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api",
+    "quote": "uses both the REST framework, with standard HTTP methods and JSON for input and output, and GraphQL"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/intuit/quickbooks-online-mcp-server",
+    "quote": "This MCP server provides complete QuickBooks Online API integration for Claude Code and other MCP-compatible clients."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/webhooks",
+    "quote": "Use webhooks to receive event-triggered callbacks for entities that your app needs to stay on top of."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The MCP server lives under Intuit's official GitHub org (github.com/intuit) and was announced on Intuit's own Medium dev blog as an 'early preview,' but its README oddly credits itself as 'Based on Intuit's QuickBooks Online MCP Server' (self-referential) \u2014 worth double-checking it isn't a community fork misattributed to the org. Intuit also appears to run a separate hosted MCP endpoint (mcp.quickbooks.intuit.com) in a partner-only pilot (per github.com/IntuitDeveloper/intuit-3p-ai-pilot), whose general availability status is unclear."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.intuit.com/app/developer/qbo/docs/get-started",
+       "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "QuickBooks Online API MCP server official developer.intuit.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/intuit/quickbooks-online-mcp-server",
+       "https://developer.intuit.com/app/developer/qbo/docs/learn/explore-the-quickbooks-online-api"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "QuickBooks Online API app review production access requirements intuit developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "QuickBooks Online API webhooks documentation intuit developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "QuickBooks Online API OpenAPI swagger spec developer.intuit.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.intuit.com/app/developer/qbo/docs/develop/webhooks",
+       "https://developer.intuit.com/app/developer/qbo/docs/go-live/publish-app"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.26022470000000003,
+   "turns": 10,
+   "seconds": 70.9
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

@@ -1,0 +1,150 @@
+{
+ "record": {
+  "id": 70,
+  "app": "Sentry",
+  "what_it_does": "Sentry is an application monitoring platform that provides a web API for programmatically managing organizations, projects, issues, releases, and error/performance data.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token",
+   "Basic",
+   "Other"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 (authorization code grant + PKCE, plus a device authorization flow) is documented for third-party apps acting on behalf of users and is what the official MCP server uses. Personal 'user auth tokens' / internal-integration tokens are used as static Bearer tokens. Legacy API keys use HTTP Basic auth (username=key, empty password) and are disabled for new accounts. DSN-based auth is a limited, endpoint-specific static-key scheme.",
+  "access": "self_serve_free",
+  "access_notes": "Anyone can sign up for Sentry's free 'developer' plan, which explicitly includes 'MCP access', and can create personal auth tokens or an OAuth app immediately per the auth docs, with no plan gate mentioned. However, Sentry's own pricing page lists 'API & third-party integrations' as a feature added starting at the paid Team plan ($26/mo), which introduces ambiguity about how much of the REST API/integration platform is usable on the free tier vs. requiring a paid plan.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.sentry.io/api/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.sentry.dev/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Ambiguity/possible gating of full API & integration access behind the paid Team plan ($26/mo) per Sentry's pricing page",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "Sentry supports OAuth2 with the authorization code grant type"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "These auth tokens can be created within Sentry on the \"User settings\" page"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "API keys are passed using HTTP Basic auth where the username is your api key"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.sentry.io/api/auth/",
+    "quote": "This works similar to Bearer token authentication, but uses your DSN (Client Key)"
+   },
+   {
+    "field": "access",
+    "url": "https://sentry.io/pricing/",
+    "quote": "developer / For solo devs working on small projects / Free / One user / ... / MCP access"
+   },
+   {
+    "field": "access",
+    "url": "https://sentry.io/pricing/",
+    "quote": "Developer features + ... API & third-party integrations"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.sentry.io/product/sentry-mcp/",
+    "quote": "Connects AI assistants to Sentry for searching errors, analyzing performance, triaging issues, reading documentation, and managing projects"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.sentry.io/product/sentry-mcp/",
+    "quote": "All connections use OAuth."
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.sentry.io/api/",
+    "quote": "The Sentry web API is used to access the Sentry platform programmatically."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.sentry.io/integrations/integration-platform/webhooks/",
+    "quote": "Sentry uses JSON webhooks to get error notifications to your systems or services."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/getsentry/sentry-api-schema",
+    "quote": "The OpenAPI schema is synced from getsentry/sentry"
+   }
+  ],
+  "confidence": "medium",
+  "open_questions": "Unclear how much of the REST API is actually usable on the free Developer plan vs. gated behind the paid Team plan given the 'API & third-party integrations' pricing bullet \u2014 Sentry's pricing page and auth docs appear to conflict on this point."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.sentry.io/api/",
+       "https://docs.sentry.io/api/auth/",
+       "https://docs.sentry.io/product/sentry-mcp/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Sentry API OpenAPI spec webhooks documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.sentry.io/integrations/integration-platform/webhooks/",
+       "https://sentry.io/pricing/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "docs.sentry.io api openapi spec download swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Sentry free developer plan API access restricted \"API & third-party integrations\" team plan"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/getsentry/sentry-api-schema"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.19489820000000002,
+   "turns": 8,
+   "seconds": 71.2
+  }
+ ],
+ "raw_result": null
+}

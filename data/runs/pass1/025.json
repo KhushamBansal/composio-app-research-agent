@@ -1,0 +1,128 @@
+{
+ "record": {
+  "id": 25,
+  "app": "Pumble",
+  "what_it_does": "Pumble is a team chat and collaboration app (Slack-like messaging platform) that exposes a REST API and MCP server for sending messages, managing channels, reactions, files, and users in a workspace.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "For full third-party apps, Pumble uses an OAuth2 authorization-code flow (consent screen at app.pumble.com/access-request, token exchange at api-ga.pumble.com/oauth2/access) that issues non-expiring user and bot access tokens. For simpler personal/single-user use, the 'API' addon lets a user generate a static API key that is passed as a Bearer token in the Authorization header. The MCP server (mcp.pumble.com/mcp) is authenticated with a 'token' header (user/bot token) plus an 'x-app-token' (app key), both obtained by creating and installing a Pumble app/addon.",
+  "access": "self_serve_free",
+  "access_notes": "Any workspace admin/user can install the free 'API' addon and self-generate an API key immediately, or create a custom app from scratch (Configure apps > Create app) to get OAuth2 client credentials and MCP tokens, all within Pumble's free-forever plan \u2014 no paid tier or vendor approval step is documented for obtaining working credentials.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://docs.pumble.com/#description/api-endpoints-usage",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.pumble.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://cake-com.github.io/pumble-node-sdk/authorization.html",
+    "quote": "Pumble uses OAuth2 in order to allow your app to access the API."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+    "quote": "These keys are passed as bearer tokens in the header of HTTP requests"
+   },
+   {
+    "field": "access",
+    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+    "quote": "You'll receive an ephemeral message containing the generated API key."
+   },
+   {
+    "field": "access",
+    "url": "https://pumble.com/mcp",
+    "quote": "Unlimited users \u2022 Unlimited chat history \u2022 Free forever"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.pumble.com/#description/api-endpoints-usage",
+    "quote": "Open API Client ... https://api-ga.pumble.com/v3/api-docs/Pumble-api-v1"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
+    "quote": "you can connect third-party AI agents (e.g., Claude, Gemini, Codex) to Pumble"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://cake-com.github.io/pumble-node-sdk/basic-concepts.html",
+    "quote": "Pumble apps can subscribe to a list of Pumble events"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pumble API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pumble MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pumble.com/help/integrations/automation-workflow-integrations/api-keys-integration/",
+       "https://docs.pumble.com/#description/api-endpoints-usage",
+       "https://pumble.com/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://pumble.com/help/integrations/automation-workflow-integrations/how-to-use-the-pumble-mcp-server/",
+       "https://cake-com.github.io/pumble-node-sdk/authorization.html"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Pumble API webhooks events documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://cake-com.github.io/pumble-node-sdk/basic-concepts.html"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.1716122,
+   "turns": 8,
+   "seconds": 36.2
+  }
+ ],
+ "raw_result": null
+}

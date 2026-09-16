@@ -1,0 +1,116 @@
+{
+ "record": {
+  "id": 73,
+  "app": "Linear",
+  "what_it_does": "Linear is an issue-tracking and project-management tool for software teams, exposing a GraphQL API for reading and writing issues, projects, cycles, teams, and related objects.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "OAuth2 supports authorization-code flow (with PKCE), refresh tokens, and a client_credentials grant for server-to-server 'app' actor tokens; recommended for apps built for other users. Personal API keys (created in Security & access settings) are simplest for single-user/personal scripts and are passed raw in the Authorization header (not prefixed 'Bearer').",
+  "access": "self_serve_free",
+  "access_notes": "Free plan ($0) explicitly includes 'API and webhook access' and 'MCP access'; personal API keys and OAuth2 app creation are available immediately to any developer without approval or payment.",
+  "api_style": [
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://linear.app/developers/graphql",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.linear.app/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://linear.app/developers/graphql",
+    "quote": "The Linear API supports personal API keys and OAuth2 authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://linear.app/developers/oauth-2-0-authentication",
+    "quote": "We support the client_credentials grant type for OAuth2 apps that use tokens for server-to-server communication"
+   },
+   {
+    "field": "access",
+    "url": "https://linear.app/pricing",
+    "quote": "API and webhook access"
+   },
+   {
+    "field": "access",
+    "url": "https://linear.app/developers/graphql",
+    "quote": "Visit Security & access settings to create and manage them."
+   },
+   {
+    "field": "api_style",
+    "url": "https://linear.app/developers/graphql",
+    "quote": "Linear's public API is built using GraphQL."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://linear.app/docs/mcp",
+    "quote": "Our MCP server uses Streamable HTTP as the primary transport, accessible at the following address... https://mcp.linear.app/mcp"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://linear.app/developers/graphql",
+       "https://linear.app/developers/oauth-2-0-authentication",
+       "https://linear.app/developers/mcp",
+       "https://linear.app/developers/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Linear official MCP server developers.linear.app mcp.linear.app"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Linear pricing free plan API access"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://linear.app/docs/mcp",
+       "https://linear.app/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.1600116,
+   "turns": 7,
+   "seconds": 37.7
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,283 @@
+{
+ "record": {
+  "id": 50,
+  "app": "fanbasis",
+  "what_it_does": "Commas (formerly Fanbasis) is an all-in-one platform for creators/sellers to sell digital products, courses, memberships and subscriptions, with a Public REST API for checkout sessions, products, customers, subscriptions, invoices, transactions and webhooks.",
+  "auth_methods": [
+   "API key",
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "The Public API is authenticated with a static seller API key sent in the `x-api-key` header (or as a Bearer token in Authorization, per the 401 error message); separate sandbox and live keys are issued per account. OAuth2 is used only for the official MCP connector's 'Authorize with your Commas account' login flow, not as a general third-party API auth option.",
+  "access": "self_serve_free",
+  "access_notes": "Signing into the Commas dashboard (Account \u2192 API Keys) immediately issues both a sandbox key ('Sandbox mode included for risk-free testing') and a live key at no extra cost. Commas reserves 'the right to request business documentation \u2014 such as business registration or ID verification \u2014 for accounts processing above certain thresholds,' but this is a post-hoc compliance check, not a gate on initial API access.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://commasdocs.com/",
+  "openapi_spec": null,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://www.fanbasis.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://commasdocs.com/",
+    "quote": "Every API request must include your API key in the `x-api-key` header. There are no usernames or passwords"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://commasdocs.com/",
+    "quote": "Authentication required. Please provide X-API-KEY or Bearer token."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://commasdocs.com/",
+    "quote": "Authorize with your Commas account (OAuth login flow)"
+   },
+   {
+    "field": "access",
+    "url": "https://commasdocs.com/",
+    "quote": "Sandbox mode included for risk-free testing."
+   },
+   {
+    "field": "access",
+    "url": "https://commasdocs.com/",
+    "quote": "request business documentation \u2014 such as business registration or ID verification \u2014 for accounts processing above certain thresholds"
+   },
+   {
+    "field": "api_style",
+    "url": "https://commasdocs.com/",
+    "quote": "GET /public-api/webhook-subscriptions"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://commasdocs.com/",
+    "quote": "Server URL: `https://www.fanbasis.com/mcp` ... through 44 built-in tools."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://commasdocs.com/",
+    "quote": "Registers a new URL to receive webhook events. You choose which events to subscribe to."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "No OpenAPI/Swagger spec was found published alongside the docs (site is a hand-written Mintlify-style reference), so openapi_spec is left null rather than false. Exact fee/revenue-share pricing for live sellers was not confirmed from a primary pricing page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "fanbasis API documentation developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "fanbasis API docs webhooks",
+      "include_answer": true
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://commasdocs.com/",
+       "https://commasdocs.com"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "x-api-key|Authentication|OAuth|Bearer|API Key|api key|Api-Key",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "-n": true,
+      "head_limit": 60
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "x-api-key|Authentication|OAuth|Bearer|API Key|api key|Api-Key",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "-n": true,
+      "output_mode": "content",
+      "head_limit": 60
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}[Aa]uthentication.{200}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}OAuth.{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}(generate|create|dashboard).{0,30}(API key|api key).{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}[Oo]pen[Aa][Pp][Ii].{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}[Ww]ebhook.{0,20}(subscri|event|configur|register).{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}(MCP|Model Context Protocol).{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}(sign up|Sign Up|free plan|pricing|no cost|create an account).{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{60}API Key Scopes.{300}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "^# |^## [A-Z]",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 80
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "fanbasis commas sign up free account dashboard pricing",
+      "include_answer": true
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "public-api/[a-zA-Z/_:-]+",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 0
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{100}[Ww]hat does it cost.{300}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{60}(sandbox|test mode).{0,40}(free|no cost|immediately).{150}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{80}(verif|underwrit|approv|review your account|KYC).{200}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "-o": true,
+      "output_mode": "content",
+      "head_limit": 10
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "swagger|\\.yaml|\\.json spec|openapi\\.json",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/d990bac4-4538-49fd-9744-a9a190517846/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789577015268.txt",
+      "-i": true,
+      "output_mode": "content",
+      "head_limit": 5
+     }
+    }
+   ],
+   "cost_usd": 0.2869548,
+   "turns": 22,
+   "seconds": 134.2
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

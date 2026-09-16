@@ -1,0 +1,81 @@
+{
+ "record": {
+  "id": 62,
+  "app": "Vercel",
+  "what_it_does": "Vercel is a cloud platform for building and hosting web apps, and its REST API lets developers programmatically manage projects, deployments, domains/DNS, environment variables, teams, and related resources.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal/team/project-scoped Bearer access tokens (prefix vcp_) are the primary single-account auth method, created instantly from the Account Tokens page. For multi-user, third-party integrations, Vercel documents a standard OAuth2 authorization-code flow (redirect URL with a short-lived `code`, exchanged via POST /v2/oauth/access_token for a long-lived Bearer access_token) managed through the Integrations Console. Building/using an OAuth integration is self-serve; only listing it publicly on the Marketplace requires a separate review.",
+  "access": "self_serve_free",
+  "access_notes": "Any Vercel account (including the free Hobby plan) can create a scoped access token immediately from https://vercel.com/account/tokens with no payment required. OAuth2 integration client_id/client_secret are likewise created self-serve via the Integrations Console; only public Marketplace listing goes through an approval checklist.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://vercel.com/docs/rest-api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.vercel.com",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://vercel.com/docs/accounts/access-tokens",
+    "quote": "Pass the token as a Bearer token in the Authorization header of your request."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://vercel.com/docs/integrations/create-integration/vercel-api-integrations",
+    "quote": "POST https://api.vercel.com/v2/oauth/access_token"
+   },
+   {
+    "field": "access",
+    "url": "https://vercel.com/docs/accounts/access-tokens",
+    "quote": "Create a Vercel API access token from your personal account's Account Tokens page"
+   },
+   {
+    "field": "api_style",
+    "url": "https://vercel.com/docs/rest-api",
+    "quote": "Vercel REST API Reference"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+    "quote": "Vercel MCP is Vercel's official MCP server. It's a remote MCP with OAuth"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://vercel.com/docs/rest-api"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.0384072,
+   "turns": 3,
+   "seconds": 27.4
+  }
+ ],
+ "raw_result": null
+}

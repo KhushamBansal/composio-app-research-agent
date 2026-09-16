@@ -1,0 +1,216 @@
+{
+ "record": {
+  "id": 71,
+  "app": "Notion",
+  "what_it_does": "Notion is a workspace app for notes, docs, wikis, and databases, and its REST API lets external apps read, create, and update pages, databases, users, and comments in a workspace.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Notion has three connection types: internal connections (static 'installation access token', single workspace), public connections (OAuth 2.0, installable across workspaces, can be Marketplace-listed), and personal access tokens (user-scoped static bearer token, no OAuth flow). All three authenticate API requests with a Bearer token in the Authorization header. A multi-user agent toolkit would use the public connection OAuth2 flow so each end user can individually authorize and pick which pages/databases to share.",
+  "access": "self_serve_free",
+  "access_notes": "Any developer can create an internal connection in the Developer portal and get a working API token immediately at no cost, or create a public (OAuth2) connection and use it without listing it on the Marketplace. Listing on the Notion Marketplace requires a Notion security review, but that review is only needed for public marketplace distribution, not for building or using the API.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.notion.com/reference/intro",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.notion.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Public (Marketplace) distribution requires Notion security review; official MCP server only supports user OAuth, not headless bearer-token auth",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.notion.com/docs/getting-started",
+    "quote": "Public connections use OAuth 2.0 for authentication. At creation time, you choose their installation scope"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.notion.com/docs/authorization",
+    "quote": "Personal access tokens (PATs) are created directly by a Notion user in the Developer portal. There is no OAuth flow"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.notion.com/docs/getting-started",
+    "quote": "We recommend starting with an internal connection \u2014 it's the fastest way to begin building. You get an API token immediately"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.notion.com/docs/getting-started",
+    "quote": "Public connections must undergo a Notion security review before being listed on the Marketplace. You can create and use a public connection without listing it."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+    "quote": "Notion MCP (https://mcp.notion.com/mcp) is our hosted, actively maintained server. It uses OAuth for authentication"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+    "quote": "Notion MCP requires user-based OAuth authentication and does not support bearer token authentication"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.notion.com/reference/intro",
+    "quote": "The Notion API follows RESTful conventions when possible, with most operations performed via GET, POST, PATCH, and DELETE requests"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://developers.notion.com/openapi.json",
+    "quote": "\"openapi\": \"3.1.0\""
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developers.notion.com/reference/webhooks",
+    "quote": "The body of the request contains a `verification_token`, which proves that Notion can successfully reach your endpoint."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact rate limits and whether internal-connection tokens are subject to any Marketplace-style review were not checked; not expected to change buildability."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.notion.com/docs/getting-started",
+       "https://developers.notion.com/docs/authorization",
+       "https://developers.notion.com/reference/intro"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Notion official MCP server developers.notion.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.notion.com/docs/webhooks",
+       "https://developers.notion.com/reference/get-started"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+       "https://developers.notion.com/docs/webhooks-overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Notion developers webhooks guide site:developers.notion.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Notion API OpenAPI spec swagger developers.notion.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.notion.com/reference/webhooks",
+       "https://developers.notion.com/openapi.json"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "\"openapi\"|\"title\"|\"version\"",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "head_limit": 5
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "openapi",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 3
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{0,40}\"openapi\":\\s*\"[^\"]+\".{0,40}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 1
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "openapi.{0,20}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 3
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "/v1/[a-zA-Z_/{}\\-]+",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 0
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "verification_token|X-Notion-Signature",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 3
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": ".{0,60}verification_token.{0,80}",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/0b0dbf12-26d8-4ed3-a9a1-c05f869c569a/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789579224190.txt",
+      "output_mode": "content",
+      "-o": true,
+      "head_limit": 1
+     }
+    }
+   ],
+   "cost_usd": 0.26945159999999996,
+   "turns": 16,
+   "seconds": 76.4
+  }
+ ],
+ "raw_result": null
+}

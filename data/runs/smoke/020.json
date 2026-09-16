@@ -1,0 +1,240 @@
+{
+ "record": {
+  "id": 20,
+  "app": "Gladly",
+  "what_it_does": "Gladly is a customer service/helpdesk platform (voice, email, chat, SMS, social) built around a unified customer timeline, with a REST API and webhooks for integrating customer, task, and conversation data.",
+  "auth_methods": [
+   "Basic"
+  ],
+  "auth_primary": "Basic",
+  "auth_notes": "Gladly uses token-based HTTP Basic Authentication: the username is the API user's agent email and the password is a generated API token, sent via the Authorization header. There is no OAuth2 flow for third-party/multi-tenant access \u2014 each customer org must create its own API token tied to an internal agent user with the 'API User' permission.",
+  "access": "partner_gated",
+  "access_notes": "Gladly has no self-serve signup or free tier; the marketing site's only CTA is 'Book a demo', and third-party pricing trackers confirm pricing/access is sales-led with a custom quote. To use the API at all you must already be a paying Gladly customer org; within that org, a Gladly Administrator must grant an agent the 'API User' permission before that agent can generate API tokens. Gladly does provide a free sandbox environment (https://{organization}.gladly.qa) for existing customers to test without touching production.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "moderate",
+  "api_docs_url": "https://developer.gladly.com/rest/index.html",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "blocked",
+  "main_blocker": "No self-serve access \u2014 becoming a Gladly customer requires a sales demo/contract, and API tokens additionally require an org Administrator to grant per-agent 'API User' permission.",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Gladly API uses token-based Basic Authentication. API tokens are associated with designated Gladly users."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "HTTP Authorization Scheme | basic"
+   },
+   {
+    "field": "access",
+    "url": "https://www.gladly.com/app-platform/",
+    "quote": "Connect once. Use everywhere.\n\nAPI and tools to get up and running in days.\n\nBook a demo"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "To allow a user to create API tokens and access the API: ... Gladly Administrators can set API permissions on an agent-by-agent basis."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Clients can access the REST API via HTTPS at your organization's Gladly domain (e.g. `https://{organization}.gladly.com`)."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Download OpenAPI specification: Download"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "A Webhook is a way to send notifications about Gladly events as a POST request to the endpoint of your choice."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Exact total endpoint/operation count wasn't enumerated (tags observed: Organization, Customers, Conversations, Tasks, Answers, Rich Content, Reports, Webhooks/Events) \u2014 classified as 'moderate' breadth based on these core object categories rather than a full count from the OpenAPI spec file itself."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.gladly.com/rest/index.html",
+       "https://help.gladly.com/generate-api-tokens-and-create-webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -A3 -B3 \"authorization\\|basic auth\\|api token\\|bearer\\|oauth\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\" | head -150"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i \"authorization\\|basic auth\\|api token\\|bearer\\|oauth\\|permission\\|role\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\" | head -80"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "python3 -c \"\nimport re\ndata = open('/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt').read()\nprint(len(data))\nfor m in re.finditer(r'(?i)(authoriz|basic auth|api token|bearer|oauth|permission|role)', data):\n    s = max(0, m.start()-150)\n    e = min(len(data), m.end()+150)\n    print('---', m.start())\n    print(data[s:e].replace(chr(92)+'n', ' '))\n\" | head -300\n"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "python3 -c \"\nimport re\ndata = open('/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt').read()\nprint(len(data))\nfor m in re.finditer(r'(?i)(authoriz|basic auth|api token|bearer|oauth|permission|role)', data):\n    s = max(0, m.start()-150)\n    e = min(len(data), m.end()+150)\n    print('---', m.start())\n    print(data[s:e].replace(chr(92)+'n', ' '))\n\" | head -300\n"
+     }
+    },
+    {
+     "tool": "Write",
+     "input": {
+      "file_path": "/private/var/folders/hc/2v8x4b8x4xbgfptm8d4qzd300000gn/T/search.py",
+      "content": "import re\ndata = open('/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt').read()\nprint(len(data))\ncount = 0\nfor m in re.finditer(r'(?i)(authoriz|basic auth|api token|bearer|oauth|permission|role)', data):\n    s = max(0, m.start()-150)\n    e = min(len(data), m.end()+150)\n    print('---', m.start())\n    print(data[s:e].replace(chr(92)+'n', ' '))\n    count += 1\n    if count > 40:\n        break\n"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "python3 -c \"\nimport re\ndata = open('/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt').read()\nmatches = list(re.finditer(r'(?i)(authoriz|basic auth|api token|bearer|oauth|permission|role)', data))\nprint(len(data), len(matches))\nout = []\nfor m in matches[:30]:\n    s = max(0, m.start()-150)\n    e = min(len(data), m.end()+150)\n    out.append(data[s:e].replace(chr(92)+'n', ' '))\nprint(chr(10)+chr(10)+'---'+chr(10).join(out))\n\"\n"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{100\\}authoriz.\\{100\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\" > /tmp/grep1.txt; wc -l /tmp/grep1.txt"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{100\\}authoriz.\\{100\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{200\\}api token.\\{200\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{80\\}rate limit.\\{150\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \"# [A-Za-z][A-Za-z ]\\{0,40\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -o \"^# [A-Za-z][A-Za-z ]\\{0,40\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -o \"# .\\{0,40\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{5\\}Agents\\{0,1\\}.\\{5\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\" | sort -u"
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \"n# [A-Z][a-zA-Z ]\\{2,30\\}n#\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Read",
+     "input": {
+      "file_path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt",
+      "limit": 1
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.gladly.com/rest/index.html"
+      ],
+      "extras": {
+       "links": 60
+      },
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly pricing free trial sign up"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.gladly.com/app-platform/"
+      ],
+      "max_characters": 2500
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{100\\}webhook.\\{150\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    },
+    {
+     "tool": "Bash",
+     "input": {
+      "command": "grep -n -i -o \".\\{80\\}organization is a customer.\\{80\\}\" \"/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/29154041-3dfd-427b-a0fc-27641e49fb30/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789575699863.txt\""
+     }
+    }
+   ],
+   "cost_usd": 0.45219680000000007,
+   "turns": 26,
+   "seconds": 133.6
+  }
+ ],
+ "raw_result": null
+}

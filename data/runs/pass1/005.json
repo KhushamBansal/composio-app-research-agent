@@ -1,0 +1,183 @@
+{
+ "record": {
+  "id": 5,
+  "app": "Twenty",
+  "what_it_does": "Twenty is an open-source CRM (self-hostable or cloud) for managing companies, people, and opportunities, with a schema-per-tenant REST and GraphQL API that auto-generates endpoints for custom objects.",
+  "auth_methods": [
+   "OAuth2",
+   "API key"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "API keys (used as static Bearer tokens, created in Settings \u2192 API & Webhooks) give full workspace-level access and are meant for internal scripts. OAuth2 (authorization code + PKCE, dynamic client registration per RFC 7591, plus a client-credentials grant for server-to-server) is what Twenty documents for external apps acting on behalf of a user \u2014 the fit for a multi-user agent toolkit. Scopes are limited to `api` and `profile`.",
+  "access": "self_serve_free",
+  "access_notes": "Twenty is open source (self-hostable via Docker for free, with full API/webhook/OAuth access and no approval step). Cloud also offers a 30-day free trial with no credit card, after which paid plans ($9+/user/month) apply. A developer can get working API credentials immediately either by self-hosting or via the cloud trial.",
+  "api_style": [
+   "REST",
+   "GraphQL"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://docs.twenty.com/developers/extend/api",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://api.twenty.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://docs.twenty.com/developers/extend/oauth.md",
+    "quote": "Twenty implements OAuth 2.0 with authorization code + PKCE for user-facing apps and client credentials for server-to-server access"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "quote": "Create an API key in Settings \u2192 API & Webhooks \u2192 + Create key"
+   },
+   {
+    "field": "access",
+    "url": "https://twenty.com/pricing",
+    "quote": "Sign up for Cloud in under a minute and start your 30-day trial"
+   },
+   {
+    "field": "access",
+    "url": "https://twenty.com/pricing",
+    "quote": "Is Twenty really open-source? Yes... You can self-host to fully own your infrastructure"
+   },
+   {
+    "field": "api_style",
+    "url": "https://docs.twenty.com/developers/extend/api.md",
+    "quote": "Both are available as REST and GraphQL. GraphQL adds batch upserts and the ability to traverse relations in a single query."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://twenty.com/pricing",
+    "quote": "Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language."
+   },
+   {
+    "field": "openapi_spec",
+    "url": "https://github.com/twentyhq/twenty/blob/main/packages/twenty-server/src/engine/core-modules/open-api/open-api.service.ts",
+    "quote": "async generateCoreSchema(request: Request): Promise<OpenAPIV3_1.Document>"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://docs.twenty.com/developers/extend/webhooks.md",
+    "quote": "Twenty sends an HTTP POST to your URL whenever a record is created, updated, or deleted."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The OpenAPI spec is generated dynamically per workspace (no single static published spec file) \u2014 retrieved via authenticated endpoints rather than a fixed public URL, so exact endpoint paths (e.g. /open-api/core) were confirmed via the vendor's GitHub source rather than a docs page. The official MCP server's exact public URL/doc page wasn't found on docs.twenty.com (only confirmed via the pricing page FAQ and GitHub PRs); mcp_url is inferred from the Cloud API base URL pattern."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://twenty.com/developers",
+       "https://twenty.com/developers/section/api-and-webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://twenty.com/developers/oauth",
+       "https://twenty.com/developers/section/webhooks",
+       "https://twenty.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.twenty.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.twenty.com/developers/extend/oauth.md",
+       "https://docs.twenty.com/developers/extend/webhooks.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Twenty CRM MCP server documentation site:docs.twenty.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Twenty CRM OpenAPI swagger spec api.twenty.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"twenty.com\" MCP server url mcp.twenty.com OR \"/mcp\" endpoint documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.twenty.com/user-guide/ai/overview.md",
+       "https://docs.twenty.com/user-guide/ai/capabilities/ai-chatbot.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.twenty.com/developers/extend/api.md"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/twentyhq/twenty/blob/main/packages/twenty-server/src/engine/core-modules/open-api/open-api.service.ts"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.twenty.com/getting-started/core-concepts/ai.md"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:Read",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.41842640000000003,
+   "turns": 14,
+   "seconds": 91.9
+  }
+ ],
+ "raw_result": null
+}

@@ -1,0 +1,148 @@
+{
+ "record": {
+  "id": 42,
+  "app": "WooCommerce",
+  "what_it_does": "WooCommerce is an open-source e-commerce plugin for WordPress that exposes store data (products, orders, customers, coupons, etc.) via a REST API layered on the WordPress REST API.",
+  "auth_methods": [
+   "API key",
+   "Basic",
+   "Other"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Each store owner generates a Consumer Key + Consumer Secret pair in wp-admin (WooCommerce > Settings > Advanced > REST API); this pair is used as HTTP Basic Auth credentials over HTTPS, or as OAuth 1.0a 'one-legged' signed parameters over plain HTTP. There is also a per-store 'Application Authentication Endpoint' (/wc-auth/v1/authorize) that lets a third-party app redirect a merchant to their own site to approve access and receive generated keys via callback \u2014 an OAuth-like flow, but it runs on each individual merchant's WooCommerce install, not a central vendor authorization server, so it is not true multi-tenant OAuth2.",
+  "access": "self_serve_free",
+  "access_notes": "WooCommerce is a free WordPress plugin; any developer can install it (or use a free sandbox/dev site) and generate REST API keys immediately from their own wp-admin with no approval or payment required. The catch is that API access is inherently per-store/self-hosted \u2014 there is no central vendor account to sign up for.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.woocommerce.com/docs/apis/rest-api/v3/",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.woocommerce.com/docs/features/mcp/",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "no central OAuth2/authorization server \u2014 each merchant's self-hosted store issues its own API keys, so onboarding is per-tenant",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+    "quote": "You may use HTTP Basic Auth by providing the REST API Consumer Key as the username and the REST API Consumer Secret as the password."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+    "quote": "This endpoint can be used by any APP to allow users to generate API keys for your APP."
+   },
+   {
+    "field": "access",
+    "url": "https://developer.woocommerce.com/docs/apis/rest-api/authentication/",
+    "quote": "New keys can be generated either through the WordPress admin interface or they can be auto-generated through an endpoint."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.woocommerce.com/docs/features/mcp/",
+    "quote": "WooCommerce includes native support for the Model Context Protocol (MCP), enabling AI assistants and tools to interact directly with WooCommerce stores"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.woocommerce.com/docs/apis/rest-api/v3/",
+    "quote": "The current and recommended version of the WooCommerce REST API. Use `/wp-json/wc/v3/` endpoints for all new integrations."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the official MCP integration (developer preview, feature-flagged) is stable enough for production toolkit use, and how it authenticates when using the shared WordPress MCP adapter vs. the deprecated WooCommerce-specific endpoint."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://woocommerce.github.io/woocommerce-rest-api-docs/",
+       "https://woocommerce.com/document/woocommerce-rest-api/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+      ],
+      "max_characters": 15000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+      ],
+      "max_characters": 8000,
+      "extras": {}
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "WooCommerce REST API \"Authentication over HTTP\" OAuth 1.0a \"one-legged\""
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "WooCommerce official MCP server Model Context Protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.woocommerce.com/docs/features/mcp/"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.woocommerce.com/docs/apis/rest-api/authentication/"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "WooCommerce REST API OpenAPI swagger specification woocommerce.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.woocommerce.com/docs/apis/rest-api/v3/"
+      ],
+      "max_characters": 3000
+     }
+    }
+   ],
+   "cost_usd": 0.20533179999999995,
+   "turns": 11,
+   "seconds": 68.7
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

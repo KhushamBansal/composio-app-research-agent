@@ -1,0 +1,153 @@
+{
+ "record": {
+  "id": 12,
+  "app": "Intercom",
+  "what_it_does": "Intercom is a customer messaging and support platform providing a REST API to manage contacts, conversations, tickets, articles, and AI (Fin) content for building support/helpdesk integrations.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Access Tokens (a static Bearer token issued per-app in the Developer Hub) are for private apps accessing your own workspace's data. OAuth2 is required for public apps that access other people's Intercom workspaces \u2014 Intercom's terms prohibit asking users for their Access Token instead of implementing OAuth. Both methods are used as an 'Authorization: Bearer <token>' header.",
+  "access": "self_serve_free",
+  "access_notes": "Developers can create a free development workspace and an app in the Developer Hub to get a working Access Token or set up OAuth immediately, at no cost. Development workspaces have limitations (US-only, max 20 users/leads, no outbound email) and cannot be converted to production; real customer data requires a paid Intercom workspace, but API credentials for building/testing are free and self-serve.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction/",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developers.intercom.com/docs/guides/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+    "quote": "An Access Token is for if you're using the API to access data in your own Intercom workspace"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+    "quote": "OAuth is for if you're building a public app that accesses other people's Intercom data"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.intercom.com/docs/build-an-integration/getting-started",
+    "quote": "Development workspaces are free and intended for development purposes only."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction/",
+    "quote": "Download OpenAPI description - Intercom API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction/",
+    "quote": "The production API server https://api.intercom.io"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "quote": "The Intercom MCP Server provides 14 tools for interacting with the Intercom API"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether distributing an unlisted OAuth app to external customers (without App Store review) is unrestricted, versus requiring Intercom review for public App Store listing, was not fully confirmed from a fetched page."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+       "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction/",
+       "https://developers.intercom.com/docs/references/introduction/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction/"
+      ],
+      "max_characters": 4000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Intercom official MCP server developers.intercom.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.intercom.com/docs/guides/mcp"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Intercom developer app OAuth free developer account sign up create app pricing API access"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.intercom.com/docs/build-an-integration/getting-started"
+      ],
+      "max_characters": 2500
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Intercom API webhooks documentation subscribe topics"
+     }
+    },
+    {
+     "tool": "ReportFindings",
+     "input": {
+      "findings": []
+     }
+    }
+   ],
+   "cost_usd": 0.1804684,
+   "turns": 11,
+   "seconds": 57.2
+  }
+ ],
+ "raw_result": null
+}

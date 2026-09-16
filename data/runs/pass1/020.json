@@ -1,0 +1,175 @@
+{
+ "record": {
+  "id": 20,
+  "app": "Gladly",
+  "what_it_does": "Gladly is a customer service/helpdesk platform providing a REST API to manage agents, conversations, customers, answers, tasks, and other support objects.",
+  "auth_methods": [
+   "Basic",
+   "OAuth2"
+  ],
+  "auth_primary": "Basic",
+  "auth_notes": "The core REST API uses token-based HTTP Basic Authentication (agent email as username, an admin-generated API token as password); an API User permission is required to create tokens. Separately, OAuth2 exists only for the Gladly 'App Platform' (embedded apps built with the appcfg CLI), and requires contacting Gladly Support to register the OAuth domain before use.",
+  "access": "paid_plan",
+  "access_notes": "Gladly has no public self-serve signup or free trial for API access; API tokens can only be created by an Administrator inside an existing (paid) Gladly organization account, and a dedicated user with the API User permission must first be provisioned. New prospects are directed to request a sales demo rather than sign up directly.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.gladly.com/rest/index.html",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "none",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "No self-serve signup or trial \u2014 API tokens require an existing paid Gladly org and admin-provisioned API User account",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Gladly API uses token-based Basic Authentication. API tokens are associated with designated Gladly users."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://help.gladly.com/developer-tutorials/docs/configure-an-app",
+    "quote": "Make sure that have contacted Gladly Support to register your Oauth domain before running the command below"
+   },
+   {
+    "field": "access",
+    "url": "https://help.gladly.com/generate-api-tokens-and-create-webhooks",
+    "quote": "a Gladly Administrator should create a new user with an API role + Agent and/or Administrator"
+   },
+   {
+    "field": "access",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Gladly Administrators can set API permissions on an agent-by-agent basis."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "You can integrate easily with Gladly by calling Gladly's REST API and implementing the Lookup API"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.gladly.com/rest/index.html",
+    "quote": "Clients can access the REST API via HTTPS at your organization's Gladly domain"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not directly measure the total endpoint/operation count from the OpenAPI spec file itself (only browsed the rendered docs page, which already lists Agents, Public Answers, Answer Management, and more before truncation), so 'broad' breadth is inferred rather than counted exactly. Could not find a Gladly-published pricing page listing specific API-inclusive tiers."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly API developer documentation REST"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly API authentication OAuth API key"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.gladly.com/rest/index.html",
+       "https://help.gladly.com/generate-api-tokens-and-create-webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "Basic|OAuth|Authorization|API token|Bearer|permission",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/189b3d0c-af88-4982-9861-647a6239a1da/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576646607.txt",
+      "-o": true,
+      "-i": true,
+      "head_limit": 60
+     }
+    },
+    {
+     "tool": "Grep",
+     "input": {
+      "pattern": "webhook|Webhook",
+      "path": "/Users/khushambansal/.claude/projects/-private-var-folders-hc-2v8x4b8x4xbgfptm8d4qzd300000gn-T/189b3d0c-af88-4982-9861-647a6239a1da/tool-results/mcp-composio-COMPOSIO_SEARCH_FETCH_URL_CONTENT-1789576646607.txt",
+      "-i": true,
+      "output_mode": "content",
+      "-n": true,
+      "head_limit": 20
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.gladly.com/rest/index.html"
+      ],
+      "max_characters": 15000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.gladly.com/generate-api-tokens-and-create-webhooks"
+      ],
+      "max_characters": 10000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly MCP server model context protocol"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gladly pricing free trial sign up sandbox"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.gladly.com/developer-tutorials/docs/configure-an-app"
+      ],
+      "max_characters": 6000
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.gladly.com/request-demo"
+      ],
+      "max_characters": 3000
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:WebFetch",
+      "max_results": 2
+     }
+    }
+   ],
+   "cost_usd": 0.2040894,
+   "turns": 14,
+   "seconds": 80.7
+  }
+ ],
+ "raw_result": null
+}

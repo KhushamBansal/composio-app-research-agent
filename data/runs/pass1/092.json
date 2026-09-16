@@ -1,0 +1,158 @@
+{
+ "record": {
+  "id": 92,
+  "app": "Otter AI",
+  "what_it_does": "Otter.ai is an AI meeting assistant that records, transcribes, and summarizes conversations, and exposes a Public API and webhooks for Enterprise workspaces to programmatically access transcripts, summaries, action items, and workspace data.",
+  "auth_methods": [
+   "Bearer token",
+   "OAuth2"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The REST Public API (api.otter.ai/v1) uses static Bearer API keys created in the Integrations > Developer tab (max 2 keys per user), documented as 'Bearer token authentication'. Separately, Otter's official MCP server (mcp.otter.ai/mcp) uses OAuth2 with granular, user-scoped permissions \u2014 this is the method a multi-user agent toolkit would use since it supports per-user authorization without shared static keys.",
+  "access": "paid_plan",
+  "access_notes": "Both the Public API and the MCP server are gated to the Enterprise plan/workspace tier. Help Center: 'Otter's Public API is available for all Enterprise workspaces. If you do not see this feature for your workspace, contact your Otter account manager' and 'you can connect to other AI applications such as Claude, ChatGPT, Cursor, and more through Otter MCP' is listed under Enterprise-plan capabilities. There is no free/self-serve API or MCP access on Basic/Pro plans; enabling it also requires contacting an account manager, which pushes it further toward approval-required in practice.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "narrow",
+  "api_docs_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+  "openapi_spec": false,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.otter.ai/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Enterprise-plan gating: both the REST API and the official MCP server require an Enterprise workspace and account-manager enablement, with no free/self-serve tier",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+    "quote": "All API requests require authentication using Bearer token authentication."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://otter.ai/blog/otter-for-enterprise-connect-ai-to-ai-with-otters-mcp",
+    "quote": "OAuth-authenticated with granular permissions"
+   },
+   {
+    "field": "access",
+    "url": "https://help.otter.ai/hc/en-us/articles/4412365535895-Does-Otter-offer-an-open-API",
+    "quote": "Yes, Otter offers a public API for Enterprise customers. To get started, contact your Otter account manager to enable access."
+   },
+   {
+    "field": "access",
+    "url": "https://help.otter.ai/hc/en-us/articles/35234602608919-Advanced-Otter-AI-Chat-Modes",
+    "quote": "On the Enterprise plan, you can connect to other AI applications such as Claude, ChatGPT, Cursor, and more through Otter MCP."
+   },
+   {
+    "field": "api_style",
+    "url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+    "quote": "curl -X GET \"https://api.otter.ai/v1/channels\" -H \"Authorization: Bearer YOUR_API_KEY\""
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://otter.ai/integration/claude",
+    "quote": "Through Otter's MCP server, Claude can search and pull from Otter transcripts, summaries, and action items directly inside a chat"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://help.otter.ai/hc/en-us/articles/35234602608919-Advanced-Otter-AI-Chat-Modes",
+    "quote": "connect to other AI applications such as Claude, ChatGPT, Cursor, and more through Otter MCP"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://help.otter.ai/hc/en-us/articles/35634832371735-Workspace-Webhooks",
+    "quote": "Workspace Admins can set up webhooks for your workspace so you can integrate Otter Conversation data into your downstream tools"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not fetch mcp.otter.ai directly to verify the exact MCP tool list (help center and blog confirm it exists and is OAuth-scoped, but the primary source didn't enumerate individual tool names); third-party sources claim it exposes 'search', 'fetch transcript', and 'get user info' tools but this wasn't independently verified on a vendor page. Note: connect.tryotter.com/docs is an unrelated product (Otter's restaurant food-delivery Partner API, a different 'Otter' brand) and was excluded from this research despite surfacing in searches."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Otter.ai API developer documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Otter.ai MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+       "https://otter.ai/blog/otter-for-enterprise-connect-ai-to-ai-with-otters-mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "help.otter.ai MCP server setup guide claude connect"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://otter.ai/integration/claude"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "\"mcp.otter.ai\" site:help.otter.ai"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "help.otter.ai \"Model Context Protocol\" MCP server connect Claude ChatGPT setup article"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.otter.ai/hc/en-us/articles/35234602608919-Advanced-Otter-AI-Chat-Modes"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Otter.ai API openapi spec swagger help.otter.ai"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.otter.ai/hc/en-us/articles/4412365535895-Does-Otter-offer-an-open-API",
+       "https://help.otter.ai/hc/en-us/articles/35634832371735-Workspace-Webhooks"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.2526868,
+   "turns": 12,
+   "seconds": 73.0
+  }
+ ],
+ "raw_result": null
+}

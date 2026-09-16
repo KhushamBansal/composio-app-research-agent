@@ -1,0 +1,175 @@
+{
+ "record": {
+  "id": 19,
+  "app": "Gorgias",
+  "what_it_does": "Gorgias is an ecommerce-focused helpdesk platform that unifies customer support channels (email, chat, social, SMS, voice) into one inbox with automation and an AI agent.",
+  "auth_methods": [
+   "OAuth2",
+   "API key",
+   "Basic"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Private apps (single-account use) authenticate via HTTP Basic auth using the account email as username and an API key as password. Public apps (App Store listings, multi-customer) must use OAuth2 with an authorization-code flow against https://{subdomain}.gorgias.com/oauth/authorize and /oauth/token.",
+  "access": "self_serve_trial",
+  "access_notes": "Any developer can sign up for a 7-day free trial (no credit card) and immediately generate a private-app API key from their own account. There is no permanent free plan, so ongoing/production use requires a paid Gorgias subscription. Building a public OAuth2 app additionally requires registering on the Developer Portal, obtaining a Sandbox account from techpartners@gorgias.com, and passing Gorgias's app review before publishing to the App Store.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developers.gorgias.com/reference/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.gorgias.com/mcp",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "Public/multi-user OAuth2 apps require Gorgias Developer Portal registration, a sandbox grant, and app-store review before production use; self-serve access otherwise requires an ongoing paid Gorgias plan (no permanent free tier).",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developers.gorgias.com/docs/authentication",
+    "quote": "The Gorgias API supports two authentication methods: 1. \ud83d\udd10 Private app \u2192 API key 2. \ud83d\udc65 Public app \u2192 OAuth2"
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developers.gorgias.com/reference/create-integration",
+    "quote": "The username will be the email address of your Gorgias account and the password will be your API key."
+   },
+   {
+    "field": "access",
+    "url": "https://developers.gorgias.com/docs/private-vs-public-app",
+    "quote": "You don't need to follow any special process to create a private app...you can use Access Tokens."
+   },
+   {
+    "field": "access",
+    "url": "https://www.gorgias.com/signup-v2/get-started-trial-v2",
+    "quote": "7-day trial | All features unlocked | No credit card required"
+   },
+   {
+    "field": "access",
+    "url": "https://developers.gorgias.com/docs/overview",
+    "quote": "Get Gorgias Sandbox to test your app: create a trial account and reach out to techpartners@gorgias.com to convert it into a Sandbox account."
+   },
+   {
+    "field": "api_style",
+    "url": "https://developers.gorgias.com/reference/introduction",
+    "quote": "The Gorgias API is structured with REST in mind. Our API has predictable resource-oriented URLs"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+    "quote": "In the Remote MCP server URL field, enter the following URL: https://mcp.gorgias.com/mcp"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Whether the per-endpoint OpenAPI 3.1 definitions embedded in developers.gorgias.com are offered as a single downloadable spec file (e.g. a combined openapi.json) was not directly confirmed, though each reference page is generated from a vendor-authored OpenAPI 3.1 document."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.gorgias.com/reference/introduction",
+       "https://developers.gorgias.com/docs/authentication"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.gorgias.com/docs/quick-start",
+       "https://developers.gorgias.com/docs/webhooks-1"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gorgias MCP server official"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gorgias developers quickstart public app OAuth2 marketplace review"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.gorgias.com/docs/private-vs-public-app",
+       "https://developers.gorgias.com/docs/overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gorgias pricing free trial plans"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.gorgias.com/pricing",
+       "https://developers.gorgias.com/llms.txt"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Gorgias API webhooks event subscription documentation"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_TAVILY",
+     "input": {
+      "query": "Gorgias developers.gorgias.com openapi.json swagger spec"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://www.gorgias.com/signup-v2/get-started-trial-v2",
+       "https://developers.gorgias.com/reference/create-integration"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developers.gorgias.com/reference/limitations"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.3276072,
+   "turns": 14,
+   "seconds": 86.3
+  }
+ ],
+ "raw_result": null
+}

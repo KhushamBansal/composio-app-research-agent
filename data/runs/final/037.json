@@ -1,0 +1,136 @@
+{
+ "record": {
+  "id": 37,
+  "app": "systeme.io",
+  "what_it_does": "systeme.io is an all-in-one marketing platform (funnels, email/newsletters, courses, communities, e-commerce) with a public REST API for managing contacts, tags, funnels, newsletters, products, and more.",
+  "auth_methods": [
+   "API key"
+  ],
+  "auth_primary": "API key",
+  "auth_notes": "Authentication is exclusively via a static API key sent in the X-API-Key header; the docs explicitly state this is the 'only option right now' and invite feedback on adding other methods. Users can generate up to 3 API keys per account, each with an optional expiration date, from Settings > MCP & API keys.",
+  "access": "self_serve_free",
+  "access_notes": "systeme.io has a permanent free plan (2,000 contacts, 3 funnels, 1 course, no credit card required) and API keys are generated directly from account settings by any user \u2014 no approval step is documented for API key issuance.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer.systeme.io/reference",
+  "openapi_spec": null,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://developer.systeme.io/docs/mcp-server",
+  "buildability": "ready_with_caveats",
+  "main_blocker": "API key auth only (no OAuth2), so a multi-tenant agent toolkit must store/manage per-user static keys rather than doing an OAuth handshake",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer.systeme.io/",
+    "quote": "your only option right now is to attach your API key to the `X-API-Key` header of each request"
+   },
+   {
+    "field": "access",
+    "url": "https://systeme.io/pricing",
+    "quote": "the free plan supports up to 2,000 contacts, 3 sales funnels, 1 blog, 1 course... never expires and does not require a credit card"
+   },
+   {
+    "field": "access",
+    "url": "https://help.systeme.io/article/2323-how-to-create-a-public-api-key-on-systeme-io",
+    "quote": "To create a public API key, click your profile picture, select Settings (1), and scroll down to MCP & API keys"
+   },
+   {
+    "field": "api_style",
+    "url": "https://developer.systeme.io/",
+    "quote": "Adhering to RESTful conventions, our API ensures an intuitive and consistent interaction pattern"
+   },
+   {
+    "field": "api_breadth",
+    "url": "https://help.systeme.io/article/2323-how-to-create-a-public-api-key-on-systeme-io",
+    "quote": "Manage contacts... Manage tags... Newsletters... Manage funnels... Price plans and coupons... Courses and students... Communities... Automation rules... Webhooks"
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer.systeme.io/docs/webhooks",
+    "quote": "Systeme.io webhooks allow your applications to receive real-time events from your systeme.io account"
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp",
+    "quote": "The new MCP server feature gives users, partners, and developers a powerful new way to interact with systeme.io using AI tools"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Could not confirm whether a downloadable OpenAPI/Swagger JSON file is publicly published (the reference docs are hosted on ReadMe.io, which is typically OpenAPI-generated, but no direct spec URL was found within the tool-call budget). Also note: the official MCP server currently supports only a subset of the full REST API's resources (no OAuth yet, key expires within 90 days, max 2 keys) \u2014 full API coverage is broader than what the MCP server currently exposes."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "systeme.io API documentation developer"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.systeme.io/",
+       "https://developer.systeme.io/docs/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.systeme.io/reference",
+       "https://help.systeme.io/article/2323-how-to-create-a-public-api-key-on-systeme-io"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "systeme.io MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.systeme.io/article/9489-how-to-use-systeme-ios-mcp",
+       "https://systeme.io/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer.systeme.io openapi.json OR swagger"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer.systeme.io/docs/webhooks"
+      ]
+     }
+    }
+   ],
+   "cost_usd": 0.17896710000000002,
+   "turns": 9,
+   "seconds": 52.0
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}

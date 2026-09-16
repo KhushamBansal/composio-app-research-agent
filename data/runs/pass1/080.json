@@ -1,0 +1,122 @@
+{
+ "record": {
+  "id": 80,
+  "app": "Harvest",
+  "what_it_does": "Harvest is a time tracking, invoicing, and expense management tool for freelancers and teams, with a REST API to programmatically manage time entries, projects, clients, invoices, and expenses.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Personal Access Tokens (a static bearer token tied to a user, created in the Harvest ID Developers section) are the quickest way to start; OAuth2 (Authorization Code for server-side, Implicit Grant for client-side) is documented for building integrations that other users can authorize. All requests also require an account-specific `Harvest-Account-Id` header and a `User-Agent` header.",
+  "access": "self_serve_free",
+  "access_notes": "Harvest offers a Free plan ($0 forever, 1 seat/2 projects) as well as a 30-day free trial of paid plans, no credit card required; a developer can create a Personal Access Token immediately from the Developers section of Harvest ID on either.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://help.getharvest.com/api-v2/",
+  "openapi_spec": false,
+  "webhooks": false,
+  "official_mcp": "official",
+  "mcp_url": "https://api.harvestapp.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "A Personal Access Token which is tied directly to you and is the quickest way to start playing around with the API."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+    "quote": "Implementing a full OAuth2 Authentication flow which allows other people to use your Harvest integrations."
+   },
+   {
+    "field": "access",
+    "url": "https://www.getharvest.com/pricing",
+    "quote": "Free\n\nBuilt for individual freelancers\n\nstarting from\n\n $0 forever"
+   },
+   {
+    "field": "access",
+    "url": "https://www.getharvest.com/pricing",
+    "quote": "Get started on any plan with a free trial. No credit card required."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+    "quote": "Set the Remote MCP server URL to: https://api.harvestapp.com/mcp"
+   },
+   {
+    "field": "api_style",
+    "url": "https://help.getharvest.com/api-v2/introduction/overview/general/",
+    "quote": "The Harvest V2 API is a REST API that allows you to interact with your Harvest account programmatically."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": null
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://help.getharvest.com/api-v2/",
+       "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication/",
+       "https://www.getharvest.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Harvest API webhooks help.getharvest.com"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Harvest getharvest.com official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP",
+       "https://help.getharvest.com/api-v2/introduction/overview/general/"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Harvest API v2 OpenAPI spec swagger help.getharvest.com"
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.1509665,
+   "turns": 8,
+   "seconds": 49.4
+  }
+ ],
+ "raw_result": null
+}

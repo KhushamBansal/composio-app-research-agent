@@ -1,0 +1,157 @@
+{
+ "record": {
+  "id": 49,
+  "app": "Amazon Selling Partner",
+  "what_it_does": "SP-API lets developers programmatically manage Amazon seller/vendor operations \u2014 orders, catalog, inventory, pricing, fulfillment, reports, feeds, finances, and notifications \u2014 on behalf of Amazon selling partners.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "Public apps use OAuth 2.0 via Login with Amazon (LWA), with the selling partner authorizing through browser redirects; private (single-org) apps use a simplified 'self-authorization' flow through Seller/Vendor Central instead of a redirect flow. Every API call carries a short-lived LWA access token (bearer, x-amz-access-token header, 1hr expiry) obtained via refresh_token or client_credentials grants. Legacy AWS SigV4 request signing was sunset industry-wide, so LWA tokens are now the sole call credential.",
+  "access": "approval_required",
+  "access_notes": "Registering as an SP-API developer in the Solution Provider Portal is free and doesn't require a paid selling plan. But public apps (the kind a multi-user agent toolkit would ship) must go through developer-profile review (security questionnaire, policy compliance) and, per the Solution Provider Agreement, must be listed in the Selling Partner Appstore before broad production use; private apps additionally require a paid Professional selling account to self-authorize. Authorization Limits also cap roles/apps per developer.",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://developer-docs.amazon.com/sp-api/docs",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "community_only",
+  "mcp_url": null,
+  "buildability": "ready_with_caveats",
+  "main_blocker": "public-app review and Appstore listing required for multi-user production access",
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
+    "quote": "Authorization method: OAuth 2.0 through Login with Amazon (LWA)."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api",
+    "quote": "x-amz-access-token | The LWA access token."
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon.com/sp-api/lang-US/docs/sp-api-registration-overview",
+    "quote": "public developers must list their app in the Amazon Selling Partner Appstore"
+   },
+   {
+    "field": "access",
+    "url": "https://developer-docs.amazon.com/sp-api/lang-US/docs/sp-api-registration-overview",
+    "quote": "you must have a professional selling account to develop SP-API private seller applications"
+   },
+   {
+    "field": "api_style",
+    "url": "https://github.com/amzn/selling-partner-api-models",
+    "quote": "This repository contains Swagger models for developers to use to create software that calls Selling Partner APIs."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://developer-docs.amazon.com/sp-api/docs/notifications-api",
+    "quote": "Instead of polling for information, your application can receive information directly from Amazon when an event generates a notification to which you are subscribed."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+    "quote": "These are not supported products in their own right, but educational examples to help our customers use our products"
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "Amazon does publish an 'sp-api-dev-mcp' package under the amzn GitHub org, but it's an explicitly unsupported example (a local dev-assistant/workflow-builder tool with an sp_api_execute passthrough), not a hosted/official MCP server exposing SP-API operations as end-user agent actions \u2014 graded here as community/example-tier rather than a true 'official' MCP offering."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_WEB",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api",
+       "https://developer-docs.amazon.com/sp-api/docs/registering-your-application",
+       "https://developer-docs.amazon.com/sp-api/docs/sp-api-overview",
+       "https://developer-docs.amazon.com/sp-api/docs/notifications-api-overview"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications",
+       "https://developer-docs.amazon.com/sp-api/docs/notifications-api-use-case-guide",
+       "https://github.com/amzn/selling-partner-api-models",
+       "https://developer-docs.amazon.com/sp-api/docs/registration-requirements"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Amazon Selling Partner API official MCP server"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://github.com/amzn/selling-partner-api-samples/blob/main/use-cases/sp-api-dev-mcp/README.md",
+       "https://developer-docs.amazon.com/sp-api/docs/sp-api-notifications-api-v1-reference",
+       "https://developer-docs.amazon.com/sp-api/docs"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Amazon Selling Partner API register as a developer professional selling plan requirement"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer-docs.amazon.com/sp-api/lang-US/docs/sp-api-registration-overview",
+       "https://developer-docs.amazon.com/sp-api/lang-en_EN/docs/general-faq"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "developer-docs.amazon.com sp-api \"Notifications API\" overview SQS EventBridge subscribe"
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://developer-docs.amazon.com/sp-api/docs/notifications-api"
+      ]
+     }
+    },
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:none",
+      "max_results": 1
+     }
+    }
+   ],
+   "cost_usd": 0.2030965,
+   "turns": 11,
+   "seconds": 83.9
+  }
+ ],
+ "raw_result": null
+}

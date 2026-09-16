@@ -1,0 +1,126 @@
+{
+ "record": {
+  "id": 65,
+  "app": "Supabase",
+  "what_it_does": "Supabase is an open-source backend-as-a-service platform providing a Postgres database, auth, storage, edge functions, and realtime, all controllable via auto-generated REST APIs and a Management API for provisioning projects/organizations.",
+  "auth_methods": [
+   "OAuth2",
+   "Bearer token"
+  ],
+  "auth_primary": "OAuth2",
+  "auth_notes": "The Management API (for creating/managing projects and orgs) supports both a personal access token (a static Bearer token, user-generated) and OAuth2 for third-party apps acting on behalf of a user. The per-project Data REST API (PostgREST) instead uses project API keys plus Postgres Row Level Security/JWTs for end-user auth, not OAuth2 for developer access.",
+  "access": "self_serve_free",
+  "access_notes": "Free plan gives immediate self-serve access: sign up and get a project with unlimited API requests on the Data REST API, plus a personal access token for the Management API, at $0/month (with resource caps, e.g. 500MB DB, 2 active projects).",
+  "api_style": [
+   "REST"
+  ],
+  "api_breadth": "broad",
+  "api_docs_url": "https://supabase.com/docs/reference/api/introduction",
+  "openapi_spec": true,
+  "webhooks": true,
+  "official_mcp": "official",
+  "mcp_url": "https://mcp.supabase.com/mcp",
+  "buildability": "ready",
+  "main_blocker": null,
+  "evidence": [
+   {
+    "field": "auth_methods",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "Personal access token (PAT): PATs are tokens with a custom expiry that you manually generate to access the Management API."
+   },
+   {
+    "field": "auth_methods",
+    "url": "https://supabase.com/docs/reference/api/introduction",
+    "quote": "OAuth2 allows your application to generate tokens on behalf of a Supabase user"
+   },
+   {
+    "field": "access",
+    "url": "https://supabase.com/pricing",
+    "quote": "Supabase offers four plans: Free, Pro, Team, and Enterprise. All plans include unlimited API requests."
+   },
+   {
+    "field": "access",
+    "url": "https://supabase.com/pricing",
+    "quote": "Free projects are paused after 1 week of inactivity. Limit of 2 active projects."
+   },
+   {
+    "field": "api_style",
+    "url": "https://supabase.com/docs/guides/api",
+    "quote": "Supabase provides a RESTful API using PostgREST, a thin API layer on top of Postgres."
+   },
+   {
+    "field": "official_mcp",
+    "url": "https://supabase.com/docs/guides/getting-started/mcp",
+    "quote": "The hosted Supabase MCP server is available at `https://mcp.supabase.com/mcp`."
+   },
+   {
+    "field": "webhooks",
+    "url": "https://supabase.com/docs/guides/database/webhooks",
+    "quote": "Database Webhooks allow you to send real-time data from your database to another system whenever a table event occurs."
+   }
+  ],
+  "confidence": "high",
+  "open_questions": "The Data REST API (PostgREST, per-project CRUD) breadth scales with the user's own schema rather than a fixed operation count; \"broad\" here reflects the Management API's coverage (projects, orgs, database, functions, storage config, branching) rather than a literal 50+ fixed-endpoint count \u2014 treat as directionally accurate, confirmed via the fetched OpenAPI spec size rather than an endpoint-by-endpoint tally."
+ },
+ "schema_errors": [],
+ "runs": [
+  {
+   "tool_calls": [
+    {
+     "tool": "ToolSearch",
+     "input": {
+      "query": "select:mcp__composio__COMPOSIO_SEARCH_WEB,mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT,mcp__composio__COMPOSIO_SEARCH_TAVILY",
+      "max_results": 5
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://supabase.com/docs/reference/api/introduction",
+       "https://supabase.com/docs/guides/api",
+       "https://supabase.com/docs/guides/getting-started/mcp"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://supabase.com/pricing",
+       "https://supabase.com/docs/guides/database/webhooks",
+       "https://api.supabase.com/api/v1-json"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://supabase.com/pricing"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_FETCH_URL_CONTENT",
+     "input": {
+      "urls": [
+       "https://supabase.com/docs/guides/database/webhooks"
+      ]
+     }
+    },
+    {
+     "tool": "mcp__composio__COMPOSIO_SEARCH_WEB",
+     "input": {
+      "query": "Supabase Management API OpenAPI specification api.supabase.com/api/v1-json"
+     }
+    }
+   ],
+   "cost_usd": 0.1310241,
+   "turns": 7,
+   "seconds": 48.1
+  }
+ ],
+ "raw_result": null,
+ "source_pass": "pass1"
+}
