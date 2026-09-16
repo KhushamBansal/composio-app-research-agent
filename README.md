@@ -4,7 +4,8 @@ Researches whether each of 100 given apps can become an agent toolkit today: aut
 self-serve vs gated access, API surface, existing MCP, and a buildability verdict — with a
 verbatim quote + URL behind every claim, then automatically verified and hand-checked.
 
-**Case study (findings, patterns, verification):** _link added after publish_
+**Live Case Study:** [https://composio-app-research.surge.sh](https://composio-app-research.surge.sh)  
+**Source Repository:** [https://github.com/KhushamBansal/composio-app-research-agent](https://github.com/KhushamBansal/composio-app-research-agent)
 
 ## How it works
 
